@@ -63,14 +63,22 @@ nice
  
 </ul></div>
 
-        <script src="https://apis.google.com/js/plusone.js">
+        <div id="comments"></div>
+        <script>
+        gapi.comments.render('comments', {
+            href: window.location,
+            width: '624',
+            first_party_property: 'BLOGGER',
+            view_type: 'FILTERED_POSTMOD'
+        });
         </script>
-        <div class="g-comments"
-            data-href="python/2010/my-super-post.html"
-            data-width="642"
-            data-first_party_property="BLOGGER"
-            data-view_type="FILTERED_POSTMOD">
-        </div>
+
+        <div id="commentscounter"></div>
+        <script>
+        gapi.commentcount.render('commentscounter', {
+            href: window.location
+        });
+        </script>
 
 	</div>
         </div>
