@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>NULLNE</title><link href="nullne.com/" rel="alternate"></link><link href="nullne.com/feeds/nullne.atom.xml" rel="self"></link><id>nullne.com/</id><updated>2010-12-05T19:30:00+08:00</updated><entry><title>arp title</title><link href="nullne.com/web/2014/arp%20protocol.html" rel="alternate"></link><updated>2010-12-05T19:30:00+08:00</updated><author><name>nullne</name></author><id>tag:,2014-12-03:nullne.com/web/2014/arp protocol.html</id><summary type="html">&lt;h1&gt;ARP 协议分析&lt;/h1&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>NULLNE</title><link href="/" rel="alternate"></link><link href="/feeds/nullne.atom.xml" rel="self"></link><id>/</id><updated>2010-12-05T19:30:00+08:00</updated><entry><title>arp title</title><link href="/web/2014/arp%20protocol.html" rel="alternate"></link><updated>2010-12-05T19:30:00+08:00</updated><author><name>nullne</name></author><id>tag:,2014-12-03:web/2014/arp protocol.html</id><summary type="html">&lt;h1&gt;ARP 协议分析&lt;/h1&gt;
 &lt;p&gt;@[arp|wireshark]&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;地址解析协议&lt;/strong&gt;，即&lt;strong&gt;ARP&lt;/strong&gt;（Address Resolution Protocol） 是根据IP地址获取物理地址的一个TCP/IP协议。&lt;/p&gt;
 &lt;ul&gt;
@@ -36,5 +36,5 @@
 &lt;p&gt;ARP请求为广播形式发送的，网络上的主机可以自主发送ARP应答消息，并且当其他主机收到应答报文时不会检测该报文的真实性就将其记录在本地的MAC地址转换表，这样攻击者就可以向目标主机发送伪ARP应答报文，从而篡改本地的MAC地址表。 ARP欺骗可以导致目标计算机与网关通信失败，更会导致通信重定向，所有的数据都会通过攻击者的机器。
         最简单的攻击方式就是发送固定格式的ARP报文，类似于下面的格式：&lt;img alt="Alt text" src="./QQ图片20141028224008.png" /&gt;
 已知被攻击者的ip以及mac地址（如果不知道可直接使用广播地址&lt;code&gt;FF.FF.FF.FF&lt;/code&gt;），将其自己的mac地址以及想截获的目标地址IP封装好发送，即能够刷新被欺骗主机的ARP缓存，从而得到本该发往另一个IP的所有包&lt;/p&gt;
-&lt;h4&gt;ARP cache poisoning&lt;/h4&gt;</summary><category term="Arp"></category><category term="wireshark"></category></entry><entry><title>My First Review</title><link href="nullne.com/review/2010/my-first-review.html" rel="alternate"></link><updated>2010-12-03T10:20:00+08:00</updated><author><name>nullne</name></author><id>tag:,2010-12-03:nullne.com/review/2010/my-first-review.html</id><summary type="html">&lt;p&gt;Following is a review of my favorite mechanical keyboard.
+&lt;h4&gt;ARP cache poisoning&lt;/h4&gt;</summary><category term="Arp"></category><category term="wireshark"></category></entry><entry><title>My First Review</title><link href="/review/2010/my-first-review.html" rel="alternate"></link><updated>2010-12-03T10:20:00+08:00</updated><author><name>nullne</name></author><id>tag:,2010-12-03:review/2010/my-first-review.html</id><summary type="html">&lt;p&gt;Following is a review of my favorite mechanical keyboard.
 nice&lt;/p&gt;</summary></entry></feed>
