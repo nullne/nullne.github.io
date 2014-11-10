@@ -15,6 +15,7 @@
 	<link href="/theme/bootstrap.min.css" rel="stylesheet">
 	<link href="/theme/local.css" rel="stylesheet">
 	<link href="/theme/pygments.css" rel="stylesheet">
+    <link href="/theme/tipuesearch/tipuesearch.css" rel="stylesheet" >
     <link rel="shortcut icon" href="/theme/images/icons/favicon.ico" >
 
 	<!-- Feeds -->
@@ -32,8 +33,8 @@
 						<li><a href="/my-super-post.html">About</a></li>
 			</ul>
             <div class="nav-collapse collapse">
-                <form class="navbar-search pull-right">
-                    <input type="text" class="search-query" placeholder="Search">
+                <form class="navbar-search pull-right" id="searchform" action="/search" onsubmit="return (this.elements['q'].value.length > 0)">
+                    <input type="text" name="q" class="search-query" placeholder="Search">
                 </form>
             </div>
 		</div>
@@ -80,7 +81,6 @@ nice
                     <h3>Category</h3>
                     <ul>
                         <li><a href="/category/python.html">Python</a></li>
-                        <li><a href="/category/review.html">Review</a></li>
                         <li><a href="/category/web.html">Web</a></li>
                     </ul>
                 </div>
