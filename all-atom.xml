@@ -37,7 +37,7 @@
         最简单的攻击方式就是发送固定格式的ARP报文，类似于下面的格式：&lt;img alt="Alt text" src="./QQ图片20141028224008.png" /&gt;
 已知被攻击者的ip以及mac地址（如果不知道可直接使用广播地址&lt;code&gt;FF.FF.FF.FF&lt;/code&gt;），将其自己的mac地址以及想截获的目标地址IP封装好发送，即能够刷新被欺骗主机的ARP缓存，从而得到本该发往另一个IP的所有包&lt;/p&gt;
 &lt;h4&gt;ARP cache poisoning&lt;/h4&gt;</summary><category term="Arp"></category><category term="wireshark"></category></entry><entry><title>建站续，附乱七八糟</title><link href="/suo-sui/2014/build-and-remember-continued.html" rel="alternate"></link><updated>2014-11-11T11:11:00+08:00</updated><author><name>nullne</name></author><id>tag:,2014-11-11:suo-sui/2014/build-and-remember-continued.html</id><summary type="html">&lt;p&gt;&lt;em&gt;逛了一圈论坛博客神马的发现好多人也都在写点东西纪念今天&lt;/em&gt;&lt;/p&gt;
-&lt;p&gt;距离上一次写东西已经很久了，主要原因是因为Air跪了！幸灾乐祸的主儿可以去看看&lt;a href="http://weibo.com/2356978633/B7CNpb52w?type=comment#_rnd1415671779372"&gt;原微&lt;/a&gt;，那可是目前自己微博上最火的一个。&lt;/p&gt;
+&lt;p&gt;距离上一次写东西已经很久了，主要原因是因为Air跪了！幸灾乐祸的主儿可以去看看&lt;a href="http://weibo.com/2356978633/B7CNpb52w?type=comment#_rnd1415671779372"&gt;原微&lt;/a&gt;，那可是目前自己微博上最火的一个&lt;/p&gt;
 &lt;p&gt;&lt;img alt="Alt text" src="http://ww2.sinaimg.cn/large/8c7ca3c9jw1eh3fj6ouc4j21kw23u1kx.jpg" title="=100*200" /&gt;&lt;/p&gt;
 &lt;p&gt;应该说这是之前那篇文章的续吧，可惜那篇的&lt;code&gt;Markdown&lt;/code&gt;格式的已经弄没了，附上&lt;a href="nullne.com/archivi/abc.html"&gt;链接&lt;/a&gt;（估计也是唯一一个入口了）。当初心血来潮，也不完全心血来潮，算是小时候一个梦想吧，搞了这么一个极有技术含量的博客。现在看看当时还在初学者水平，只是简单的按照别人的教程做了下来。因为本儿跪了之后源代码也一并去了，所以一直都没有再更新，这一次重建博客，在之前的基础上新增加了很多东西，&lt;a href="https://travis-ci.org/"&gt;&lt;code&gt;Travis&lt;/code&gt;&lt;/a&gt;就是一个牛逼了的东西，待会儿我会接着把这一次的技术性细节一并简单介绍。&lt;/p&gt;
 &lt;h3&gt;技术细节&lt;/h3&gt;
