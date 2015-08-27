@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title> SSH学习笔记之--SSH-Agent </title>
+	<meta name="description" content="">
+	<meta name="author" content="nullne">
+
+	<!-- HTML5 shim, for IE6-8 support of HTML elements -->
+	<!--[if lt IE 9]>
+		<script src="/theme/js/html5.js"></script>
+	<![endif]-->
+
+    <script src="/theme/js/jquery-2.1.1.min.js"></script>
+    <script src="/theme/js/bootstrap.min.js"></script>
+
+	<!-- Styles -->
+    <link rel="shortcut icon" href="/theme/img/icons/fav.ico" >
+
+	<link href="/theme/css/bootstrap.min.css" rel="stylesheet">
+	<link href="/theme/css/local.css" rel="stylesheet">
+	<link href="/theme/css/pygments.css" rel="stylesheet">
+    <link href="/theme/tipuesearch/tipuesearch.css" rel="stylesheet" >
+
+	<!-- Feeds -->
+	<link href="/all-atom.xml" type="application/atom+xml" rel="alternate" title="NULLNE Atom Feed" />
+
+
+
+
+<script>var _gaq=[['_setAccount','UA-56583262-1'],['_trackPageview']];(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.src='//www.google-analytics.com/ga.js';s.parentNode.insertBefore(g,s)}(document,'script'))</script>
+</head>
+<body>
+
+    <div class="navbar navbar-fixed-top navbar-inverse">
+        <div class="navbar-inner">
+            <div class="container">
+
+                <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+                <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                    <span class="icon-bar">nice</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </a>
+
+                <!-- Be sure to leave the brand out there if you want it shown -->
+                <a class="brand" href="/">NULLNE</a>
+
+                <!-- Everything you want hidden at 940px or less, place within here -->
+                <div class="nav-collapse collapse">
+
+                <ul class="nav">
+
+                        <li><a href="/about.html">About</a></li>
+                </ul>
+                    <!-- .nav, .navbar-search, .navbar-form, etc -->
+                    <form class="navbar-search pull-right" id="searchform" action="/search" onsubmit="return (this.elements['q'].value.length > 0)">
+                        <input type="text" name="q" class="search-query" placeholder="Search">
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="wrapper">
+
+    <div class="container content-wrapper">
+        <div class="content fixed-head-top">
+	<div class='article'>
+		<div class="page-header"><h1>SSH学习笔记之--SSH-Agent</h1></div>
+		<div><h3>SSH Agent</h3>
+<h4>SSH Agent简介</h4>
+<p>ssh-agent是专为既令人愉快又安全的处理RSA和DSA密钥而设计的特殊程序，它包括在OpenSSH分发内。不同于ssh，ssh-agent是个长时间持续运行的守护进程（daemon），设计它的唯一目的就是对解密的专用密钥进行高速缓存。</p>
+<p>ssh包含的内建支持允许它同ssh-agent通信，允许ssh不必每次新连接时都提示您要密码才能获取解密的专用密钥。对于ssh-agent，您只要使用ssh-add把专用密钥添加到ssh-agent的高速缓存中。这是个一次性过程；用过ssh-add之后，ssh将从ssh-agent获取您的专用密钥，而不会提示要密码短语来烦您了。</p>
+<h4>如何使用</h4>
+<p>启动ssh-agent：</p>
+<div class="highlight"><pre>eval `ssh-agent -s`
+</pre></div>
+
+
+<p>很奇怪，为什么不直接执行<code>ssh-agent -s</code>，我们来看一下直接运行的结果:</p>
+<div class="highlight"><pre><span class="nv">$ </span>ssh-agent
+<span class="nv">SSH_AUTH_SOCK</span><span class="o">=</span>/tmp/ssh-xDWYq20983/agent.20983<span class="p">;</span> <span class="nb">export </span>SSH_AUTH_SOCK<span class="p">;</span>
+<span class="nv">SSH_AGENT_PID</span><span class="o">=</span>20984<span class="p">;</span> <span class="nb">export </span>SSH_AGENT_PID<span class="p">;</span>
+<span class="nb">echo </span>Agent pid 20984<span class="p">;</span>
+</pre></div>
+
+
+<p>正如您所看到的，事实上ssh-agent的输出是一系列bash命令；如果这些命令被执行，则将设置两个环境变量：SSH_AUTH_SOCK和SSH_AGENT_PID。内含的export命令使这些环境变量对之后运行的任何附加命令都可用。唔，如果shell真对这些行进行计算，这一切才会发生，但是此时它们只是被打印到标准输出（stdout）而已。要使之确定，我们需要使用之前的方式进行调用。</p>
+<p>然后就可以将私钥导入</p>
+<div class="highlight"><pre>ssh-add [-i file]    #不指定文件的话默认从~/.ssh/id_rsa读取
+</pre></div>
+
+
+<h4>不足之处</h4>
+<p>首先，<code>eval`ssh-agent`</code>每次执行都会启动一个新的ssh-agent副本；这不仅仅是有一丁点儿浪费，而且还意味着您得使用ssh-add向每个新的ssh-agent副本添加专用密钥。如果您只想打开系统上的一个终端或控制台，这没什么大不了的，但是我们中大多数人打开相当多的终端，每次新打开控制台都需要键入密码短语。从技术角度讲，既然一个ssh-agent进程的确应当足够了，要是我们还需这样做，这毫无道理。</p>
+<p>有关ssh-agent的缺省设置的另外一个问题是它同cron作业不兼容。由于cron作业是cron进程启动的，这些作业无法从它们的环境中继承SSH_AUTH_SOCK变量，因而也无从知道ssh-agent进程正在运行以及如何同它联系。事实证明这个问题也是可以修补的。
+我们在 /etc/profile.d下面新建一个配置文件ssh-agentsh：</p>
+<div class="highlight"><pre><span class="x">```</span>
+<span class="err">#</span><span class="x">!/bin/sh</span>
+
+<span class="x">if [ -f ~/.agent.env ]; then</span>
+<span class="x">. ~/.agent.env &gt;/dev/null</span>
+<span class="x">if ! kill -0 </span><span class="p">$</span><span class="nv">SSH_AGENT_PID</span><span class="x"> &gt;/dev/null 2&gt;&amp;1; then</span>
+<span class="x">echo &quot;Stale agent file found. Spawning new agent...&quot;</span>
+<span class="x">eval `ssh-agent |tee ~/.agent.env`</span>
+<span class="x">ssh-add</span>
+<span class="x">fi</span>
+<span class="x">else</span>
+<span class="x">echo &quot;Starting ssh-agent...&quot;</span>
+<span class="x">eval `ssh-agent |tee ~/.agent.env`</span>
+<span class="x">ssh-add</span>
+<span class="x">fi</span>
+<span class="x">```</span>
+</pre></div>
+
+
+<h4>安全问题</h4>
+<p>ssh-agent本身不会导致安全性问题，但是因为其将私钥存放在内存中，如果目标机器的admin用户不可信赖，很有可能导致用户密钥信息泄露。</p>
+<h4>其他</h4>
+<p>更多用法参见ssh-agent man pages</p></div>
+
+		<div style="margin-top:20px" class="well small"><ul style="list-style:none">
+    <li><strong>Publish at:</strong>2015-08-27 10:20:00+08:00</li>
+    <li><strong>in:</strong><a href="/category/ssh.html">SSH</a></li>
+    <li><strong>Wrote by:</strong><a class="url fn" href="/author/nullne.html">nullne </a></li>
+ 
+    <li><strong>Tags:</strong>
+        <a href="/tag/ssh.html">SSH</a>
+        <a href="/tag/agent.html">Agent</a>
+    </li>
+ 
+</ul></div>
+	</div>
+        </div>
+        <div class="push"></div>
+    </div><!--container-fluid-->
+
+<div style="text-align:center;background-color:rgb(97, 83, 83);width:100%;height:auto">
+        <div id="comments"></div>
+        <script src="https://apis.google.com/js/plusone.js"></script>
+        <script>
+        gapi.comments.render('comments', {
+            href: window.location,
+            width: '624',
+            first_party_property: 'BLOGGER',
+            view_type: 'FILTERED_POSTMOD'
+        });
+        </script>
+
+        <!--
+        <div id="commentscounter"></div>
+        <script>
+        gapi.commentcount.render('commentscounter', {
+            href: window.location
+        });
+        </script>
+        -->
+</div>
+    </div><!--wrapper-->
+</body>
+</html>

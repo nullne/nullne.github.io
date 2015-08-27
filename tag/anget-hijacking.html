@@ -69,41 +69,46 @@
         <div class="content fixed-head-top">
             <!--
             <div class="page-header">
-                <h1>NULLNE <small>[archive]</small></h1>
+                <h1>NULLNE <small>anget hijacking</small></h1>
             </div>
             -->
-<h2>2011</h2>
-<h3>November</h3>
-<ul>
-	<li><a href="web/2011/ARP-protocol.html">ARP protocol analysis</a></li>
-</ul>
-<h2>2014</h2>
-<h3>November</h3>
-<ul>
-	<li><a href="web/2014/real-attack-show-wifi-vulnerability.html">WIFI 热点欺骗</a></li>
-	<li><a href="suo-sui/2014/build-and-remember-continued.html">建站续，附乱七八糟</a></li>
-</ul>
-<h2>2015</h2>
-<h3>March</h3>
-<ul>
-	<li><a href="suo-sui/2015/What-do-you-really-want.html">你到底想要一个什么的工作</a></li>
-</ul>
-<h3>July</h3>
-<ul>
-	<li><a href="golang/2015/first-glance-at-go.html">Golang</a></li>
-</ul>
-<h3>August</h3>
-<ul>
-	<li><a href="ssh/2015/how-does-key-challenges-work.html">SSH学习笔记之--Key Challenge 如何工作</a></li>
-	<li><a href="ssh/2015/learning-ssh.html">SSH学习笔记</a></li>
-	<li><a href="ssh/2015/ssh-RFC.html">SSH学习笔记之--SSH RFC</a></li>
-	<li><a href="ssh/2015/ssh-agent.html">SSH学习笔记之--SSH-Agent</a></li>
-	<li><a href="ssh/2015/ssh-agent-hijacking.html">SSH学习笔记之--Agent Hijacking</a></li>
-	<li><a href="ssh/2015/ssh-auth.html">SSH学习笔记之--SSH 认证</a></li>
-	<li><a href="ssh/2015/ssh-config-tips.html">SSH学习笔记之--SSH 配置技巧</a></li>
-	<li><a href="ssh/2015/ssh-tips.html">SSH学习笔记之--SSH 使用技巧</a></li>
-	<li><a href="ssh/2015/ssh-tunnel.html">SSH学习笔记之--SSH Tunnel</a></li>
-</ul>
+
+<div class='article'>
+	<h2><a class="more" href="/ssh/2015/ssh-agent-hijacking.html">SSH学习笔记之--Agent Hijacking</a></h2>
+	<div class=""><h4>Agent Hijacking</h4>
+<p>agent forwarding在安全方面有一个好处就是用户的私钥永远不会出现在远端服务器或者传输过程中。但却会面临另外一个安全隐患：agent hijacking</p>
+<p>ssh实现的每一个方式都会提供一种让client向agent请求服务的机制，在UNIX/Linux上是用/tmp/文件夹下面的UNIX domain socket实现的。  </p>
+<p>这个文件是被系统重度保护的，只有当前进程的用户才能访问，并且被保护在相应地子文件夹下面。但是任何措施都不能防止root用户访问任何一个文件。  </p>
+<p>root用户可以通过该domain socket连接该socket对应的用户能够访问的任何机器，并且是以这个用户的身份。  </p>
+<p>下面是简单的实现方式：</p>
+<div class="highlight"><pre>    ls -l /tmp/ssh*      #look for somebody&#39;s agent socket
+    /tmp/ssh-CXkd6094:
+    total 24
+    srwxr-xr-x    1 steve    steve           0 Aug 30 08:46 agent.6094=
+
+    export SSH_AUTH_SOCK=/tmp/ssh-CXkd6094/agent.6094
+
+    ssh steve@remotesystem
+
+    remote$                  # Gotcha! Logged in as &quot;steve&quot; user on remote system!
+</pre></div>
+
+
+<p>如果没有root权限也没关系，可能你有sudo的权限，同样下面的操作也可以完成相同的目的：  </p>
+<div class="highlight"><pre><span class="x">    ssh -A user@host</span>
+<span class="x">    user@host</span><span class="p">$</span><span class="x"> setfacl -m otheruser:x   </span><span class="p">$(</span><span class="err">dirname</span> <span class="s2">&quot;$SSH_AUTH_SOCK&quot;</span><span class="p">)</span><span class="x"></span>
+<span class="x">    user@host</span><span class="p">$</span><span class="x"> setfacl -m otheruser:rwx &quot;</span><span class="p">$</span><span class="nv">SSH_AUTH_SOCK</span><span class="x">&quot;</span>
+<span class="x">    user@host</span><span class="p">$</span><span class="x"> sudo su - otheruser</span>
+<span class="x">    otheruser@host</span><span class="p">$</span><span class="x"> ssh server</span>
+<span class="x">    otheruser@server</span><span class="p">$</span><span class="x"></span>
+</pre></div>
+
+
+<p>目前没有任何技术手段防止root用户劫持SSH agent socket，所以鉴于安全方面的考虑，慎用ssh angent forwarding.</p> <a class="btn btn-primary pull-right" href="/ssh/2015/ssh-agent-hijacking.html">More…</a>
+	</div>
+</div>	
+
+
         </div>
         <div class="push"></div>
     </div><!--container-fluid-->

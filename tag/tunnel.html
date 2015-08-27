@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>NULLNE</title>
+	<meta name="description" content="">
+	<meta name="author" content="nullne">
+
+	<!-- HTML5 shim, for IE6-8 support of HTML elements -->
+	<!--[if lt IE 9]>
+		<script src="/theme/js/html5.js"></script>
+	<![endif]-->
+
+    <script src="/theme/js/jquery-2.1.1.min.js"></script>
+    <script src="/theme/js/bootstrap.min.js"></script>
+
+	<!-- Styles -->
+    <link rel="shortcut icon" href="/theme/img/icons/fav.ico" >
+
+	<link href="/theme/css/bootstrap.min.css" rel="stylesheet">
+	<link href="/theme/css/local.css" rel="stylesheet">
+	<link href="/theme/css/pygments.css" rel="stylesheet">
+    <link href="/theme/tipuesearch/tipuesearch.css" rel="stylesheet" >
+
+	<!-- Feeds -->
+	<link href="/all-atom.xml" type="application/atom+xml" rel="alternate" title="NULLNE Atom Feed" />
+
+
+
+
+<script>var _gaq=[['_setAccount','UA-56583262-1'],['_trackPageview']];(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.src='//www.google-analytics.com/ga.js';s.parentNode.insertBefore(g,s)}(document,'script'))</script>
+</head>
+<body>
+
+    <div class="navbar navbar-fixed-top navbar-inverse">
+        <div class="navbar-inner">
+            <div class="container">
+
+                <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+                <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                    <span class="icon-bar">nice</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </a>
+
+                <!-- Be sure to leave the brand out there if you want it shown -->
+                <a class="brand" href="/">NULLNE</a>
+
+                <!-- Everything you want hidden at 940px or less, place within here -->
+                <div class="nav-collapse collapse">
+
+                <ul class="nav">
+
+                        <li><a href="/about.html">About</a></li>
+                </ul>
+                    <!-- .nav, .navbar-search, .navbar-form, etc -->
+                    <form class="navbar-search pull-right" id="searchform" action="/search" onsubmit="return (this.elements['q'].value.length > 0)">
+                        <input type="text" name="q" class="search-query" placeholder="Search">
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="wrapper">
+
+    <div class="container content-wrapper">
+        <div class="content fixed-head-top">
+            <!--
+            <div class="page-header">
+                <h1>NULLNE <small>tunnel</small></h1>
+            </div>
+            -->
+
+<div class='article'>
+	<h2><a class="more" href="/ssh/2015/ssh-tunnel.html">SSH学习笔记之--SSH Tunnel</a></h2>
+	<div class=""><h3>SSH隧道</h3>
+<p>本文前半部分摘录自 <a href="http://blog.trackets.com/2014/05/17/ssh-tunnel-local-and-remote-port-forwarding-explained-with-examples.html">SSH Tunnel - Local and Remote Port Forwarding Explained With Examples</a>, 后面是自己在亲自实践的过程中遇到的问题。  </p>
+<p>There are two ways to create an SSH tunnel, local and remote port forwarding (there’s also dynamic forwarding, but we won’t cover that here). The best way to understand these is by an example, let’s start with local port forwarding.  </p>
+<h4>Local port forwarding</h4>
+<p>Imagine you’re on a private network which doesn’t allow connections to a specific server. Let’s say you’re at work and imgur.com is being blocked. To get around this we can create a tunnel through a server which isn’t on our network and thus can access Imgur.</p>
+<div class="highlight"><pre><span class="nv">$ </span>ssh -L 9000:imgur.com:80 user@example.com
+</pre></div>
+
+
+<p>The key here is -L which says we’re doing local port forwarding. Then it says we’re forwarding our local port 9000 to imgur.com:80, which is the default port for HTTP. Now open your browser and go to http://localhost:9000.  </p>
+<p>The awesome thing about SSH tunnels is that they are encrypted. Nobody is going to see what sites you’re visiting, they’ll only see an SSH connection to your server.</p>
+<h4>Connecting to a database behind a firewall</h4>
+<p>Another good example is if you need to access a port on your server which can only be accessed from localhost and not remotely.</p>
+<p>An example here is when you need to connect to a database console, which only allows local connection for security reasons. Let’s say you’re running PostgreSQL on your server, which by default listens on the port 5432.</p>
+<div class="highlight"><pre><span class="nv">$ </span>ssh -L 9000:localhost:5432 user@example.com
+</pre></div>
+
+
+<p>The part that changed here is the localhost:5432, which says to forward connections from your local port 9000 to localhost:5432 on your server. Now we can simply connect to our database.</p>
+<div class="highlight"><pre><span class="nv">$ </span>psql -h localhost -p 9000
+</pre></div>
+
+
+<p>Now let’s stop here for a little bit an explain what is actually going on. In the first example the 9000:imgur.com:80 is actually saying forward my local port 9000 to imgur.com at port 80. You can imagine SSH on your server actually making a connection (a tunnel) between those two ports, one on your local machine, and one on the target destination.</p>
+<p>If we however say something like 9000:localhost:5432, it means localhost from the server’s perspective, not localhost on your machine. This means forward my local port 9000 to port 5432 on the server, because when you’re on the server, localhost means the server itself.</p>
+<p>This might be a bit confusing, but it is important to understand what the syntax actually means here.</p>
+<h4>Remote port forwarding</h4>
+<p>Now comes the second part of this tutorial, which is remote port forwarding. This is again best to explain with an example.</p>
+<p>Say that you’re developing a Rails application on your local machine, and you’d like to show it to a friend. Unfortunately your ISP didn’t provide you with a public IP address, so it’s not possible to connect to your machine directly via the internet.</p>
+<p>Sometimes this can be solved by configuring NAT (Network Address Translation) on your router, but this doesn’t always work, and it requires you to change the configuration on your router, which isn’t always desirable. This solution also doesn’t work when you don’t have admin access on your network.</p>
+<p>To fix this problem you need to have another computer, which is publicly accessible and have SSH access to it. It can be any server on the internet, as long as you can connect to it. We’ll tell SSH to make a tunnel that opens up a new port on the server, and connects it to a local port on your machine.</p>
+<div class="highlight"><pre><span class="nv">$ </span>ssh -R 9000:localhost:3000 user@example.com
+</pre></div>
+
+
+<p>The syntax here is very similar to local port forwarding, with a single change of -L for -R. But as with local port forwarding, the syntax remains the same.</p>
+<p>First you need to specify the port on which th remote server will listen, which in this case is 9000, and next follows localhost for your local machine, and the local port, which in this case is 3000.</p>
+<p>There is one more thing you need to do to enable this. SSH doesn’t by default allow remote hosts to forwarded ports. To enable this open /etc/ssh/sshd_config and add the following line somewhere in that config file.</p>
+<div class="highlight"><pre>GatewayPorts yes
+</pre></div>
+
+
+<p>Make sure you add it only once!</p>
+<div class="highlight"><pre><span class="nv">$ </span>sudo vim /etc/ssh/sshd_config
+</pre></div>
+
+
+<p>And restart SSH</p>
+<div class="highlight"><pre><span class="nv">$ </span>sudo service ssh restart
+</pre></div>
+
+
+<p>After this you should be able to connect to the server remotely, even from your local machine. The way this would work is that you would first create an SSH tunnel that forwards traffic from the server on port 9000 to your local machine on port 3000. This means that if you connect to the server on port 9000 from your local machine, you’ll actually make a request to your machine through the SSH tunnel.</p>
+<h4>A few closing tips</h4>
+<p>You might have noticed that every time we create a tunnel you also SSH into the server and get a shell. This isn’t usually necessary, as you’re just trying to create a tunnel. To avoid this we can run SSH with the -nNT flags, such as the following, which will cause SSH to not allocate a tty and only do the port forwarding.</p>
+<div class="highlight"><pre><span class="nv">$ </span>ssh -nNT -L 9000:imgur.com:80 user@example.com
+</pre></div>
+
+
+<p>SSH has a huge number of features, so I’d recommend you to checkout the manual page at man ssh, which contains even more tips.</p>
+<p>There’s also an amazing talk called <a href="https://vimeo.com/54505525">The Black Magic of SSH / SSH Can Do That</a>?, which I really recommend you to watch.</p>
+<h4>实践问题反馈</h4>
+<p>实际操作过程中可能或多或少会碰到一些问题，下面这个问题估计很多人都会碰到。  </p>
+<p>配置好命令之后执行：  </p>
+<div class="highlight"><pre><span class="n">ssh</span> <span class="o">-</span><span class="n">L</span> <span class="mi">8888</span><span class="o">:</span><span class="n">imgur</span><span class="p">.</span><span class="nl">com</span><span class="p">:</span><span class="mi">80</span> <span class="n">name</span><span class="mf">@192.168.0.125</span>
+</pre></div>
+
+
+<p>浏览器端显示：<code>unknown domain:localhost</code></p>
+<p>WHY?</p>
+<p>答案在<a href="https://www.reddit.com/r/linuxquestions/comments/3b0s7v/ssh_tunnel_issues/">这儿</a>:</p>
+<blockquote>
+<p>You just happened to choose a website that doesn't like weird headers (i.e. localhost instead of imgur.com). Imgur's cdn doesn't like that. Your command will work with google.com and other websites.
+A couple solutions are here, with the easiest one being editing /etc/hosts.
+You can also use an ssh socks proxy, which requires just a bit more configuration in your browser, but makes all the websites just work.</p>
+</blockquote> <a class="btn btn-primary pull-right" href="/ssh/2015/ssh-tunnel.html">More…</a>
+	</div>
+</div>	
+
+
+        </div>
+        <div class="push"></div>
+    </div><!--container-fluid-->
+
+
+    <footer class="">
+        <div class="container">
+            <div class="row">
+               <div class="span3">
+                    <h3>Site</h3>
+                    <ul class="unstyled">
+                        <li><a href="/tags.html"><i class="icon-tags"></i>&nbsp;Tags</a></li>
+                        <li><a href="/archives.html"><i class="icon-list-alt"></i>&nbsp;Archives</a></li>
+                        <li><a href="/all-atom.xml"><i class="icon-star-empty"></i>&nbsp;RSS</a></li>
+                    </ul>
+                </div>
+                <div class="span3">
+                    <h3>Category</h3>
+                    <ul>
+                        <li><a href="/category/web.html">web</a></li>
+                        <li><a href="/category/suo-sui.html">琐碎</a></li>
+                        <li><a href="/category/ssh.html">SSH</a></li>
+                        <li><a href="/category/golang.html">Golang</a></li>
+                    </ul>
+                </div>
+                <div class="span3">
+                    <h3>Blogroll</h3>
+                    <ul class="unstyled">
+                        <li><a href="http://zonca.github.io/"><i class="icon-user"></i>&nbsp;Zonca</a></li>
+                        <li><a href="http://moparx.com/"><i class="icon-user"></i>&nbsp;Moparx</a></li>
+                        <li><a href="http://blog.friparia.com/"><i class="icon-user"></i>&nbsp;Friparia</a></li>
+                    </ul>
+                </div>
+                <div class="social span3">
+                    <h3>Social</h3>
+                    <ul class="unstyled">
+                        <li><a href="https://github.com/nullne">Github</a></li>
+                        <li><a href="https://www.linkedin.com/pub/le-yu/89/980/1a5">LinkedIn</a></li>
+                        <li><a href="http://www.douban.com/people/nullnes/">豆瓣</a></li>
+                        <li><a href="http://weibo.com/nullne">微博</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <p class="copyleft">&copy; nullne 2013-2014</p>
+    </footer>
+    </div><!--wrapper-->
+</body>
+</html>

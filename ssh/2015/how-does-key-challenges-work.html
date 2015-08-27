@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title> SSH学习笔记之--Key Challenge 如何工作 </title>
+	<meta name="description" content="">
+	<meta name="author" content="nullne">
+
+	<!-- HTML5 shim, for IE6-8 support of HTML elements -->
+	<!--[if lt IE 9]>
+		<script src="/theme/js/html5.js"></script>
+	<![endif]-->
+
+    <script src="/theme/js/jquery-2.1.1.min.js"></script>
+    <script src="/theme/js/bootstrap.min.js"></script>
+
+	<!-- Styles -->
+    <link rel="shortcut icon" href="/theme/img/icons/fav.ico" >
+
+	<link href="/theme/css/bootstrap.min.css" rel="stylesheet">
+	<link href="/theme/css/local.css" rel="stylesheet">
+	<link href="/theme/css/pygments.css" rel="stylesheet">
+    <link href="/theme/tipuesearch/tipuesearch.css" rel="stylesheet" >
+
+	<!-- Feeds -->
+	<link href="/all-atom.xml" type="application/atom+xml" rel="alternate" title="NULLNE Atom Feed" />
+
+
+
+
+<script>var _gaq=[['_setAccount','UA-56583262-1'],['_trackPageview']];(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.src='//www.google-analytics.com/ga.js';s.parentNode.insertBefore(g,s)}(document,'script'))</script>
+</head>
+<body>
+
+    <div class="navbar navbar-fixed-top navbar-inverse">
+        <div class="navbar-inner">
+            <div class="container">
+
+                <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+                <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                    <span class="icon-bar">nice</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </a>
+
+                <!-- Be sure to leave the brand out there if you want it shown -->
+                <a class="brand" href="/">NULLNE</a>
+
+                <!-- Everything you want hidden at 940px or less, place within here -->
+                <div class="nav-collapse collapse">
+
+                <ul class="nav">
+
+                        <li><a href="/about.html">About</a></li>
+                </ul>
+                    <!-- .nav, .navbar-search, .navbar-form, etc -->
+                    <form class="navbar-search pull-right" id="searchform" action="/search" onsubmit="return (this.elements['q'].value.length > 0)">
+                        <input type="text" name="q" class="search-query" placeholder="Search">
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="wrapper">
+
+    <div class="container content-wrapper">
+        <div class="content fixed-head-top">
+	<div class='article'>
+		<div class="page-header"><h1>SSH学习笔记之--Key Challenge 如何工作</h1></div>
+		<div><h4>Key Challenge 如何工作</h4>
+<p>agent非常聪明的一点就是他可以不用将private key暴露给任何人就可以确认一个人的身份（确切的说是拥有私钥的人）。  </p>
+<p>当用户ssh登陆一台远端服务器的时候，发送包含username和key的请求，其中的username帮助服务器确定其公钥的位置--一般在<code>$HOME/.ssh/authorized_keys</code>  </p>
+<p>服务器端生成一个challenge，其唯一可以被拥有私钥的设备答复。服务器产生并保存一个大的随机数，然后以用户的公钥进行加密，将生成的二进制数据发送给请求的用户。对于没有私钥的用户这些数据没有任何意义。  </p>
+<p>当agent接受到challenge, 它用私钥进行解密，获得远端服务器生成的原始随机数。agetn把获得的随机数，附加SSH session ID(该值每一个连接都不一样)，进行md5加密，作为key response返回给服务器。  </p>
+<p>服务器计算相同的md5（根据随机数和SSH session ID），与返回的key response进行对比，如果匹配则认证成功。如果不对的话，agent里面的下一个私钥将被用来进行相同的尝试，直到成功或者因为所有的私钥尝试完而失败。  </p>
+<p>很明显，原始的随机数在client/agent交互的时候并不会被暴露，这也是基于安全性考虑以防止在client/server信息交互的过程中随机数被获取。</p>
+<p><img alt="alt" src="http://www.unixwiz.net/images/ssh-key-challenge.gif" title="Title" />
+<img alt="alt" src="http://www.unixwiz.net/images/ssh-key-response.gif" /></p></div>
+
+		<div style="margin-top:20px" class="well small"><ul style="list-style:none">
+    <li><strong>Publish at:</strong>2015-08-27 10:20:00+08:00</li>
+    <li><strong>in:</strong><a href="/category/ssh.html">SSH</a></li>
+    <li><strong>Wrote by:</strong><a class="url fn" href="/author/nullne.html">nullne </a></li>
+ 
+    <li><strong>Tags:</strong>
+        <a href="/tag/ssh.html">SSH</a>
+        <a href="/tag/key-challenge.html">Key Challenge</a>
+    </li>
+ 
+</ul></div>
+	</div>
+        </div>
+        <div class="push"></div>
+    </div><!--container-fluid-->
+
+<div style="text-align:center;background-color:rgb(97, 83, 83);width:100%;height:auto">
+        <div id="comments"></div>
+        <script src="https://apis.google.com/js/plusone.js"></script>
+        <script>
+        gapi.comments.render('comments', {
+            href: window.location,
+            width: '624',
+            first_party_property: 'BLOGGER',
+            view_type: 'FILTERED_POSTMOD'
+        });
+        </script>
+
+        <!--
+        <div id="commentscounter"></div>
+        <script>
+        gapi.commentcount.render('commentscounter', {
+            href: window.location
+        });
+        </script>
+        -->
+</div>
+    </div><!--wrapper-->
+</body>
+</html>
