@@ -18,6 +18,7 @@
     <link rel="shortcut icon" href="/theme/img/icons/fav.ico" >
 
 	<link href="/theme/css/bootstrap.min.css" rel="stylesheet">
+	<link href="/theme/css/bootstrap-theme.min.css" rel="stylesheet">
 	<link href="/theme/css/local.css" rel="stylesheet">
 	<link href="/theme/css/pygments.css" rel="stylesheet">
     <link href="/theme/tipuesearch/tipuesearch.css" rel="stylesheet" >
@@ -70,7 +71,21 @@
     <div class="container content-wrapper">
         <div class="content fixed-head-top">
 	<div class='article'>
-		<div class="page-header"><h1>SSH学习笔记之--Key Challenge 如何工作</h1></div>
+		<div class="page-header">
+            <h1>SSH学习笔记之--Key Challenge 如何工作</h1>
+<ul class="pull-right" style="list-style:none">
+    <li>Publish At: 2015-08-27 10:20:00+08:00</li>
+    <!--
+    <li>in:</strong><a href="/category/ssh.html">SSH</a></li>
+    <li>Wrote by:<a class="url fn" href="/author/nullne.html">nullne </a></li>
+ 
+    <li>Tags:
+        <a href="/tag/ssh.html">SSH</a>
+        <a href="/tag/key-challenge.html">Key Challenge</a>
+    </li>
+ 
+    -->
+</ul>        </div>
 		<div><h4>Key Challenge 如何工作</h4>
 <p>agent非常聪明的一点就是他可以不用将private key暴露给任何人就可以确认一个人的身份（确切的说是拥有私钥的人）。  </p>
 <p>当用户ssh登陆一台远端服务器的时候，发送包含username和key的请求，其中的username帮助服务器确定其公钥的位置--一般在<code>$HOME/.ssh/authorized_keys</code>  </p>
@@ -80,18 +95,6 @@
 <p>很明显，原始的随机数在client/agent交互的时候并不会被暴露，这也是基于安全性考虑以防止在client/server信息交互的过程中随机数被获取。</p>
 <p><img alt="alt" src="http://www.unixwiz.net/images/ssh-key-challenge.gif" title="Title" />
 <img alt="alt" src="http://www.unixwiz.net/images/ssh-key-response.gif" /></p></div>
-
-		<div style="margin-top:20px" class="well small"><ul style="list-style:none">
-    <li><strong>Publish at:</strong>2015-08-27 10:20:00+08:00</li>
-    <li><strong>in:</strong><a href="/category/ssh.html">SSH</a></li>
-    <li><strong>Wrote by:</strong><a class="url fn" href="/author/nullne.html">nullne </a></li>
- 
-    <li><strong>Tags:</strong>
-        <a href="/tag/ssh.html">SSH</a>
-        <a href="/tag/key-challenge.html">Key Challenge</a>
-    </li>
- 
-</ul></div>
 	</div>
         </div>
         <div class="push"></div>

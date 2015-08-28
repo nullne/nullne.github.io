@@ -18,6 +18,7 @@
     <link rel="shortcut icon" href="/theme/img/icons/fav.ico" >
 
 	<link href="/theme/css/bootstrap.min.css" rel="stylesheet">
+	<link href="/theme/css/bootstrap-theme.min.css" rel="stylesheet">
 	<link href="/theme/css/local.css" rel="stylesheet">
 	<link href="/theme/css/pygments.css" rel="stylesheet">
     <link href="/theme/tipuesearch/tipuesearch.css" rel="stylesheet" >
@@ -70,7 +71,21 @@
     <div class="container content-wrapper">
         <div class="content fixed-head-top">
 	<div class='article'>
-		<div class="page-header"><h1>ARP protocol analysis</h1></div>
+		<div class="page-header">
+            <h1>ARP protocol analysis</h1>
+<ul class="pull-right" style="list-style:none">
+    <li>Publish At: 2011-11-03 10:20:00+08:00</li>
+    <!--
+    <li>in:</strong><a href="/category/web.html">Web</a></li>
+    <li>Wrote by:<a class="url fn" href="/author/nullne.html">nullne </a></li>
+ 
+    <li>Tags:
+        <a href="/tag/arp.html">Arp</a>
+        <a href="/tag/wireshark.html">wireshark</a>
+    </li>
+ 
+    -->
+</ul>        </div>
 		<div><h1>ARP 协议分析</h1>
 <p>@[arp|wireshark]</p>
 <p><strong>地址解析协议</strong>，即<strong>ARP</strong>（Address Resolution Protocol） 是根据IP地址获取物理地址的一个TCP/IP协议。</p>
@@ -109,18 +124,6 @@
         最简单的攻击方式就是发送固定格式的ARP报文，类似于下面的格式：<img alt="Alt text" src="./QQ图片20141028224008.png" />
 已知被攻击者的ip以及mac地址（如果不知道可直接使用广播地址<code>FF.FF.FF.FF</code>），将其自己的mac地址以及想截获的目标地址IP封装好发送，即能够刷新被欺骗主机的ARP缓存，从而得到本该发往另一个IP的所有包</p>
 <h4>ARP cache poisoning</h4></div>
-
-		<div style="margin-top:20px" class="well small"><ul style="list-style:none">
-    <li><strong>Publish at:</strong>2011-11-03 10:20:00+08:00</li>
-    <li><strong>in:</strong><a href="/category/web.html">Web</a></li>
-    <li><strong>Wrote by:</strong><a class="url fn" href="/author/nullne.html">nullne </a></li>
- 
-    <li><strong>Tags:</strong>
-        <a href="/tag/arp.html">Arp</a>
-        <a href="/tag/wireshark.html">wireshark</a>
-    </li>
- 
-</ul></div>
 	</div>
         </div>
         <div class="push"></div>

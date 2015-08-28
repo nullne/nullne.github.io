@@ -18,6 +18,7 @@
     <link rel="shortcut icon" href="/theme/img/icons/fav.ico" >
 
 	<link href="/theme/css/bootstrap.min.css" rel="stylesheet">
+	<link href="/theme/css/bootstrap-theme.min.css" rel="stylesheet">
 	<link href="/theme/css/local.css" rel="stylesheet">
 	<link href="/theme/css/pygments.css" rel="stylesheet">
     <link href="/theme/tipuesearch/tipuesearch.css" rel="stylesheet" >
@@ -70,14 +71,28 @@
     <div class="container content-wrapper">
         <div class="content fixed-head-top">
 	<div class='article'>
-		<div class="page-header"><h1>SSH学习笔记之--SSH-Agent</h1></div>
+		<div class="page-header">
+            <h1>SSH学习笔记之--SSH-Agent</h1>
+<ul class="pull-right" style="list-style:none">
+    <li>Publish At: 2015-08-27 10:20:00+08:00</li>
+    <!--
+    <li>in:</strong><a href="/category/ssh.html">SSH</a></li>
+    <li>Wrote by:<a class="url fn" href="/author/nullne.html">nullne </a></li>
+ 
+    <li>Tags:
+        <a href="/tag/ssh.html">SSH</a>
+        <a href="/tag/agent.html">Agent</a>
+    </li>
+ 
+    -->
+</ul>        </div>
 		<div><h3>SSH Agent</h3>
 <h4>SSH Agent简介</h4>
 <p>ssh-agent是专为既令人愉快又安全的处理RSA和DSA密钥而设计的特殊程序，它包括在OpenSSH分发内。不同于ssh，ssh-agent是个长时间持续运行的守护进程（daemon），设计它的唯一目的就是对解密的专用密钥进行高速缓存。</p>
 <p>ssh包含的内建支持允许它同ssh-agent通信，允许ssh不必每次新连接时都提示您要密码才能获取解密的专用密钥。对于ssh-agent，您只要使用ssh-add把专用密钥添加到ssh-agent的高速缓存中。这是个一次性过程；用过ssh-add之后，ssh将从ssh-agent获取您的专用密钥，而不会提示要密码短语来烦您了。</p>
 <h4>如何使用</h4>
 <p>启动ssh-agent：</p>
-<div class="highlight"><pre>eval `ssh-agent -s`
+<div class="highlight"><pre><span class="nb">eval</span> <span class="sb">`</span>ssh-agent -s<span class="sb">`</span>
 </pre></div>
 
 
@@ -91,7 +106,7 @@
 
 <p>正如您所看到的，事实上ssh-agent的输出是一系列bash命令；如果这些命令被执行，则将设置两个环境变量：SSH_AUTH_SOCK和SSH_AGENT_PID。内含的export命令使这些环境变量对之后运行的任何附加命令都可用。唔，如果shell真对这些行进行计算，这一切才会发生，但是此时它们只是被打印到标准输出（stdout）而已。要使之确定，我们需要使用之前的方式进行调用。</p>
 <p>然后就可以将私钥导入</p>
-<div class="highlight"><pre>ssh-add [-i file]    #不指定文件的话默认从~/.ssh/id_rsa读取
+<div class="highlight"><pre>ssh-add <span class="o">[</span>file<span class="o">]</span>    <span class="c">#不指定文件的话默认从~/.ssh/id_rsa读取</span>
 </pre></div>
 
 
@@ -99,20 +114,20 @@
 <p>首先，<code>eval`ssh-agent`</code>每次执行都会启动一个新的ssh-agent副本；这不仅仅是有一丁点儿浪费，而且还意味着您得使用ssh-add向每个新的ssh-agent副本添加专用密钥。如果您只想打开系统上的一个终端或控制台，这没什么大不了的，但是我们中大多数人打开相当多的终端，每次新打开控制台都需要键入密码短语。从技术角度讲，既然一个ssh-agent进程的确应当足够了，要是我们还需这样做，这毫无道理。</p>
 <p>有关ssh-agent的缺省设置的另外一个问题是它同cron作业不兼容。由于cron作业是cron进程启动的，这些作业无法从它们的环境中继承SSH_AUTH_SOCK变量，因而也无从知道ssh-agent进程正在运行以及如何同它联系。事实证明这个问题也是可以修补的。
 我们在 /etc/profile.d下面新建一个配置文件ssh-agentsh：</p>
-<div class="highlight"><pre><span class="x">    </span><span class="err">#</span><span class="x">!/bin/sh</span>
+<div class="highlight"><pre><span class="c">#!/bin/sh</span>
 
-<span class="x">    if [ -f ~/.agent.env ]; then</span>
-<span class="x">    . ~/.agent.env &gt;/dev/null</span>
-<span class="x">    if ! kill -0 </span><span class="p">$</span><span class="nv">SSH_AGENT_PID</span><span class="x"> &gt;/dev/null 2&gt;&amp;1; then</span>
-<span class="x">    echo &quot;Stale agent file found. Spawning new agent...&quot;</span>
-<span class="x">    eval `ssh-agent |tee ~/.agent.env`</span>
-<span class="x">    ssh-add</span>
-<span class="x">    fi</span>
-<span class="x">    else</span>
-<span class="x">    echo &quot;Starting ssh-agent...&quot;</span>
-<span class="x">    eval `ssh-agent |tee ~/.agent.env`</span>
-<span class="x">    ssh-add</span>
-<span class="x">    fi</span>
+<span class="k">if</span> <span class="o">[</span> -f ~/.agent.env <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
+. ~/.agent.env &gt;/dev/null
+<span class="k">if</span> ! <span class="nb">kill</span> -0 <span class="nv">$SSH_AGENT_PID</span> &gt;/dev/null 2&gt;<span class="p">&amp;</span>1<span class="p">;</span> <span class="k">then</span>
+<span class="nb">echo</span> <span class="s2">&quot;Stale agent file found. Spawning new agent...&quot;</span>
+<span class="nb">eval</span> <span class="sb">`</span>ssh-agent <span class="p">|</span>tee ~/.agent.env<span class="sb">`</span>
+ssh-add
+<span class="k">fi</span>
+<span class="k">else</span>
+<span class="nb">echo</span> <span class="s2">&quot;Starting ssh-agent...&quot;</span>
+<span class="nb">eval</span> <span class="sb">`</span>ssh-agent <span class="p">|</span>tee ~/.agent.env<span class="sb">`</span>
+ssh-add
+<span class="k">fi</span>
 </pre></div>
 
 
@@ -120,18 +135,6 @@
 <p>ssh-agent本身不会导致安全性问题，但是因为其将私钥存放在内存中，如果目标机器的admin用户不可信赖，很有可能导致用户密钥信息泄露。</p>
 <h4>其他</h4>
 <p>更多用法参见ssh-agent man pages</p></div>
-
-		<div style="margin-top:20px" class="well small"><ul style="list-style:none">
-    <li><strong>Publish at:</strong>2015-08-27 10:20:00+08:00</li>
-    <li><strong>in:</strong><a href="/category/ssh.html">SSH</a></li>
-    <li><strong>Wrote by:</strong><a class="url fn" href="/author/nullne.html">nullne </a></li>
- 
-    <li><strong>Tags:</strong>
-        <a href="/tag/ssh.html">SSH</a>
-        <a href="/tag/agent.html">Agent</a>
-    </li>
- 
-</ul></div>
 	</div>
         </div>
         <div class="push"></div>

@@ -18,6 +18,7 @@
     <link rel="shortcut icon" href="/theme/img/icons/fav.ico" >
 
 	<link href="/theme/css/bootstrap.min.css" rel="stylesheet">
+	<link href="/theme/css/bootstrap-theme.min.css" rel="stylesheet">
 	<link href="/theme/css/local.css" rel="stylesheet">
 	<link href="/theme/css/pygments.css" rel="stylesheet">
     <link href="/theme/tipuesearch/tipuesearch.css" rel="stylesheet" >
@@ -70,7 +71,21 @@
     <div class="container content-wrapper">
         <div class="content fixed-head-top">
 	<div class='article'>
-		<div class="page-header"><h1>SSH学习笔记之--SSH 认证</h1></div>
+		<div class="page-header">
+            <h1>SSH学习笔记之--SSH 认证</h1>
+<ul class="pull-right" style="list-style:none">
+    <li>Publish At: 2015-08-27 10:20:00+08:00</li>
+    <!--
+    <li>in:</strong><a href="/category/ssh.html">SSH</a></li>
+    <li>Wrote by:<a class="url fn" href="/author/nullne.html">nullne </a></li>
+ 
+    <li>Tags:
+        <a href="/tag/ssh.html">SSH</a>
+        <a href="/tag/auth.html">Auth</a>
+    </li>
+ 
+    -->
+</ul>        </div>
 		<div><h3>SSH认证过程</h3>
 <p>首先感谢Steve Friedlde 的文章<a href="http://www.unixwiz.net/techtips/ssh-agent-forwarding.html">An Illustrated Guide to SSH Agent Forwarding</a>，感谢<a href="http://blog.csdn.net/sdcxyz/article/details/41487897">SSH Agent Forwarding原理</a>(注：该文也为转载，但是原博链接已经失效)。本文主要内容参考引用自这两篇文章，并做了部分错误勘正。</p>
 <h4>密码认证</h4>
@@ -93,7 +108,7 @@
 <p>公钥认证详细协议见RFC4252的publickey部分  </p>
 <p>公钥认证需要先在本地机器生成公钥私钥对，然后将公钥放到目标机器的$HOME/.ssh/authorized_keys中。具体过程如下</p>
 <div class="highlight"><pre>1. ssh client向目标机器发起tcp连接(一般22端口)，并发送包含username和key的请求
-2. 目标机器在本地authoriaed_keys 中查找对应信息，创建基于所查找到的公钥的challenge,发送到ssh client
+2. 目标机器在本地authorized_keys 中查找对应信息，创建基于所查找到的公钥的challenge,发送到ssh client
 3. ssh client接收到challenge之后，在本机查找对应的私钥，如果私钥被passphrase加密的话提示用户输入passphrase以解密私钥
 4. ssh client发送私钥签名的challenge给等待的ssh daemon
 5. 目标机器验证返回信息，如果有效则通过认证
@@ -135,18 +150,6 @@
 
 
 <p>这下明白为什么叫agent forwarding(转发)了吧，就是所有中间节点的sshd和ssh都充当了数据转发的角色，一直将私钥操作的request转发到了本机的agent，然后再将agent的response原路返回。  </p></div>
-
-		<div style="margin-top:20px" class="well small"><ul style="list-style:none">
-    <li><strong>Publish at:</strong>2015-08-27 10:20:00+08:00</li>
-    <li><strong>in:</strong><a href="/category/ssh.html">SSH</a></li>
-    <li><strong>Wrote by:</strong><a class="url fn" href="/author/nullne.html">nullne </a></li>
- 
-    <li><strong>Tags:</strong>
-        <a href="/tag/ssh.html">SSH</a>
-        <a href="/tag/auth.html">Auth</a>
-    </li>
- 
-</ul></div>
 	</div>
         </div>
         <div class="push"></div>
