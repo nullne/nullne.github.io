@@ -32,36 +32,38 @@
 </head>
 <body>
 
-    <div class="navbar navbar-fixed-top navbar-inverse">
-        <div class="navbar-inner">
-            <div class="container">
-
-                <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
-                <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-                    <span class="icon-bar">nice</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </a>
-
-                <!-- Be sure to leave the brand out there if you want it shown -->
-                <a class="brand" href="/">NULLNE</a>
-
-                <!-- Everything you want hidden at 940px or less, place within here -->
-                <div class="nav-collapse collapse">
-
-                <ul class="nav">
-
-                        <li><a href="/about.html">About</a></li>
-                </ul>
-                    <!-- .nav, .navbar-search, .navbar-form, etc -->
-                    <form class="navbar-search pull-right" id="searchform" action="/search" onsubmit="return (this.elements['q'].value.length > 0)">
-                        <input type="text" name="q" class="search-query" placeholder="Search">
-                    </form>
-                </div>
-
-            </div>
-        </div>
+<nav class="navbar navbar-default navbar-fixed-top navbar-inverse">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">NULLNE</a>
     </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+
+          <li ><a href="/category/web.html">web</a></li>
+          <li ><a href="/category/suo-sui.html">琐碎</a></li>
+          <li class="active"><a href="/category/ssh.html">SSH</a></li>
+          <li ><a href="/category/golang.html">Golang</a></li>
+          <li><a href="/about.html">About</a></li>
+      </ul>
+      <form class="navbar-form navbar-left pull-right" role="search" id="searchform" action="/search" onsubmit="return (this.elements['q'].value.length > 0)">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search">
+        </div>
+        <!--<button type="submit" class="btn btn-default">Submit</button> -->
+      </form>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
 
     <div class="wrapper">
 
@@ -86,30 +88,33 @@ User root
 
 <h5>配置密钥登录</h5>
 <ol>
-<li>
-<p>生成私钥公钥对</p>
-<p><code>$ ssh-keygen -t rsa                                                    #生成RSA类型的密钥对  
-Generating public/private rsa key pair.  
-Enter file in which to save the key (/home/yule/.ssh/id_rsa):          #输入密钥存放位置，直接回车为默认值  
-Enter passphrase (empty for no passphrase):                            #输入密钥密码，用来解锁密钥  
-Enter same passphrase again:  
-Your identification has been saved in /home/yule/.ssh/id_rsa.  
-Your public key has been saved in /home/yule/.ssh/id_rsa.pub.  
-The key fingerprint is:  
-3c:13:20:5c:80:02:3d:e5:64:44:3e:69:2b:83:b9:d8 yule@client.cc.test  
-The key's randomart image is:  
-+--[ RSA 2048]----+  
-|o. *Ooo          |  
-|. +=.o .         |  
-| . .*   .        |  
-| o . o . .       |  
-|o o .   S        |  
-|.o o     o       |  
-|o E              |  
-|                 |  
-|                 |  
-+-----------------+</code>  </p>
-</li>
+<li>生成私钥公钥对</li>
+</ol>
+<div class="highlight"><pre>    $ ssh-keygen -t rsa                                                    #生成RSA类型的密钥对  
+    Generating public/private rsa key pair.  
+    Enter file in which to save the key (/home/yule/.ssh/id_rsa):          #输入密钥存放位置，直接回车为默认值  
+    Enter passphrase (empty for no passphrase):                            #输入密钥密码，用来解锁密钥  
+    Enter same passphrase again:  
+    Your identification has been saved in /home/yule/.ssh/id_rsa.  
+    Your public key has been saved in /home/yule/.ssh/id_rsa.pub.  
+    The key fingerprint is:  
+    3c:13:20:5c:80:02:3d:e5:64:44:3e:69:2b:83:b9:d8 yule@client.cc.test  
+    The key&#39;s randomart image is:  
+    +--[ RSA 2048]----+  
+    |o. *Ooo          |  
+    |. +=.o .         |  
+    | . .*   .        |  
+    | o . o . .       |  
+    |o o .   S        |  
+    |.o o     o       |  
+    |o E              |  
+    |                 |  
+    |                 |  
+    +-----------------+  
+</pre></div>
+
+
+<ol>
 <li>
 <p>将公钥拷贝到需要ssh登录的服务器</p>
 <p>如果当前机器有<code>ssh-copy-id</code>命令的话将会非常方便:<br />

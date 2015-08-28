@@ -32,36 +32,38 @@
 </head>
 <body>
 
-    <div class="navbar navbar-fixed-top navbar-inverse">
-        <div class="navbar-inner">
-            <div class="container">
-
-                <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
-                <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-                    <span class="icon-bar">nice</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </a>
-
-                <!-- Be sure to leave the brand out there if you want it shown -->
-                <a class="brand" href="/">NULLNE</a>
-
-                <!-- Everything you want hidden at 940px or less, place within here -->
-                <div class="nav-collapse collapse">
-
-                <ul class="nav">
-
-                        <li><a href="/about.html">About</a></li>
-                </ul>
-                    <!-- .nav, .navbar-search, .navbar-form, etc -->
-                    <form class="navbar-search pull-right" id="searchform" action="/search" onsubmit="return (this.elements['q'].value.length > 0)">
-                        <input type="text" name="q" class="search-query" placeholder="Search">
-                    </form>
-                </div>
-
-            </div>
-        </div>
+<nav class="navbar navbar-default navbar-fixed-top navbar-inverse">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">NULLNE</a>
     </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+
+          <li ><a href="/category/web.html">web</a></li>
+          <li ><a href="/category/suo-sui.html">琐碎</a></li>
+          <li class="active"><a href="/category/ssh.html">SSH</a></li>
+          <li ><a href="/category/golang.html">Golang</a></li>
+          <li><a href="/about.html">About</a></li>
+      </ul>
+      <form class="navbar-form navbar-left pull-right" role="search" id="searchform" action="/search" onsubmit="return (this.elements['q'].value.length > 0)">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search">
+        </div>
+        <!--<button type="submit" class="btn btn-default">Submit</button> -->
+      </form>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
 
     <div class="wrapper">
 
@@ -97,22 +99,20 @@
 <p>首先，<code>eval`ssh-agent`</code>每次执行都会启动一个新的ssh-agent副本；这不仅仅是有一丁点儿浪费，而且还意味着您得使用ssh-add向每个新的ssh-agent副本添加专用密钥。如果您只想打开系统上的一个终端或控制台，这没什么大不了的，但是我们中大多数人打开相当多的终端，每次新打开控制台都需要键入密码短语。从技术角度讲，既然一个ssh-agent进程的确应当足够了，要是我们还需这样做，这毫无道理。</p>
 <p>有关ssh-agent的缺省设置的另外一个问题是它同cron作业不兼容。由于cron作业是cron进程启动的，这些作业无法从它们的环境中继承SSH_AUTH_SOCK变量，因而也无从知道ssh-agent进程正在运行以及如何同它联系。事实证明这个问题也是可以修补的。
 我们在 /etc/profile.d下面新建一个配置文件ssh-agentsh：</p>
-<div class="highlight"><pre><span class="x">```</span>
-<span class="err">#</span><span class="x">!/bin/sh</span>
+<div class="highlight"><pre><span class="x">    </span><span class="err">#</span><span class="x">!/bin/sh</span>
 
-<span class="x">if [ -f ~/.agent.env ]; then</span>
-<span class="x">. ~/.agent.env &gt;/dev/null</span>
-<span class="x">if ! kill -0 </span><span class="p">$</span><span class="nv">SSH_AGENT_PID</span><span class="x"> &gt;/dev/null 2&gt;&amp;1; then</span>
-<span class="x">echo &quot;Stale agent file found. Spawning new agent...&quot;</span>
-<span class="x">eval `ssh-agent |tee ~/.agent.env`</span>
-<span class="x">ssh-add</span>
-<span class="x">fi</span>
-<span class="x">else</span>
-<span class="x">echo &quot;Starting ssh-agent...&quot;</span>
-<span class="x">eval `ssh-agent |tee ~/.agent.env`</span>
-<span class="x">ssh-add</span>
-<span class="x">fi</span>
-<span class="x">```</span>
+<span class="x">    if [ -f ~/.agent.env ]; then</span>
+<span class="x">    . ~/.agent.env &gt;/dev/null</span>
+<span class="x">    if ! kill -0 </span><span class="p">$</span><span class="nv">SSH_AGENT_PID</span><span class="x"> &gt;/dev/null 2&gt;&amp;1; then</span>
+<span class="x">    echo &quot;Stale agent file found. Spawning new agent...&quot;</span>
+<span class="x">    eval `ssh-agent |tee ~/.agent.env`</span>
+<span class="x">    ssh-add</span>
+<span class="x">    fi</span>
+<span class="x">    else</span>
+<span class="x">    echo &quot;Starting ssh-agent...&quot;</span>
+<span class="x">    eval `ssh-agent |tee ~/.agent.env`</span>
+<span class="x">    ssh-add</span>
+<span class="x">    fi</span>
 </pre></div>
 
 

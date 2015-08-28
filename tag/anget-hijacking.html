@@ -32,36 +32,38 @@
 </head>
 <body>
 
-    <div class="navbar navbar-fixed-top navbar-inverse">
-        <div class="navbar-inner">
-            <div class="container">
-
-                <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
-                <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-                    <span class="icon-bar">nice</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </a>
-
-                <!-- Be sure to leave the brand out there if you want it shown -->
-                <a class="brand" href="/">NULLNE</a>
-
-                <!-- Everything you want hidden at 940px or less, place within here -->
-                <div class="nav-collapse collapse">
-
-                <ul class="nav">
-
-                        <li><a href="/about.html">About</a></li>
-                </ul>
-                    <!-- .nav, .navbar-search, .navbar-form, etc -->
-                    <form class="navbar-search pull-right" id="searchform" action="/search" onsubmit="return (this.elements['q'].value.length > 0)">
-                        <input type="text" name="q" class="search-query" placeholder="Search">
-                    </form>
-                </div>
-
-            </div>
-        </div>
+<nav class="navbar navbar-default navbar-fixed-top navbar-inverse">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">NULLNE</a>
     </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+
+          <li ><a href="/category/web.html">web</a></li>
+          <li ><a href="/category/suo-sui.html">琐碎</a></li>
+          <li ><a href="/category/ssh.html">SSH</a></li>
+          <li ><a href="/category/golang.html">Golang</a></li>
+          <li><a href="/about.html">About</a></li>
+      </ul>
+      <form class="navbar-form navbar-left pull-right" role="search" id="searchform" action="/search" onsubmit="return (this.elements['q'].value.length > 0)">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search">
+        </div>
+        <!--<button type="submit" class="btn btn-default">Submit</button> -->
+      </form>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
 
     <div class="wrapper">
 
@@ -74,37 +76,11 @@
             -->
 
 <div class='article'>
-	<h2><a class="more" href="/ssh/2015/ssh-agent-hijacking.html">SSH学习笔记之--Agent Hijacking</a></h2>
+	<h4><a class="more" href="/ssh/2015/ssh-agent-hijacking.html">SSH学习笔记之--Agent Hijacking</a></h4>
 	<div class=""><h4>Agent Hijacking</h4>
 <p>agent forwarding在安全方面有一个好处就是用户的私钥永远不会出现在远端服务器或者传输过程中。但却会面临另外一个安全隐患：agent hijacking</p>
-<p>ssh实现的每一个方式都会提供一种让client向agent请求服务的机制，在UNIX/Linux上是用/tmp/文件夹下面的UNIX domain socket实现的。  </p>
-<p>这个文件是被系统重度保护的，只有当前进程的用户才能访问，并且被保护在相应地子文件夹下面。但是任何措施都不能防止root用户访问任何一个文件。  </p>
-<p>root用户可以通过该domain socket连接该socket对应的用户能够访问的任何机器，并且是以这个用户的身份。  </p>
-<p>下面是简单的实现方式：</p>
-<div class="highlight"><pre>    ls -l /tmp/ssh*      #look for somebody&#39;s agent socket
-    /tmp/ssh-CXkd6094:
-    total 24
-    srwxr-xr-x    1 steve    steve           0 Aug 30 08:46 agent.6094=
-
-    export SSH_AUTH_SOCK=/tmp/ssh-CXkd6094/agent.6094
-
-    ssh steve@remotesystem
-
-    remote$                  # Gotcha! Logged in as &quot;steve&quot; user on remote system!
-</pre></div>
-
-
-<p>如果没有root权限也没关系，可能你有sudo的权限，同样下面的操作也可以完成相同的目的：  </p>
-<div class="highlight"><pre><span class="x">    ssh -A user@host</span>
-<span class="x">    user@host</span><span class="p">$</span><span class="x"> setfacl -m otheruser:x   </span><span class="p">$(</span><span class="err">dirname</span> <span class="s2">&quot;$SSH_AUTH_SOCK&quot;</span><span class="p">)</span><span class="x"></span>
-<span class="x">    user@host</span><span class="p">$</span><span class="x"> setfacl -m otheruser:rwx &quot;</span><span class="p">$</span><span class="nv">SSH_AUTH_SOCK</span><span class="x">&quot;</span>
-<span class="x">    user@host</span><span class="p">$</span><span class="x"> sudo su - otheruser</span>
-<span class="x">    otheruser@host</span><span class="p">$</span><span class="x"> ssh server</span>
-<span class="x">    otheruser@server</span><span class="p">$</span><span class="x"></span>
-</pre></div>
-
-
-<p>目前没有任何技术手段防止root用户劫持SSH agent socket，所以鉴于安全方面的考虑，慎用ssh angent forwarding.</p> <a class="btn btn-primary pull-right" href="/ssh/2015/ssh-agent-hijacking.html">More…</a>
+<p>ssh实现的每一个方式都会提供一种让client向agent请求服务的机制，在UNIX/Linux上是用 ...</p> 
+        <a class="btn btn-primary btn-sm pull-right" href="/ssh/2015/ssh-agent-hijacking.html">More…</a>
 	</div>
 </div>	
 
@@ -115,9 +91,9 @@
 
 
     <footer class="">
-        <div class="container">
+        <div class="container-fluid">
             <div class="row">
-               <div class="span3">
+               <div class=".col-md-4">
                     <h3>Site</h3>
                     <ul class="unstyled">
                         <li><a href="/tags.html"><i class="icon-tags"></i>&nbsp;Tags</a></li>
@@ -125,16 +101,7 @@
                         <li><a href="/all-atom.xml"><i class="icon-star-empty"></i>&nbsp;RSS</a></li>
                     </ul>
                 </div>
-                <div class="span3">
-                    <h3>Category</h3>
-                    <ul>
-                        <li><a href="/category/web.html">web</a></li>
-                        <li><a href="/category/suo-sui.html">琐碎</a></li>
-                        <li><a href="/category/ssh.html">SSH</a></li>
-                        <li><a href="/category/golang.html">Golang</a></li>
-                    </ul>
-                </div>
-                <div class="span3">
+               <div class=".col-md-4">
                     <h3>Blogroll</h3>
                     <ul class="unstyled">
                         <li><a href="http://zonca.github.io/"><i class="icon-user"></i>&nbsp;Zonca</a></li>
@@ -142,7 +109,7 @@
                         <li><a href="http://blog.friparia.com/"><i class="icon-user"></i>&nbsp;Friparia</a></li>
                     </ul>
                 </div>
-                <div class="social span3">
+               <div class="social .col-md-4">
                     <h3>Social</h3>
                     <ul class="unstyled">
                         <li><a href="https://github.com/nullne">Github</a></li>

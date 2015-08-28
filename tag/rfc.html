@@ -32,36 +32,38 @@
 </head>
 <body>
 
-    <div class="navbar navbar-fixed-top navbar-inverse">
-        <div class="navbar-inner">
-            <div class="container">
-
-                <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
-                <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-                    <span class="icon-bar">nice</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </a>
-
-                <!-- Be sure to leave the brand out there if you want it shown -->
-                <a class="brand" href="/">NULLNE</a>
-
-                <!-- Everything you want hidden at 940px or less, place within here -->
-                <div class="nav-collapse collapse">
-
-                <ul class="nav">
-
-                        <li><a href="/about.html">About</a></li>
-                </ul>
-                    <!-- .nav, .navbar-search, .navbar-form, etc -->
-                    <form class="navbar-search pull-right" id="searchform" action="/search" onsubmit="return (this.elements['q'].value.length > 0)">
-                        <input type="text" name="q" class="search-query" placeholder="Search">
-                    </form>
-                </div>
-
-            </div>
-        </div>
+<nav class="navbar navbar-default navbar-fixed-top navbar-inverse">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">NULLNE</a>
     </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+
+          <li ><a href="/category/web.html">web</a></li>
+          <li ><a href="/category/suo-sui.html">琐碎</a></li>
+          <li ><a href="/category/ssh.html">SSH</a></li>
+          <li ><a href="/category/golang.html">Golang</a></li>
+          <li><a href="/about.html">About</a></li>
+      </ul>
+      <form class="navbar-form navbar-left pull-right" role="search" id="searchform" action="/search" onsubmit="return (this.elements['q'].value.length > 0)">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search">
+        </div>
+        <!--<button type="submit" class="btn btn-default">Submit</button> -->
+      </form>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
 
     <div class="wrapper">
 
@@ -74,60 +76,12 @@
             -->
 
 <div class='article'>
-	<h2><a class="more" href="/ssh/2015/ssh-RFC.html">SSH学习笔记之--SSH RFC</a></h2>
+	<h4><a class="more" href="/ssh/2015/ssh-RFC.html">SSH学习笔记之--SSH RFC</a></h4>
 	<div class=""><h3>SSH RFC</h3>
 <h4><a href="http://www.rfc-base.org/txt/rfc-4251.txt">The Secure Shell (SSH) Protocol Architecture</a></h4>
 <blockquote>
-<p>Secure Shell (SSH) is a protocol for secure remote login and other secure network services over an insecure network.  It consists of three major components:</p>
-<ul>
-<li>
-<p>The Transport Layer Protocol [SSH-TRANS] provides server
-     authentication, confidentiality, and integrity.  It may optionally
-     also provide compression.  The transport layer will typically be
-     run over a TCP/IP connection, but might also be used on top of any
-     other reliable data stream.</p>
-</li>
-<li>
-<p>The User Authentication Protocol [SSH-USERAUTH] authenticates the
-     client-side user to the server.  It runs over the transport layer
-     protocol.</p>
-</li>
-<li>
-<p>The Connection Protocol [SSH-CONNECT] multiplexes the encrypted
-     tunnel into several logical channels.  It runs over the user
-     authentication protocol.</p>
-</li>
-</ul>
-</blockquote>
-<p>The client sends a service request once a secure transport layer
-   connection has been established.  A second service request is sent
-   after user authentication is complete.  This allows new protocols to
-   be defined and coexist with the protocols listed above.</p>
-<p>The connection protocol provides channels that can be used for a wide
-   range of purposes.  Standard methods are provided for setting up
-   secure interactive shell sessions and for forwarding ("tunneling")
-   arbitrary TCP/IP ports and X11 connections.</p>
-<h4><a href="https://www.ietf.org/rfc/rfc4253.txt">The Secure Shell (SSH) Transport Layer Protocol</a></h4>
-<h4><a href="https://tools.ietf.org/html/rfc4252">The Secure Shell (SSH) Authentication Protocol</a></h4>
-<h4><a href="https://tools.ietf.org/html/rfc4254">The Secure Shell (SSH) Connection Protocol</a></h4>
-<blockquote>
-<p>The SSH Connection Protocol has been designed to run on top of the
-   SSH transport layer and user authentication protocols ([SSH-TRANS]
-   and [SSH-USERAUTH]).  It provides interactive login sessions, remote
-   execution of commands, forwarded TCP/IP connections, and forwarded
-   X11 connections.</p>
-</blockquote>
-<ul>
-<li><strong>Channel Mehanism</strong></li>
-</ul>
-<p>All terminal sessions, forwarded connections, etc., are channels.
-   Either side may open a channel.  Multiple channels are multiplexed
-   into a single connection.
-- <strong>Interactive Session</strong></p>
-<p>A session is a remote execution of a program.  The program may be a
-   shell, an application, a system command, or some built-in subsystem.
-   It may or may not have a tty, and may or may not involve X11
-   forwarding.  Multiple sessions can be active simultaneously.</p> <a class="btn btn-primary pull-right" href="/ssh/2015/ssh-RFC.html">More…</a>
+<p>Secure Shell ...</p></blockquote> 
+        <a class="btn btn-primary btn-sm pull-right" href="/ssh/2015/ssh-RFC.html">More…</a>
 	</div>
 </div>	
 
@@ -138,9 +92,9 @@
 
 
     <footer class="">
-        <div class="container">
+        <div class="container-fluid">
             <div class="row">
-               <div class="span3">
+               <div class=".col-md-4">
                     <h3>Site</h3>
                     <ul class="unstyled">
                         <li><a href="/tags.html"><i class="icon-tags"></i>&nbsp;Tags</a></li>
@@ -148,16 +102,7 @@
                         <li><a href="/all-atom.xml"><i class="icon-star-empty"></i>&nbsp;RSS</a></li>
                     </ul>
                 </div>
-                <div class="span3">
-                    <h3>Category</h3>
-                    <ul>
-                        <li><a href="/category/web.html">web</a></li>
-                        <li><a href="/category/suo-sui.html">琐碎</a></li>
-                        <li><a href="/category/ssh.html">SSH</a></li>
-                        <li><a href="/category/golang.html">Golang</a></li>
-                    </ul>
-                </div>
-                <div class="span3">
+               <div class=".col-md-4">
                     <h3>Blogroll</h3>
                     <ul class="unstyled">
                         <li><a href="http://zonca.github.io/"><i class="icon-user"></i>&nbsp;Zonca</a></li>
@@ -165,7 +110,7 @@
                         <li><a href="http://blog.friparia.com/"><i class="icon-user"></i>&nbsp;Friparia</a></li>
                     </ul>
                 </div>
-                <div class="social span3">
+               <div class="social .col-md-4">
                     <h3>Social</h3>
                     <ul class="unstyled">
                         <li><a href="https://github.com/nullne">Github</a></li>

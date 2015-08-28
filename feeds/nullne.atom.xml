@@ -1,31 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>NULLNE</title><link href="/" rel="alternate"></link><link href="/feeds/nullne.atom.xml" rel="self"></link><id>/</id><updated>2015-08-27T10:20:00+08:00</updated><entry><title>SSH学习笔记之--Key Challenge 如何工作</title><link href="/ssh/2015/how-does-key-challenges-work.html" rel="alternate"></link><updated>2015-08-27T10:20:00+08:00</updated><author><name>nullne</name></author><id>tag:,2015-08-27:ssh/2015/how-does-key-challenges-work.html</id><summary type="html">&lt;h4&gt;Key Challenge 如何工作&lt;/h4&gt;
-&lt;p&gt;agent非常聪明的一点就是他可以不用将private key暴露给任何人就可以确认一个人的身份（确切的说是拥有私钥的人）。  &lt;/p&gt;
-&lt;p&gt;当用户ssh登陆一台远端服务器的时候，发送包含username和key的请求，其中的username帮助服务器确定其公钥的位置--一般在&lt;code&gt;$HOME/.ssh/authorized_keys&lt;/code&gt;  &lt;/p&gt;
-&lt;p&gt;服务器端生成一个challenge，其唯一可以被拥有私钥的设备答复。服务器产生并保存一个大的随机数，然后以用户的公钥进行加密，将生成的二进制数据发送给请求的用户。对于没有私钥的用户这些数据没有任何意义。  &lt;/p&gt;
-&lt;p&gt;当agent接受到challenge, 它用私钥进行解密，获得远端服务器生成的原始随机数。agetn把获得的随机数，附加SSH session ID(该值每一个连接都不一样)，进行md5加密，作为key response返回给服务器。  &lt;/p&gt;
-&lt;p&gt;服务器计算相同的md5（根据随机数和SSH session ID），与返回的key response进行对比，如果匹配则认证成功。如果不对的话，agent里面的下一个私钥将被用来进行相同的尝试，直到成功或者因为所有的私钥尝试完而失败。  &lt;/p&gt;
-&lt;p&gt;很明显，原始的随机数在client/agent交互的时候并不会被暴露，这也是基于安全性考虑以防止在client/server信息交互的过程中随机数被获取。&lt;/p&gt;
-&lt;p&gt;&lt;img alt="alt" src="http://www.unixwiz.net/images/ssh-key-challenge.gif" title="Title" /&gt;
-&lt;img alt="alt" src="http://www.unixwiz.net/images/ssh-key-response.gif" /&gt;&lt;/p&gt;</summary><category term="SSH"></category><category term="Key Challenge"></category></entry><entry><title>SSH学习笔记</title><link href="/ssh/2015/learning-ssh.html" rel="alternate"></link><updated>2015-08-27T10:20:00+08:00</updated><author><name>nullne</name></author><id>tag:,2015-08-27:ssh/2015/learning-ssh.html</id><summary type="html">&lt;h4&gt;SSH 学习笔记&lt;/h4&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>NULLNE</title><link href="/" rel="alternate"></link><link href="/feeds/nullne.atom.xml" rel="self"></link><id>/</id><updated>2015-08-28T10:20:00+08:00</updated><entry><title>SSH学习笔记</title><link href="/ssh/2015/learning-ssh.html" rel="alternate"></link><updated>2015-08-28T10:20:00+08:00</updated><author><name>nullne</name></author><id>tag:,2015-08-28:ssh/2015/learning-ssh.html</id><summary type="html">&lt;h4&gt;SSH 学习笔记&lt;/h4&gt;
 &lt;p&gt;因为工作的原因最近两个礼拜都在看一些跟SSH有关的东西，查阅了大量的资料，其中包括各种博客。最直观的感受就是看博客可能会获得一些小技巧，解决眼下的问题。等到下一次出问题的时候又得大量查阅各种资料（其实主要就是google一下看是否相同的或者类似的需求已经被实现了）。所以当你需要彻底了解一个事情的时候，RFC才是最终的地方。你去看他的标准，从最根本的地方了解他，这样才能彻底的驾驭。  &lt;/p&gt;
 &lt;p&gt;下面是整理的一些笔记，为方便起见分为几个模块，本文为所有的目录索引。文中直接引用的地方已经标注，部分内容为自己翻译。&lt;/p&gt;
-&lt;h5&gt;SSH RFC&lt;/h5&gt;
+&lt;h5&gt;&lt;a href="/ssh/2015/ssh-RFC.html"&gt;SSH RFC&lt;/a&gt;&lt;/h5&gt;
 &lt;p&gt;认识一个事情最根本也是最彻底的方式就是从他的定义开始，所以如果你不只是用用SSH，而需要更为深入的理解其原理，私人定制部分功能，那么去读一下RFC吧。&lt;br /&gt;
 &lt;a href="nice"&gt;这儿&lt;/a&gt;简单的把SSH几个部分罗列了一下，更为全面的解释参照&lt;a href="http://www.rfc-base.org/txt/rfc-4251.txt"&gt;RFC官方文档&lt;/a&gt;。  &lt;/p&gt;
-&lt;h5&gt;SSH认证&lt;sup id="fnref:1"&gt;&lt;a class="footnote-ref" href="#fn:1" rel="footnote"&gt;1&lt;/a&gt;&lt;/sup&gt;&lt;/h5&gt;
+&lt;h5&gt;&lt;a href="/ssh/2015/ssh-auth.html"&gt;SSH认证&lt;/a&gt;&lt;sup id="fnref:1"&gt;&lt;a class="footnote-ref" href="#fn:1" rel="footnote"&gt;1&lt;/a&gt;&lt;/sup&gt;&lt;/h5&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;密码认证&lt;/strong&gt;  &lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;公钥认证&lt;/strong&gt;  &lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;使用ssh-agent的公钥认证&lt;/strong&gt;  &lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;使用ssh-agent forwarding的公钥认证&lt;sup id="fnref:2"&gt;&lt;a class="footnote-ref" href="#fn:2" rel="footnote"&gt;2&lt;/a&gt;&lt;/sup&gt;&lt;/strong&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h5&gt;SSH隧道（SSH tunnel)&lt;sup id="fnref:3"&gt;&lt;a class="footnote-ref" href="#fn:3" rel="footnote"&gt;3&lt;/a&gt;&lt;/sup&gt;&lt;/h5&gt;
+&lt;h5&gt;&lt;a href="/ssh/2015/ssh-tunnel.html"&gt;SSH隧道（SSH tunnel)&lt;/a&gt;&lt;sup id="fnref:3"&gt;&lt;a class="footnote-ref" href="#fn:3" rel="footnote"&gt;3&lt;/a&gt;&lt;/sup&gt;&lt;/h5&gt;
 &lt;ul&gt;
 &lt;li&gt;Local Port Forwarding&lt;/li&gt;
 &lt;li&gt;Remote Port Forwarding&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h5&gt;SSH配置技巧&lt;/h5&gt;
+&lt;h5&gt;&lt;a href="/ssh/2015/ssh-config-tips.html"&gt;SSH配置技巧&lt;/a&gt;&lt;/h5&gt;
 &lt;ul&gt;
 &lt;li&gt;配置主机别名, 省略用户名&lt;/li&gt;
 &lt;li&gt;配置密钥登录&lt;/li&gt;
@@ -33,7 +25,7 @@
 &lt;li&gt;配置Agent Forwarding&lt;/li&gt;
 &lt;li&gt;建立长连接&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h4&gt;SSH使用技巧&lt;sup id="fnref:4"&gt;&lt;a class="footnote-ref" href="#fn:4" rel="footnote"&gt;4&lt;/a&gt;&lt;/sup&gt;&lt;/h4&gt;
+&lt;h4&gt;&lt;a href="/ssh/2015/ssh-tips.html"&gt;SSH使用技巧&lt;/a&gt;&lt;sup id="fnref:4"&gt;&lt;a class="footnote-ref" href="#fn:4" rel="footnote"&gt;4&lt;/a&gt;&lt;/sup&gt;&lt;/h4&gt;
 &lt;ul&gt;
 &lt;li&gt;通过SSH执行命令&lt;/li&gt;
 &lt;li&gt;Agent Forwarding&lt;/li&gt;
@@ -50,12 +42,14 @@
 &lt;h5&gt;其他&lt;/h5&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;加密&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;SSH Agent&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;key challenge如何工作&lt;/strong&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="/ssh/2015/ssh-agent.html"&gt;SSH Agent&lt;/a&gt;&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="/ssh/2015/how-does-key-challenges-work.html"&gt;key challenge如何工作&lt;/a&gt;&lt;/strong&gt;  &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;&lt;strong&gt;公钥和私钥&lt;sup id="fnref:5"&gt;&lt;a class="footnote-ref" href="#fn:5" rel="footnote"&gt;5&lt;/a&gt;&lt;/sup&gt;&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;公钥，顾名思义，公开的密钥，即可以通过公开的途径或者仓库让其他人获得。相反，私钥必须只能由持有者获得。因为公钥和私钥在数学上的相关性，凡是被公钥加密的信息都可以由相应地私钥解密，反之亦然。
-- &lt;strong&gt;Agent Hijacking&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;公钥，顾名思义，公开的密钥，即可以通过公开的途径或者仓库让其他人获得。相反，私钥必须只能由持有者获得。因为公钥和私钥在数学上的相关性，凡是被公钥加密的信息都可以由相应地私钥解密，反之亦然。  &lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;&lt;a href="/ssh/2015/ssh-agent-hijacking.html"&gt;Agent Hijacking&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;h5&gt;&lt;em&gt;参考&lt;/em&gt;&lt;/h5&gt;
@@ -82,7 +76,15 @@
 &lt;p&gt;&lt;a href="https://www.comodo.com/resources/small-business/digital-certificates2.php"&gt;Public Key and Private Keys&lt;/a&gt;&amp;#160;&lt;a class="footnote-backref" href="#fnref:5" rev="footnote" title="Jump back to footnote 5 in the text"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;/div&gt;</summary><category term="SSH"></category></entry><entry><title>SSH学习笔记之--SSH RFC</title><link href="/ssh/2015/ssh-RFC.html" rel="alternate"></link><updated>2015-08-27T10:20:00+08:00</updated><author><name>nullne</name></author><id>tag:,2015-08-27:ssh/2015/ssh-RFC.html</id><summary type="html">&lt;h3&gt;SSH RFC&lt;/h3&gt;
+&lt;/div&gt;</summary><category term="SSH"></category></entry><entry><title>SSH学习笔记之--Key Challenge 如何工作</title><link href="/ssh/2015/how-does-key-challenges-work.html" rel="alternate"></link><updated>2015-08-27T10:20:00+08:00</updated><author><name>nullne</name></author><id>tag:,2015-08-27:ssh/2015/how-does-key-challenges-work.html</id><summary type="html">&lt;h4&gt;Key Challenge 如何工作&lt;/h4&gt;
+&lt;p&gt;agent非常聪明的一点就是他可以不用将private key暴露给任何人就可以确认一个人的身份（确切的说是拥有私钥的人）。  &lt;/p&gt;
+&lt;p&gt;当用户ssh登陆一台远端服务器的时候，发送包含username和key的请求，其中的username帮助服务器确定其公钥的位置--一般在&lt;code&gt;$HOME/.ssh/authorized_keys&lt;/code&gt;  &lt;/p&gt;
+&lt;p&gt;服务器端生成一个challenge，其唯一可以被拥有私钥的设备答复。服务器产生并保存一个大的随机数，然后以用户的公钥进行加密，将生成的二进制数据发送给请求的用户。对于没有私钥的用户这些数据没有任何意义。  &lt;/p&gt;
+&lt;p&gt;当agent接受到challenge, 它用私钥进行解密，获得远端服务器生成的原始随机数。agetn把获得的随机数，附加SSH session ID(该值每一个连接都不一样)，进行md5加密，作为key response返回给服务器。  &lt;/p&gt;
+&lt;p&gt;服务器计算相同的md5（根据随机数和SSH session ID），与返回的key response进行对比，如果匹配则认证成功。如果不对的话，agent里面的下一个私钥将被用来进行相同的尝试，直到成功或者因为所有的私钥尝试完而失败。  &lt;/p&gt;
+&lt;p&gt;很明显，原始的随机数在client/agent交互的时候并不会被暴露，这也是基于安全性考虑以防止在client/server信息交互的过程中随机数被获取。&lt;/p&gt;
+&lt;p&gt;&lt;img alt="alt" src="http://www.unixwiz.net/images/ssh-key-challenge.gif" title="Title" /&gt;
+&lt;img alt="alt" src="http://www.unixwiz.net/images/ssh-key-response.gif" /&gt;&lt;/p&gt;</summary><category term="SSH"></category><category term="Key Challenge"></category></entry><entry><title>SSH学习笔记之--SSH RFC</title><link href="/ssh/2015/ssh-RFC.html" rel="alternate"></link><updated>2015-08-27T10:20:00+08:00</updated><author><name>nullne</name></author><id>tag:,2015-08-27:ssh/2015/ssh-RFC.html</id><summary type="html">&lt;h3&gt;SSH RFC&lt;/h3&gt;
 &lt;h4&gt;&lt;a href="http://www.rfc-base.org/txt/rfc-4251.txt"&gt;The Secure Shell (SSH) Protocol Architecture&lt;/a&gt;&lt;/h4&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Secure Shell (SSH) is a protocol for secure remote login and other secure network services over an insecure network.  It consists of three major components:&lt;/p&gt;
@@ -162,22 +164,20 @@
 &lt;p&gt;首先，&lt;code&gt;eval`ssh-agent`&lt;/code&gt;每次执行都会启动一个新的ssh-agent副本；这不仅仅是有一丁点儿浪费，而且还意味着您得使用ssh-add向每个新的ssh-agent副本添加专用密钥。如果您只想打开系统上的一个终端或控制台，这没什么大不了的，但是我们中大多数人打开相当多的终端，每次新打开控制台都需要键入密码短语。从技术角度讲，既然一个ssh-agent进程的确应当足够了，要是我们还需这样做，这毫无道理。&lt;/p&gt;
 &lt;p&gt;有关ssh-agent的缺省设置的另外一个问题是它同cron作业不兼容。由于cron作业是cron进程启动的，这些作业无法从它们的环境中继承SSH_AUTH_SOCK变量，因而也无从知道ssh-agent进程正在运行以及如何同它联系。事实证明这个问题也是可以修补的。
 我们在 /etc/profile.d下面新建一个配置文件ssh-agentsh：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="x"&gt;```&lt;/span&gt;
-&lt;span class="err"&gt;#&lt;/span&gt;&lt;span class="x"&gt;!/bin/sh&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="x"&gt;    &lt;/span&gt;&lt;span class="err"&gt;#&lt;/span&gt;&lt;span class="x"&gt;!/bin/sh&lt;/span&gt;
 
-&lt;span class="x"&gt;if [ -f ~/.agent.env ]; then&lt;/span&gt;
-&lt;span class="x"&gt;. ~/.agent.env &amp;gt;/dev/null&lt;/span&gt;
-&lt;span class="x"&gt;if ! kill -0 &lt;/span&gt;&lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;SSH_AGENT_PID&lt;/span&gt;&lt;span class="x"&gt; &amp;gt;/dev/null 2&amp;gt;&amp;amp;1; then&lt;/span&gt;
-&lt;span class="x"&gt;echo &amp;quot;Stale agent file found. Spawning new agent...&amp;quot;&lt;/span&gt;
-&lt;span class="x"&gt;eval `ssh-agent |tee ~/.agent.env`&lt;/span&gt;
-&lt;span class="x"&gt;ssh-add&lt;/span&gt;
-&lt;span class="x"&gt;fi&lt;/span&gt;
-&lt;span class="x"&gt;else&lt;/span&gt;
-&lt;span class="x"&gt;echo &amp;quot;Starting ssh-agent...&amp;quot;&lt;/span&gt;
-&lt;span class="x"&gt;eval `ssh-agent |tee ~/.agent.env`&lt;/span&gt;
-&lt;span class="x"&gt;ssh-add&lt;/span&gt;
-&lt;span class="x"&gt;fi&lt;/span&gt;
-&lt;span class="x"&gt;```&lt;/span&gt;
+&lt;span class="x"&gt;    if [ -f ~/.agent.env ]; then&lt;/span&gt;
+&lt;span class="x"&gt;    . ~/.agent.env &amp;gt;/dev/null&lt;/span&gt;
+&lt;span class="x"&gt;    if ! kill -0 &lt;/span&gt;&lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;SSH_AGENT_PID&lt;/span&gt;&lt;span class="x"&gt; &amp;gt;/dev/null 2&amp;gt;&amp;amp;1; then&lt;/span&gt;
+&lt;span class="x"&gt;    echo &amp;quot;Stale agent file found. Spawning new agent...&amp;quot;&lt;/span&gt;
+&lt;span class="x"&gt;    eval `ssh-agent |tee ~/.agent.env`&lt;/span&gt;
+&lt;span class="x"&gt;    ssh-add&lt;/span&gt;
+&lt;span class="x"&gt;    fi&lt;/span&gt;
+&lt;span class="x"&gt;    else&lt;/span&gt;
+&lt;span class="x"&gt;    echo &amp;quot;Starting ssh-agent...&amp;quot;&lt;/span&gt;
+&lt;span class="x"&gt;    eval `ssh-agent |tee ~/.agent.env`&lt;/span&gt;
+&lt;span class="x"&gt;    ssh-add&lt;/span&gt;
+&lt;span class="x"&gt;    fi&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -293,30 +293,33 @@ User root
 
 &lt;h5&gt;配置密钥登录&lt;/h5&gt;
 &lt;ol&gt;
-&lt;li&gt;
-&lt;p&gt;生成私钥公钥对&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;$ ssh-keygen -t rsa                                                    #生成RSA类型的密钥对  
-Generating public/private rsa key pair.  
-Enter file in which to save the key (/home/yule/.ssh/id_rsa):          #输入密钥存放位置，直接回车为默认值  
-Enter passphrase (empty for no passphrase):                            #输入密钥密码，用来解锁密钥  
-Enter same passphrase again:  
-Your identification has been saved in /home/yule/.ssh/id_rsa.  
-Your public key has been saved in /home/yule/.ssh/id_rsa.pub.  
-The key fingerprint is:  
-3c:13:20:5c:80:02:3d:e5:64:44:3e:69:2b:83:b9:d8 yule@client.cc.test  
-The key's randomart image is:  
-+--[ RSA 2048]----+  
-|o. *Ooo          |  
-|. +=.o .         |  
-| . .*   .        |  
-| o . o . .       |  
-|o o .   S        |  
-|.o o     o       |  
-|o E              |  
-|                 |  
-|                 |  
-+-----------------+&lt;/code&gt;  &lt;/p&gt;
-&lt;/li&gt;
+&lt;li&gt;生成私钥公钥对&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;    $ ssh-keygen -t rsa                                                    #生成RSA类型的密钥对  
+    Generating public/private rsa key pair.  
+    Enter file in which to save the key (/home/yule/.ssh/id_rsa):          #输入密钥存放位置，直接回车为默认值  
+    Enter passphrase (empty for no passphrase):                            #输入密钥密码，用来解锁密钥  
+    Enter same passphrase again:  
+    Your identification has been saved in /home/yule/.ssh/id_rsa.  
+    Your public key has been saved in /home/yule/.ssh/id_rsa.pub.  
+    The key fingerprint is:  
+    3c:13:20:5c:80:02:3d:e5:64:44:3e:69:2b:83:b9:d8 yule@client.cc.test  
+    The key&amp;#39;s randomart image is:  
+    +--[ RSA 2048]----+  
+    |o. *Ooo          |  
+    |. +=.o .         |  
+    | . .*   .        |  
+    | o . o . .       |  
+    |o o .   S        |  
+    |.o o     o       |  
+    |o E              |  
+    |                 |  
+    |                 |  
+    +-----------------+  
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;ol&gt;
 &lt;li&gt;
 &lt;p&gt;将公钥拷贝到需要ssh登录的服务器&lt;/p&gt;
 &lt;p&gt;如果当前机器有&lt;code&gt;ssh-copy-id&lt;/code&gt;命令的话将会非常方便:&lt;br /&gt;

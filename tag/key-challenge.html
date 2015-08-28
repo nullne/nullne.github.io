@@ -32,36 +32,38 @@
 </head>
 <body>
 
-    <div class="navbar navbar-fixed-top navbar-inverse">
-        <div class="navbar-inner">
-            <div class="container">
-
-                <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
-                <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-                    <span class="icon-bar">nice</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </a>
-
-                <!-- Be sure to leave the brand out there if you want it shown -->
-                <a class="brand" href="/">NULLNE</a>
-
-                <!-- Everything you want hidden at 940px or less, place within here -->
-                <div class="nav-collapse collapse">
-
-                <ul class="nav">
-
-                        <li><a href="/about.html">About</a></li>
-                </ul>
-                    <!-- .nav, .navbar-search, .navbar-form, etc -->
-                    <form class="navbar-search pull-right" id="searchform" action="/search" onsubmit="return (this.elements['q'].value.length > 0)">
-                        <input type="text" name="q" class="search-query" placeholder="Search">
-                    </form>
-                </div>
-
-            </div>
-        </div>
+<nav class="navbar navbar-default navbar-fixed-top navbar-inverse">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">NULLNE</a>
     </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+
+          <li ><a href="/category/web.html">web</a></li>
+          <li ><a href="/category/suo-sui.html">琐碎</a></li>
+          <li ><a href="/category/ssh.html">SSH</a></li>
+          <li ><a href="/category/golang.html">Golang</a></li>
+          <li><a href="/about.html">About</a></li>
+      </ul>
+      <form class="navbar-form navbar-left pull-right" role="search" id="searchform" action="/search" onsubmit="return (this.elements['q'].value.length > 0)">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search">
+        </div>
+        <!--<button type="submit" class="btn btn-default">Submit</button> -->
+      </form>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
 
     <div class="wrapper">
 
@@ -74,16 +76,11 @@
             -->
 
 <div class='article'>
-	<h2><a class="more" href="/ssh/2015/how-does-key-challenges-work.html">SSH学习笔记之--Key Challenge 如何工作</a></h2>
+	<h4><a class="more" href="/ssh/2015/how-does-key-challenges-work.html">SSH学习笔记之--Key Challenge 如何工作</a></h4>
 	<div class=""><h4>Key Challenge 如何工作</h4>
 <p>agent非常聪明的一点就是他可以不用将private key暴露给任何人就可以确认一个人的身份（确切的说是拥有私钥的人）。  </p>
-<p>当用户ssh登陆一台远端服务器的时候，发送包含username和key的请求，其中的username帮助服务器确定其公钥的位置--一般在<code>$HOME/.ssh/authorized_keys</code>  </p>
-<p>服务器端生成一个challenge，其唯一可以被拥有私钥的设备答复。服务器产生并保存一个大的随机数，然后以用户的公钥进行加密，将生成的二进制数据发送给请求的用户。对于没有私钥的用户这些数据没有任何意义。  </p>
-<p>当agent接受到challenge, 它用私钥进行解密，获得远端服务器生成的原始随机数。agetn把获得的随机数，附加SSH session ID(该值每一个连接都不一样)，进行md5加密，作为key response返回给服务器。  </p>
-<p>服务器计算相同的md5（根据随机数和SSH session ID），与返回的key response进行对比，如果匹配则认证成功。如果不对的话，agent里面的下一个私钥将被用来进行相同的尝试，直到成功或者因为所有的私钥尝试完而失败。  </p>
-<p>很明显，原始的随机数在client/agent交互的时候并不会被暴露，这也是基于安全性考虑以防止在client/server信息交互的过程中随机数被获取。</p>
-<p><img alt="alt" src="http://www.unixwiz.net/images/ssh-key-challenge.gif" title="Title" />
-<img alt="alt" src="http://www.unixwiz.net/images/ssh-key-response.gif" /></p> <a class="btn btn-primary pull-right" href="/ssh/2015/how-does-key-challenges-work.html">More…</a>
+<p>当用户ssh登陆一台远端服务器的时候，发送包含username和key的请求，其中的username帮助服务器确定其公钥的位置--一般在<code>$HOME ...</code></p> 
+        <a class="btn btn-primary btn-sm pull-right" href="/ssh/2015/how-does-key-challenges-work.html">More…</a>
 	</div>
 </div>	
 
@@ -94,9 +91,9 @@
 
 
     <footer class="">
-        <div class="container">
+        <div class="container-fluid">
             <div class="row">
-               <div class="span3">
+               <div class=".col-md-4">
                     <h3>Site</h3>
                     <ul class="unstyled">
                         <li><a href="/tags.html"><i class="icon-tags"></i>&nbsp;Tags</a></li>
@@ -104,16 +101,7 @@
                         <li><a href="/all-atom.xml"><i class="icon-star-empty"></i>&nbsp;RSS</a></li>
                     </ul>
                 </div>
-                <div class="span3">
-                    <h3>Category</h3>
-                    <ul>
-                        <li><a href="/category/web.html">web</a></li>
-                        <li><a href="/category/suo-sui.html">琐碎</a></li>
-                        <li><a href="/category/ssh.html">SSH</a></li>
-                        <li><a href="/category/golang.html">Golang</a></li>
-                    </ul>
-                </div>
-                <div class="span3">
+               <div class=".col-md-4">
                     <h3>Blogroll</h3>
                     <ul class="unstyled">
                         <li><a href="http://zonca.github.io/"><i class="icon-user"></i>&nbsp;Zonca</a></li>
@@ -121,7 +109,7 @@
                         <li><a href="http://blog.friparia.com/"><i class="icon-user"></i>&nbsp;Friparia</a></li>
                     </ul>
                 </div>
-                <div class="social span3">
+               <div class="social .col-md-4">
                     <h3>Social</h3>
                     <ul class="unstyled">
                         <li><a href="https://github.com/nullne">Github</a></li>

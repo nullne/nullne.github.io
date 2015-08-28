@@ -32,36 +32,38 @@
 </head>
 <body>
 
-    <div class="navbar navbar-fixed-top navbar-inverse">
-        <div class="navbar-inner">
-            <div class="container">
-
-                <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
-                <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-                    <span class="icon-bar">nice</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </a>
-
-                <!-- Be sure to leave the brand out there if you want it shown -->
-                <a class="brand" href="/">NULLNE</a>
-
-                <!-- Everything you want hidden at 940px or less, place within here -->
-                <div class="nav-collapse collapse">
-
-                <ul class="nav">
-
-                        <li><a href="/about.html">About</a></li>
-                </ul>
-                    <!-- .nav, .navbar-search, .navbar-form, etc -->
-                    <form class="navbar-search pull-right" id="searchform" action="/search" onsubmit="return (this.elements['q'].value.length > 0)">
-                        <input type="text" name="q" class="search-query" placeholder="Search">
-                    </form>
-                </div>
-
-            </div>
-        </div>
+<nav class="navbar navbar-default navbar-fixed-top navbar-inverse">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">NULLNE</a>
     </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+
+          <li ><a href="/category/web.html">web</a></li>
+          <li ><a href="/category/suo-sui.html">琐碎</a></li>
+          <li class="active"><a href="/category/ssh.html">SSH</a></li>
+          <li ><a href="/category/golang.html">Golang</a></li>
+          <li><a href="/about.html">About</a></li>
+      </ul>
+      <form class="navbar-form navbar-left pull-right" role="search" id="searchform" action="/search" onsubmit="return (this.elements['q'].value.length > 0)">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search">
+        </div>
+        <!--<button type="submit" class="btn btn-default">Submit</button> -->
+      </form>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
 
     <div class="wrapper">
 
@@ -74,545 +76,75 @@
             -->
 
 <div class='article'>
-	<h2><a class="more" href="/ssh/2015/how-does-key-challenges-work.html">SSH学习笔记之--Key Challenge 如何工作</a></h2>
+	<h4><a class="more" href="/ssh/2015/learning-ssh.html">SSH学习笔记</a></h4>
+	<div class=""><h4>SSH 学习笔记</h4>
+<p>因为工作的原因最近两个礼拜都在看一些跟SSH有关的东西，查阅了大量的资料，其中包括各种博客。最直观的感受就是看博客可能会获得一些小技巧，解决眼下的问题。等到下一次出问题的时候又得大量查阅各种资料（其实主要就是google一下看是否相同的或者类似的需求已经被实现了）。所以当你需要彻底了解一个事情的时候 ...</p> 
+        <a class="btn btn-primary btn-sm pull-right" href="/ssh/2015/learning-ssh.html">More…</a>
+	</div>
+</div>	
+<div class='article'>
+	<h4><a class="more" href="/ssh/2015/how-does-key-challenges-work.html">SSH学习笔记之--Key Challenge 如何工作</a></h4>
 	<div class=""><h4>Key Challenge 如何工作</h4>
 <p>agent非常聪明的一点就是他可以不用将private key暴露给任何人就可以确认一个人的身份（确切的说是拥有私钥的人）。  </p>
-<p>当用户ssh登陆一台远端服务器的时候，发送包含username和key的请求，其中的username帮助服务器确定其公钥的位置--一般在<code>$HOME/.ssh/authorized_keys</code>  </p>
-<p>服务器端生成一个challenge，其唯一可以被拥有私钥的设备答复。服务器产生并保存一个大的随机数，然后以用户的公钥进行加密，将生成的二进制数据发送给请求的用户。对于没有私钥的用户这些数据没有任何意义。  </p>
-<p>当agent接受到challenge, 它用私钥进行解密，获得远端服务器生成的原始随机数。agetn把获得的随机数，附加SSH session ID(该值每一个连接都不一样)，进行md5加密，作为key response返回给服务器。  </p>
-<p>服务器计算相同的md5（根据随机数和SSH session ID），与返回的key response进行对比，如果匹配则认证成功。如果不对的话，agent里面的下一个私钥将被用来进行相同的尝试，直到成功或者因为所有的私钥尝试完而失败。  </p>
-<p>很明显，原始的随机数在client/agent交互的时候并不会被暴露，这也是基于安全性考虑以防止在client/server信息交互的过程中随机数被获取。</p>
-<p><img alt="alt" src="http://www.unixwiz.net/images/ssh-key-challenge.gif" title="Title" />
-<img alt="alt" src="http://www.unixwiz.net/images/ssh-key-response.gif" /></p> <a class="btn btn-primary pull-right" href="/ssh/2015/how-does-key-challenges-work.html">More…</a>
+<p>当用户ssh登陆一台远端服务器的时候，发送包含username和key的请求，其中的username帮助服务器确定其公钥的位置--一般在<code>$HOME ...</code></p> 
+        <a class="btn btn-primary btn-sm pull-right" href="/ssh/2015/how-does-key-challenges-work.html">More…</a>
 	</div>
 </div>	
 <div class='article'>
-	<h2><a class="more" href="/ssh/2015/learning-ssh.html">SSH学习笔记</a></h2>
-	<div class=""><h4>SSH 学习笔记</h4>
-<p>因为工作的原因最近两个礼拜都在看一些跟SSH有关的东西，查阅了大量的资料，其中包括各种博客。最直观的感受就是看博客可能会获得一些小技巧，解决眼下的问题。等到下一次出问题的时候又得大量查阅各种资料（其实主要就是google一下看是否相同的或者类似的需求已经被实现了）。所以当你需要彻底了解一个事情的时候，RFC才是最终的地方。你去看他的标准，从最根本的地方了解他，这样才能彻底的驾驭。  </p>
-<p>下面是整理的一些笔记，为方便起见分为几个模块，本文为所有的目录索引。文中直接引用的地方已经标注，部分内容为自己翻译。</p>
-<h5>SSH RFC</h5>
-<p>认识一个事情最根本也是最彻底的方式就是从他的定义开始，所以如果你不只是用用SSH，而需要更为深入的理解其原理，私人定制部分功能，那么去读一下RFC吧。<br />
-<a href="nice">这儿</a>简单的把SSH几个部分罗列了一下，更为全面的解释参照<a href="http://www.rfc-base.org/txt/rfc-4251.txt">RFC官方文档</a>。  </p>
-<h5>SSH认证<sup id="fnref:1"><a class="footnote-ref" href="#fn:1" rel="footnote">1</a></sup></h5>
-<ul>
-<li><strong>密码认证</strong>  </li>
-<li><strong>公钥认证</strong>  </li>
-<li><strong>使用ssh-agent的公钥认证</strong>  </li>
-<li><strong>使用ssh-agent forwarding的公钥认证<sup id="fnref:2"><a class="footnote-ref" href="#fn:2" rel="footnote">2</a></sup></strong></li>
-</ul>
-<h5>SSH隧道（SSH tunnel)<sup id="fnref:3"><a class="footnote-ref" href="#fn:3" rel="footnote">3</a></sup></h5>
-<ul>
-<li>Local Port Forwarding</li>
-<li>Remote Port Forwarding</li>
-</ul>
-<h5>SSH配置技巧</h5>
-<ul>
-<li>配置主机别名, 省略用户名</li>
-<li>配置密钥登录</li>
-<li>使用Agent管理密钥</li>
-<li>配置Agent Forwarding</li>
-<li>建立长连接</li>
-</ul>
-<h4>SSH使用技巧<sup id="fnref:4"><a class="footnote-ref" href="#fn:4" rel="footnote">4</a></sup></h4>
-<ul>
-<li>通过SSH执行命令</li>
-<li>Agent Forwarding</li>
-<li>Enable X mode</li>
-<li>运行SSH在后台，不需要输出</li>
-<li>psudo-tty allocation</li>
-</ul>
-<h5>SSH Pyhon/Golang实现</h5>
-<ul>
-<li>批量SSH工具<br />
-    此部分的代码日后整理好了之后将给出github地址</li>
-</ul>
-<h5>SSH 开销</h5>
-<h5>其他</h5>
-<ul>
-<li><strong>加密</strong></li>
-<li><strong>SSH Agent</strong></li>
-<li><strong>key challenge如何工作</strong>  </li>
-<li>
-<p><strong>公钥和私钥<sup id="fnref:5"><a class="footnote-ref" href="#fn:5" rel="footnote">5</a></sup></strong></p>
-<p>公钥，顾名思义，公开的密钥，即可以通过公开的途径或者仓库让其他人获得。相反，私钥必须只能由持有者获得。因为公钥和私钥在数学上的相关性，凡是被公钥加密的信息都可以由相应地私钥解密，反之亦然。
-- <strong>Agent Hijacking</strong></p>
-</li>
-</ul>
-<h5><em>参考</em></h5>
-<ol>
-<li><a href="http://www.ibm.com/developerworks/aix/library/au-sshsecurity/">Getting started with SSH security and configuration</a></li>
-<li><a href="http://blog.chinaunix.net/uid-21854925-id-3082425.html">ssh详细登录过程 </a></li>
-</ol>
-<div class="footnote">
-<hr />
-<ol>
-<li id="fn:1">
-<p><a href="http://www.unixwiz.net/techtips/ssh-agent-forwarding.html">An Illustrated Guide to SSH Agent Forwarding</a>&#160;<a class="footnote-backref" href="#fnref:1" rev="footnote" title="Jump back to footnote 1 in the text">&#8617;</a></p>
-</li>
-<li id="fn:2">
-<p><a href="http://blog.csdn.net/sdcxyz/article/details/41487897">SSH Agent Forwarding原理</a>  &#160;<a class="footnote-backref" href="#fnref:2" rev="footnote" title="Jump back to footnote 2 in the text">&#8617;</a></p>
-</li>
-<li id="fn:3">
-<p><a href="http://blog.trackets.com/2014/05/17/ssh-tunnel-local-and-remote-port-forwarding-explained-with-examples.html">SSH Tunnel - Local and Remote Port Forwarding Explained With Examples</a>  &#160;<a class="footnote-backref" href="#fnref:3" rev="footnote" title="Jump back to footnote 3 in the text">&#8617;</a></p>
-</li>
-<li id="fn:4">
-<p><a href="http://www.seye.com.cn/newsDetail.lzs?id=959">远程登录SSH安全小技巧</a>&#160;<a class="footnote-backref" href="#fnref:4" rev="footnote" title="Jump back to footnote 4 in the text">&#8617;</a></p>
-</li>
-<li id="fn:5">
-<p><a href="https://www.comodo.com/resources/small-business/digital-certificates2.php">Public Key and Private Keys</a>&#160;<a class="footnote-backref" href="#fnref:5" rev="footnote" title="Jump back to footnote 5 in the text">&#8617;</a></p>
-</li>
-</ol>
-</div> <a class="btn btn-primary pull-right" href="/ssh/2015/learning-ssh.html">More…</a>
-	</div>
-</div>	
-<div class='article'>
-	<h2><a class="more" href="/ssh/2015/ssh-RFC.html">SSH学习笔记之--SSH RFC</a></h2>
+	<h4><a class="more" href="/ssh/2015/ssh-RFC.html">SSH学习笔记之--SSH RFC</a></h4>
 	<div class=""><h3>SSH RFC</h3>
 <h4><a href="http://www.rfc-base.org/txt/rfc-4251.txt">The Secure Shell (SSH) Protocol Architecture</a></h4>
 <blockquote>
-<p>Secure Shell (SSH) is a protocol for secure remote login and other secure network services over an insecure network.  It consists of three major components:</p>
-<ul>
-<li>
-<p>The Transport Layer Protocol [SSH-TRANS] provides server
-     authentication, confidentiality, and integrity.  It may optionally
-     also provide compression.  The transport layer will typically be
-     run over a TCP/IP connection, but might also be used on top of any
-     other reliable data stream.</p>
-</li>
-<li>
-<p>The User Authentication Protocol [SSH-USERAUTH] authenticates the
-     client-side user to the server.  It runs over the transport layer
-     protocol.</p>
-</li>
-<li>
-<p>The Connection Protocol [SSH-CONNECT] multiplexes the encrypted
-     tunnel into several logical channels.  It runs over the user
-     authentication protocol.</p>
-</li>
-</ul>
-</blockquote>
-<p>The client sends a service request once a secure transport layer
-   connection has been established.  A second service request is sent
-   after user authentication is complete.  This allows new protocols to
-   be defined and coexist with the protocols listed above.</p>
-<p>The connection protocol provides channels that can be used for a wide
-   range of purposes.  Standard methods are provided for setting up
-   secure interactive shell sessions and for forwarding ("tunneling")
-   arbitrary TCP/IP ports and X11 connections.</p>
-<h4><a href="https://www.ietf.org/rfc/rfc4253.txt">The Secure Shell (SSH) Transport Layer Protocol</a></h4>
-<h4><a href="https://tools.ietf.org/html/rfc4252">The Secure Shell (SSH) Authentication Protocol</a></h4>
-<h4><a href="https://tools.ietf.org/html/rfc4254">The Secure Shell (SSH) Connection Protocol</a></h4>
-<blockquote>
-<p>The SSH Connection Protocol has been designed to run on top of the
-   SSH transport layer and user authentication protocols ([SSH-TRANS]
-   and [SSH-USERAUTH]).  It provides interactive login sessions, remote
-   execution of commands, forwarded TCP/IP connections, and forwarded
-   X11 connections.</p>
-</blockquote>
-<ul>
-<li><strong>Channel Mehanism</strong></li>
-</ul>
-<p>All terminal sessions, forwarded connections, etc., are channels.
-   Either side may open a channel.  Multiple channels are multiplexed
-   into a single connection.
-- <strong>Interactive Session</strong></p>
-<p>A session is a remote execution of a program.  The program may be a
-   shell, an application, a system command, or some built-in subsystem.
-   It may or may not have a tty, and may or may not involve X11
-   forwarding.  Multiple sessions can be active simultaneously.</p> <a class="btn btn-primary pull-right" href="/ssh/2015/ssh-RFC.html">More…</a>
+<p>Secure Shell ...</p></blockquote> 
+        <a class="btn btn-primary btn-sm pull-right" href="/ssh/2015/ssh-RFC.html">More…</a>
 	</div>
 </div>	
 <div class='article'>
-	<h2><a class="more" href="/ssh/2015/ssh-agent.html">SSH学习笔记之--SSH-Agent</a></h2>
+	<h4><a class="more" href="/ssh/2015/ssh-agent.html">SSH学习笔记之--SSH-Agent</a></h4>
 	<div class=""><h3>SSH Agent</h3>
 <h4>SSH Agent简介</h4>
-<p>ssh-agent是专为既令人愉快又安全的处理RSA和DSA密钥而设计的特殊程序，它包括在OpenSSH分发内。不同于ssh，ssh-agent是个长时间持续运行的守护进程（daemon），设计它的唯一目的就是对解密的专用密钥进行高速缓存。</p>
-<p>ssh包含的内建支持允许它同ssh-agent通信，允许ssh不必每次新连接时都提示您要密码才能获取解密的专用密钥。对于ssh-agent，您只要使用ssh-add把专用密钥添加到ssh-agent的高速缓存中。这是个一次性过程；用过ssh-add之后，ssh将从ssh-agent获取您的专用密钥，而不会提示要密码短语来烦您了。</p>
-<h4>如何使用</h4>
-<p>启动ssh-agent：</p>
-<div class="highlight"><pre>eval `ssh-agent -s`
-</pre></div>
-
-
-<p>很奇怪，为什么不直接执行<code>ssh-agent -s</code>，我们来看一下直接运行的结果:</p>
-<div class="highlight"><pre><span class="nv">$ </span>ssh-agent
-<span class="nv">SSH_AUTH_SOCK</span><span class="o">=</span>/tmp/ssh-xDWYq20983/agent.20983<span class="p">;</span> <span class="nb">export </span>SSH_AUTH_SOCK<span class="p">;</span>
-<span class="nv">SSH_AGENT_PID</span><span class="o">=</span>20984<span class="p">;</span> <span class="nb">export </span>SSH_AGENT_PID<span class="p">;</span>
-<span class="nb">echo </span>Agent pid 20984<span class="p">;</span>
-</pre></div>
-
-
-<p>正如您所看到的，事实上ssh-agent的输出是一系列bash命令；如果这些命令被执行，则将设置两个环境变量：SSH_AUTH_SOCK和SSH_AGENT_PID。内含的export命令使这些环境变量对之后运行的任何附加命令都可用。唔，如果shell真对这些行进行计算，这一切才会发生，但是此时它们只是被打印到标准输出（stdout）而已。要使之确定，我们需要使用之前的方式进行调用。</p>
-<p>然后就可以将私钥导入</p>
-<div class="highlight"><pre>ssh-add [-i file]    #不指定文件的话默认从~/.ssh/id_rsa读取
-</pre></div>
-
-
-<h4>不足之处</h4>
-<p>首先，<code>eval`ssh-agent`</code>每次执行都会启动一个新的ssh-agent副本；这不仅仅是有一丁点儿浪费，而且还意味着您得使用ssh-add向每个新的ssh-agent副本添加专用密钥。如果您只想打开系统上的一个终端或控制台，这没什么大不了的，但是我们中大多数人打开相当多的终端，每次新打开控制台都需要键入密码短语。从技术角度讲，既然一个ssh-agent进程的确应当足够了，要是我们还需这样做，这毫无道理。</p>
-<p>有关ssh-agent的缺省设置的另外一个问题是它同cron作业不兼容。由于cron作业是cron进程启动的，这些作业无法从它们的环境中继承SSH_AUTH_SOCK变量，因而也无从知道ssh-agent进程正在运行以及如何同它联系。事实证明这个问题也是可以修补的。
-我们在 /etc/profile.d下面新建一个配置文件ssh-agentsh：</p>
-<div class="highlight"><pre><span class="x">```</span>
-<span class="err">#</span><span class="x">!/bin/sh</span>
-
-<span class="x">if [ -f ~/.agent.env ]; then</span>
-<span class="x">. ~/.agent.env &gt;/dev/null</span>
-<span class="x">if ! kill -0 </span><span class="p">$</span><span class="nv">SSH_AGENT_PID</span><span class="x"> &gt;/dev/null 2&gt;&amp;1; then</span>
-<span class="x">echo &quot;Stale agent file found. Spawning new agent...&quot;</span>
-<span class="x">eval `ssh-agent |tee ~/.agent.env`</span>
-<span class="x">ssh-add</span>
-<span class="x">fi</span>
-<span class="x">else</span>
-<span class="x">echo &quot;Starting ssh-agent...&quot;</span>
-<span class="x">eval `ssh-agent |tee ~/.agent.env`</span>
-<span class="x">ssh-add</span>
-<span class="x">fi</span>
-<span class="x">```</span>
-</pre></div>
-
-
-<h4>安全问题</h4>
-<p>ssh-agent本身不会导致安全性问题，但是因为其将私钥存放在内存中，如果目标机器的admin用户不可信赖，很有可能导致用户密钥信息泄露。</p>
-<h4>其他</h4>
-<p>更多用法参见ssh-agent man pages</p> <a class="btn btn-primary pull-right" href="/ssh/2015/ssh-agent.html">More…</a>
+<p>ssh-agent是专为既令人愉快又安全的处理RSA和DSA密钥而设计的特殊程序，它包括在OpenSSH分发内。不同于ssh，ssh-agent是个长时间持续运行的守护进程（daemon），设计它的唯一目的就是对解密的专用密钥进行高速缓存 ...</p> 
+        <a class="btn btn-primary btn-sm pull-right" href="/ssh/2015/ssh-agent.html">More…</a>
 	</div>
 </div>	
 <div class='article'>
-	<h2><a class="more" href="/ssh/2015/ssh-agent-hijacking.html">SSH学习笔记之--Agent Hijacking</a></h2>
+	<h4><a class="more" href="/ssh/2015/ssh-agent-hijacking.html">SSH学习笔记之--Agent Hijacking</a></h4>
 	<div class=""><h4>Agent Hijacking</h4>
 <p>agent forwarding在安全方面有一个好处就是用户的私钥永远不会出现在远端服务器或者传输过程中。但却会面临另外一个安全隐患：agent hijacking</p>
-<p>ssh实现的每一个方式都会提供一种让client向agent请求服务的机制，在UNIX/Linux上是用/tmp/文件夹下面的UNIX domain socket实现的。  </p>
-<p>这个文件是被系统重度保护的，只有当前进程的用户才能访问，并且被保护在相应地子文件夹下面。但是任何措施都不能防止root用户访问任何一个文件。  </p>
-<p>root用户可以通过该domain socket连接该socket对应的用户能够访问的任何机器，并且是以这个用户的身份。  </p>
-<p>下面是简单的实现方式：</p>
-<div class="highlight"><pre>    ls -l /tmp/ssh*      #look for somebody&#39;s agent socket
-    /tmp/ssh-CXkd6094:
-    total 24
-    srwxr-xr-x    1 steve    steve           0 Aug 30 08:46 agent.6094=
-
-    export SSH_AUTH_SOCK=/tmp/ssh-CXkd6094/agent.6094
-
-    ssh steve@remotesystem
-
-    remote$                  # Gotcha! Logged in as &quot;steve&quot; user on remote system!
-</pre></div>
-
-
-<p>如果没有root权限也没关系，可能你有sudo的权限，同样下面的操作也可以完成相同的目的：  </p>
-<div class="highlight"><pre><span class="x">    ssh -A user@host</span>
-<span class="x">    user@host</span><span class="p">$</span><span class="x"> setfacl -m otheruser:x   </span><span class="p">$(</span><span class="err">dirname</span> <span class="s2">&quot;$SSH_AUTH_SOCK&quot;</span><span class="p">)</span><span class="x"></span>
-<span class="x">    user@host</span><span class="p">$</span><span class="x"> setfacl -m otheruser:rwx &quot;</span><span class="p">$</span><span class="nv">SSH_AUTH_SOCK</span><span class="x">&quot;</span>
-<span class="x">    user@host</span><span class="p">$</span><span class="x"> sudo su - otheruser</span>
-<span class="x">    otheruser@host</span><span class="p">$</span><span class="x"> ssh server</span>
-<span class="x">    otheruser@server</span><span class="p">$</span><span class="x"></span>
-</pre></div>
-
-
-<p>目前没有任何技术手段防止root用户劫持SSH agent socket，所以鉴于安全方面的考虑，慎用ssh angent forwarding.</p> <a class="btn btn-primary pull-right" href="/ssh/2015/ssh-agent-hijacking.html">More…</a>
+<p>ssh实现的每一个方式都会提供一种让client向agent请求服务的机制，在UNIX/Linux上是用 ...</p> 
+        <a class="btn btn-primary btn-sm pull-right" href="/ssh/2015/ssh-agent-hijacking.html">More…</a>
 	</div>
 </div>	
 <div class='article'>
-	<h2><a class="more" href="/ssh/2015/ssh-auth.html">SSH学习笔记之--SSH 认证</a></h2>
+	<h4><a class="more" href="/ssh/2015/ssh-auth.html">SSH学习笔记之--SSH 认证</a></h4>
 	<div class=""><h3>SSH认证过程</h3>
-<p>首先感谢Steve Friedlde 的文章<a href="http://www.unixwiz.net/techtips/ssh-agent-forwarding.html">An Illustrated Guide to SSH Agent Forwarding</a>，感谢<a href="http://blog.csdn.net/sdcxyz/article/details/41487897">SSH Agent Forwarding原理</a>(注：该文也为转载，但是原博链接已经失效)。本文主要内容参考引用自这两篇文章，并做了部分错误勘正。</p>
-<h4>密码认证</h4>
-<p>密码认证最简单，下面是认证步骤:  </p>
-<div class="highlight"><pre>1. ssh client向目标机器发起tcp连接(一般22端口)并发送username (username是SSH协议的一部分)
-2. 目标机器ssh daemon回应需要密码
-3. ssh client提示用户输入密码，然后将密码发送到服务器端
-4. ssh daemon如果密码匹配成功, 则认证通过
-</pre></div>
-
-
-<p>基于密码认证的缺点是：</p>
-<div class="highlight"><pre>1. 容易被brute-force password guessing
-2. 不适合于管理多台机器
-3. 若每台机器使用相同的密码，如果密码泄露，所有机器都被攻破。若使用不同密码，则密码太多很难记住，因此也不可能使用很强的密码。
-</pre></div>
-
-
-<h4>公钥认证</h4>
-<p>公钥认证详细协议见RFC4252的publickey部分  </p>
-<p>公钥认证需要先在本地机器生成公钥私钥对，然后将公钥放到目标机器的$HOME/.ssh/authorized_keys中。具体过程如下</p>
-<div class="highlight"><pre>1. ssh client向目标机器发起tcp连接(一般22端口)，并发送包含username和key的请求
-2. 目标机器在本地authoriaed_keys 中查找对应信息，创建基于所查找到的公钥的challenge,发送到ssh client
-3. ssh client接收到challenge之后，在本机查找对应的私钥，如果私钥被passphrase加密的话提示用户输入passphrase以解密私钥
-4. ssh client发送私钥签名的challenge给等待的ssh daemon
-5. 目标机器验证返回信息，如果有效则通过认证
-</pre></div>
-
-
-<p>如果公钥认证失败，ssh还会尝试其他认证策略，比如密码认证。多个认证策略的尝试顺序和服务器端没关系，由客户端的配置来决定。  </p>
-<p>需要说明的是，即使把本机的公钥(如.ssh/id_rsa.pub)删除掉，认证仍然可以成功。那第三步中提到的公钥从哪里来的呢？实际上，上面(如第二步)提到的私钥(如.ssh/id_rsa)是广义的，既包含了私钥，也包含了公钥，也有可能还包含了其他信息(比如证书)。比如通过ssh-keygen -y ~/.ssh/id_rsa就可以看到id_rsa里面的公钥。  </p>
-<p>用作认证的私钥最好通过passphrase进行加密，否则会有很大安全隐患，只要私钥泄露，别人就能访问你能访问的所有远程机器。</p>
-<p>公钥认证由于需要配置公钥私钥，初始配置稍微麻烦一些，但好处是所有机器只需配置一组公私钥对就可以了。由于只有一个私钥，不必设置多个密码，因此可以为其设置比较强的密码。并且仅当私钥和密码一同丢失时才有风险，但这个概率非常小。</p>
-<p>不过仍然烦人的是，每次登陆都得输入passphrase。</p>
-<h4>使用ssh-agent的公钥认证</h4>
-<p>为解决每次登陆远程机器都需要输入passphrase的问题，ssh-agent被引入了。ssh-agent启动后，可通过ssh-add将私钥加入agent. ssh-add会提示用户输入passphrase以解密私钥，然后将解密后的私钥纳入agent管理。agent可同时管理多个私钥。  </p>
-<p>连接服务器的步骤如下:</p>
-<div class="highlight"><pre>1. ssh client向目标机器发起tcp连接(一般22端口)，并发送包含username和key的请求
-2. 目标机器在本地authorized_keys 中查找对应信息，创建基于所查找到的公钥的challenge,发送到ssh client
-3. ssh client 接收到challenge并把它扔给运行中的agent，agent,而不是ssh client本身打开用户私钥，如果被加密需要输入passphrase
-4. agent将私钥签名的信息返回给client, 然后再发送到目标机器的ssh daemon
-5. 目标机器校验返回信息，如果有效则通过认证
-</pre></div>
-
-
-<p>如果ssh-agent中有多个私钥, 会依次尝试，直到认证通过或遍历所有私钥.  </p>
-<p>在整个过程中，私钥只存在于agent的内部(内存中), ssh client并没有获取到私钥。  </p>
-<p>使用ssh-agent后，只需在将key纳入agent管理时输入passphrase，之后的ssh相关操作就不必输入passphrase了。但如果从本机A登陆机器B后，又想从B登陆C (或从B传输文件到C)，仍然需要输入passphrase (如果B上也配置了用户的私钥)或password。还是比较麻烦。  </p>
-<p>幸好，ssh agent forwarding解决了这一问题。  </p>
-<h4>使用ssh-agent forwarding的公钥认证</h4>
-<p>简而言之，ssh-agent forwarding 允许一系列的ssh连接将key challenges依次返回给最初的ssh-agent，避免了在其他中间机器上面输入密码的麻烦。  </p>
-<p>步骤如下：
-    1. 假设用户已经从本地机器连接到了第一台机器server。本地的agent中已保存了用户的私钥
-    2. 用户从server向server2请求ssh连接， 发送包含username和key的请求
-    3. server2的ssh daemon查询authorized_keys文件，根据查找到的key构建challenge并发回server
-    4. 神奇的事情发生了：server机器上的client接受了这个challenge，把它发送到本台机器的sshd,sshd又将challenge发送到之前与本地机器建立的连接中，本地机器的client最终处理这个challenge,将签名之后的信息延相反的方向传递
-    5. server2上的daemon校验返回信息，如果有效则通过认证建立连接  </p>
-<p>注意server上其实ssh-agent压根就没有启动，ssh client只是检查$SSH_AUTH_SOCK这个环境变量是否存在，如果存在，则和这个变量指定的domain socket进行通信。而这个domain socket其实是由server上的sshd创建的。所以ssh client其实是和sshd在通信。  </p>
-<p>而server的sshd并没有私钥信息，所以sshd做的事情其实是转发该请求到homepc的ssh client，再由该client将请求转发给本地(homepc)的agent。该agent将需要的消息和签名准备完毕后，再将此数据按原路返回到server的ssh client. 路径如下所示:</p>
-<div class="highlight"><pre><span class="x">agent_local --》(</span><span class="p">$</span><span class="nv">SSH_AUTH_SOCK</span><span class="x">)--》 ssh_local --》(tcp)--》  sshd_server --》(</span><span class="p">$</span><span class="nv">SSH_AUTH_SOCK</span><span class="x">)--》 ssh_server --》(tcp)--》  sshd_server2</span>
-</pre></div>
-
-
-<p>这下明白为什么叫agent forwarding(转发)了吧，就是所有中间节点的sshd和ssh都充当了数据转发的角色，一直将私钥操作的request转发到了本机的agent，然后再将agent的response原路返回。  </p> <a class="btn btn-primary pull-right" href="/ssh/2015/ssh-auth.html">More…</a>
+<p>首先感谢Steve Friedlde 的文章<a href="http://www.unixwiz.net/techtips/ssh-agent-forwarding.html">An Illustrated Guide to SSH Agent ...</a></p> 
+        <a class="btn btn-primary btn-sm pull-right" href="/ssh/2015/ssh-auth.html">More…</a>
 	</div>
 </div>	
 <div class='article'>
-	<h2><a class="more" href="/ssh/2015/ssh-config-tips.html">SSH学习笔记之--SSH 配置技巧</a></h2>
+	<h4><a class="more" href="/ssh/2015/ssh-config-tips.html">SSH学习笔记之--SSH 配置技巧</a></h4>
 	<div class=""><h3>SSH配置技巧</h3>
 <h5>配置主机别名, 省略用户名</h5>
 <p>修改（创建如果不存在）~/.ssh/config,  增加下面条目(可添加多个)</p>
-<div class="highlight"><pre>Host cc
-HostName 192.168.1.1
-Port 22
-User root
-</pre></div>
-
-
-<p>之后就可以直接这样登录，如果配置了密钥登录的话就连密码也不需要输入了</p>
-<div class="highlight"><pre>ssh cc
-</pre></div>
-
-
-<h5>配置密钥登录</h5>
-<ol>
-<li>
-<p>生成私钥公钥对</p>
-<p><code>$ ssh-keygen -t rsa                                                    #生成RSA类型的密钥对  
-Generating public/private rsa key pair.  
-Enter file in which to save the key (/home/yule/.ssh/id_rsa):          #输入密钥存放位置，直接回车为默认值  
-Enter passphrase (empty for no passphrase):                            #输入密钥密码，用来解锁密钥  
-Enter same passphrase again:  
-Your identification has been saved in /home/yule/.ssh/id_rsa.  
-Your public key has been saved in /home/yule/.ssh/id_rsa.pub.  
-The key fingerprint is:  
-3c:13:20:5c:80:02:3d:e5:64:44:3e:69:2b:83:b9:d8 yule@client.cc.test  
-The key's randomart image is:  
-+--[ RSA 2048]----+  
-|o. *Ooo          |  
-|. +=.o .         |  
-| . .*   .        |  
-| o . o . .       |  
-|o o .   S        |  
-|.o o     o       |  
-|o E              |  
-|                 |  
-|                 |  
-+-----------------+</code>  </p>
-</li>
-<li>
-<p>将公钥拷贝到需要ssh登录的服务器</p>
-<p>如果当前机器有<code>ssh-copy-id</code>命令的话将会非常方便:<br />
-<code>ssh-copy-id [-i [identity_file]] [user@]machine</code>  </p>
-<p>否则需要手动拷贝到目标机器上面，然后把内容添加到目标机器的<em>$HOME/.ssh/authorized_keys</em>文件内：  </p>
-<p><code>scp ~/.ssh/id_rsa.pub [usr@]machine:/tmp
-ssh [usr@]machine
-cat /tmp/id_rsa.pub &gt;&gt; ~/.ssh/authorized_keys</code></p>
-</li>
-<li>
-<p>修改相关文件权限</p>
-<p>ssh对于文件权限非常敏感，通常无法通过ssh密钥登录很有可能就是因为文件权限出错。注意下面的权限为目标机器的权限。
-1. ~/.ssh 目录权限为700: <code>chmod 700 ~/.ssh</code>
-2. ~/.ssh/authorized_keys 文件权限为600: <code>chomod 600 ~/.ssh/authorized_keys</code></p>
-</li>
-</ol>
-<p>这样不出意外的话，此时就可以使用密钥（无需输入密码）登录远端服务器了。</p>
-<h4>使用Agent管理密钥</h4>
-<p>关于Agent的介绍，请参照系列文章<a href=""></a></p>
-<div class="highlight"><pre>eval `ssh-agent -s`             #启动ssh-agent
-ssh-add [-i file]               #添加默认位置的密钥，如果密钥被密码加密的话需要输入密码,可指定私钥位置
-ssh-add -D|-d                   #删除（全部）密钥
-</pre></div>
-
-
-<h4>配置Agent Forwarding</h4>
-<p>可以在你的ssh配置中改变下面条目，通常在/etc/ssh_config:</p>
-<div class="highlight"><pre>AllowAgentForwarding yes
-</pre></div>
-
-
-<p>也可以使用命令，推荐使用后者</p>
-<div class="highlight"><pre>ssh -A [user@]machine 
-</pre></div>
-
-
-<h4>建立长连接</h4>
-<p>可以在你的ssh配置中改变下面条目，通常在/etc/ssh_config.4h 代表连接保持4小时:</p>
-<div class="highlight"><pre>ControlPersist 4h
-</pre></div> <a class="btn btn-primary pull-right" href="/ssh/2015/ssh-config-tips.html">More…</a>
+<div class="highlight"><pre>Host ...</pre></div> 
+        <a class="btn btn-primary btn-sm pull-right" href="/ssh/2015/ssh-config-tips.html">More…</a>
 	</div>
 </div>	
 <div class='article'>
-	<h2><a class="more" href="/ssh/2015/ssh-tips.html">SSH学习笔记之--SSH 使用技巧</a></h2>
+	<h4><a class="more" href="/ssh/2015/ssh-tips.html">SSH学习笔记之--SSH 使用技巧</a></h4>
 	<div class=""><h3>SSH使用技巧</h3>
 <h4>通过SSH执行命令</h4>
 <div class="highlight"><pre>ssh [user@]machine &quot;cmd&quot;                                  # 执行单条命令
-ssh [user@]machine &quot;bash -s&quot; &lt; shell_script.sh            # 执行脚本
-ssh -t [user@]machine &quot;sudo bash -s&quot; &lt; shell_script.sh    # sudo执行
-</pre></div>
-
-
-<h4>Agent Forwarding</h4>
-<div class="highlight"><pre>ssh -A hostname
-</pre></div>
-
-
-<blockquote>
-<div class="highlight"><pre>-A     Enables forwarding of the authentication agent connection.  This can also be specified on a per-host basis in a configuration file.
-       Agent forwarding should be enabled with caution.  Users with the ability to bypass file permissions on the remote host (for the agent&#39;s UNIX-domain socket) can access the local agent through the forwarded connection.  An attacker cannot obtain key material from the agent, however they can perform operations on the keys that enable them to authenticate using the identities loaded into the agent.
--a     Disables forwarding of the authentication agent connection.
-</pre></div>
-
-
-</blockquote>
-<h4>Enable X mode</h4>
-<div class="highlight"><pre>ssh -Xf hostname
-</pre></div>
-
-
-<blockquote>
-<div class="highlight"><pre>-X      Enables X11 forwarding.  This can also be specified on a per-host basis in a configuration file.
-
-        X11 forwarding should be enabled with caution.  Users with the ability to bypass file permissions on the remote host (for the user&#39;s X authorization database) can access the local X11 display through the forwarded connection.  An attacker may then be &gt;able to perform activities such as keystroke monitoring.
--x      Disables X11 forwarding.
-
--f      Requests ssh to go to background just before command execution.  This is useful if ssh is going to ask for passwords or passphrases, but the user wants it in the background.  This implies -n.  The recommended way to start X11 programs at a remote site is with something like ssh -f host xterm.
-
-        If the ExitOnForwardFailure configuration option is set to ``yes&#39;&#39;, then a client started with -f will wait for all remote port forwards to be successfully established before placing itself in the background.
-</pre></div>
-
-
-</blockquote>
-<h4>运行SSH在后台，不需要输出</h4>
-<div class="highlight"><pre>ssh -nNT hostname
-</pre></div>
-
-
-<blockquote>
-<div class="highlight"><pre>-N      Do not execute a remote command.  This is useful for just forwarding ports (protocol version 2 only).
-
--n      Redirects stdin from /dev/null (actually, prevents reading from stdin).  This must be used when ssh is run in the background.  A common trick is to use this to run X11 programs on a remote machine.  For example, ssh -n shadows.cs.hut.fi emacs &amp; will start an emacs on shadows.cs.hut.fi, and the X11 connection will be automatically forwarded over an encrypted channel.  The ssh program will be put in the background.  (This does not work if ssh needs to ask for a password or passphrase; see also the -f
--T      Disable pseudo-tty allocation.
-</pre></div>
-
-
-</blockquote>
-<h4>psudo-tty allocation</h4>
-<div class="highlight"><pre>#分别执行下面两条命令即可明白有什么不同
-ssh -t hostname &quot;sudo whoami&quot;
-ssh hostname &quot;sudo whoami&quot;
-</pre></div>
-
-
-<blockquote>
-<div class="highlight"><pre>-t      Force pseudo-tty allocation.  This can be used to execute arbitrary screen-based programs on a remote machine, which can be very useful, e.g. when implementing menu services.  Multiple -t options force tty allocation, even if ssh has no local tty.
-</pre></div>
-
-
-</blockquote> <a class="btn btn-primary pull-right" href="/ssh/2015/ssh-tips.html">More…</a>
+ssh [user@]machine ...</pre></div> 
+        <a class="btn btn-primary btn-sm pull-right" href="/ssh/2015/ssh-tips.html">More…</a>
 	</div>
 </div>	
 <div class='article'>
-	<h2><a class="more" href="/ssh/2015/ssh-tunnel.html">SSH学习笔记之--SSH Tunnel</a></h2>
+	<h4><a class="more" href="/ssh/2015/ssh-tunnel.html">SSH学习笔记之--SSH Tunnel</a></h4>
 	<div class=""><h3>SSH隧道</h3>
-<p>本文前半部分摘录自 <a href="http://blog.trackets.com/2014/05/17/ssh-tunnel-local-and-remote-port-forwarding-explained-with-examples.html">SSH Tunnel - Local and Remote Port Forwarding Explained With Examples</a>, 后面是自己在亲自实践的过程中遇到的问题。  </p>
-<p>There are two ways to create an SSH tunnel, local and remote port forwarding (there’s also dynamic forwarding, but we won’t cover that here). The best way to understand these is by an example, let’s start with local port forwarding.  </p>
-<h4>Local port forwarding</h4>
-<p>Imagine you’re on a private network which doesn’t allow connections to a specific server. Let’s say you’re at work and imgur.com is being blocked. To get around this we can create a tunnel through a server which isn’t on our network and thus can access Imgur.</p>
-<div class="highlight"><pre><span class="nv">$ </span>ssh -L 9000:imgur.com:80 user@example.com
-</pre></div>
-
-
-<p>The key here is -L which says we’re doing local port forwarding. Then it says we’re forwarding our local port 9000 to imgur.com:80, which is the default port for HTTP. Now open your browser and go to http://localhost:9000.  </p>
-<p>The awesome thing about SSH tunnels is that they are encrypted. Nobody is going to see what sites you’re visiting, they’ll only see an SSH connection to your server.</p>
-<h4>Connecting to a database behind a firewall</h4>
-<p>Another good example is if you need to access a port on your server which can only be accessed from localhost and not remotely.</p>
-<p>An example here is when you need to connect to a database console, which only allows local connection for security reasons. Let’s say you’re running PostgreSQL on your server, which by default listens on the port 5432.</p>
-<div class="highlight"><pre><span class="nv">$ </span>ssh -L 9000:localhost:5432 user@example.com
-</pre></div>
-
-
-<p>The part that changed here is the localhost:5432, which says to forward connections from your local port 9000 to localhost:5432 on your server. Now we can simply connect to our database.</p>
-<div class="highlight"><pre><span class="nv">$ </span>psql -h localhost -p 9000
-</pre></div>
-
-
-<p>Now let’s stop here for a little bit an explain what is actually going on. In the first example the 9000:imgur.com:80 is actually saying forward my local port 9000 to imgur.com at port 80. You can imagine SSH on your server actually making a connection (a tunnel) between those two ports, one on your local machine, and one on the target destination.</p>
-<p>If we however say something like 9000:localhost:5432, it means localhost from the server’s perspective, not localhost on your machine. This means forward my local port 9000 to port 5432 on the server, because when you’re on the server, localhost means the server itself.</p>
-<p>This might be a bit confusing, but it is important to understand what the syntax actually means here.</p>
-<h4>Remote port forwarding</h4>
-<p>Now comes the second part of this tutorial, which is remote port forwarding. This is again best to explain with an example.</p>
-<p>Say that you’re developing a Rails application on your local machine, and you’d like to show it to a friend. Unfortunately your ISP didn’t provide you with a public IP address, so it’s not possible to connect to your machine directly via the internet.</p>
-<p>Sometimes this can be solved by configuring NAT (Network Address Translation) on your router, but this doesn’t always work, and it requires you to change the configuration on your router, which isn’t always desirable. This solution also doesn’t work when you don’t have admin access on your network.</p>
-<p>To fix this problem you need to have another computer, which is publicly accessible and have SSH access to it. It can be any server on the internet, as long as you can connect to it. We’ll tell SSH to make a tunnel that opens up a new port on the server, and connects it to a local port on your machine.</p>
-<div class="highlight"><pre><span class="nv">$ </span>ssh -R 9000:localhost:3000 user@example.com
-</pre></div>
-
-
-<p>The syntax here is very similar to local port forwarding, with a single change of -L for -R. But as with local port forwarding, the syntax remains the same.</p>
-<p>First you need to specify the port on which th remote server will listen, which in this case is 9000, and next follows localhost for your local machine, and the local port, which in this case is 3000.</p>
-<p>There is one more thing you need to do to enable this. SSH doesn’t by default allow remote hosts to forwarded ports. To enable this open /etc/ssh/sshd_config and add the following line somewhere in that config file.</p>
-<div class="highlight"><pre>GatewayPorts yes
-</pre></div>
-
-
-<p>Make sure you add it only once!</p>
-<div class="highlight"><pre><span class="nv">$ </span>sudo vim /etc/ssh/sshd_config
-</pre></div>
-
-
-<p>And restart SSH</p>
-<div class="highlight"><pre><span class="nv">$ </span>sudo service ssh restart
-</pre></div>
-
-
-<p>After this you should be able to connect to the server remotely, even from your local machine. The way this would work is that you would first create an SSH tunnel that forwards traffic from the server on port 9000 to your local machine on port 3000. This means that if you connect to the server on port 9000 from your local machine, you’ll actually make a request to your machine through the SSH tunnel.</p>
-<h4>A few closing tips</h4>
-<p>You might have noticed that every time we create a tunnel you also SSH into the server and get a shell. This isn’t usually necessary, as you’re just trying to create a tunnel. To avoid this we can run SSH with the -nNT flags, such as the following, which will cause SSH to not allocate a tty and only do the port forwarding.</p>
-<div class="highlight"><pre><span class="nv">$ </span>ssh -nNT -L 9000:imgur.com:80 user@example.com
-</pre></div>
-
-
-<p>SSH has a huge number of features, so I’d recommend you to checkout the manual page at man ssh, which contains even more tips.</p>
-<p>There’s also an amazing talk called <a href="https://vimeo.com/54505525">The Black Magic of SSH / SSH Can Do That</a>?, which I really recommend you to watch.</p>
-<h4>实践问题反馈</h4>
-<p>实际操作过程中可能或多或少会碰到一些问题，下面这个问题估计很多人都会碰到。  </p>
-<p>配置好命令之后执行：  </p>
-<div class="highlight"><pre><span class="n">ssh</span> <span class="o">-</span><span class="n">L</span> <span class="mi">8888</span><span class="o">:</span><span class="n">imgur</span><span class="p">.</span><span class="nl">com</span><span class="p">:</span><span class="mi">80</span> <span class="n">name</span><span class="mf">@192.168.0.125</span>
-</pre></div>
-
-
-<p>浏览器端显示：<code>unknown domain:localhost</code></p>
-<p>WHY?</p>
-<p>答案在<a href="https://www.reddit.com/r/linuxquestions/comments/3b0s7v/ssh_tunnel_issues/">这儿</a>:</p>
-<blockquote>
-<p>You just happened to choose a website that doesn't like weird headers (i.e. localhost instead of imgur.com). Imgur's cdn doesn't like that. Your command will work with google.com and other websites.
-A couple solutions are here, with the easiest one being editing /etc/hosts.
-You can also use an ssh socks proxy, which requires just a bit more configuration in your browser, but makes all the websites just work.</p>
-</blockquote> <a class="btn btn-primary pull-right" href="/ssh/2015/ssh-tunnel.html">More…</a>
+<p>本文前半部分摘录自 <a href="http://blog.trackets.com/2014/05/17/ssh-tunnel-local-and-remote-port-forwarding-explained-with-examples.html">SSH Tunnel - Local and Remote Port Forwarding Explained ...</a></p> 
+        <a class="btn btn-primary btn-sm pull-right" href="/ssh/2015/ssh-tunnel.html">More…</a>
 	</div>
 </div>	
 
@@ -623,9 +155,9 @@ You can also use an ssh socks proxy, which requires just a bit more configuratio
 
 
     <footer class="">
-        <div class="container">
+        <div class="container-fluid">
             <div class="row">
-               <div class="span3">
+               <div class=".col-md-4">
                     <h3>Site</h3>
                     <ul class="unstyled">
                         <li><a href="/tags.html"><i class="icon-tags"></i>&nbsp;Tags</a></li>
@@ -633,16 +165,7 @@ You can also use an ssh socks proxy, which requires just a bit more configuratio
                         <li><a href="/all-atom.xml"><i class="icon-star-empty"></i>&nbsp;RSS</a></li>
                     </ul>
                 </div>
-                <div class="span3">
-                    <h3>Category</h3>
-                    <ul>
-                        <li><a href="/category/web.html">web</a></li>
-                        <li><a href="/category/suo-sui.html">琐碎</a></li>
-                        <li><a href="/category/ssh.html">SSH</a></li>
-                        <li><a href="/category/golang.html">Golang</a></li>
-                    </ul>
-                </div>
-                <div class="span3">
+               <div class=".col-md-4">
                     <h3>Blogroll</h3>
                     <ul class="unstyled">
                         <li><a href="http://zonca.github.io/"><i class="icon-user"></i>&nbsp;Zonca</a></li>
@@ -650,7 +173,7 @@ You can also use an ssh socks proxy, which requires just a bit more configuratio
                         <li><a href="http://blog.friparia.com/"><i class="icon-user"></i>&nbsp;Friparia</a></li>
                     </ul>
                 </div>
-                <div class="social span3">
+               <div class="social .col-md-4">
                     <h3>Social</h3>
                     <ul class="unstyled">
                         <li><a href="https://github.com/nullne">Github</a></li>

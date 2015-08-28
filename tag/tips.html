@@ -32,36 +32,38 @@
 </head>
 <body>
 
-    <div class="navbar navbar-fixed-top navbar-inverse">
-        <div class="navbar-inner">
-            <div class="container">
-
-                <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
-                <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-                    <span class="icon-bar">nice</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </a>
-
-                <!-- Be sure to leave the brand out there if you want it shown -->
-                <a class="brand" href="/">NULLNE</a>
-
-                <!-- Everything you want hidden at 940px or less, place within here -->
-                <div class="nav-collapse collapse">
-
-                <ul class="nav">
-
-                        <li><a href="/about.html">About</a></li>
-                </ul>
-                    <!-- .nav, .navbar-search, .navbar-form, etc -->
-                    <form class="navbar-search pull-right" id="searchform" action="/search" onsubmit="return (this.elements['q'].value.length > 0)">
-                        <input type="text" name="q" class="search-query" placeholder="Search">
-                    </form>
-                </div>
-
-            </div>
-        </div>
+<nav class="navbar navbar-default navbar-fixed-top navbar-inverse">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">NULLNE</a>
     </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+
+          <li ><a href="/category/web.html">web</a></li>
+          <li ><a href="/category/suo-sui.html">琐碎</a></li>
+          <li ><a href="/category/ssh.html">SSH</a></li>
+          <li ><a href="/category/golang.html">Golang</a></li>
+          <li><a href="/about.html">About</a></li>
+      </ul>
+      <form class="navbar-form navbar-left pull-right" role="search" id="searchform" action="/search" onsubmit="return (this.elements['q'].value.length > 0)">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search">
+        </div>
+        <!--<button type="submit" class="btn btn-default">Submit</button> -->
+      </form>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
 
     <div class="wrapper">
 
@@ -74,73 +76,12 @@
             -->
 
 <div class='article'>
-	<h2><a class="more" href="/ssh/2015/ssh-tips.html">SSH学习笔记之--SSH 使用技巧</a></h2>
+	<h4><a class="more" href="/ssh/2015/ssh-tips.html">SSH学习笔记之--SSH 使用技巧</a></h4>
 	<div class=""><h3>SSH使用技巧</h3>
 <h4>通过SSH执行命令</h4>
 <div class="highlight"><pre>ssh [user@]machine &quot;cmd&quot;                                  # 执行单条命令
-ssh [user@]machine &quot;bash -s&quot; &lt; shell_script.sh            # 执行脚本
-ssh -t [user@]machine &quot;sudo bash -s&quot; &lt; shell_script.sh    # sudo执行
-</pre></div>
-
-
-<h4>Agent Forwarding</h4>
-<div class="highlight"><pre>ssh -A hostname
-</pre></div>
-
-
-<blockquote>
-<div class="highlight"><pre>-A     Enables forwarding of the authentication agent connection.  This can also be specified on a per-host basis in a configuration file.
-       Agent forwarding should be enabled with caution.  Users with the ability to bypass file permissions on the remote host (for the agent&#39;s UNIX-domain socket) can access the local agent through the forwarded connection.  An attacker cannot obtain key material from the agent, however they can perform operations on the keys that enable them to authenticate using the identities loaded into the agent.
--a     Disables forwarding of the authentication agent connection.
-</pre></div>
-
-
-</blockquote>
-<h4>Enable X mode</h4>
-<div class="highlight"><pre>ssh -Xf hostname
-</pre></div>
-
-
-<blockquote>
-<div class="highlight"><pre>-X      Enables X11 forwarding.  This can also be specified on a per-host basis in a configuration file.
-
-        X11 forwarding should be enabled with caution.  Users with the ability to bypass file permissions on the remote host (for the user&#39;s X authorization database) can access the local X11 display through the forwarded connection.  An attacker may then be &gt;able to perform activities such as keystroke monitoring.
--x      Disables X11 forwarding.
-
--f      Requests ssh to go to background just before command execution.  This is useful if ssh is going to ask for passwords or passphrases, but the user wants it in the background.  This implies -n.  The recommended way to start X11 programs at a remote site is with something like ssh -f host xterm.
-
-        If the ExitOnForwardFailure configuration option is set to ``yes&#39;&#39;, then a client started with -f will wait for all remote port forwards to be successfully established before placing itself in the background.
-</pre></div>
-
-
-</blockquote>
-<h4>运行SSH在后台，不需要输出</h4>
-<div class="highlight"><pre>ssh -nNT hostname
-</pre></div>
-
-
-<blockquote>
-<div class="highlight"><pre>-N      Do not execute a remote command.  This is useful for just forwarding ports (protocol version 2 only).
-
--n      Redirects stdin from /dev/null (actually, prevents reading from stdin).  This must be used when ssh is run in the background.  A common trick is to use this to run X11 programs on a remote machine.  For example, ssh -n shadows.cs.hut.fi emacs &amp; will start an emacs on shadows.cs.hut.fi, and the X11 connection will be automatically forwarded over an encrypted channel.  The ssh program will be put in the background.  (This does not work if ssh needs to ask for a password or passphrase; see also the -f
--T      Disable pseudo-tty allocation.
-</pre></div>
-
-
-</blockquote>
-<h4>psudo-tty allocation</h4>
-<div class="highlight"><pre>#分别执行下面两条命令即可明白有什么不同
-ssh -t hostname &quot;sudo whoami&quot;
-ssh hostname &quot;sudo whoami&quot;
-</pre></div>
-
-
-<blockquote>
-<div class="highlight"><pre>-t      Force pseudo-tty allocation.  This can be used to execute arbitrary screen-based programs on a remote machine, which can be very useful, e.g. when implementing menu services.  Multiple -t options force tty allocation, even if ssh has no local tty.
-</pre></div>
-
-
-</blockquote> <a class="btn btn-primary pull-right" href="/ssh/2015/ssh-tips.html">More…</a>
+ssh [user@]machine ...</pre></div> 
+        <a class="btn btn-primary btn-sm pull-right" href="/ssh/2015/ssh-tips.html">More…</a>
 	</div>
 </div>	
 
@@ -151,9 +92,9 @@ ssh hostname &quot;sudo whoami&quot;
 
 
     <footer class="">
-        <div class="container">
+        <div class="container-fluid">
             <div class="row">
-               <div class="span3">
+               <div class=".col-md-4">
                     <h3>Site</h3>
                     <ul class="unstyled">
                         <li><a href="/tags.html"><i class="icon-tags"></i>&nbsp;Tags</a></li>
@@ -161,16 +102,7 @@ ssh hostname &quot;sudo whoami&quot;
                         <li><a href="/all-atom.xml"><i class="icon-star-empty"></i>&nbsp;RSS</a></li>
                     </ul>
                 </div>
-                <div class="span3">
-                    <h3>Category</h3>
-                    <ul>
-                        <li><a href="/category/web.html">web</a></li>
-                        <li><a href="/category/suo-sui.html">琐碎</a></li>
-                        <li><a href="/category/ssh.html">SSH</a></li>
-                        <li><a href="/category/golang.html">Golang</a></li>
-                    </ul>
-                </div>
-                <div class="span3">
+               <div class=".col-md-4">
                     <h3>Blogroll</h3>
                     <ul class="unstyled">
                         <li><a href="http://zonca.github.io/"><i class="icon-user"></i>&nbsp;Zonca</a></li>
@@ -178,7 +110,7 @@ ssh hostname &quot;sudo whoami&quot;
                         <li><a href="http://blog.friparia.com/"><i class="icon-user"></i>&nbsp;Friparia</a></li>
                     </ul>
                 </div>
-                <div class="social span3">
+               <div class="social .col-md-4">
                     <h3>Social</h3>
                     <ul class="unstyled">
                         <li><a href="https://github.com/nullne">Github</a></li>

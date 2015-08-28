@@ -32,36 +32,38 @@
 </head>
 <body>
 
-    <div class="navbar navbar-fixed-top navbar-inverse">
-        <div class="navbar-inner">
-            <div class="container">
-
-                <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
-                <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-                    <span class="icon-bar">nice</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </a>
-
-                <!-- Be sure to leave the brand out there if you want it shown -->
-                <a class="brand" href="/">NULLNE</a>
-
-                <!-- Everything you want hidden at 940px or less, place within here -->
-                <div class="nav-collapse collapse">
-
-                <ul class="nav">
-
-                        <li><a href="/about.html">About</a></li>
-                </ul>
-                    <!-- .nav, .navbar-search, .navbar-form, etc -->
-                    <form class="navbar-search pull-right" id="searchform" action="/search" onsubmit="return (this.elements['q'].value.length > 0)">
-                        <input type="text" name="q" class="search-query" placeholder="Search">
-                    </form>
-                </div>
-
-            </div>
-        </div>
+<nav class="navbar navbar-default navbar-fixed-top navbar-inverse">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">NULLNE</a>
     </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+
+          <li ><a href="/category/web.html">web</a></li>
+          <li ><a href="/category/suo-sui.html">琐碎</a></li>
+          <li class="active"><a href="/category/ssh.html">SSH</a></li>
+          <li ><a href="/category/golang.html">Golang</a></li>
+          <li><a href="/about.html">About</a></li>
+      </ul>
+      <form class="navbar-form navbar-left pull-right" role="search" id="searchform" action="/search" onsubmit="return (this.elements['q'].value.length > 0)">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search">
+        </div>
+        <!--<button type="submit" class="btn btn-default">Submit</button> -->
+      </form>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
 
     <div class="wrapper">
 
@@ -72,22 +74,22 @@
 		<div><h4>SSH 学习笔记</h4>
 <p>因为工作的原因最近两个礼拜都在看一些跟SSH有关的东西，查阅了大量的资料，其中包括各种博客。最直观的感受就是看博客可能会获得一些小技巧，解决眼下的问题。等到下一次出问题的时候又得大量查阅各种资料（其实主要就是google一下看是否相同的或者类似的需求已经被实现了）。所以当你需要彻底了解一个事情的时候，RFC才是最终的地方。你去看他的标准，从最根本的地方了解他，这样才能彻底的驾驭。  </p>
 <p>下面是整理的一些笔记，为方便起见分为几个模块，本文为所有的目录索引。文中直接引用的地方已经标注，部分内容为自己翻译。</p>
-<h5>SSH RFC</h5>
+<h5><a href="/ssh/2015/ssh-RFC.html">SSH RFC</a></h5>
 <p>认识一个事情最根本也是最彻底的方式就是从他的定义开始，所以如果你不只是用用SSH，而需要更为深入的理解其原理，私人定制部分功能，那么去读一下RFC吧。<br />
 <a href="nice">这儿</a>简单的把SSH几个部分罗列了一下，更为全面的解释参照<a href="http://www.rfc-base.org/txt/rfc-4251.txt">RFC官方文档</a>。  </p>
-<h5>SSH认证<sup id="fnref:1"><a class="footnote-ref" href="#fn:1" rel="footnote">1</a></sup></h5>
+<h5><a href="/ssh/2015/ssh-auth.html">SSH认证</a><sup id="fnref:1"><a class="footnote-ref" href="#fn:1" rel="footnote">1</a></sup></h5>
 <ul>
 <li><strong>密码认证</strong>  </li>
 <li><strong>公钥认证</strong>  </li>
 <li><strong>使用ssh-agent的公钥认证</strong>  </li>
 <li><strong>使用ssh-agent forwarding的公钥认证<sup id="fnref:2"><a class="footnote-ref" href="#fn:2" rel="footnote">2</a></sup></strong></li>
 </ul>
-<h5>SSH隧道（SSH tunnel)<sup id="fnref:3"><a class="footnote-ref" href="#fn:3" rel="footnote">3</a></sup></h5>
+<h5><a href="/ssh/2015/ssh-tunnel.html">SSH隧道（SSH tunnel)</a><sup id="fnref:3"><a class="footnote-ref" href="#fn:3" rel="footnote">3</a></sup></h5>
 <ul>
 <li>Local Port Forwarding</li>
 <li>Remote Port Forwarding</li>
 </ul>
-<h5>SSH配置技巧</h5>
+<h5><a href="/ssh/2015/ssh-config-tips.html">SSH配置技巧</a></h5>
 <ul>
 <li>配置主机别名, 省略用户名</li>
 <li>配置密钥登录</li>
@@ -95,7 +97,7 @@
 <li>配置Agent Forwarding</li>
 <li>建立长连接</li>
 </ul>
-<h4>SSH使用技巧<sup id="fnref:4"><a class="footnote-ref" href="#fn:4" rel="footnote">4</a></sup></h4>
+<h4><a href="/ssh/2015/ssh-tips.html">SSH使用技巧</a><sup id="fnref:4"><a class="footnote-ref" href="#fn:4" rel="footnote">4</a></sup></h4>
 <ul>
 <li>通过SSH执行命令</li>
 <li>Agent Forwarding</li>
@@ -112,12 +114,14 @@
 <h5>其他</h5>
 <ul>
 <li><strong>加密</strong></li>
-<li><strong>SSH Agent</strong></li>
-<li><strong>key challenge如何工作</strong>  </li>
+<li><strong><a href="/ssh/2015/ssh-agent.html">SSH Agent</a></strong></li>
+<li><strong><a href="/ssh/2015/how-does-key-challenges-work.html">key challenge如何工作</a></strong>  </li>
 <li>
 <p><strong>公钥和私钥<sup id="fnref:5"><a class="footnote-ref" href="#fn:5" rel="footnote">5</a></sup></strong></p>
-<p>公钥，顾名思义，公开的密钥，即可以通过公开的途径或者仓库让其他人获得。相反，私钥必须只能由持有者获得。因为公钥和私钥在数学上的相关性，凡是被公钥加密的信息都可以由相应地私钥解密，反之亦然。
-- <strong>Agent Hijacking</strong></p>
+<p>公钥，顾名思义，公开的密钥，即可以通过公开的途径或者仓库让其他人获得。相反，私钥必须只能由持有者获得。因为公钥和私钥在数学上的相关性，凡是被公钥加密的信息都可以由相应地私钥解密，反之亦然。  </p>
+</li>
+<li>
+<p><strong><a href="/ssh/2015/ssh-agent-hijacking.html">Agent Hijacking</a></strong></p>
 </li>
 </ul>
 <h5><em>参考</em></h5>
@@ -147,7 +151,7 @@
 </div></div>
 
 		<div style="margin-top:20px" class="well small"><ul style="list-style:none">
-    <li><strong>Publish at:</strong>2015-08-27 10:20:00+08:00</li>
+    <li><strong>Publish at:</strong>2015-08-28 10:20:00+08:00</li>
     <li><strong>in:</strong><a href="/category/ssh.html">SSH</a></li>
     <li><strong>Wrote by:</strong><a class="url fn" href="/author/nullne.html">nullne </a></li>
  
