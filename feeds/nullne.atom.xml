@@ -19,12 +19,11 @@
 &lt;li&gt;&lt;strong&gt;公钥认证&lt;/strong&gt;  &lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;使用ssh-agent的公钥认证&lt;/strong&gt;  &lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;使用ssh-agent forwarding的公钥认证&lt;sup id="fnref:2"&gt;&lt;a class="footnote-ref" href="#fn:2" rel="footnote"&gt;2&lt;/a&gt;&lt;/sup&gt;&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;SSH proxy &lt;/strong&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h5&gt;SSH隧道（SSH tunnel)&lt;sup id="fnref:3"&gt;&lt;a class="footnote-ref" href="#fn:3" rel="footnote"&gt;3&lt;/a&gt;&lt;/sup&gt;&lt;/h5&gt;
 &lt;ul&gt;
 &lt;li&gt;Local Port Forwarding&lt;/li&gt;
-&lt;li&gt;Remote Port Forwarding**&lt;/li&gt;
+&lt;li&gt;Remote Port Forwarding&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h5&gt;SSH配置技巧&lt;/h5&gt;
 &lt;ul&gt;
@@ -74,7 +73,7 @@
 &lt;p&gt;&lt;a href="http://blog.csdn.net/sdcxyz/article/details/41487897"&gt;SSH Agent Forwarding原理&lt;/a&gt;  &amp;#160;&lt;a class="footnote-backref" href="#fnref:2" rev="footnote" title="Jump back to footnote 2 in the text"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li id="fn:3"&gt;
-&lt;p&gt;&lt;a href="http://blog.trackets.com/2014/05/17/ssh-tunnel-local-and-remote-port-forwarding-explained-with-examples.html"&gt;SSH Tunnel - Local and Remote Port Forwarding Explained With Examples&lt;/a&gt;&amp;#160;&lt;a class="footnote-backref" href="#fnref:3" rev="footnote" title="Jump back to footnote 3 in the text"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://blog.trackets.com/2014/05/17/ssh-tunnel-local-and-remote-port-forwarding-explained-with-examples.html"&gt;SSH Tunnel - Local and Remote Port Forwarding Explained With Examples&lt;/a&gt;  &amp;#160;&lt;a class="footnote-backref" href="#fnref:3" rev="footnote" title="Jump back to footnote 3 in the text"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li id="fn:4"&gt;
 &lt;p&gt;&lt;a href="http://www.seye.com.cn/newsDetail.lzs?id=959"&gt;远程登录SSH安全小技巧&lt;/a&gt;&amp;#160;&lt;a class="footnote-backref" href="#fnref:4" rev="footnote" title="Jump back to footnote 4 in the text"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
@@ -277,8 +276,7 @@
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;这下明白为什么叫agent forwarding(转发)了吧，就是所有中间节点的sshd和ssh都充当了数据转发的角色，一直将私钥操作的request转发到了本机的agent，然后再将agent的response原路返回。  &lt;/p&gt;
-&lt;h4&gt;SSH proxy&lt;/h4&gt;</summary><category term="SSH"></category><category term="Auth"></category></entry><entry><title>SSH学习笔记之--SSH 配置技巧</title><link href="/ssh/2015/ssh-config-tips.html" rel="alternate"></link><updated>2015-08-27T10:20:00+08:00</updated><author><name>nullne</name></author><id>tag:,2015-08-27:ssh/2015/ssh-config-tips.html</id><summary type="html">&lt;h3&gt;SSH配置技巧&lt;/h3&gt;
+&lt;p&gt;这下明白为什么叫agent forwarding(转发)了吧，就是所有中间节点的sshd和ssh都充当了数据转发的角色，一直将私钥操作的request转发到了本机的agent，然后再将agent的response原路返回。  &lt;/p&gt;</summary><category term="SSH"></category><category term="Auth"></category></entry><entry><title>SSH学习笔记之--SSH 配置技巧</title><link href="/ssh/2015/ssh-config-tips.html" rel="alternate"></link><updated>2015-08-27T10:20:00+08:00</updated><author><name>nullne</name></author><id>tag:,2015-08-27:ssh/2015/ssh-config-tips.html</id><summary type="html">&lt;h3&gt;SSH配置技巧&lt;/h3&gt;
 &lt;h5&gt;配置主机别名, 省略用户名&lt;/h5&gt;
 &lt;p&gt;修改（创建如果不存在）~/.ssh/config,  增加下面条目(可添加多个)&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;Host cc
@@ -297,27 +295,27 @@ User root
 &lt;ol&gt;
 &lt;li&gt;
 &lt;p&gt;生成私钥公钥对&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;$ ssh-keygen -t rsa                                                    #生成RSA类型的密钥对
-Generating public/private rsa key pair.
-Enter file in which to save the key (/home/yule/.ssh/id_rsa):          #输入密钥存放位置，直接回车为默认值
-Enter passphrase (empty for no passphrase):                            #输入密钥密码，用来解锁密钥
-Enter same passphrase again:
-Your identification has been saved in /home/yule/.ssh/id_rsa.
-Your public key has been saved in /home/yule/.ssh/id_rsa.pub.
-The key fingerprint is:
-3c:13:20:5c:80:02:3d:e5:64:44:3e:69:2b:83:b9:d8 yule@client.cc.test
-The key's randomart image is:
-+--[ RSA 2048]----+
-|o. *Ooo          |
-|. +=.o .         |
-| . .*   .        |
-| o . o . .       |
-|o o .   S        |
-|.o o     o       |
-|o E              |
-|                 |
-|                 |
-+-----------------+&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;$ ssh-keygen -t rsa                                                    #生成RSA类型的密钥对  
+Generating public/private rsa key pair.  
+Enter file in which to save the key (/home/yule/.ssh/id_rsa):          #输入密钥存放位置，直接回车为默认值  
+Enter passphrase (empty for no passphrase):                            #输入密钥密码，用来解锁密钥  
+Enter same passphrase again:  
+Your identification has been saved in /home/yule/.ssh/id_rsa.  
+Your public key has been saved in /home/yule/.ssh/id_rsa.pub.  
+The key fingerprint is:  
+3c:13:20:5c:80:02:3d:e5:64:44:3e:69:2b:83:b9:d8 yule@client.cc.test  
+The key's randomart image is:  
++--[ RSA 2048]----+  
+|o. *Ooo          |  
+|. +=.o .         |  
+| . .*   .        |  
+| o . o . .       |  
+|o o .   S        |  
+|.o o     o       |  
+|o E              |  
+|                 |  
+|                 |  
++-----------------+&lt;/code&gt;  &lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;将公钥拷贝到需要ssh登录的服务器&lt;/p&gt;
@@ -325,8 +323,8 @@ The key's randomart image is:
 &lt;code&gt;ssh-copy-id [-i [identity_file]] [user@]machine&lt;/code&gt;  &lt;/p&gt;
 &lt;p&gt;否则需要手动拷贝到目标机器上面，然后把内容添加到目标机器的&lt;em&gt;$HOME/.ssh/authorized_keys&lt;/em&gt;文件内：  &lt;/p&gt;
 &lt;p&gt;&lt;code&gt;scp ~/.ssh/id_rsa.pub [usr@]machine:/tmp
-    ssh [usr@]machine
-    cat /tmp/id_rsa.pub &amp;gt;&amp;gt; ~/.ssh/authorized_keys&lt;/code&gt;&lt;/p&gt;
+ssh [usr@]machine
+cat /tmp/id_rsa.pub &amp;gt;&amp;gt; ~/.ssh/authorized_keys&lt;/code&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;修改相关文件权限&lt;/p&gt;

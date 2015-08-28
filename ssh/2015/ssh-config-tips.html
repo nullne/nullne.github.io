@@ -88,27 +88,27 @@ User root
 <ol>
 <li>
 <p>生成私钥公钥对</p>
-<p><code>$ ssh-keygen -t rsa                                                    #生成RSA类型的密钥对
-Generating public/private rsa key pair.
-Enter file in which to save the key (/home/yule/.ssh/id_rsa):          #输入密钥存放位置，直接回车为默认值
-Enter passphrase (empty for no passphrase):                            #输入密钥密码，用来解锁密钥
-Enter same passphrase again:
-Your identification has been saved in /home/yule/.ssh/id_rsa.
-Your public key has been saved in /home/yule/.ssh/id_rsa.pub.
-The key fingerprint is:
-3c:13:20:5c:80:02:3d:e5:64:44:3e:69:2b:83:b9:d8 yule@client.cc.test
-The key's randomart image is:
-+--[ RSA 2048]----+
-|o. *Ooo          |
-|. +=.o .         |
-| . .*   .        |
-| o . o . .       |
-|o o .   S        |
-|.o o     o       |
-|o E              |
-|                 |
-|                 |
-+-----------------+</code></p>
+<p><code>$ ssh-keygen -t rsa                                                    #生成RSA类型的密钥对  
+Generating public/private rsa key pair.  
+Enter file in which to save the key (/home/yule/.ssh/id_rsa):          #输入密钥存放位置，直接回车为默认值  
+Enter passphrase (empty for no passphrase):                            #输入密钥密码，用来解锁密钥  
+Enter same passphrase again:  
+Your identification has been saved in /home/yule/.ssh/id_rsa.  
+Your public key has been saved in /home/yule/.ssh/id_rsa.pub.  
+The key fingerprint is:  
+3c:13:20:5c:80:02:3d:e5:64:44:3e:69:2b:83:b9:d8 yule@client.cc.test  
+The key's randomart image is:  
++--[ RSA 2048]----+  
+|o. *Ooo          |  
+|. +=.o .         |  
+| . .*   .        |  
+| o . o . .       |  
+|o o .   S        |  
+|.o o     o       |  
+|o E              |  
+|                 |  
+|                 |  
++-----------------+</code>  </p>
 </li>
 <li>
 <p>将公钥拷贝到需要ssh登录的服务器</p>
@@ -116,8 +116,8 @@ The key's randomart image is:
 <code>ssh-copy-id [-i [identity_file]] [user@]machine</code>  </p>
 <p>否则需要手动拷贝到目标机器上面，然后把内容添加到目标机器的<em>$HOME/.ssh/authorized_keys</em>文件内：  </p>
 <p><code>scp ~/.ssh/id_rsa.pub [usr@]machine:/tmp
-    ssh [usr@]machine
-    cat /tmp/id_rsa.pub &gt;&gt; ~/.ssh/authorized_keys</code></p>
+ssh [usr@]machine
+cat /tmp/id_rsa.pub &gt;&gt; ~/.ssh/authorized_keys</code></p>
 </li>
 <li>
 <p>修改相关文件权限</p>

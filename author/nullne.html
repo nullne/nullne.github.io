@@ -100,12 +100,11 @@
 <li><strong>公钥认证</strong>  </li>
 <li><strong>使用ssh-agent的公钥认证</strong>  </li>
 <li><strong>使用ssh-agent forwarding的公钥认证<sup id="fnref:2"><a class="footnote-ref" href="#fn:2" rel="footnote">2</a></sup></strong></li>
-<li><strong>SSH proxy </strong></li>
 </ul>
 <h5>SSH隧道（SSH tunnel)<sup id="fnref:3"><a class="footnote-ref" href="#fn:3" rel="footnote">3</a></sup></h5>
 <ul>
 <li>Local Port Forwarding</li>
-<li>Remote Port Forwarding**</li>
+<li>Remote Port Forwarding</li>
 </ul>
 <h5>SSH配置技巧</h5>
 <ul>
@@ -155,7 +154,7 @@
 <p><a href="http://blog.csdn.net/sdcxyz/article/details/41487897">SSH Agent Forwarding原理</a>  &#160;<a class="footnote-backref" href="#fnref:2" rev="footnote" title="Jump back to footnote 2 in the text">&#8617;</a></p>
 </li>
 <li id="fn:3">
-<p><a href="http://blog.trackets.com/2014/05/17/ssh-tunnel-local-and-remote-port-forwarding-explained-with-examples.html">SSH Tunnel - Local and Remote Port Forwarding Explained With Examples</a>&#160;<a class="footnote-backref" href="#fnref:3" rev="footnote" title="Jump back to footnote 3 in the text">&#8617;</a></p>
+<p><a href="http://blog.trackets.com/2014/05/17/ssh-tunnel-local-and-remote-port-forwarding-explained-with-examples.html">SSH Tunnel - Local and Remote Port Forwarding Explained With Examples</a>  &#160;<a class="footnote-backref" href="#fnref:3" rev="footnote" title="Jump back to footnote 3 in the text">&#8617;</a></p>
 </li>
 <li id="fn:4">
 <p><a href="http://www.seye.com.cn/newsDetail.lzs?id=959">远程登录SSH安全小技巧</a>&#160;<a class="footnote-backref" href="#fnref:4" rev="footnote" title="Jump back to footnote 4 in the text">&#8617;</a></p>
@@ -378,8 +377,7 @@
 </pre></div>
 
 
-<p>这下明白为什么叫agent forwarding(转发)了吧，就是所有中间节点的sshd和ssh都充当了数据转发的角色，一直将私钥操作的request转发到了本机的agent，然后再将agent的response原路返回。  </p>
-<h4>SSH proxy</h4> <a class="btn btn-primary pull-right" href="/ssh/2015/ssh-auth.html">More…</a>
+<p>这下明白为什么叫agent forwarding(转发)了吧，就是所有中间节点的sshd和ssh都充当了数据转发的角色，一直将私钥操作的request转发到了本机的agent，然后再将agent的response原路返回。  </p> <a class="btn btn-primary pull-right" href="/ssh/2015/ssh-auth.html">More…</a>
 	</div>
 </div>	
 <div class='article'>
@@ -403,27 +401,27 @@ User root
 <ol>
 <li>
 <p>生成私钥公钥对</p>
-<p><code>$ ssh-keygen -t rsa                                                    #生成RSA类型的密钥对
-Generating public/private rsa key pair.
-Enter file in which to save the key (/home/yule/.ssh/id_rsa):          #输入密钥存放位置，直接回车为默认值
-Enter passphrase (empty for no passphrase):                            #输入密钥密码，用来解锁密钥
-Enter same passphrase again:
-Your identification has been saved in /home/yule/.ssh/id_rsa.
-Your public key has been saved in /home/yule/.ssh/id_rsa.pub.
-The key fingerprint is:
-3c:13:20:5c:80:02:3d:e5:64:44:3e:69:2b:83:b9:d8 yule@client.cc.test
-The key's randomart image is:
-+--[ RSA 2048]----+
-|o. *Ooo          |
-|. +=.o .         |
-| . .*   .        |
-| o . o . .       |
-|o o .   S        |
-|.o o     o       |
-|o E              |
-|                 |
-|                 |
-+-----------------+</code></p>
+<p><code>$ ssh-keygen -t rsa                                                    #生成RSA类型的密钥对  
+Generating public/private rsa key pair.  
+Enter file in which to save the key (/home/yule/.ssh/id_rsa):          #输入密钥存放位置，直接回车为默认值  
+Enter passphrase (empty for no passphrase):                            #输入密钥密码，用来解锁密钥  
+Enter same passphrase again:  
+Your identification has been saved in /home/yule/.ssh/id_rsa.  
+Your public key has been saved in /home/yule/.ssh/id_rsa.pub.  
+The key fingerprint is:  
+3c:13:20:5c:80:02:3d:e5:64:44:3e:69:2b:83:b9:d8 yule@client.cc.test  
+The key's randomart image is:  
++--[ RSA 2048]----+  
+|o. *Ooo          |  
+|. +=.o .         |  
+| . .*   .        |  
+| o . o . .       |  
+|o o .   S        |  
+|.o o     o       |  
+|o E              |  
+|                 |  
+|                 |  
++-----------------+</code>  </p>
 </li>
 <li>
 <p>将公钥拷贝到需要ssh登录的服务器</p>
@@ -431,8 +429,8 @@ The key's randomart image is:
 <code>ssh-copy-id [-i [identity_file]] [user@]machine</code>  </p>
 <p>否则需要手动拷贝到目标机器上面，然后把内容添加到目标机器的<em>$HOME/.ssh/authorized_keys</em>文件内：  </p>
 <p><code>scp ~/.ssh/id_rsa.pub [usr@]machine:/tmp
-    ssh [usr@]machine
-    cat /tmp/id_rsa.pub &gt;&gt; ~/.ssh/authorized_keys</code></p>
+ssh [usr@]machine
+cat /tmp/id_rsa.pub &gt;&gt; ~/.ssh/authorized_keys</code></p>
 </li>
 <li>
 <p>修改相关文件权限</p>
