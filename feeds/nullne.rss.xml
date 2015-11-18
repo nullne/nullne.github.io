@@ -76,7 +76,9 @@
 &lt;p&gt;&lt;a href="https://www.comodo.com/resources/small-business/digital-certificates2.php"&gt;Public Key and Private Keys&lt;/a&gt;&amp;#160;&lt;a class="footnote-backref" href="#fnref:5" rev="footnote" title="Jump back to footnote 5 in the text"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;/div&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">nullne</dc:creator><pubDate>Fri, 28 Aug 2015 10:20:00 +0800</pubDate><guid>tag:,2015-08-28:ssh/2015/learning-ssh.html</guid><category>SSH</category></item><item><title>SSH学习笔记之--Key Challenge 如何工作</title><link>/ssh/2015/how-does-key-challenges-work.html</link><description>&lt;h4&gt;Key Challenge 如何工作&lt;/h4&gt;
+&lt;/div&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">nullne</dc:creator><pubDate>Fri, 28 Aug 2015 10:20:00 +0800</pubDate><guid>tag:,2015-08-28:ssh/2015/learning-ssh.html</guid><category>SSH</category></item><item><title>Golang使用中碰到的几个坑</title><link>/ssh/2015/golang-fucked-up.html</link><description>&lt;p&gt;。。。先挖坑日后填&lt;/p&gt;
+&lt;h3&gt;slice 作为函数参数时值传递和引用传递&lt;/h3&gt;
+&lt;h3&gt;slice append 是一个大坑&lt;/h3&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">nullne</dc:creator><pubDate>Thu, 27 Aug 2015 10:20:00 +0800</pubDate><guid>tag:,2015-08-27:ssh/2015/golang-fucked-up.html</guid><category>golang</category></item><item><title>SSH学习笔记之--Key Challenge 如何工作</title><link>/ssh/2015/how-does-key-challenges-work.html</link><description>&lt;h4&gt;Key Challenge 如何工作&lt;/h4&gt;
 &lt;p&gt;agent非常聪明的一点就是他可以不用将private key暴露给任何人就可以确认一个人的身份（确切的说是拥有私钥的人）。  &lt;/p&gt;
 &lt;p&gt;当用户ssh登陆一台远端服务器的时候，发送包含username和key的请求，其中的username帮助服务器确定其公钥的位置--一般在&lt;code&gt;$HOME/.ssh/authorized_keys&lt;/code&gt;  &lt;/p&gt;
 &lt;p&gt;服务器端生成一个challenge，其唯一可以被拥有私钥的设备答复。服务器产生并保存一个大的随机数，然后以用户的公钥进行加密，将生成的二进制数据发送给请求的用户。对于没有私钥的用户这些数据没有任何意义。  &lt;/p&gt;
@@ -507,7 +509,7 @@ ssh hostname &amp;quot;sudo whoami&amp;quot;
 &lt;p&gt;You just happened to choose a website that doesn't like weird headers (i.e. localhost instead of imgur.com). Imgur's cdn doesn't like that. Your command will work with google.com and other websites.
 A couple solutions are here, with the easiest one being editing /etc/hosts.
 You can also use an ssh socks proxy, which requires just a bit more configuration in your browser, but makes all the websites just work.&lt;/p&gt;
-&lt;/blockquote&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">nullne</dc:creator><pubDate>Thu, 27 Aug 2015 10:20:00 +0800</pubDate><guid>tag:,2015-08-27:ssh/2015/ssh-tunnel.html</guid><category>SSH</category><category>tunnel</category></item><item><title>Golang</title><link>/golang/2015/first-glance-at-go.html</link><description>&lt;h2&gt;Go&lt;/h2&gt;
+&lt;/blockquote&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">nullne</dc:creator><pubDate>Thu, 27 Aug 2015 10:20:00 +0800</pubDate><guid>tag:,2015-08-27:ssh/2015/ssh-tunnel.html</guid><category>SSH</category><category>tunnel</category></item><item><title>Golang 初学</title><link>/golang/2015/first-glance-at-go.html</link><description>&lt;h2&gt;Go&lt;/h2&gt;
 &lt;h3&gt;语法差异&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;
