@@ -1,4 +1,3 @@
 nullne.github.io
 ================
-
-personal blog
+Please visit [nullne.com](nullne.com)
