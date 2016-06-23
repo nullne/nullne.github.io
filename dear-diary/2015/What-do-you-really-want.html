@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>NULLNE</title>
+  <!-- Standard Meta -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="author" content="nullne">
+
+  <!-- Site Properties -->
+  <link rel="icon" href="/theme/img/favicon.png">
+  <link rel="stylesheet" type="text/css" href="/theme/semantic.min.css">
+  <link rel="stylesheet" type="text/css" href="/theme/main.css">
+<link rel="stylesheet" type="text/css" href="/theme/pygment.css">
+
+<style type="text/css">
+.masthead.segment.bg:after {
+    background-image: url('/background/Dear Diary.jpg');
+}
+</style>
+
+
+  <script src="/theme/jquery-2.1.4.min.js"></script>
+  <script src="/theme/semantic.min.js"></script>
+<script>
+$(document)
+    .ready(function() {
+        $('.card .dimmer')
+            .dimmer({
+                on: 'hover'
+            })
+        ;
+        $('.ui.sticky')
+            .sticky({
+                context: '#allude',
+                offset: 63,
+            })
+        ;
+    });
+</script>
+  <script>
+  $(document)
+    .ready(function() {
+        $('div.search').keypress(function(e) {
+            if(e.which == 13) {
+                var q = $(this).find('input').val()
+                if (q.length !== 0) {
+                    window.location.href = "/search.html?q=" + q;
+                }
+            }
+        });
+        // fix menu when passed
+        $('.masthead')
+            .visibility({
+                once: false,
+                onBottomPassed: function() {
+                    $('.fixed.menu').transition('fade in');
+                },
+                onBottomPassedReverse: function() {
+                    $('.fixed.menu').transition('fade out');
+                }
+            })
+        ;
+    })
+  ;
+  </script>
+  <!-- Feeds -->
+  <link href="/all-atom.xml" type="application/atom+xml" rel="alternate" title="NULLNE Atom Feed" />
+
+
+
+</head>
+<body>
+
+<!-- Following Menu -->
+<div class="ui top fixed hidden menu">
+  <div class="ui container">
+      <a href="/" class="header item">
+          Home
+      </a>
+
+      <!-- pages -->
+      <a class="item " href="/category/suo-sui.html">琐碎</a>
+      <a class="item " href="/category/ji-zhu-gai-bian-sheng-huo.html">技术改变生活</a>
+      <a class="item  active" href="/category/dear-diary.html">Dear Diary</a>
+
+      <a class="item" href="/about.html">About</a>
+    <div class="right item">
+        <div class="ui small search">
+            <div class="ui icon input">
+                <input class="prompt" type="text" placeholder="Search...">
+                <i class="search icon"></i>
+            </div>
+        </div>
+    </div>
+  </div>
+</div>
+
+<!-- Page Contents -->
+<div class="pusher">
+  <div class="ui inverted vertical masthead center aligned segment bg" id="bg">
+
+    <div class="ui container">
+      <div class="ui large secondary inverted menu">
+          <!-- 
+         <a class="toc item">
+           <i class="sidebar icon"></i>
+         </a>
+         -->
+         <a href="/" class="item">
+             Home
+         </a>
+
+        <!-- pages -->
+        <a class="item " href="/category/suo-sui.html">琐碎</a>
+        <a class="item " href="/category/ji-zhu-gai-bian-sheng-huo.html">技术改变生活</a>
+        <a class="item  active" href="/category/dear-diary.html">Dear Diary</a>
+
+        <a class="item" href="/about.html">About</a>
+        <div class="right item">
+            <div class="ui small search">
+                <div class="ui icon input">
+                    <input class="prompt" type="text" placeholder="Search...">
+                    <i class="search icon"></i>
+                </div>
+            </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ui text container">
+<h1 class="ui inverted header">
+    <i class="lock icon"></i> 你到底想要一个什么的工作
+</h1>
+        <h2>Do whatever you want when you want to.</h2>
+    </div>
+
+  </div>
+
+  <div class="ui hidden divider"></div>
+
+<div class="ui basic segment" id="allude" style="min-height:500px">
+  <div class="right ui rail" style="left: 78%;margin-top: 15px;min-height: 380px;padding-left: 0px;margin-left: 0px;width: 272px !important;z-index: 1;">
+      <div class="ui sticky" style="">
+          <div class="ui card">
+              <div class="ui slide right reveal image">
+                  <div class="visible content">
+                      <img class="ui fluid image" src="/theme/img/tom.jpg">
+                  </div>
+                  <div class="hidden content">
+                      <img class="ui fluid image" src="/theme/img/alipay.png">
+                  </div>
+              </div>
+
+              <div class="content">
+                  <a href="/about.html" class="header">nullne</a>
+                  <div class="meta">
+                      <span class="date">Mar 25, 2015</span>
+                  </div>
+              </div>
+              <div class="extra content">
+ 
+                  Tags:&nbsp;
+                  <a href="/tag/work.html" class="">work</a>,&nbsp;
+ 
+              </div>
+          </div>
+      </div>
+  </div>
+  <div class="ui text container"><div id="pec-encrypted-content" style="display:none">qOFDYHM/wyBHoEYl0e/9UQ==;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;^</div>
+<div id="pec-decrypted-content">
+<div class="ui large brown message">
+    <i class="lock icon"></i>
+    This content is encrypted.
+</div>
+</div>
+
+<div class="ui page dimmer" id="lock-lock">
+    <div class=" content">
+        <form id="pec-decrypt-form" class="ui form" onsubmit="javascript:$('#pec-decrypt-content').click();return false;">
+            <div class="inline field">
+                <input id="pec-content-password" type="password"  placeholder="Password">
+                <button class="ui button" id="pec-decrypt-content" type="button"><i class="unlock icon"></i>Unlock</button>
+            </div>
+        </form>
+    </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){
+    $('#lock-lock').dimmer({
+        opacity: 0.8,
+        closable: false,
+    });
+    $('#lock-lock').dimmer('show');
+});
+</script>
+
+
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/components/core.js"></script>
+
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/components/enc-base64.js"></script>
+
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/components/cipher-core.js"></script>
+
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/components/pad-nopadding.js"></script>
+
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/components/md5.js"></script>
+
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/components/aes.js"></script>
+
+
+<script type="text/javascript">
+    (function () {
+        var strip_padding = function (padded_content, padding_char) {
+            /*
+             * Strips the padding character from decrypted content.
+             */
+            for (var i = padded_content.length; i > 0; i--) {
+                if (padded_content[i-1] !== padding_char) {
+                    return padded_content.slice(0, i);
+                }
+            }
+        };
+
+        var decrypt_content = function (password, iv_b64, ciphertext_b64, padding_char) {
+            /*
+             * Decrypts the content from the ciphertext bundle.
+             */
+            var key = CryptoJS.MD5(password),
+                iv = CryptoJS.enc.Base64.parse(iv_b64),
+                ciphertext = CryptoJS.enc.Base64.parse(ciphertext_b64),
+                bundle = {
+                    key: key,
+                    iv: iv,
+                    ciphertext: ciphertext
+                };
+
+            var plaintext = CryptoJS.AES.decrypt(bundle, key, {iv: iv, padding: CryptoJS.pad.NoPadding});
+
+            try {
+                return strip_padding(plaintext.toString(CryptoJS.enc.Utf8), padding_char);
+            }
+            catch (err) {
+                // encoding failed; wrong password
+                return false;
+            }
+        };
+
+        var init_decryptor = function() {
+            var decrypt_btn = document.getElementById('pec-decrypt-content'),
+                password_input = document.getElementById('pec-content-password'),
+                encrypted_content = document.getElementById('pec-encrypted-content'),
+                decrypted_content = document.getElementById('pec-decrypted-content'),
+                decrypt_form = document.getElementById('pec-decrypt-form');
+
+            decrypt_btn.addEventListener('click', function () {
+                // grab the ciphertext bundle
+                var parts = encrypted_content.innerHTML.split(';');
+
+                // decrypt it
+                var content = decrypt_content(
+                    password_input.value,
+                    parts[0],
+                    parts[1],
+                    parts[2]
+                );
+
+                if (content) {
+                    // success; display the decrypted content
+                    decrypted_content.innerHTML = content;
+                    decrypt_form.parentNode.removeChild(decrypt_form);
+                    encrypted_content.parentNode.removeChild(encrypted_content);
+                    $('#lock-lock').dimmer('hide');
+
+                    // any post processing on the decrypted content should be done here
+                }
+                else {
+                    // ¯\_(ツ)_/¯
+                    password_input.value = '';
+                }
+            });
+        };
+
+        document.addEventListener('DOMContentLoaded', init_decryptor);
+    })();
+</script></div>
+</div>
+<div class="ui hidden divider"></div>
+
+
+
+<h4 class="ui horizontal divider header">
+    <i class="comment icon"></i>
+    留下你的评论
+</h4>
+
+<!-- google plus comment -->
+<div class="ui centered grid" >
+    <div id="comments" class="column"></div>
+    <script src="https://apis.google.com/js/plusone.js"></script>
+    <script>
+gapi.comments.render('comments', {
+    href: window.location,
+    width: '624',
+    first_party_property: 'BLOGGER',
+    view_type: 'FILTERED_POSTMOD'
+});
+    </script>
+
+    <!--
+        <div id="commentscounter"></div>
+        <script>
+gapi.commentcount.render('commentscounter', {
+    href: window.location
+});
+        </script>
+        -->
+</div>
+
+  <div class="ui hidden divider"></div>
+
+  <div class="ui inverted vertical footer segment">
+    <div class="ui container">
+      <div class="ui stackable inverted divided equal height stackable grid">
+        <div class="three wide column">
+          <h4 class="ui inverted header">Blogroll</h4>
+          <div class="ui inverted link list">
+              <a href="http://zonca.github.io/" class="item">&nbsp;Zonca</a>
+              <a href="http://moparx.com/" class="item">&nbsp;Moparx</a>
+              <a href="http://blog.friparia.com/" class="item">&nbsp;Friparia</a>
+          </div>
+        </div>
+        <div class="three wide column">
+          <h4 class="ui inverted header">Social</h4>
+          <div class="ui inverted link list">
+              <a href="https://github.com/nullne" class="item">&nbsp;Github</a>
+              <a href="https://www.linkedin.com/pub/le-yu/89/980/1a5" class="item">&nbsp;LinkedIn</a>
+              <a href="http://www.douban.com/people/nullnes/" class="item">&nbsp;豆瓣</a>
+              <a href="http://weibo.com/nullne" class="item">&nbsp;微博</a>
+          </div>
+        </div>
+        <div class="seven wide column">
+          <h4 class="ui inverted header">Footer Header</h4>
+          <p>Extra space for a call to action inside the footer that could help re-engage users.</p>
+        </div>
+      </div>
+    </div>
+      <div class="ui inverted section divider"></div>
+      <div class="ui centered align grid">
+          <p class="copyleft">&copy; nullne 2013-2016</p>
+      </div>
+  </div>
+</div>
+
+</body>
+
+</html>

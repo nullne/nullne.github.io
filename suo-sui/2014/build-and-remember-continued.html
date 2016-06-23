@@ -1,97 +1,175 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-	<meta charset="utf-8">
-	<title> 建站续，附乱七八糟 </title>
-	<meta name="description" content="">
-	<meta name="author" content="nullne">
+  <title>NULLNE</title>
+  <!-- Standard Meta -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="author" content="nullne">
 
-	<!-- HTML5 shim, for IE6-8 support of HTML elements -->
-	<!--[if lt IE 9]>
-		<script src="/theme/js/html5.js"></script>
-	<![endif]-->
+  <!-- Site Properties -->
+  <link rel="icon" href="/theme/img/favicon.png">
+  <link rel="stylesheet" type="text/css" href="/theme/semantic.min.css">
+  <link rel="stylesheet" type="text/css" href="/theme/main.css">
+<link rel="stylesheet" type="text/css" href="/theme/pygment.css">
 
-    <script src="/theme/js/jquery-2.1.1.min.js"></script>
-    <script src="/theme/js/bootstrap.min.js"></script>
-    <script src="/theme/js/project.js"></script>
-
-	<!-- Styles -->
-    <link rel="shortcut icon" href="/theme/img/icons/fav.ico" >
-
-	<link href="/theme/css/bootstrap.min.css" rel="stylesheet">
-	<link href="/theme/css/bootstrap-theme.min.css" rel="stylesheet">
-	<link href="/theme/css/local.css" rel="stylesheet">
-	<link href="/theme/css/pygments.css" rel="stylesheet">
-    <link href="/theme/tipuesearch/tipuesearch.css" rel="stylesheet" >
-
-	<!-- Feeds -->
-	<link href="/all-atom.xml" type="application/atom+xml" rel="alternate" title="NULLNE Atom Feed" />
+<style type="text/css">
+.masthead.segment.bg:after {
+    background-image: url('/background/琐碎.jpg');
+}
+</style>
 
 
+  <script src="/theme/jquery-2.1.4.min.js"></script>
+  <script src="/theme/semantic.min.js"></script>
+<script>
+$(document)
+    .ready(function() {
+        $('.card .dimmer')
+            .dimmer({
+                on: 'hover'
+            })
+        ;
+        $('.ui.sticky')
+            .sticky({
+                context: '#allude',
+                offset: 63,
+            })
+        ;
+    });
+</script>
+  <script>
+  $(document)
+    .ready(function() {
+        $('div.search').keypress(function(e) {
+            if(e.which == 13) {
+                var q = $(this).find('input').val()
+                if (q.length !== 0) {
+                    window.location.href = "/search.html?q=" + q;
+                }
+            }
+        });
+        // fix menu when passed
+        $('.masthead')
+            .visibility({
+                once: false,
+                onBottomPassed: function() {
+                    $('.fixed.menu').transition('fade in');
+                },
+                onBottomPassedReverse: function() {
+                    $('.fixed.menu').transition('fade out');
+                }
+            })
+        ;
+    })
+  ;
+  </script>
+  <!-- Feeds -->
+  <link href="/all-atom.xml" type="application/atom+xml" rel="alternate" title="NULLNE Atom Feed" />
 
 
-<script>var _gaq=[['_setAccount','UA-56583262-1'],['_trackPageview']];(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.src='//www.google-analytics.com/ga.js';s.parentNode.insertBefore(g,s)}(document,'script'))</script>
+
 </head>
 <body>
 
-<div id="protect" style="text-align:center;width:100%;height:100%;z-index:1000;position:absolute;background-color:black">
-        <input style="margin-top:300px" type="password" id="password"></input>
+<!-- Following Menu -->
+<div class="ui top fixed hidden menu">
+  <div class="ui container">
+      <a href="/" class="header item">
+          Home
+      </a>
+
+      <!-- pages -->
+      <a class="item  active" href="/category/suo-sui.html">琐碎</a>
+      <a class="item " href="/category/ji-zhu-gai-bian-sheng-huo.html">技术改变生活</a>
+      <a class="item " href="/category/dear-diary.html">Dear Diary</a>
+
+      <a class="item" href="/about.html">About</a>
+    <div class="right item">
+        <div class="ui small search">
+            <div class="ui icon input">
+                <input class="prompt" type="text" placeholder="Search...">
+                <i class="search icon"></i>
+            </div>
+        </div>
+    </div>
+  </div>
 </div>
 
-<nav class="navbar navbar-default navbar-fixed-top navbar-inverse">
-  <div class="container-fluid">
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="/">NULLNE</a>
+<!-- Page Contents -->
+<div class="pusher">
+  <div class="ui inverted vertical masthead center aligned segment bg" id="bg">
+
+    <div class="ui container">
+      <div class="ui large secondary inverted menu">
+          <!-- 
+         <a class="toc item">
+           <i class="sidebar icon"></i>
+         </a>
+         -->
+         <a href="/" class="item">
+             Home
+         </a>
+
+        <!-- pages -->
+        <a class="item  active" href="/category/suo-sui.html">琐碎</a>
+        <a class="item " href="/category/ji-zhu-gai-bian-sheng-huo.html">技术改变生活</a>
+        <a class="item " href="/category/dear-diary.html">Dear Diary</a>
+
+        <a class="item" href="/about.html">About</a>
+        <div class="right item">
+            <div class="ui small search">
+                <div class="ui icon input">
+                    <input class="prompt" type="text" placeholder="Search...">
+                    <i class="search icon"></i>
+                </div>
+            </div>
+        </div>
+      </div>
     </div>
 
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
+    <div class="ui text container">
+<h1 class="ui inverted header">
+    建站续，附乱七八糟
+</h1>
+        <h2>Do whatever you want when you want to.</h2>
+    </div>
 
-          <li ><a href="/category/web.html">Web</a></li>
-          <li class="active"><a href="/category/suo-sui.html">琐碎</a></li>
-          <li ><a href="/category/ssh.html">SSH</a></li>
-          <li ><a href="/category/golang.html">Golang</a></li>
-          <li><a href="/about.html">About</a></li>
-      </ul>
-      <form class="navbar-form navbar-left pull-right" role="search" id="searchform" action="/search" onsubmit="return (this.elements['q'].value.length > 0)">
-        <div class="form-group">
-          <input type="text" class="form-control" placeholder="Search">
-        </div>
-        <!--<button type="submit" class="btn btn-default">Submit</button> -->
-      </form>
-    </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
-</nav>
+  </div>
 
-    <div class="wrapper">
+  <div class="ui hidden divider"></div>
 
-    <div class="container content-wrapper">
-        <div class="content fixed-head-top">
-	<div class='article'>
-		<div class="page-header">
-            <h1>建站续，附乱七八糟</h1>
-<ul class="pull-right" style="list-style:none">
-    <li>Publish At: 2014-11-11 11:11:00+08:00</li>
-    <!--
-    <li>in:</strong><a href="/category/suo-sui.html">琐碎</a></li>
-    <li>Wrote by:<a class="url fn" href="/author/nullne.html">nullne </a></li>
+<div class="ui basic segment" id="allude" style="min-height:500px">
+  <div class="right ui rail" style="left: 78%;margin-top: 15px;min-height: 380px;padding-left: 0px;margin-left: 0px;width: 272px !important;z-index: 1;">
+      <div class="ui sticky" style="">
+          <div class="ui card">
+              <div class="ui slide right reveal image">
+                  <div class="visible content">
+                      <img class="ui fluid image" src="/theme/img/tom.jpg">
+                  </div>
+                  <div class="hidden content">
+                      <img class="ui fluid image" src="/theme/img/alipay.png">
+                  </div>
+              </div>
+
+              <div class="content">
+                  <a href="/about.html" class="header">nullne</a>
+                  <div class="meta">
+                      <span class="date">Nov 11, 2014</span>
+                  </div>
+              </div>
+              <div class="extra content">
  
-    <li>Tags:
-        <a href="/tag/zhao-gong-zuo.html">找工作</a>
-        <a href="/tag/blog.html">blog</a>
-    </li>
+                  Tags:&nbsp;
+                  <a href="/tag/zhao-gong-zuo.html" class="">找工作</a>,&nbsp;
+                  <a href="/tag/blog.html" class="">blog</a>,&nbsp;
  
-    -->
-</ul>        </div>
-		<div><p><em>逛了一圈论坛博客神马的发现好多人也都在写点东西纪念今天</em></p>
+              </div>
+          </div>
+      </div>
+  </div>
+  <div class="ui text container"><p><em>逛了一圈论坛博客神马的发现好多人也都在写点东西纪念今天</em></p>
 <p>距离上一次写东西已经很久了，主要原因是因为Air跪了！幸灾乐祸的主儿可以去看看<a href="http://weibo.com/2356978633/B7CNpb52w?type=comment#_rnd1415671779372">原微</a>，那可是目前自己微博上最火的一个</p>
 <p><img alt="Alt text" src="http://ww2.sinaimg.cn/large/8c7ca3c9jw1eh3fj6ouc4j21kw23u1kx.jpg" /></p>
 <p>应该说这是之前那篇文章的续吧，可惜那篇的_Markdown_格式的已经弄没了，附上<a href="nullne.com/archivi/abc.html">链接</a>（估计也是唯一一个入口了）。当初心血来潮，也不完全心血来潮，算是小时候一个梦想吧，搞了这么一个极有技术含量的博客。现在看看当时还在初学者水平，只是简单的按照别人的教程做了下来。因为本儿跪了之后源代码也一并去了，所以一直都没有再更新，这一次重建博客，在之前的基础上新增加了很多东西，<a href="https://travis-ci.org/"><strong>Travis</strong></a>就是一个牛逼了的东西，待会儿我会接着把这一次的技术性细节一并简单介绍。</p>
@@ -105,11 +183,11 @@ Travis CI's build environment provides different runtimes for different language
 </blockquote>
 <p>使用<strong>Pelican</strong>的常规思路是在本地写好<strong>md</strong>或者其他格式的文件，然后<code>make publish</code>，当然这是集成命令，分解开就是先生成静态页面然后PUSH到<strong>Git page</strong>。看着似乎很简单，这是建立在首先配置好你的本地环境的基础上，并且每次换一台机器之后你都需要重新配置你的环境。配环境这事儿我只能呵呵了，那么多的的平台配法儿都不太一样。</p>
 <p>但是，当你遇到<strong>Travis CI</strong>一切就都不一样了。你只要一次性配置完成，将你的source文件PUSH到某一个github仓库。之后的事情就容易多了，按最坏的情况来说，你的本撒手人寰了（哭瞎），你写了一篇文章纪念。以最快的速度把舍友的本儿扯过来.</p>
-<div class="highlight"><pre><span class="nv">$ </span>git clone git://github.com/username/bri.github.io-source
-<span class="nv">$ </span>mv remember.md path/to/content/
-<span class="nv">$ </span>git add *
-<span class="nv">$ </span>git commit -m <span class="s2">&quot;love you forever&quot;</span>
-<span class="nv">$ </span>git push
+<div class="highlight"><pre><span></span>$ git clone git://github.com/username/bri.github.io-source
+$ mv remember.md path/to/content/
+$ git add *
+$ git commit -m <span class="s2">&quot;love you forever&quot;</span>
+$ git push
 </pre></div>
 
 
@@ -138,32 +216,74 @@ Travis CI's build environment provides different runtimes for different language
 <p>算了先就不无病呻吟了，刚才接到<strong>知道创宇</strong>HR的电话，在这么一个特殊的节日去面试。</p>
 <p>最后附图纪念 <strong><em>1111</em></strong></p>
 <p><img alt="Alt text" src="https://lh5.googleusercontent.com/-foXL3QCuRco/VGDh3Wvvy8I/AAAAAAAAADg/iwtexzazuGg/s481/yule.jpg" /></p></div>
-	</div>
-        </div>
-        <div class="push"></div>
-    </div><!--container-fluid-->
+</div>
+<div class="ui hidden divider"></div>
 
-<div style="text-align:center;background-color:rgb(97, 83, 83);width:100%;height:auto">
-        <div id="comments"></div>
-        <script src="https://apis.google.com/js/plusone.js"></script>
-        <script>
-        gapi.comments.render('comments', {
-            href: window.location,
-            width: '624',
-            first_party_property: 'BLOGGER',
-            view_type: 'FILTERED_POSTMOD'
-        });
-        </script>
 
-        <!--
+
+<h4 class="ui horizontal divider header">
+    <i class="comment icon"></i>
+    留下你的评论
+</h4>
+
+<!-- google plus comment -->
+<div class="ui centered grid" >
+    <div id="comments" class="column"></div>
+    <script src="https://apis.google.com/js/plusone.js"></script>
+    <script>
+gapi.comments.render('comments', {
+    href: window.location,
+    width: '624',
+    first_party_property: 'BLOGGER',
+    view_type: 'FILTERED_POSTMOD'
+});
+    </script>
+
+    <!--
         <div id="commentscounter"></div>
         <script>
-        gapi.commentcount.render('commentscounter', {
-            href: window.location
-        });
+gapi.commentcount.render('commentscounter', {
+    href: window.location
+});
         </script>
         -->
 </div>
-    </div><!--wrapper-->
+
+  <div class="ui hidden divider"></div>
+
+  <div class="ui inverted vertical footer segment">
+    <div class="ui container">
+      <div class="ui stackable inverted divided equal height stackable grid">
+        <div class="three wide column">
+          <h4 class="ui inverted header">Blogroll</h4>
+          <div class="ui inverted link list">
+              <a href="http://zonca.github.io/" class="item">&nbsp;Zonca</a>
+              <a href="http://moparx.com/" class="item">&nbsp;Moparx</a>
+              <a href="http://blog.friparia.com/" class="item">&nbsp;Friparia</a>
+          </div>
+        </div>
+        <div class="three wide column">
+          <h4 class="ui inverted header">Social</h4>
+          <div class="ui inverted link list">
+              <a href="https://github.com/nullne" class="item">&nbsp;Github</a>
+              <a href="https://www.linkedin.com/pub/le-yu/89/980/1a5" class="item">&nbsp;LinkedIn</a>
+              <a href="http://www.douban.com/people/nullnes/" class="item">&nbsp;豆瓣</a>
+              <a href="http://weibo.com/nullne" class="item">&nbsp;微博</a>
+          </div>
+        </div>
+        <div class="seven wide column">
+          <h4 class="ui inverted header">Footer Header</h4>
+          <p>Extra space for a call to action inside the footer that could help re-engage users.</p>
+        </div>
+      </div>
+    </div>
+      <div class="ui inverted section divider"></div>
+      <div class="ui centered align grid">
+          <p class="copyleft">&copy; nullne 2013-2016</p>
+      </div>
+  </div>
+</div>
+
 </body>
+
 </html>

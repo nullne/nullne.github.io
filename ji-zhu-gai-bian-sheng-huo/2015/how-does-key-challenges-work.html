@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>NULLNE</title>
+  <!-- Standard Meta -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="author" content="nullne">
+
+  <!-- Site Properties -->
+  <link rel="icon" href="/theme/img/favicon.png">
+  <link rel="stylesheet" type="text/css" href="/theme/semantic.min.css">
+  <link rel="stylesheet" type="text/css" href="/theme/main.css">
+<link rel="stylesheet" type="text/css" href="/theme/pygment.css">
+
+<style type="text/css">
+.masthead.segment.bg:after {
+    background-image: url('/background/技术改变生活.jpg');
+}
+</style>
+
+
+  <script src="/theme/jquery-2.1.4.min.js"></script>
+  <script src="/theme/semantic.min.js"></script>
+<script>
+$(document)
+    .ready(function() {
+        $('.card .dimmer')
+            .dimmer({
+                on: 'hover'
+            })
+        ;
+        $('.ui.sticky')
+            .sticky({
+                context: '#allude',
+                offset: 63,
+            })
+        ;
+    });
+</script>
+  <script>
+  $(document)
+    .ready(function() {
+        $('div.search').keypress(function(e) {
+            if(e.which == 13) {
+                var q = $(this).find('input').val()
+                if (q.length !== 0) {
+                    window.location.href = "/search.html?q=" + q;
+                }
+            }
+        });
+        // fix menu when passed
+        $('.masthead')
+            .visibility({
+                once: false,
+                onBottomPassed: function() {
+                    $('.fixed.menu').transition('fade in');
+                },
+                onBottomPassedReverse: function() {
+                    $('.fixed.menu').transition('fade out');
+                }
+            })
+        ;
+    })
+  ;
+  </script>
+  <!-- Feeds -->
+  <link href="/all-atom.xml" type="application/atom+xml" rel="alternate" title="NULLNE Atom Feed" />
+
+
+
+</head>
+<body>
+
+<!-- Following Menu -->
+<div class="ui top fixed hidden menu">
+  <div class="ui container">
+      <a href="/" class="header item">
+          Home
+      </a>
+
+      <!-- pages -->
+      <a class="item " href="/category/suo-sui.html">琐碎</a>
+      <a class="item  active" href="/category/ji-zhu-gai-bian-sheng-huo.html">技术改变生活</a>
+      <a class="item " href="/category/dear-diary.html">Dear Diary</a>
+
+      <a class="item" href="/about.html">About</a>
+    <div class="right item">
+        <div class="ui small search">
+            <div class="ui icon input">
+                <input class="prompt" type="text" placeholder="Search...">
+                <i class="search icon"></i>
+            </div>
+        </div>
+    </div>
+  </div>
+</div>
+
+<!-- Page Contents -->
+<div class="pusher">
+  <div class="ui inverted vertical masthead center aligned segment bg" id="bg">
+
+    <div class="ui container">
+      <div class="ui large secondary inverted menu">
+          <!-- 
+         <a class="toc item">
+           <i class="sidebar icon"></i>
+         </a>
+         -->
+         <a href="/" class="item">
+             Home
+         </a>
+
+        <!-- pages -->
+        <a class="item " href="/category/suo-sui.html">琐碎</a>
+        <a class="item  active" href="/category/ji-zhu-gai-bian-sheng-huo.html">技术改变生活</a>
+        <a class="item " href="/category/dear-diary.html">Dear Diary</a>
+
+        <a class="item" href="/about.html">About</a>
+        <div class="right item">
+            <div class="ui small search">
+                <div class="ui icon input">
+                    <input class="prompt" type="text" placeholder="Search...">
+                    <i class="search icon"></i>
+                </div>
+            </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ui text container">
+<h1 class="ui inverted header">
+    SSH学习笔记之--Key Challenge 如何工作
+</h1>
+        <h2>Do whatever you want when you want to.</h2>
+    </div>
+
+  </div>
+
+  <div class="ui hidden divider"></div>
+
+<div class="ui basic segment" id="allude" style="min-height:500px">
+  <div class="right ui rail" style="left: 78%;margin-top: 15px;min-height: 380px;padding-left: 0px;margin-left: 0px;width: 272px !important;z-index: 1;">
+      <div class="ui sticky" style="">
+          <div class="ui card">
+              <div class="ui slide right reveal image">
+                  <div class="visible content">
+                      <img class="ui fluid image" src="/theme/img/tom.jpg">
+                  </div>
+                  <div class="hidden content">
+                      <img class="ui fluid image" src="/theme/img/alipay.png">
+                  </div>
+              </div>
+
+              <div class="content">
+                  <a href="/about.html" class="header">nullne</a>
+                  <div class="meta">
+                      <span class="date">Aug 27, 2015</span>
+                  </div>
+              </div>
+              <div class="extra content">
+ 
+                  Tags:&nbsp;
+                  <a href="/tag/ssh.html" class="">SSH</a>,&nbsp;
+                  <a href="/tag/key-challenge.html" class="">Key Challenge</a>,&nbsp;
+ 
+              </div>
+          </div>
+      </div>
+  </div>
+  <div class="ui text container"><h4>Key Challenge 如何工作</h4>
+<p>agent非常聪明的一点就是他可以不用将private key暴露给任何人就可以确认一个人的身份（确切的说是拥有私钥的人）。  </p>
+<p>当用户ssh登陆一台远端服务器的时候，发送包含username和key的请求，其中的username帮助服务器确定其公钥的位置--一般在<code>$HOME/.ssh/authorized_keys</code>  </p>
+<p>服务器端生成一个challenge，其唯一可以被拥有私钥的设备答复。服务器产生并保存一个大的随机数，然后以用户的公钥进行加密，将生成的二进制数据发送给请求的用户。对于没有私钥的用户这些数据没有任何意义。  </p>
+<p>当agent接受到challenge, 它用私钥进行解密，获得远端服务器生成的原始随机数。agetn把获得的随机数，附加SSH session ID(该值每一个连接都不一样)，进行md5加密，作为key response返回给服务器。  </p>
+<p>服务器计算相同的md5（根据随机数和SSH session ID），与返回的key response进行对比，如果匹配则认证成功。如果不对的话，agent里面的下一个私钥将被用来进行相同的尝试，直到成功或者因为所有的私钥尝试完而失败。  </p>
+<p>很明显，原始的随机数在client/agent交互的时候并不会被暴露，这也是基于安全性考虑以防止在client/server信息交互的过程中随机数被获取。</p>
+<p><img alt="alt" src="http://www.unixwiz.net/images/ssh-key-challenge.gif" title="Title" />
+<img alt="alt" src="http://www.unixwiz.net/images/ssh-key-response.gif" /></p></div>
+</div>
+<div class="ui hidden divider"></div>
+
+
+
+<h4 class="ui horizontal divider header">
+    <i class="comment icon"></i>
+    留下你的评论
+</h4>
+
+<!-- google plus comment -->
+<div class="ui centered grid" >
+    <div id="comments" class="column"></div>
+    <script src="https://apis.google.com/js/plusone.js"></script>
+    <script>
+gapi.comments.render('comments', {
+    href: window.location,
+    width: '624',
+    first_party_property: 'BLOGGER',
+    view_type: 'FILTERED_POSTMOD'
+});
+    </script>
+
+    <!--
+        <div id="commentscounter"></div>
+        <script>
+gapi.commentcount.render('commentscounter', {
+    href: window.location
+});
+        </script>
+        -->
+</div>
+
+  <div class="ui hidden divider"></div>
+
+  <div class="ui inverted vertical footer segment">
+    <div class="ui container">
+      <div class="ui stackable inverted divided equal height stackable grid">
+        <div class="three wide column">
+          <h4 class="ui inverted header">Blogroll</h4>
+          <div class="ui inverted link list">
+              <a href="http://zonca.github.io/" class="item">&nbsp;Zonca</a>
+              <a href="http://moparx.com/" class="item">&nbsp;Moparx</a>
+              <a href="http://blog.friparia.com/" class="item">&nbsp;Friparia</a>
+          </div>
+        </div>
+        <div class="three wide column">
+          <h4 class="ui inverted header">Social</h4>
+          <div class="ui inverted link list">
+              <a href="https://github.com/nullne" class="item">&nbsp;Github</a>
+              <a href="https://www.linkedin.com/pub/le-yu/89/980/1a5" class="item">&nbsp;LinkedIn</a>
+              <a href="http://www.douban.com/people/nullnes/" class="item">&nbsp;豆瓣</a>
+              <a href="http://weibo.com/nullne" class="item">&nbsp;微博</a>
+          </div>
+        </div>
+        <div class="seven wide column">
+          <h4 class="ui inverted header">Footer Header</h4>
+          <p>Extra space for a call to action inside the footer that could help re-engage users.</p>
+        </div>
+      </div>
+    </div>
+      <div class="ui inverted section divider"></div>
+      <div class="ui centered align grid">
+          <p class="copyleft">&copy; nullne 2013-2016</p>
+      </div>
+  </div>
+</div>
+
+</body>
+
+</html>

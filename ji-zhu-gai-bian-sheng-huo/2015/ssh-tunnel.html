@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>NULLNE</title>
+  <!-- Standard Meta -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="author" content="nullne">
+
+  <!-- Site Properties -->
+  <link rel="icon" href="/theme/img/favicon.png">
+  <link rel="stylesheet" type="text/css" href="/theme/semantic.min.css">
+  <link rel="stylesheet" type="text/css" href="/theme/main.css">
+<link rel="stylesheet" type="text/css" href="/theme/pygment.css">
+
+<style type="text/css">
+.masthead.segment.bg:after {
+    background-image: url('/background/技术改变生活.jpg');
+}
+</style>
+
+
+  <script src="/theme/jquery-2.1.4.min.js"></script>
+  <script src="/theme/semantic.min.js"></script>
+<script>
+$(document)
+    .ready(function() {
+        $('.card .dimmer')
+            .dimmer({
+                on: 'hover'
+            })
+        ;
+        $('.ui.sticky')
+            .sticky({
+                context: '#allude',
+                offset: 63,
+            })
+        ;
+    });
+</script>
+  <script>
+  $(document)
+    .ready(function() {
+        $('div.search').keypress(function(e) {
+            if(e.which == 13) {
+                var q = $(this).find('input').val()
+                if (q.length !== 0) {
+                    window.location.href = "/search.html?q=" + q;
+                }
+            }
+        });
+        // fix menu when passed
+        $('.masthead')
+            .visibility({
+                once: false,
+                onBottomPassed: function() {
+                    $('.fixed.menu').transition('fade in');
+                },
+                onBottomPassedReverse: function() {
+                    $('.fixed.menu').transition('fade out');
+                }
+            })
+        ;
+    })
+  ;
+  </script>
+  <!-- Feeds -->
+  <link href="/all-atom.xml" type="application/atom+xml" rel="alternate" title="NULLNE Atom Feed" />
+
+
+
+</head>
+<body>
+
+<!-- Following Menu -->
+<div class="ui top fixed hidden menu">
+  <div class="ui container">
+      <a href="/" class="header item">
+          Home
+      </a>
+
+      <!-- pages -->
+      <a class="item " href="/category/suo-sui.html">琐碎</a>
+      <a class="item  active" href="/category/ji-zhu-gai-bian-sheng-huo.html">技术改变生活</a>
+      <a class="item " href="/category/dear-diary.html">Dear Diary</a>
+
+      <a class="item" href="/about.html">About</a>
+    <div class="right item">
+        <div class="ui small search">
+            <div class="ui icon input">
+                <input class="prompt" type="text" placeholder="Search...">
+                <i class="search icon"></i>
+            </div>
+        </div>
+    </div>
+  </div>
+</div>
+
+<!-- Page Contents -->
+<div class="pusher">
+  <div class="ui inverted vertical masthead center aligned segment bg" id="bg">
+
+    <div class="ui container">
+      <div class="ui large secondary inverted menu">
+          <!-- 
+         <a class="toc item">
+           <i class="sidebar icon"></i>
+         </a>
+         -->
+         <a href="/" class="item">
+             Home
+         </a>
+
+        <!-- pages -->
+        <a class="item " href="/category/suo-sui.html">琐碎</a>
+        <a class="item  active" href="/category/ji-zhu-gai-bian-sheng-huo.html">技术改变生活</a>
+        <a class="item " href="/category/dear-diary.html">Dear Diary</a>
+
+        <a class="item" href="/about.html">About</a>
+        <div class="right item">
+            <div class="ui small search">
+                <div class="ui icon input">
+                    <input class="prompt" type="text" placeholder="Search...">
+                    <i class="search icon"></i>
+                </div>
+            </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ui text container">
+<h1 class="ui inverted header">
+    SSH学习笔记之--SSH Tunnel
+</h1>
+        <h2>Do whatever you want when you want to.</h2>
+    </div>
+
+  </div>
+
+  <div class="ui hidden divider"></div>
+
+<div class="ui basic segment" id="allude" style="min-height:500px">
+  <div class="right ui rail" style="left: 78%;margin-top: 15px;min-height: 380px;padding-left: 0px;margin-left: 0px;width: 272px !important;z-index: 1;">
+      <div class="ui sticky" style="">
+          <div class="ui card">
+              <div class="ui slide right reveal image">
+                  <div class="visible content">
+                      <img class="ui fluid image" src="/theme/img/tom.jpg">
+                  </div>
+                  <div class="hidden content">
+                      <img class="ui fluid image" src="/theme/img/alipay.png">
+                  </div>
+              </div>
+
+              <div class="content">
+                  <a href="/about.html" class="header">nullne</a>
+                  <div class="meta">
+                      <span class="date">Aug 27, 2015</span>
+                  </div>
+              </div>
+              <div class="extra content">
+ 
+                  Tags:&nbsp;
+                  <a href="/tag/ssh.html" class="">SSH</a>,&nbsp;
+                  <a href="/tag/tunnel.html" class="">tunnel</a>,&nbsp;
+ 
+              </div>
+          </div>
+      </div>
+  </div>
+  <div class="ui text container"><h3>SSH隧道</h3>
+<p>本文前半部分摘录自 <a href="http://blog.trackets.com/2014/05/17/ssh-tunnel-local-and-remote-port-forwarding-explained-with-examples.html">SSH Tunnel - Local and Remote Port Forwarding Explained With Examples</a>, 后面是自己在亲自实践的过程中遇到的问题。  </p>
+<p>There are two ways to create an SSH tunnel, local and remote port forwarding (there’s also dynamic forwarding, but we won’t cover that here). The best way to understand these is by an example, let’s start with local port forwarding.  </p>
+<h4>Local port forwarding</h4>
+<p>Imagine you’re on a private network which doesn’t allow connections to a specific server. Let’s say you’re at work and imgur.com is being blocked. To get around this we can create a tunnel through a server which isn’t on our network and thus can access Imgur.</p>
+<div class="highlight"><pre><span></span>$ ssh -L 9000:imgur.com:80 user@example.com
+</pre></div>
+
+
+<p>The key here is -L which says we’re doing local port forwarding. Then it says we’re forwarding our local port 9000 to imgur.com:80, which is the default port for HTTP. Now open your browser and go to http://localhost:9000.  </p>
+<p>The awesome thing about SSH tunnels is that they are encrypted. Nobody is going to see what sites you’re visiting, they’ll only see an SSH connection to your server.</p>
+<h4>Connecting to a database behind a firewall</h4>
+<p>Another good example is if you need to access a port on your server which can only be accessed from localhost and not remotely.</p>
+<p>An example here is when you need to connect to a database console, which only allows local connection for security reasons. Let’s say you’re running PostgreSQL on your server, which by default listens on the port 5432.</p>
+<div class="highlight"><pre><span></span>$ ssh -L 9000:localhost:5432 user@example.com
+</pre></div>
+
+
+<p>The part that changed here is the localhost:5432, which says to forward connections from your local port 9000 to localhost:5432 on your server. Now we can simply connect to our database.</p>
+<div class="highlight"><pre><span></span>$ psql -h localhost -p 9000
+</pre></div>
+
+
+<p>Now let’s stop here for a little bit an explain what is actually going on. In the first example the 9000:imgur.com:80 is actually saying forward my local port 9000 to imgur.com at port 80. You can imagine SSH on your server actually making a connection (a tunnel) between those two ports, one on your local machine, and one on the target destination.</p>
+<p>If we however say something like 9000:localhost:5432, it means localhost from the server’s perspective, not localhost on your machine. This means forward my local port 9000 to port 5432 on the server, because when you’re on the server, localhost means the server itself.</p>
+<p>This might be a bit confusing, but it is important to understand what the syntax actually means here.</p>
+<h4>Remote port forwarding</h4>
+<p>Now comes the second part of this tutorial, which is remote port forwarding. This is again best to explain with an example.</p>
+<p>Say that you’re developing a Rails application on your local machine, and you’d like to show it to a friend. Unfortunately your ISP didn’t provide you with a public IP address, so it’s not possible to connect to your machine directly via the internet.</p>
+<p>Sometimes this can be solved by configuring NAT (Network Address Translation) on your router, but this doesn’t always work, and it requires you to change the configuration on your router, which isn’t always desirable. This solution also doesn’t work when you don’t have admin access on your network.</p>
+<p>To fix this problem you need to have another computer, which is publicly accessible and have SSH access to it. It can be any server on the internet, as long as you can connect to it. We’ll tell SSH to make a tunnel that opens up a new port on the server, and connects it to a local port on your machine.</p>
+<div class="highlight"><pre><span></span>$ ssh -R 9000:localhost:3000 user@example.com
+</pre></div>
+
+
+<p>The syntax here is very similar to local port forwarding, with a single change of -L for -R. But as with local port forwarding, the syntax remains the same.</p>
+<p>First you need to specify the port on which th remote server will listen, which in this case is 9000, and next follows localhost for your local machine, and the local port, which in this case is 3000.</p>
+<p>There is one more thing you need to do to enable this. SSH doesn’t by default allow remote hosts to forwarded ports. To enable this open /etc/ssh/sshd_config and add the following line somewhere in that config file.</p>
+<div class="highlight"><pre><span></span>GatewayPorts yes
+</pre></div>
+
+
+<p>Make sure you add it only once!</p>
+<div class="highlight"><pre><span></span>$ sudo vim /etc/ssh/sshd_config
+</pre></div>
+
+
+<p>And restart SSH</p>
+<div class="highlight"><pre><span></span>$ sudo service ssh restart
+</pre></div>
+
+
+<p>After this you should be able to connect to the server remotely, even from your local machine. The way this would work is that you would first create an SSH tunnel that forwards traffic from the server on port 9000 to your local machine on port 3000. This means that if you connect to the server on port 9000 from your local machine, you’ll actually make a request to your machine through the SSH tunnel.</p>
+<h4>A few closing tips</h4>
+<p>You might have noticed that every time we create a tunnel you also SSH into the server and get a shell. This isn’t usually necessary, as you’re just trying to create a tunnel. To avoid this we can run SSH with the -nNT flags, such as the following, which will cause SSH to not allocate a tty and only do the port forwarding.</p>
+<div class="highlight"><pre><span></span>$ ssh -nNT -L 9000:imgur.com:80 user@example.com
+</pre></div>
+
+
+<p>SSH has a huge number of features, so I’d recommend you to checkout the manual page at man ssh, which contains even more tips.</p>
+<p>There’s also an amazing talk called <a href="https://vimeo.com/54505525">The Black Magic of SSH / SSH Can Do That</a>?, which I really recommend you to watch.</p>
+<h4>实践问题反馈</h4>
+<p>实际操作过程中可能或多或少会碰到一些问题，下面这个问题估计很多人都会碰到。  </p>
+<p>配置好命令之后执行：  </p>
+<div class="highlight"><pre><span></span><span class="n">ssh</span> <span class="o">-</span><span class="n">L</span> <span class="mi">8888</span><span class="o">:</span><span class="n">imgur</span><span class="p">.</span><span class="nl">com</span><span class="p">:</span><span class="mi">80</span> <span class="n">name</span><span class="mf">@192.168.0.125</span>
+</pre></div>
+
+
+<p>浏览器端显示：<code>unknown domain:localhost</code></p>
+<p>WHY?</p>
+<p>答案在<a href="https://www.reddit.com/r/linuxquestions/comments/3b0s7v/ssh_tunnel_issues/">这儿</a>:</p>
+<blockquote>
+<p>You just happened to choose a website that doesn't like weird headers (i.e. localhost instead of imgur.com). Imgur's cdn doesn't like that. Your command will work with google.com and other websites.
+A couple solutions are here, with the easiest one being editing /etc/hosts.
+You can also use an ssh socks proxy, which requires just a bit more configuration in your browser, but makes all the websites just work.</p>
+</blockquote></div>
+</div>
+<div class="ui hidden divider"></div>
+
+
+
+<h4 class="ui horizontal divider header">
+    <i class="comment icon"></i>
+    留下你的评论
+</h4>
+
+<!-- google plus comment -->
+<div class="ui centered grid" >
+    <div id="comments" class="column"></div>
+    <script src="https://apis.google.com/js/plusone.js"></script>
+    <script>
+gapi.comments.render('comments', {
+    href: window.location,
+    width: '624',
+    first_party_property: 'BLOGGER',
+    view_type: 'FILTERED_POSTMOD'
+});
+    </script>
+
+    <!--
+        <div id="commentscounter"></div>
+        <script>
+gapi.commentcount.render('commentscounter', {
+    href: window.location
+});
+        </script>
+        -->
+</div>
+
+  <div class="ui hidden divider"></div>
+
+  <div class="ui inverted vertical footer segment">
+    <div class="ui container">
+      <div class="ui stackable inverted divided equal height stackable grid">
+        <div class="three wide column">
+          <h4 class="ui inverted header">Blogroll</h4>
+          <div class="ui inverted link list">
+              <a href="http://zonca.github.io/" class="item">&nbsp;Zonca</a>
+              <a href="http://moparx.com/" class="item">&nbsp;Moparx</a>
+              <a href="http://blog.friparia.com/" class="item">&nbsp;Friparia</a>
+          </div>
+        </div>
+        <div class="three wide column">
+          <h4 class="ui inverted header">Social</h4>
+          <div class="ui inverted link list">
+              <a href="https://github.com/nullne" class="item">&nbsp;Github</a>
+              <a href="https://www.linkedin.com/pub/le-yu/89/980/1a5" class="item">&nbsp;LinkedIn</a>
+              <a href="http://www.douban.com/people/nullnes/" class="item">&nbsp;豆瓣</a>
+              <a href="http://weibo.com/nullne" class="item">&nbsp;微博</a>
+          </div>
+        </div>
+        <div class="seven wide column">
+          <h4 class="ui inverted header">Footer Header</h4>
+          <p>Extra space for a call to action inside the footer that could help re-engage users.</p>
+        </div>
+      </div>
+    </div>
+      <div class="ui inverted section divider"></div>
+      <div class="ui centered align grid">
+          <p class="copyleft">&copy; nullne 2013-2016</p>
+      </div>
+  </div>
+</div>
+
+</body>
+
+</html>

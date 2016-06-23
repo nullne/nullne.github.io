@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>NULLNE</title>
+  <!-- Standard Meta -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="author" content="nullne">
+
+  <!-- Site Properties -->
+  <link rel="icon" href="/theme/img/favicon.png">
+  <link rel="stylesheet" type="text/css" href="/theme/semantic.min.css">
+  <link rel="stylesheet" type="text/css" href="/theme/main.css">
+<link rel="stylesheet" type="text/css" href="/theme/pygment.css">
+
+<style type="text/css">
+.masthead.segment.bg:after {
+    background-image: url('/background/技术改变生活.jpg');
+}
+</style>
+
+
+  <script src="/theme/jquery-2.1.4.min.js"></script>
+  <script src="/theme/semantic.min.js"></script>
+<script>
+$(document)
+    .ready(function() {
+        $('.card .dimmer')
+            .dimmer({
+                on: 'hover'
+            })
+        ;
+        $('.ui.sticky')
+            .sticky({
+                context: '#allude',
+                offset: 63,
+            })
+        ;
+    });
+</script>
+  <script>
+  $(document)
+    .ready(function() {
+        $('div.search').keypress(function(e) {
+            if(e.which == 13) {
+                var q = $(this).find('input').val()
+                if (q.length !== 0) {
+                    window.location.href = "/search.html?q=" + q;
+                }
+            }
+        });
+        // fix menu when passed
+        $('.masthead')
+            .visibility({
+                once: false,
+                onBottomPassed: function() {
+                    $('.fixed.menu').transition('fade in');
+                },
+                onBottomPassedReverse: function() {
+                    $('.fixed.menu').transition('fade out');
+                }
+            })
+        ;
+    })
+  ;
+  </script>
+  <!-- Feeds -->
+  <link href="/all-atom.xml" type="application/atom+xml" rel="alternate" title="NULLNE Atom Feed" />
+
+
+
+</head>
+<body>
+
+<!-- Following Menu -->
+<div class="ui top fixed hidden menu">
+  <div class="ui container">
+      <a href="/" class="header item">
+          Home
+      </a>
+
+      <!-- pages -->
+      <a class="item " href="/category/suo-sui.html">琐碎</a>
+      <a class="item  active" href="/category/ji-zhu-gai-bian-sheng-huo.html">技术改变生活</a>
+      <a class="item " href="/category/dear-diary.html">Dear Diary</a>
+
+      <a class="item" href="/about.html">About</a>
+    <div class="right item">
+        <div class="ui small search">
+            <div class="ui icon input">
+                <input class="prompt" type="text" placeholder="Search...">
+                <i class="search icon"></i>
+            </div>
+        </div>
+    </div>
+  </div>
+</div>
+
+<!-- Page Contents -->
+<div class="pusher">
+  <div class="ui inverted vertical masthead center aligned segment bg" id="bg">
+
+    <div class="ui container">
+      <div class="ui large secondary inverted menu">
+          <!-- 
+         <a class="toc item">
+           <i class="sidebar icon"></i>
+         </a>
+         -->
+         <a href="/" class="item">
+             Home
+         </a>
+
+        <!-- pages -->
+        <a class="item " href="/category/suo-sui.html">琐碎</a>
+        <a class="item  active" href="/category/ji-zhu-gai-bian-sheng-huo.html">技术改变生活</a>
+        <a class="item " href="/category/dear-diary.html">Dear Diary</a>
+
+        <a class="item" href="/about.html">About</a>
+        <div class="right item">
+            <div class="ui small search">
+                <div class="ui icon input">
+                    <input class="prompt" type="text" placeholder="Search...">
+                    <i class="search icon"></i>
+                </div>
+            </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ui text container">
+<h1 class="ui inverted header">
+    SSH学习笔记之--SSH 配置技巧
+</h1>
+        <h2>Do whatever you want when you want to.</h2>
+    </div>
+
+  </div>
+
+  <div class="ui hidden divider"></div>
+
+<div class="ui basic segment" id="allude" style="min-height:500px">
+  <div class="right ui rail" style="left: 78%;margin-top: 15px;min-height: 380px;padding-left: 0px;margin-left: 0px;width: 272px !important;z-index: 1;">
+      <div class="ui sticky" style="">
+          <div class="ui card">
+              <div class="ui slide right reveal image">
+                  <div class="visible content">
+                      <img class="ui fluid image" src="/theme/img/tom.jpg">
+                  </div>
+                  <div class="hidden content">
+                      <img class="ui fluid image" src="/theme/img/alipay.png">
+                  </div>
+              </div>
+
+              <div class="content">
+                  <a href="/about.html" class="header">nullne</a>
+                  <div class="meta">
+                      <span class="date">Aug 27, 2015</span>
+                  </div>
+              </div>
+              <div class="extra content">
+ 
+                  Tags:&nbsp;
+                  <a href="/tag/ssh.html" class="">SSH</a>,&nbsp;
+                  <a href="/tag/config.html" class="">config</a>,&nbsp;
+ 
+              </div>
+          </div>
+      </div>
+  </div>
+  <div class="ui text container"><h3>SSH配置技巧</h3>
+<h5>配置主机别名, 省略用户名</h5>
+<p>修改（创建如果不存在）~/.ssh/config,  增加下面条目(可添加多个)</p>
+<div class="highlight"><pre><span></span>Host cc
+HostName 192.168.1.1
+Port 22
+User root
+</pre></div>
+
+
+<p>之后就可以直接这样登录，如果配置了密钥登录的话就连密码也不需要输入了</p>
+<div class="highlight"><pre><span></span>ssh cc
+</pre></div>
+
+
+<h5>配置密钥登录</h5>
+<ol>
+<li>
+<p>生成私钥公钥对</p>
+<div class="highlight"><pre><span></span>$ ssh-keygen -t rsa                                                    <span class="c1">#生成RSA类型的密钥对  </span>
+Generating public/private rsa key pair.  
+Enter file in which to save the key <span class="o">(</span>/home/yule/.ssh/id_rsa<span class="o">)</span>:          <span class="c1">#输入密钥存放位置，直接回车为默认值  </span>
+Enter passphrase <span class="o">(</span>empty <span class="k">for</span> no passphrase<span class="o">)</span>:                            <span class="c1">#输入密钥密码，用来解锁密钥  </span>
+Enter same passphrase again:  
+Your identification has been saved in /home/yule/.ssh/id_rsa.  
+Your public key has been saved in /home/yule/.ssh/id_rsa.pub.  
+The key fingerprint is:  
+3c:13:20:5c:80:02:3d:e5:64:44:3e:69:2b:83:b9:d8 yule@client.cc.test  
+The key<span class="err">&#39;</span>s randomart image is:  
++--<span class="o">[</span> RSA 2048<span class="o">]</span>----+  
+<span class="p">|</span>o. *Ooo          <span class="p">|</span>  
+<span class="p">|</span>. +<span class="o">=</span>.o .         <span class="p">|</span>  
+<span class="p">|</span> . .*   .        <span class="p">|</span>  
+<span class="p">|</span> o . o . .       <span class="p">|</span>  
+<span class="p">|</span>o o .   S        <span class="p">|</span>  
+<span class="p">|</span>.o o     o       <span class="p">|</span>  
+<span class="p">|</span>o E              <span class="p">|</span>  
+<span class="p">|</span>                 <span class="p">|</span>  
+<span class="p">|</span>                 <span class="p">|</span>  
++-----------------+
+</pre></div>
+
+
+</li>
+<li>
+<p>将公钥拷贝到需要ssh登录的服务器</p>
+<p>如果当前机器有<code>ssh-copy-id</code>命令的话将会非常方便:  </p>
+<div class="highlight"><pre><span></span>ssh-copy-id <span class="o">[</span>identity_file<span class="o">]</span> <span class="o">[</span>user@<span class="o">]</span>machine
+</pre></div>
+
+
+<p>否则需要手动拷贝到目标机器上面，然后把内容添加到目标机器的<em>$HOME/.ssh/authorized_keys</em>文件内：  </p>
+<div class="highlight"><pre><span></span>scp ~/.ssh/id_rsa.pub <span class="o">[</span>usr@<span class="o">]</span>machine:/tmp
+ssh <span class="o">[</span>usr@<span class="o">]</span>machine
+cat /tmp/id_rsa.pub &gt;&gt; ~/.ssh/authorized_keys
+</pre></div>
+
+
+</li>
+<li>
+<p>修改相关文件权限</p>
+<p>ssh对于文件权限非常敏感，通常无法通过ssh密钥登录很有可能就是因为文件权限出错。注意下面的权限为目标机器的权限。<br />
+1. ~/.ssh 目录权限为700: <code>chmod 700 ~/.ssh</code><br />
+2. ~/.ssh/authorized_keys 文件权限为600: <code>chomod 600 ~/.ssh/authorized_keys</code>  </p>
+</li>
+</ol>
+<p>这样不出意外的话，此时就可以使用密钥（无需输入密码）登录远端服务器了。</p>
+<h4>使用Agent管理密钥</h4>
+<p>关于Agent的介绍，请参照系列文章<a href=""></a></p>
+<div class="highlight"><pre><span></span>eval `ssh-agent -s`             #启动ssh-agent
+ssh-add [-i file]               #添加默认位置的密钥，如果密钥被密码加密的话需要输入密码,可指定私钥位置
+ssh-add -D|-d                   #删除（全部）密钥
+</pre></div>
+
+
+<h4>配置Agent Forwarding</h4>
+<p>可以在你的ssh配置中改变下面条目，通常在/etc/ssh_config:</p>
+<div class="highlight"><pre><span></span>AllowAgentForwarding yes
+</pre></div>
+
+
+<p>也可以使用命令，推荐使用后者</p>
+<div class="highlight"><pre><span></span>ssh -A [user@]machine 
+</pre></div>
+
+
+<h4>建立长连接</h4>
+<p>可以在你的ssh配置中改变下面条目，通常在/etc/ssh_config.4h 代表连接保持4小时:</p>
+<div class="highlight"><pre><span></span>ControlPersist 4h
+</pre></div></div>
+</div>
+<div class="ui hidden divider"></div>
+
+
+
+<h4 class="ui horizontal divider header">
+    <i class="comment icon"></i>
+    留下你的评论
+</h4>
+
+<!-- google plus comment -->
+<div class="ui centered grid" >
+    <div id="comments" class="column"></div>
+    <script src="https://apis.google.com/js/plusone.js"></script>
+    <script>
+gapi.comments.render('comments', {
+    href: window.location,
+    width: '624',
+    first_party_property: 'BLOGGER',
+    view_type: 'FILTERED_POSTMOD'
+});
+    </script>
+
+    <!--
+        <div id="commentscounter"></div>
+        <script>
+gapi.commentcount.render('commentscounter', {
+    href: window.location
+});
+        </script>
+        -->
+</div>
+
+  <div class="ui hidden divider"></div>
+
+  <div class="ui inverted vertical footer segment">
+    <div class="ui container">
+      <div class="ui stackable inverted divided equal height stackable grid">
+        <div class="three wide column">
+          <h4 class="ui inverted header">Blogroll</h4>
+          <div class="ui inverted link list">
+              <a href="http://zonca.github.io/" class="item">&nbsp;Zonca</a>
+              <a href="http://moparx.com/" class="item">&nbsp;Moparx</a>
+              <a href="http://blog.friparia.com/" class="item">&nbsp;Friparia</a>
+          </div>
+        </div>
+        <div class="three wide column">
+          <h4 class="ui inverted header">Social</h4>
+          <div class="ui inverted link list">
+              <a href="https://github.com/nullne" class="item">&nbsp;Github</a>
+              <a href="https://www.linkedin.com/pub/le-yu/89/980/1a5" class="item">&nbsp;LinkedIn</a>
+              <a href="http://www.douban.com/people/nullnes/" class="item">&nbsp;豆瓣</a>
+              <a href="http://weibo.com/nullne" class="item">&nbsp;微博</a>
+          </div>
+        </div>
+        <div class="seven wide column">
+          <h4 class="ui inverted header">Footer Header</h4>
+          <p>Extra space for a call to action inside the footer that could help re-engage users.</p>
+        </div>
+      </div>
+    </div>
+      <div class="ui inverted section divider"></div>
+      <div class="ui centered align grid">
+          <p class="copyleft">&copy; nullne 2013-2016</p>
+      </div>
+  </div>
+</div>
+
+</body>
+
+</html>
