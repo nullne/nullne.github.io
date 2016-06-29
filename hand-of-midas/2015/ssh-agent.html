@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>NULLNE</title>
+  <!-- Standard Meta -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="author" content="nullne">
+
+  <!-- Site Properties -->
+  <link rel="icon" href="/theme/img/favicon.png">
+  <link rel="stylesheet" type="text/css" href="/theme/semantic.min.css">
+  <link rel="stylesheet" type="text/css" href="/theme/main.css">
+<link rel="stylesheet" type="text/css" href="/theme/pygment.css">
+
+<style type="text/css">
+.masthead.segment.bg:after {
+    background-image: url('/background/Hand of Midas.jpg');
+}
+</style>
+
+
+  <script src="/theme/jquery-2.1.4.min.js"></script>
+  <script src="/theme/semantic.min.js"></script>
+<script>
+$(document)
+    .ready(function() {
+        $('.card .dimmer')
+            .dimmer({
+                on: 'hover'
+            })
+        ;
+        $('.ui.sticky')
+            .sticky({
+                context: '#allude',
+                offset: 63,
+            })
+        ;
+    });
+</script>
+  <script>
+  $(document)
+    .ready(function() {
+        $('div.search').keypress(function(e) {
+            if(e.which == 13) {
+                var q = $(this).find('input').val()
+                if (q.length !== 0) {
+                    window.location.href = "/search.html?q=" + q;
+                }
+            }
+        });
+        // fix menu when passed
+        $('.masthead')
+            .visibility({
+                once: false,
+                onBottomPassed: function() {
+                    $('.fixed.menu').transition('fade in');
+                },
+                onBottomPassedReverse: function() {
+                    $('.fixed.menu').transition('fade out');
+                }
+            })
+        ;
+    })
+  ;
+  </script>
+  <!-- Feeds -->
+  <link href="/all-atom.xml" type="application/atom+xml" rel="alternate" title="NULLNE Atom Feed" />
+
+
+
+</head>
+<body>
+
+<!-- Following Menu -->
+<div class="ui top fixed hidden menu">
+  <div class="ui container">
+      <a href="/" class="header item">
+          Home
+      </a>
+
+      <!-- pages -->
+      <a class="item " href="/category/suo-sui.html">琐碎</a>
+      <a class="item  active" href="/category/hand-of-midas.html">Hand of Midas</a>
+      <a class="item " href="/category/dear-diary.html">Dear Diary</a>
+
+      <a class="item" href="/about.html">About</a>
+    <div class="right item">
+        <div class="ui small search">
+            <div class="ui icon input">
+                <input class="prompt" type="text" placeholder="Find something...">
+                <i class="search icon"></i>
+            </div>
+        </div>
+    </div>
+  </div>
+</div>
+
+<!-- Page Contents -->
+<div class="pusher">
+  <div class="ui inverted vertical masthead center aligned segment bg" id="bg">
+
+    <div class="ui container">
+      <div class="ui large secondary inverted menu">
+          <!-- 
+         <a class="toc item">
+           <i class="sidebar icon"></i>
+         </a>
+         -->
+         <a href="/" class="item">
+             Home
+         </a>
+
+        <!-- pages -->
+        <a class="item " href="/category/suo-sui.html">琐碎</a>
+        <a class="item  active" href="/category/hand-of-midas.html">Hand of Midas</a>
+        <a class="item " href="/category/dear-diary.html">Dear Diary</a>
+
+        <a class="item" href="/about.html">About</a>
+        <div class="right item">
+            <div class="ui small search">
+                <div class="ui icon input">
+                    <input class="prompt" type="text" placeholder="Find something...">
+                    <i class="search icon"></i>
+                </div>
+            </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ui text container">
+<h1 class="ui inverted header">
+    SSH学习笔记之--SSH-Agent
+</h1>
+    </div>
+
+  </div>
+
+  <div class="ui hidden divider"></div>
+
+<div class="ui basic segment" id="allude" style="min-height:500px">
+  <div class="right ui rail" style="left: 78%;margin-top: 15px;min-height: 380px;padding-left: 0px;margin-left: 0px;width: 272px !important;z-index: 1;">
+      <div class="ui sticky" style="">
+          <div class="ui card">
+              <div class="ui slide right reveal image">
+                  <div class="visible content">
+                      <img class="ui fluid image" src="/theme/img/big-avatar.jpg">
+                  </div>
+                  <div class="hidden content">
+                      <img class="ui fluid image" src="/theme/img/alipay.png">
+                  </div>
+              </div>
+
+              <div class="content">
+                  <a href="/about.html" class="header">nullne</a>
+                  <div class="meta">
+                      <span class="date">Aug 27, 2015</span>
+                  </div>
+              </div>
+              <div class="extra content">
+ 
+                  Tags:&nbsp;
+                  <a href="/tag/ssh.html" class="">SSH</a>,&nbsp;
+                  <a href="/tag/agent.html" class="">Agent</a>,&nbsp;
+ 
+              </div>
+          </div>
+      </div>
+  </div>
+  <div class="ui text container"><h3>SSH Agent</h3>
+<h4>SSH Agent简介</h4>
+<p>ssh-agent是专为既令人愉快又安全的处理RSA和DSA密钥而设计的特殊程序，它包括在OpenSSH分发内。不同于ssh，ssh-agent是个长时间持续运行的守护进程（daemon），设计它的唯一目的就是对解密的专用密钥进行高速缓存。</p>
+<p>ssh包含的内建支持允许它同ssh-agent通信，允许ssh不必每次新连接时都提示您要密码才能获取解密的专用密钥。对于ssh-agent，您只要使用ssh-add把专用密钥添加到ssh-agent的高速缓存中。这是个一次性过程；用过ssh-add之后，ssh将从ssh-agent获取您的专用密钥，而不会提示要密码短语来烦您了。</p>
+<h4>如何使用</h4>
+<p>启动ssh-agent：</p>
+<div class="highlight"><pre><span></span><span class="nb">eval</span> <span class="sb">`</span>ssh-agent -s<span class="sb">`</span>
+</pre></div>
+
+
+<p>很奇怪，为什么不直接执行<code>ssh-agent -s</code>，我们来看一下直接运行的结果:</p>
+<div class="highlight"><pre><span></span>$ ssh-agent
+<span class="nv">SSH_AUTH_SOCK</span><span class="o">=</span>/tmp/ssh-xDWYq20983/agent.20983<span class="p">;</span> <span class="nb">export</span> SSH_AUTH_SOCK<span class="p">;</span>
+<span class="nv">SSH_AGENT_PID</span><span class="o">=</span>20984<span class="p">;</span> <span class="nb">export</span> SSH_AGENT_PID<span class="p">;</span>
+<span class="nb">echo</span> Agent pid 20984<span class="p">;</span>
+</pre></div>
+
+
+<p>正如您所看到的，事实上ssh-agent的输出是一系列bash命令；如果这些命令被执行，则将设置两个环境变量：SSH_AUTH_SOCK和SSH_AGENT_PID。内含的export命令使这些环境变量对之后运行的任何附加命令都可用。唔，如果shell真对这些行进行计算，这一切才会发生，但是此时它们只是被打印到标准输出（stdout）而已。要使之确定，我们需要使用之前的方式进行调用。</p>
+<p>然后就可以将私钥导入</p>
+<div class="highlight"><pre><span></span>ssh-add <span class="o">[</span>file<span class="o">]</span>    <span class="c1">#不指定文件的话默认从~/.ssh/id_rsa读取</span>
+</pre></div>
+
+
+<h4>不足之处</h4>
+<p>首先，<code>eval`ssh-agent`</code>每次执行都会启动一个新的ssh-agent副本；这不仅仅是有一丁点儿浪费，而且还意味着您得使用ssh-add向每个新的ssh-agent副本添加专用密钥。如果您只想打开系统上的一个终端或控制台，这没什么大不了的，但是我们中大多数人打开相当多的终端，每次新打开控制台都需要键入密码短语。从技术角度讲，既然一个ssh-agent进程的确应当足够了，要是我们还需这样做，这毫无道理。</p>
+<p>有关ssh-agent的缺省设置的另外一个问题是它同cron作业不兼容。由于cron作业是cron进程启动的，这些作业无法从它们的环境中继承SSH_AUTH_SOCK变量，因而也无从知道ssh-agent进程正在运行以及如何同它联系。事实证明这个问题也是可以修补的。
+我们在 /etc/profile.d下面新建一个配置文件ssh-agentsh：</p>
+<div class="highlight"><pre><span></span><span class="ch">#!/bin/sh</span>
+
+<span class="k">if</span> <span class="o">[</span> -f ~/.agent.env <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
+. ~/.agent.env &gt;/dev/null
+<span class="k">if</span> ! <span class="nb">kill</span> -0 <span class="nv">$SSH_AGENT_PID</span> &gt;/dev/null 2&gt;<span class="p">&amp;</span>1<span class="p">;</span> <span class="k">then</span>
+<span class="nb">echo</span> <span class="s2">&quot;Stale agent file found. Spawning new agent...&quot;</span>
+<span class="nb">eval</span> <span class="sb">`</span>ssh-agent <span class="p">|</span>tee ~/.agent.env<span class="sb">`</span>
+ssh-add
+<span class="k">fi</span>
+<span class="k">else</span>
+<span class="nb">echo</span> <span class="s2">&quot;Starting ssh-agent...&quot;</span>
+<span class="nb">eval</span> <span class="sb">`</span>ssh-agent <span class="p">|</span>tee ~/.agent.env<span class="sb">`</span>
+ssh-add
+<span class="k">fi</span>
+</pre></div>
+
+
+<h4>安全问题</h4>
+<p>ssh-agent本身不会导致安全性问题，但是因为其将私钥存放在内存中，如果目标机器的admin用户不可信赖，很有可能导致用户密钥信息泄露。</p>
+<h4>其他</h4>
+<p>更多用法参见ssh-agent man pages</p></div>
+</div>
+<div class="ui hidden divider"></div>
+
+
+
+<h4 class="ui horizontal divider header">
+    <i class="comment icon"></i>
+    留下你的评论
+</h4>
+
+<!-- google plus comment -->
+<div class="ui centered grid" >
+    <div id="comments" class="column"></div>
+    <script src="https://apis.google.com/js/plusone.js"></script>
+    <script>
+gapi.comments.render('comments', {
+    href: window.location,
+    width: '624',
+    first_party_property: 'BLOGGER',
+    view_type: 'FILTERED_POSTMOD'
+});
+    </script>
+
+    <!--
+        <div id="commentscounter"></div>
+        <script>
+gapi.commentcount.render('commentscounter', {
+    href: window.location
+});
+        </script>
+        -->
+</div>
+
+  <div class="ui hidden divider"></div>
+
+  <div class="ui inverted vertical footer segment">
+    <div class="ui container">
+      <div class="ui stackable inverted divided equal height stackable grid">
+        <div class="three wide column">
+          <h4 class="ui inverted header">Blogroll</h4>
+          <div class="ui inverted link list">
+              <a href="http://zonca.github.io/" class="item">&nbsp;Zonca</a>
+              <a href="http://moparx.com/" class="item">&nbsp;Moparx</a>
+              <a href="http://blog.friparia.com/" class="item">&nbsp;Friparia</a>
+          </div>
+        </div>
+        <div class="three wide column">
+          <h4 class="ui inverted header">Social</h4>
+          <div class="ui inverted link list">
+              <a href="https://github.com/nullne" class="item">&nbsp;Github</a>
+              <a href="https://www.linkedin.com/pub/le-yu/89/980/1a5" class="item">&nbsp;LinkedIn</a>
+              <a href="http://www.douban.com/people/nullnes/" class="item">&nbsp;豆瓣</a>
+              <a href="http://weibo.com/nullne" class="item">&nbsp;微博</a>
+          </div>
+        </div>
+        <div class="seven wide column">
+          <h4 class="ui inverted header">从前慢</h4>
+          <p>
+          从前的日色变得慢<br>
+          车，马，邮件都慢<br>
+          一生只够爱一个人</p>
+
+          <p>从前的锁也好看<br>
+          钥匙精美有样子<br>
+          你锁了 人家就懂了</p>
+        </div>
+      </div>
+    </div>
+      <div class="ui inverted section divider"></div>
+      <div class="ui centered align grid">
+          <p class="copyleft">&copy; nullne 2013-2016</p>
+      </div>
+  </div>
+</div>
+
+</body>
+
+</html>

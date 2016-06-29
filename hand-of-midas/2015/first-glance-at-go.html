@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>NULLNE</title>
+  <!-- Standard Meta -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="author" content="nullne">
+
+  <!-- Site Properties -->
+  <link rel="icon" href="/theme/img/favicon.png">
+  <link rel="stylesheet" type="text/css" href="/theme/semantic.min.css">
+  <link rel="stylesheet" type="text/css" href="/theme/main.css">
+<link rel="stylesheet" type="text/css" href="/theme/pygment.css">
+
+<style type="text/css">
+.masthead.segment.bg:after {
+    background-image: url('/background/Hand of Midas.jpg');
+}
+</style>
+
+
+  <script src="/theme/jquery-2.1.4.min.js"></script>
+  <script src="/theme/semantic.min.js"></script>
+<script>
+$(document)
+    .ready(function() {
+        $('.card .dimmer')
+            .dimmer({
+                on: 'hover'
+            })
+        ;
+        $('.ui.sticky')
+            .sticky({
+                context: '#allude',
+                offset: 63,
+            })
+        ;
+    });
+</script>
+  <script>
+  $(document)
+    .ready(function() {
+        $('div.search').keypress(function(e) {
+            if(e.which == 13) {
+                var q = $(this).find('input').val()
+                if (q.length !== 0) {
+                    window.location.href = "/search.html?q=" + q;
+                }
+            }
+        });
+        // fix menu when passed
+        $('.masthead')
+            .visibility({
+                once: false,
+                onBottomPassed: function() {
+                    $('.fixed.menu').transition('fade in');
+                },
+                onBottomPassedReverse: function() {
+                    $('.fixed.menu').transition('fade out');
+                }
+            })
+        ;
+    })
+  ;
+  </script>
+  <!-- Feeds -->
+  <link href="/all-atom.xml" type="application/atom+xml" rel="alternate" title="NULLNE Atom Feed" />
+
+
+
+</head>
+<body>
+
+<!-- Following Menu -->
+<div class="ui top fixed hidden menu">
+  <div class="ui container">
+      <a href="/" class="header item">
+          Home
+      </a>
+
+      <!-- pages -->
+      <a class="item " href="/category/suo-sui.html">琐碎</a>
+      <a class="item  active" href="/category/hand-of-midas.html">Hand of Midas</a>
+      <a class="item " href="/category/dear-diary.html">Dear Diary</a>
+
+      <a class="item" href="/about.html">About</a>
+    <div class="right item">
+        <div class="ui small search">
+            <div class="ui icon input">
+                <input class="prompt" type="text" placeholder="Find something...">
+                <i class="search icon"></i>
+            </div>
+        </div>
+    </div>
+  </div>
+</div>
+
+<!-- Page Contents -->
+<div class="pusher">
+  <div class="ui inverted vertical masthead center aligned segment bg" id="bg">
+
+    <div class="ui container">
+      <div class="ui large secondary inverted menu">
+          <!-- 
+         <a class="toc item">
+           <i class="sidebar icon"></i>
+         </a>
+         -->
+         <a href="/" class="item">
+             Home
+         </a>
+
+        <!-- pages -->
+        <a class="item " href="/category/suo-sui.html">琐碎</a>
+        <a class="item  active" href="/category/hand-of-midas.html">Hand of Midas</a>
+        <a class="item " href="/category/dear-diary.html">Dear Diary</a>
+
+        <a class="item" href="/about.html">About</a>
+        <div class="right item">
+            <div class="ui small search">
+                <div class="ui icon input">
+                    <input class="prompt" type="text" placeholder="Find something...">
+                    <i class="search icon"></i>
+                </div>
+            </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ui text container">
+<h1 class="ui inverted header">
+    Golang 初学
+</h1>
+    </div>
+
+  </div>
+
+  <div class="ui hidden divider"></div>
+
+<div class="ui basic segment" id="allude" style="min-height:500px">
+  <div class="right ui rail" style="left: 78%;margin-top: 15px;min-height: 380px;padding-left: 0px;margin-left: 0px;width: 272px !important;z-index: 1;">
+      <div class="ui sticky" style="">
+          <div class="ui card">
+              <div class="ui slide right reveal image">
+                  <div class="visible content">
+                      <img class="ui fluid image" src="/theme/img/big-avatar.jpg">
+                  </div>
+                  <div class="hidden content">
+                      <img class="ui fluid image" src="/theme/img/alipay.png">
+                  </div>
+              </div>
+
+              <div class="content">
+                  <a href="/about.html" class="header">nullne</a>
+                  <div class="meta">
+                      <span class="date">Jul 31, 2015</span>
+                  </div>
+              </div>
+              <div class="extra content">
+ 
+                  Tags:&nbsp;
+                  <a href="/tag/programming.html" class="">Programming</a>,&nbsp;
+                  <a href="/tag/tutorial.html" class="">Tutorial</a>,&nbsp;
+ 
+              </div>
+          </div>
+      </div>
+  </div>
+  <div class="ui text container"><h2>Go</h2>
+<h3>语法差异</h3>
+<ul>
+<li>
+<p>Variables and Constant  </p>
+<div class="highlight"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kd">var</span> <span class="nx">s</span> <span class="kt">string</span> <span class="p">=</span> <span class="s">&quot;initial&quot;</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">a</span><span class="p">,</span> <span class="nx">b</span> <span class="kt">int</span> <span class="p">=</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span>
+    <span class="kd">const</span> <span class="nx">n</span> <span class="p">=</span> <span class="mi">5000000</span>
+    <span class="nx">f</span> <span class="o">:=</span> <span class="nb">float64</span><span class="p">(</span><span class="mf">3.3</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+
+
+</li>
+<li>
+<p>For Loop</p>
+<div class="highlight"><pre><span></span>   <span class="c1">// classic initial/condition/after for loop </span>
+   <span class="k">for</span> <span class="nx">j</span> <span class="o">:=</span> <span class="mi">7</span><span class="p">;</span> <span class="nx">j</span> <span class="o">&lt;=</span> <span class="mi">9</span><span class="p">;</span> <span class="nx">j</span><span class="o">++</span> <span class="p">{</span>
+       <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">j</span><span class="p">)</span>
+   <span class="p">}</span>
+
+   <span class="c1">// most basic for loop</span>
+   <span class="nx">i</span> <span class="o">:=</span> <span class="mi">1</span>
+   <span class="k">for</span> <span class="nx">i</span> <span class="o">&lt;=</span> <span class="mi">3</span> <span class="p">{</span>
+       <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">i</span><span class="p">)</span>
+       <span class="nx">i</span> <span class="p">=</span> <span class="nx">i</span> <span class="o">+</span> <span class="mi">1</span>
+   <span class="p">}</span>
+
+   <span class="c1">// infinite loop</span>
+   <span class="k">for</span> <span class="p">{</span>
+       <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;loop&quot;</span><span class="p">)</span>
+   <span class="p">}</span>
+</pre></div>
+
+
+</li>
+<li>
+<p>If/Else  </p>
+</li>
+<li>
+<p>Switch</p>
+<div class="highlight"><pre><span></span><span class="c1">// use commas to separate multiple expression in the same case statement </span>
+<span class="k">switch</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Now</span><span class="p">().</span><span class="nx">Weekday</span><span class="p">()</span> <span class="p">{</span>
+<span class="k">case</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Saturday</span><span class="p">,</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Sunday</span><span class="p">:</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;it&#39;s the weekend&quot;</span><span class="p">)</span>
+<span class="k">default</span><span class="p">:</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;it&#39;s a weekday&quot;</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="c1">// alternate way to implement If/Else while without an expression</span>
+<span class="nx">t</span> <span class="o">:=</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Now</span><span class="p">()</span>
+<span class="k">switch</span> <span class="p">{</span>
+<span class="k">case</span> <span class="nx">t</span><span class="p">.</span><span class="nx">Hour</span><span class="p">()</span> <span class="p">&lt;</span> <span class="mi">12</span><span class="p">:</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;it&#39;s before noon&quot;</span><span class="p">)</span>
+<span class="k">default</span><span class="p">:</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;it&#39;s after noon&quot;</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+
+
+</li>
+<li>
+<p>Array, Slices, Maps</p>
+<div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nx">a</span> <span class="p">[</span><span class="mi">5</span><span class="p">]</span><span class="kt">int</span>
+<span class="nx">s</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">([]</span><span class="kt">string</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="nx">m</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">int</span><span class="p">)</span>
+</pre></div>
+
+
+</li>
+<li>
+<p>Functions<br />
+    Do NOT support nested functions, function overload, function default parameter</p>
+<ul>
+<li>
+<p>multiple return values  </p>
+<div class="highlight"><pre><span></span><span class="kd">func</span> <span class="nx">vals</span><span class="p">()</span> <span class="p">(</span><span class="kt">int</span><span class="p">,</span> <span class="kt">int</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">7</span>
+<span class="p">}</span>
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">a</span><span class="p">,</span> <span class="nx">b</span> <span class="p">=</span> <span class="nx">vals</span><span class="p">()</span>
+    <span class="nx">_</span><span class="p">,</span> <span class="nx">b</span> <span class="p">=</span> <span class="nx">vals</span><span class="p">()</span>
+<span class="p">}</span>
+</pre></div>
+
+
+</li>
+<li>
+<p>variadic function  </p>
+<div class="highlight"><pre><span></span>   <span class="kd">func</span> <span class="nx">sum</span><span class="p">(</span><span class="nx">nums</span> <span class="o">...</span><span class="kt">int</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printlf</span><span class="p">(</span><span class="nx">nums</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">sum</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+    <span class="nx">nums</span> <span class="o">:=</span> <span class="p">[]</span><span class="kt">int</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">}</span>
+    <span class="nx">sum</span><span class="p">(</span><span class="nx">nums</span><span class="o">...</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+
+
+</li>
+<li>
+<p>Clousure<br />
+    Go supports anonymous functions, which can form closures.  </p>
+</li>
+<li>
+<p>Defer   </p>
+<div class="highlight"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="s">&quot;fmt&quot;</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">defer</span> <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;世界&quot;</span><span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="err">&#39;</span><span class="nx">Hello</span><span class="err">&#39;</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+
+
+</li>
+</ul>
+<p>Deferred function calls are pushed onto a stack. When a function returns, its deferred calls are executed in last-in-first-out order.  </p>
+<ul>
+<li>
+<p>Panic</p>
+<div class="highlight"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="s">&quot;fmt&quot;</span>
+
+<span class="kd">func</span> <span class="nx">test</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">defer</span> <span class="kd">func</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nb">recover</span><span class="p">();</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+            <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">err</span><span class="p">.(</span><span class="kt">string</span><span class="p">))</span>
+        <span class="p">}</span>
+    <span class="p">}()</span>
+    <span class="nb">panic</span><span class="p">(</span><span class="s">&quot;panic errors&quot;</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">test</span><span class="p">()</span>
+<span class="p">}</span>
+</pre></div>
+
+
+</li>
+<li>
+<p>Errors</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Pointers,  Structs,  Methods, Interface</p>
+<div class="highlight"><pre><span></span><span class="c1">// _Interfaces_ are named collections of method</span>
+<span class="c1">// signatures.</span>
+
+<span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="s">&quot;fmt&quot;</span>
+<span class="kn">import</span> <span class="s">&quot;math&quot;</span>
+
+<span class="c1">// Here&#39;s a basic interface for geometric shapes.</span>
+<span class="kd">type</span> <span class="nx">geometry</span> <span class="kd">interface</span> <span class="p">{</span>
+    <span class="nx">area</span><span class="p">()</span> <span class="kt">float64</span>
+    <span class="nx">perim</span><span class="p">()</span> <span class="kt">float64</span>
+<span class="p">}</span>
+
+<span class="c1">// For our example we&#39;ll implement this interface on</span>
+<span class="c1">// `rect` and `circle` types.</span>
+<span class="kd">type</span> <span class="nx">rect</span> <span class="kd">struct</span> <span class="p">{</span>
+    <span class="nx">width</span><span class="p">,</span> <span class="nx">height</span> <span class="kt">float64</span>
+<span class="p">}</span>
+<span class="kd">type</span> <span class="nx">circle</span> <span class="kd">struct</span> <span class="p">{</span>
+    <span class="nx">radius</span> <span class="kt">float64</span>
+<span class="p">}</span>
+
+<span class="c1">// To implement an interface in Go, we just need to</span>
+<span class="c1">// implement all the methods in the interface. Here we</span>
+<span class="c1">// implement `geometry` on `rect`s.</span>
+<span class="kd">func</span> <span class="p">(</span><span class="nx">r</span> <span class="nx">rect</span><span class="p">)</span> <span class="nx">area</span><span class="p">()</span> <span class="kt">float64</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">r</span><span class="p">.</span><span class="nx">width</span> <span class="o">*</span> <span class="nx">r</span><span class="p">.</span><span class="nx">height</span>
+<span class="p">}</span>
+<span class="kd">func</span> <span class="p">(</span><span class="nx">r</span> <span class="nx">rect</span><span class="p">)</span> <span class="nx">perim</span><span class="p">()</span> <span class="kt">float64</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="mi">2</span><span class="o">*</span><span class="nx">r</span><span class="p">.</span><span class="nx">width</span> <span class="o">+</span> <span class="mi">2</span><span class="o">*</span><span class="nx">r</span><span class="p">.</span><span class="nx">height</span>
+<span class="p">}</span>
+
+<span class="c1">// The implementation for `circle`s.</span>
+<span class="kd">func</span> <span class="p">(</span><span class="nx">c</span> <span class="nx">circle</span><span class="p">)</span> <span class="nx">area</span><span class="p">()</span> <span class="kt">float64</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">math</span><span class="p">.</span><span class="nx">Pi</span> <span class="o">*</span> <span class="nx">c</span><span class="p">.</span><span class="nx">radius</span> <span class="o">*</span> <span class="nx">c</span><span class="p">.</span><span class="nx">radius</span>
+<span class="p">}</span>
+<span class="kd">func</span> <span class="p">(</span><span class="nx">c</span> <span class="nx">circle</span><span class="p">)</span> <span class="nx">perim</span><span class="p">()</span> <span class="kt">float64</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="mi">2</span> <span class="o">*</span> <span class="nx">math</span><span class="p">.</span><span class="nx">Pi</span> <span class="o">*</span> <span class="nx">c</span><span class="p">.</span><span class="nx">radius</span>
+<span class="p">}</span>
+
+<span class="c1">// If a variable has an interface type, then we can call</span>
+<span class="c1">// methods that are in the named interface. Here&#39;s a</span>
+<span class="c1">// generic `measure` function taking advantage of this</span>
+<span class="c1">// to work on any `geometry`.</span>
+<span class="kd">func</span> <span class="nx">measure</span><span class="p">(</span><span class="nx">g</span> <span class="nx">geometry</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">g</span><span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">g</span><span class="p">.</span><span class="nx">area</span><span class="p">())</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">g</span><span class="p">.</span><span class="nx">perim</span><span class="p">())</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">r</span> <span class="o">:=</span> <span class="nx">rect</span><span class="p">{</span><span class="nx">width</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="nx">height</span><span class="p">:</span> <span class="mi">4</span><span class="p">}</span>
+    <span class="nx">c</span> <span class="o">:=</span> <span class="nx">circle</span><span class="p">{</span><span class="nx">radius</span><span class="p">:</span> <span class="mi">5</span><span class="p">}</span>
+
+    <span class="c1">// The `circle` and `rect` struct types both</span>
+    <span class="c1">// implement the `geometry` interface so we can use</span>
+    <span class="c1">// instances of</span>
+    <span class="c1">// these structs as arguments to `measure`.</span>
+    <span class="nx">measure</span><span class="p">(</span><span class="nx">r</span><span class="p">)</span>
+    <span class="nx">measure</span><span class="p">(</span><span class="nx">c</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+
+
+</li>
+<li>
+<p>Reflect</p>
+</li>
+</ul>
+<h3>多线程处理</h3>
+<ul>
+<li>
+<p>Goroutines<br />
+  A goroutine is a lightweight thread of execution.</p>
+<div class="highlight"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
+<span class="kn">import</span> <span class="s">&quot;fmt&quot;</span>
+
+<span class="kd">func</span> <span class="nx">f</span><span class="p">(</span><span class="nx">from</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="mi">3</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span> <span class="p">{</span>
+          <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">from</span><span class="p">,</span> <span class="s">&quot;:&quot;</span><span class="p">,</span> <span class="nx">i</span><span class="p">)</span>
+<span class="p">}</span> 
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">go</span> <span class="nx">f</span><span class="p">(</span><span class="s">&quot;args&quot;</span><span class="p">)</span>
+    <span class="k">go</span> <span class="kd">func</span><span class="p">(</span><span class="nx">msg</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">msg</span><span class="p">)</span>
+    <span class="p">}(</span><span class="s">&quot;going&quot;</span><span class="p">)</span>
+  <span class="kd">var</span> <span class="nx">input</span> <span class="kt">string</span>
+  <span class="nx">fmt</span><span class="p">.</span><span class="nx">Scanln</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">input</span><span class="p">)</span>
+  <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;done&quot;</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+
+
+</li>
+<li>
+<p>Channels  </p>
+<p>Channels are the pipes that connect concurrent goroutines. You can send values into channels from one goroutine and receive those values into another goroutine.</p>
+<div class="highlight"><pre><span></span><span class="kn">package</span> <span class="nx">main</span>
+<span class="kn">import</span> <span class="s">&quot;fmt&quot;</span>
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">messages</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">chan</span> <span class="kt">string</span><span class="p">)</span>
+    <span class="k">go</span> <span class="kd">func</span><span class="p">()</span> <span class="p">{</span> <span class="nx">messages</span> <span class="o">&lt;-</span> <span class="s">&quot;ping&quot;</span> <span class="p">}()</span>
+    <span class="nx">msg</span> <span class="o">:=</span> <span class="o">&lt;-</span><span class="nx">messages</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">msg</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<ul>
+<li>Channel Buffering<br />
+<code>messages := make(chan string, 2)</code>  </li>
+<li>Channel Direction<br />
+<code>func pong(pings &lt;-chan string, pongs chan&lt;- string) {}</code>  </li>
+<li>Closing Channel<br />
+<code>close(channel)</code><br />
+Closing channel means there is no more values to be sent , it is possible to close a non-empty channel  </li>
+<li>Range over channels<br />
+    Range can not only provide iteration over basic data structure, but also iterate over values received from a channel.<div class="highlight"><pre><span></span><span class="nx">queue</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">chan</span> <span class="kt">string</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="nx">queue</span> <span class="o">&lt;-</span> <span class="s">&quot;one&quot;</span>
+<span class="nx">queue</span> <span class="o">&lt;-</span> <span class="s">&quot;two&quot;</span>
+<span class="nb">close</span><span class="p">(</span><span class="nx">queue</span><span class="p">)</span>
+<span class="k">for</span> <span class="nx">elem</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">queue</span> <span class="p">{</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">elem</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+
+
+</li>
+</ul>
+</li>
+<li>
+<p>Select  </p>
+<div class="highlight"><pre><span></span><span class="c1">// Go&#39;s _select_ lets you wait on multiple channel</span>
+<span class="c1">// operations. Combining goroutines and channels with</span>
+<span class="c1">// select is a powerful feature of Go.</span>
+
+<span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="s">&quot;time&quot;</span>
+<span class="kn">import</span> <span class="s">&quot;fmt&quot;</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+
+    <span class="c1">// For our example we&#39;ll select across two channels.</span>
+    <span class="nx">c1</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">chan</span> <span class="kt">string</span><span class="p">)</span>
+    <span class="nx">c2</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">chan</span> <span class="kt">string</span><span class="p">)</span>
+
+    <span class="c1">// Each channel will receive a value after some amount</span>
+    <span class="c1">// of time, to simulate e.g. blocking RPC operations</span>
+    <span class="c1">// executing in concurrent goroutines.</span>
+    <span class="k">go</span> <span class="kd">func</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nx">time</span><span class="p">.</span><span class="nx">Sleep</span><span class="p">(</span><span class="nx">time</span><span class="p">.</span><span class="nx">Second</span> <span class="o">*</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="nx">c1</span> <span class="o">&lt;-</span> <span class="s">&quot;one&quot;</span>
+    <span class="p">}()</span>
+    <span class="k">go</span> <span class="kd">func</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nx">time</span><span class="p">.</span><span class="nx">Sleep</span><span class="p">(</span><span class="nx">time</span><span class="p">.</span><span class="nx">Second</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)</span>
+        <span class="nx">c2</span> <span class="o">&lt;-</span> <span class="s">&quot;two&quot;</span>
+    <span class="p">}()</span>
+
+    <span class="c1">// We&#39;ll use `select` to await both of these values</span>
+    <span class="c1">// simultaneously, printing each one as it arrives.</span>
+    <span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="mi">2</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span> <span class="p">{</span>
+        <span class="k">select</span> <span class="p">{</span>
+        <span class="k">case</span> <span class="nx">msg1</span> <span class="o">:=</span> <span class="o">&lt;-</span><span class="nx">c1</span><span class="p">:</span>
+            <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;received&quot;</span><span class="p">,</span> <span class="nx">msg1</span><span class="p">)</span>
+        <span class="k">case</span> <span class="nx">msg2</span> <span class="o">:=</span> <span class="o">&lt;-</span><span class="nx">c2</span><span class="p">:</span>
+            <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;received&quot;</span><span class="p">,</span> <span class="nx">msg2</span><span class="p">)</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<h3>包管理</h3>
+<ul>
+<li>Go 语言中 <code>import</code> 语句使用绝对路径的方式引入安装到本地的包。</li>
+<li>使用 <code>go get</code> 命令安装远程仓库中托管的包</li>
+<li>Go 语言还提供了一个 Workspace 的机制。通过设定 GOPATH环境变量，指定除了GOROOT所指定的目录之外，Go 代码所在的位置 (也就是 Workspace 的位置)。 一般来说，GOPATH目录下会包含pkg、src和bin三个子目录，这三个目录各有用处。</li>
+<li><strong>bin</strong> 目录用来放置编译好的可执行文件，为了使得这里的可执行文件可以方便的运行， 在 shell 中设置PATH变量。</li>
+<li><strong>pkg</strong> 目录用来放置代码源文件，在进行import时，是使用这个位置作为根目录的。自己编写的代码也应该放在这下面。</li>
+<li><strong>src</strong> 用来放置安装的包的链接对象 (Object) 的。这个概念有点类似于链接库，Go 会将编译出的可连接库放在这里， 方便编译时链接。不同的系统和处理器架构的对象会在pkg存放在不同的文件夹中。</li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><pre><span></span>├── bin
+│   └── hello
+├── pkg
+│   └── darwin_amd64
+│       └── github.com
+│           └── user
+│               └── stringutil.a
+└── src
+    └── github.com
+        └── user
+            ├── hello
+            │   ├── hello
+            │   └── hello.go
+            └── stringutil
+                └── reverse.go
+</pre></div>
+
+
+<h3>进阶</h3>
+<ul>
+<li>Memory Allocator</li>
+<li>Garbage Collector</li>
+<li>Goroutine Scheduler</li>
+<li>Channel</li>
+</ul>
+<h4>参考资料</h4>
+<ul>
+<li><a href="https://tour.golang.org/welcome/1">A Tour of Go</a></li>
+<li><a href="https://gobyexample.com">Go By Example</a></li>
+<li><a href="http://golang.org/doc/code.html#PackageNames">How to Write Go Code</a></li>
+<li><a href="http://www.oschina.net/p/go-fundamental-programming">go 编程基础（视频）</a></li>
+<li><a href="https://github.com/nullne/book/blob/master/Go%20%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%20%E7%AC%AC%E5%9B%9B%E7%89%88.pdf">Go学习笔记 -- 雨痕</a></li>
+<li><a href="http://io-meter.com/2014/07/30/go's-package-management/">Go 语言的包依赖管理</a></li>
+</ul></div>
+</div>
+<div class="ui hidden divider"></div>
+
+
+
+<h4 class="ui horizontal divider header">
+    <i class="comment icon"></i>
+    留下你的评论
+</h4>
+
+<!-- google plus comment -->
+<div class="ui centered grid" >
+    <div id="comments" class="column"></div>
+    <script src="https://apis.google.com/js/plusone.js"></script>
+    <script>
+gapi.comments.render('comments', {
+    href: window.location,
+    width: '624',
+    first_party_property: 'BLOGGER',
+    view_type: 'FILTERED_POSTMOD'
+});
+    </script>
+
+    <!--
+        <div id="commentscounter"></div>
+        <script>
+gapi.commentcount.render('commentscounter', {
+    href: window.location
+});
+        </script>
+        -->
+</div>
+
+  <div class="ui hidden divider"></div>
+
+  <div class="ui inverted vertical footer segment">
+    <div class="ui container">
+      <div class="ui stackable inverted divided equal height stackable grid">
+        <div class="three wide column">
+          <h4 class="ui inverted header">Blogroll</h4>
+          <div class="ui inverted link list">
+              <a href="http://zonca.github.io/" class="item">&nbsp;Zonca</a>
+              <a href="http://moparx.com/" class="item">&nbsp;Moparx</a>
+              <a href="http://blog.friparia.com/" class="item">&nbsp;Friparia</a>
+          </div>
+        </div>
+        <div class="three wide column">
+          <h4 class="ui inverted header">Social</h4>
+          <div class="ui inverted link list">
+              <a href="https://github.com/nullne" class="item">&nbsp;Github</a>
+              <a href="https://www.linkedin.com/pub/le-yu/89/980/1a5" class="item">&nbsp;LinkedIn</a>
+              <a href="http://www.douban.com/people/nullnes/" class="item">&nbsp;豆瓣</a>
+              <a href="http://weibo.com/nullne" class="item">&nbsp;微博</a>
+          </div>
+        </div>
+        <div class="seven wide column">
+          <h4 class="ui inverted header">从前慢</h4>
+          <p>
+          从前的日色变得慢<br>
+          车，马，邮件都慢<br>
+          一生只够爱一个人</p>
+
+          <p>从前的锁也好看<br>
+          钥匙精美有样子<br>
+          你锁了 人家就懂了</p>
+        </div>
+      </div>
+    </div>
+      <div class="ui inverted section divider"></div>
+      <div class="ui centered align grid">
+          <p class="copyleft">&copy; nullne 2013-2016</p>
+      </div>
+  </div>
+</div>
+
+</body>
+
+</html>

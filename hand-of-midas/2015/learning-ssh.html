@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>NULLNE</title>
+  <!-- Standard Meta -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="author" content="nullne">
+
+  <!-- Site Properties -->
+  <link rel="icon" href="/theme/img/favicon.png">
+  <link rel="stylesheet" type="text/css" href="/theme/semantic.min.css">
+  <link rel="stylesheet" type="text/css" href="/theme/main.css">
+<link rel="stylesheet" type="text/css" href="/theme/pygment.css">
+
+<style type="text/css">
+.masthead.segment.bg:after {
+    background-image: url('/background/Hand of Midas.jpg');
+}
+</style>
+
+
+  <script src="/theme/jquery-2.1.4.min.js"></script>
+  <script src="/theme/semantic.min.js"></script>
+<script>
+$(document)
+    .ready(function() {
+        $('.card .dimmer')
+            .dimmer({
+                on: 'hover'
+            })
+        ;
+        $('.ui.sticky')
+            .sticky({
+                context: '#allude',
+                offset: 63,
+            })
+        ;
+    });
+</script>
+  <script>
+  $(document)
+    .ready(function() {
+        $('div.search').keypress(function(e) {
+            if(e.which == 13) {
+                var q = $(this).find('input').val()
+                if (q.length !== 0) {
+                    window.location.href = "/search.html?q=" + q;
+                }
+            }
+        });
+        // fix menu when passed
+        $('.masthead')
+            .visibility({
+                once: false,
+                onBottomPassed: function() {
+                    $('.fixed.menu').transition('fade in');
+                },
+                onBottomPassedReverse: function() {
+                    $('.fixed.menu').transition('fade out');
+                }
+            })
+        ;
+    })
+  ;
+  </script>
+  <!-- Feeds -->
+  <link href="/all-atom.xml" type="application/atom+xml" rel="alternate" title="NULLNE Atom Feed" />
+
+
+
+</head>
+<body>
+
+<!-- Following Menu -->
+<div class="ui top fixed hidden menu">
+  <div class="ui container">
+      <a href="/" class="header item">
+          Home
+      </a>
+
+      <!-- pages -->
+      <a class="item " href="/category/suo-sui.html">琐碎</a>
+      <a class="item  active" href="/category/hand-of-midas.html">Hand of Midas</a>
+      <a class="item " href="/category/dear-diary.html">Dear Diary</a>
+
+      <a class="item" href="/about.html">About</a>
+    <div class="right item">
+        <div class="ui small search">
+            <div class="ui icon input">
+                <input class="prompt" type="text" placeholder="Find something...">
+                <i class="search icon"></i>
+            </div>
+        </div>
+    </div>
+  </div>
+</div>
+
+<!-- Page Contents -->
+<div class="pusher">
+  <div class="ui inverted vertical masthead center aligned segment bg" id="bg">
+
+    <div class="ui container">
+      <div class="ui large secondary inverted menu">
+          <!-- 
+         <a class="toc item">
+           <i class="sidebar icon"></i>
+         </a>
+         -->
+         <a href="/" class="item">
+             Home
+         </a>
+
+        <!-- pages -->
+        <a class="item " href="/category/suo-sui.html">琐碎</a>
+        <a class="item  active" href="/category/hand-of-midas.html">Hand of Midas</a>
+        <a class="item " href="/category/dear-diary.html">Dear Diary</a>
+
+        <a class="item" href="/about.html">About</a>
+        <div class="right item">
+            <div class="ui small search">
+                <div class="ui icon input">
+                    <input class="prompt" type="text" placeholder="Find something...">
+                    <i class="search icon"></i>
+                </div>
+            </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ui text container">
+<h1 class="ui inverted header">
+    SSH学习笔记
+</h1>
+    </div>
+
+  </div>
+
+  <div class="ui hidden divider"></div>
+
+<div class="ui basic segment" id="allude" style="min-height:500px">
+  <div class="right ui rail" style="left: 78%;margin-top: 15px;min-height: 380px;padding-left: 0px;margin-left: 0px;width: 272px !important;z-index: 1;">
+      <div class="ui sticky" style="">
+          <div class="ui card">
+              <div class="ui slide right reveal image">
+                  <div class="visible content">
+                      <img class="ui fluid image" src="/theme/img/big-avatar.jpg">
+                  </div>
+                  <div class="hidden content">
+                      <img class="ui fluid image" src="/theme/img/alipay.png">
+                  </div>
+              </div>
+
+              <div class="content">
+                  <a href="/about.html" class="header">nullne</a>
+                  <div class="meta">
+                      <span class="date">Aug 28, 2015</span>
+                  </div>
+              </div>
+              <div class="extra content">
+ 
+                  Tags:&nbsp;
+                  <a href="/tag/ssh.html" class="">SSH</a>,&nbsp;
+ 
+              </div>
+          </div>
+      </div>
+  </div>
+  <div class="ui text container"><h4>SSH 学习笔记</h4>
+<p>因为工作的原因最近两个礼拜都在看一些跟SSH有关的东西，查阅了大量的资料，其中包括各种博客。最直观的感受就是看博客可能会获得一些小技巧，解决眼下的问题。等到下一次出问题的时候又得大量查阅各种资料（其实主要就是google一下看是否相同的或者类似的需求已经被实现了）。所以当你需要彻底了解一个事情的时候，RFC才是最终的地方。你去看他的标准，从最根本的地方了解他，这样才能彻底的驾驭。  </p>
+<p>下面是整理的一些笔记，为方便起见分为几个模块，本文为所有的目录索引。文中直接引用的地方已经标注，部分内容为自己翻译。</p>
+<h5><a href="/hand-of-midas/2015/ssh-RFC.html">SSH RFC</a></h5>
+<p>认识一个事情最根本也是最彻底的方式就是从他的定义开始，所以如果你不只是用用SSH，而需要更为深入的理解其原理，私人定制部分功能，那么去读一下RFC吧。<br />
+<a href="nice">这儿</a>简单的把SSH几个部分罗列了一下，更为全面的解释参照<a href="http://www.rfc-base.org/txt/rfc-4251.txt">RFC官方文档</a>。  </p>
+<h5><a href="/hand-of-midas/2015/ssh-auth.html">SSH认证</a><sup id="fnref:1"><a class="footnote-ref" href="#fn:1" rel="footnote">1</a></sup></h5>
+<ul>
+<li><strong>密码认证</strong>  </li>
+<li><strong>公钥认证</strong>  </li>
+<li><strong>使用ssh-agent的公钥认证</strong>  </li>
+<li><strong>使用ssh-agent forwarding的公钥认证<sup id="fnref:2"><a class="footnote-ref" href="#fn:2" rel="footnote">2</a></sup></strong></li>
+</ul>
+<h5><a href="/hand-of-midas/2015/ssh-tunnel.html">SSH隧道（SSH tunnel)</a><sup id="fnref:3"><a class="footnote-ref" href="#fn:3" rel="footnote">3</a></sup></h5>
+<ul>
+<li>Local Port Forwarding</li>
+<li>Remote Port Forwarding</li>
+</ul>
+<h5><a href="/hand-of-midas/2015/ssh-config-tips.html">SSH配置技巧</a></h5>
+<ul>
+<li>配置主机别名, 省略用户名</li>
+<li>配置密钥登录</li>
+<li>使用Agent管理密钥</li>
+<li>配置Agent Forwarding</li>
+<li>建立长连接</li>
+</ul>
+<h4><a href="/hand-of-midas/2015/ssh-tips.html">SSH使用技巧</a><sup id="fnref:4"><a class="footnote-ref" href="#fn:4" rel="footnote">4</a></sup></h4>
+<ul>
+<li>通过SSH执行命令</li>
+<li>Agent Forwarding</li>
+<li>Enable X mode</li>
+<li>运行SSH在后台，不需要输出</li>
+<li>psudo-tty allocation</li>
+</ul>
+<h5>SSH Pyhon/Golang实现</h5>
+<ul>
+<li>批量SSH工具<br />
+    此部分的代码日后整理好了之后将给出github地址</li>
+</ul>
+<h5>SSH 开销</h5>
+<h5>其他</h5>
+<ul>
+<li><strong>加密</strong></li>
+<li><strong><a href="/hand-of-midas/2015/ssh-agent.html">SSH Agent</a></strong></li>
+<li><strong><a href="/hand-of-midas/2015/how-does-key-challenges-work.html">key challenge如何工作</a></strong>  </li>
+<li>
+<p><strong>公钥和私钥<sup id="fnref:5"><a class="footnote-ref" href="#fn:5" rel="footnote">5</a></sup></strong></p>
+<p>公钥，顾名思义，公开的密钥，即可以通过公开的途径或者仓库让其他人获得。相反，私钥必须只能由持有者获得。因为公钥和私钥在数学上的相关性，凡是被公钥加密的信息都可以由相应地私钥解密，反之亦然。  </p>
+</li>
+<li>
+<p><strong><a href="/hand-of-midas/2015/ssh-agent-hijacking.html">Agent Hijacking</a></strong></p>
+</li>
+</ul>
+<h5><em>参考</em></h5>
+<ol>
+<li><a href="http://www.ibm.com/developerworks/aix/library/au-sshsecurity/">Getting started with SSH security and configuration</a></li>
+<li><a href="http://blog.chinaunix.net/uid-21854925-id-3082425.html">ssh详细登录过程 </a></li>
+</ol>
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:1">
+<p><a href="http://www.unixwiz.net/techtips/ssh-agent-forwarding.html">An Illustrated Guide to SSH Agent Forwarding</a>&#160;<a class="footnote-backref" href="#fnref:1" rev="footnote" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+<li id="fn:2">
+<p><a href="http://blog.csdn.net/sdcxyz/article/details/41487897">SSH Agent Forwarding原理</a>  &#160;<a class="footnote-backref" href="#fnref:2" rev="footnote" title="Jump back to footnote 2 in the text">&#8617;</a></p>
+</li>
+<li id="fn:3">
+<p><a href="http://blog.trackets.com/2014/05/17/ssh-tunnel-local-and-remote-port-forwarding-explained-with-examples.html">SSH Tunnel - Local and Remote Port Forwarding Explained With Examples</a>  &#160;<a class="footnote-backref" href="#fnref:3" rev="footnote" title="Jump back to footnote 3 in the text">&#8617;</a></p>
+</li>
+<li id="fn:4">
+<p><a href="http://www.seye.com.cn/newsDetail.lzs?id=959">远程登录SSH安全小技巧</a>&#160;<a class="footnote-backref" href="#fnref:4" rev="footnote" title="Jump back to footnote 4 in the text">&#8617;</a></p>
+</li>
+<li id="fn:5">
+<p><a href="https://www.comodo.com/resources/small-business/digital-certificates2.php">Public Key and Private Keys</a>&#160;<a class="footnote-backref" href="#fnref:5" rev="footnote" title="Jump back to footnote 5 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div></div>
+</div>
+<div class="ui hidden divider"></div>
+
+
+
+<h4 class="ui horizontal divider header">
+    <i class="comment icon"></i>
+    留下你的评论
+</h4>
+
+<!-- google plus comment -->
+<div class="ui centered grid" >
+    <div id="comments" class="column"></div>
+    <script src="https://apis.google.com/js/plusone.js"></script>
+    <script>
+gapi.comments.render('comments', {
+    href: window.location,
+    width: '624',
+    first_party_property: 'BLOGGER',
+    view_type: 'FILTERED_POSTMOD'
+});
+    </script>
+
+    <!--
+        <div id="commentscounter"></div>
+        <script>
+gapi.commentcount.render('commentscounter', {
+    href: window.location
+});
+        </script>
+        -->
+</div>
+
+  <div class="ui hidden divider"></div>
+
+  <div class="ui inverted vertical footer segment">
+    <div class="ui container">
+      <div class="ui stackable inverted divided equal height stackable grid">
+        <div class="three wide column">
+          <h4 class="ui inverted header">Blogroll</h4>
+          <div class="ui inverted link list">
+              <a href="http://zonca.github.io/" class="item">&nbsp;Zonca</a>
+              <a href="http://moparx.com/" class="item">&nbsp;Moparx</a>
+              <a href="http://blog.friparia.com/" class="item">&nbsp;Friparia</a>
+          </div>
+        </div>
+        <div class="three wide column">
+          <h4 class="ui inverted header">Social</h4>
+          <div class="ui inverted link list">
+              <a href="https://github.com/nullne" class="item">&nbsp;Github</a>
+              <a href="https://www.linkedin.com/pub/le-yu/89/980/1a5" class="item">&nbsp;LinkedIn</a>
+              <a href="http://www.douban.com/people/nullnes/" class="item">&nbsp;豆瓣</a>
+              <a href="http://weibo.com/nullne" class="item">&nbsp;微博</a>
+          </div>
+        </div>
+        <div class="seven wide column">
+          <h4 class="ui inverted header">从前慢</h4>
+          <p>
+          从前的日色变得慢<br>
+          车，马，邮件都慢<br>
+          一生只够爱一个人</p>
+
+          <p>从前的锁也好看<br>
+          钥匙精美有样子<br>
+          你锁了 人家就懂了</p>
+        </div>
+      </div>
+    </div>
+      <div class="ui inverted section divider"></div>
+      <div class="ui centered align grid">
+          <p class="copyleft">&copy; nullne 2013-2016</p>
+      </div>
+  </div>
+</div>
+
+</body>
+
+</html>

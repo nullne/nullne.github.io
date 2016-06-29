@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>NULLNE</title>
+  <!-- Standard Meta -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="author" content="nullne">
+
+  <!-- Site Properties -->
+  <link rel="icon" href="/theme/img/favicon.png">
+  <link rel="stylesheet" type="text/css" href="/theme/semantic.min.css">
+  <link rel="stylesheet" type="text/css" href="/theme/main.css">
+<link rel="stylesheet" type="text/css" href="/theme/pygment.css">
+
+<style type="text/css">
+.masthead.segment.bg:after {
+    background-image: url('/background/Hand of Midas.jpg');
+}
+</style>
+
+
+  <script src="/theme/jquery-2.1.4.min.js"></script>
+  <script src="/theme/semantic.min.js"></script>
+<script>
+$(document)
+    .ready(function() {
+        $('.card .dimmer')
+            .dimmer({
+                on: 'hover'
+            })
+        ;
+        $('.ui.sticky')
+            .sticky({
+                context: '#allude',
+                offset: 63,
+            })
+        ;
+    });
+</script>
+  <script>
+  $(document)
+    .ready(function() {
+        $('div.search').keypress(function(e) {
+            if(e.which == 13) {
+                var q = $(this).find('input').val()
+                if (q.length !== 0) {
+                    window.location.href = "/search.html?q=" + q;
+                }
+            }
+        });
+        // fix menu when passed
+        $('.masthead')
+            .visibility({
+                once: false,
+                onBottomPassed: function() {
+                    $('.fixed.menu').transition('fade in');
+                },
+                onBottomPassedReverse: function() {
+                    $('.fixed.menu').transition('fade out');
+                }
+            })
+        ;
+    })
+  ;
+  </script>
+  <!-- Feeds -->
+  <link href="/all-atom.xml" type="application/atom+xml" rel="alternate" title="NULLNE Atom Feed" />
+
+
+
+</head>
+<body>
+
+<!-- Following Menu -->
+<div class="ui top fixed hidden menu">
+  <div class="ui container">
+      <a href="/" class="header item">
+          Home
+      </a>
+
+      <!-- pages -->
+      <a class="item " href="/category/suo-sui.html">琐碎</a>
+      <a class="item  active" href="/category/hand-of-midas.html">Hand of Midas</a>
+      <a class="item " href="/category/dear-diary.html">Dear Diary</a>
+
+      <a class="item" href="/about.html">About</a>
+    <div class="right item">
+        <div class="ui small search">
+            <div class="ui icon input">
+                <input class="prompt" type="text" placeholder="Find something...">
+                <i class="search icon"></i>
+            </div>
+        </div>
+    </div>
+  </div>
+</div>
+
+<!-- Page Contents -->
+<div class="pusher">
+  <div class="ui inverted vertical masthead center aligned segment bg" id="bg">
+
+    <div class="ui container">
+      <div class="ui large secondary inverted menu">
+          <!-- 
+         <a class="toc item">
+           <i class="sidebar icon"></i>
+         </a>
+         -->
+         <a href="/" class="item">
+             Home
+         </a>
+
+        <!-- pages -->
+        <a class="item " href="/category/suo-sui.html">琐碎</a>
+        <a class="item  active" href="/category/hand-of-midas.html">Hand of Midas</a>
+        <a class="item " href="/category/dear-diary.html">Dear Diary</a>
+
+        <a class="item" href="/about.html">About</a>
+        <div class="right item">
+            <div class="ui small search">
+                <div class="ui icon input">
+                    <input class="prompt" type="text" placeholder="Find something...">
+                    <i class="search icon"></i>
+                </div>
+            </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ui text container">
+<h1 class="ui inverted header">
+    报销助手--Chrome插件
+</h1>
+    </div>
+
+  </div>
+
+  <div class="ui hidden divider"></div>
+
+<div class="ui basic segment" id="allude" style="min-height:500px">
+  <div class="right ui rail" style="left: 78%;margin-top: 15px;min-height: 380px;padding-left: 0px;margin-left: 0px;width: 272px !important;z-index: 1;">
+      <div class="ui sticky" style="">
+          <div class="ui card">
+              <div class="ui slide right reveal image">
+                  <div class="visible content">
+                      <img class="ui fluid image" src="/theme/img/big-avatar.jpg">
+                  </div>
+                  <div class="hidden content">
+                      <img class="ui fluid image" src="/theme/img/alipay.png">
+                  </div>
+              </div>
+
+              <div class="content">
+                  <a href="/about.html" class="header">nullne</a>
+                  <div class="meta">
+                      <span class="date">Dec 27, 2015</span>
+                  </div>
+              </div>
+              <div class="extra content">
+ 
+                  Tags:&nbsp;
+                  <a href="/tag/chrome-extension.html" class="">Chrome-Extension</a>,&nbsp;
+                  <a href="/tag/js.html" class="">js</a>,&nbsp;
+ 
+              </div>
+          </div>
+      </div>
+  </div>
+  <div class="ui text container"><h2>楔子</h2>
+<p>其实现在已经是很久以后了，太懒了</p>
+<p>某个周末闲的发慌，突然想到公司的报销流程还是非常繁琐的，需要从一个报销系统去查自己的考勤情况，根据加班情况可以申请饭补，然后填写到报销系统里面。一来报销系统设计的巨复杂，每添加一项得点点点填填填，其次整个过程非常枯燥，机械的重复。我是一个非常怕麻烦的人，但是我还是去报销了，因为我算了一下，即便是我花了一个小时申请完报销，那么时薪就有五六百了，已经远远超过我目前的薪水了。</p>
+<p>但是这个过程应该可以优化吧</p>
+<p>Talk is cheap! 仔细分析一番决定写一个Chrome插件，虽然之前没有任何插件的经验，爬取考勤系统数据，自动填写到报销系统里面，这个过程用户只需要填一个简单的表单，就可以一键Fire了。本来打算爬虫部分也用JS实现的，考虑到自己的渣渣JS功底，最后还是用Python写了一个爬虫服务端。</p>
+<p>具体的技术分析和实现在下面详细写了，还有一些邮件也一并记录了。第一次发大群邮件非常激动，当时第一版写完的时候是半夜两点，按耐不住内心的激动，索性当时就发了邮件，想着第二天大家一到公司就发现了这么一个神器会不会特别激动。。。然后发现自己权限不够发不了<code>all-staff</code>的邮件组，就只发了研发的。幸好当时没有发全部员工，第一版的怎么可能没有bug呢！之后很多热心测试人员纷纷提出了很多意见建议，最终这个工具能够实际使用。</p>
+<p>对对对，我还录制了一段使用报销插件的报销视频，附在邮件里面</p>
+<p>非常开心的是技术部门的两个老大也回复邮件了，给予赞赏，并且还转发了另一个加班严重的邮件组--运维，哈哈哈哈，希望这个小工具帮他们节省了时间吧</p>
+<p>最最开心的是每次看到日志又多了几行，那种快感也只有我们这些苦逼码农才知道了</p>
+<h2>功能分析以及实现</h2>
+<h3>自动报销：</h3>
+<ol>
+<li>进入报销页面，点击图标，弹出界面</li>
+<li>输入用户名，密码，daterange，点击fire</li>
+<li>js后台提交，前端等待获取数据，并解析</li>
+<li>python实现一个简单的网页爬虫功能，模拟登陆后获取考勤详情</li>
+<li>根据获取到的数据自动填写 </li>
+</ol>
+<h3>报错优化</h3>
+<ul>
+<li>无法从报销系统获取数据时候报错提示，以及多页获取</li>
+<li>不同部门的加班规则不太一样，需要区别处理</li>
+<li>js加载后的页面无法绑定js，需要重新绑定</li>
+<li>因为报销系统js极其复杂，需要模拟各种 blur, click, change 事件</li>
+<li>简单的配置页面，提供服务器地址更改功能</li>
+</ul>
+<h3>美化</h3>
+<ul>
+<li>popup 页面提供所有可选参数，cookie中记录成功报销之后的值以便于下一次操作（事实证明这个非常方便）</li>
+<li>成功之后显示打赏按钮与作者个人信息</li>
+<li>图标，论ps的重要性</li>
+<li>流程上更为完善，比方说点击Fire之后 disable 掉按钮并作一些 css 处理，然后按钮的地方可以显示进度</li>
+</ul>
+<h3>技术基础：</h3>
+<ul>
+<li><a href="https://robots.thoughtbot.com/how-to-make-a-chrome-extension">一个简单的 chrome extension 的入门教程</a></li>
+<li>主要是 JS 太难，遇到各种 JS 问题</li>
+<li>Python 实现简单爬去考勤数据，这个相对熟悉一点写起来很快</li>
+</ul>
+<h3>持续跟进</h3>
+<p>之后过了很久，公司的报销系统更新了，导致插件不能继续使用。好多人RTX问我啥时候能再更新一版，当时就觉得满满的成就感。那个周末就抽空，匹配了新的报销系统，那个感觉真是好极了，虽然没有任何物质上的回报。</p>
+<h2>第一次邮件</h2>
+<p>报销系统极其考验人们的智商和耐心，而聪明的人是这么做的：【请看附件中的视频】</p>
+<p>简而言之，就是一个我周末灵光一现想出来的一个chrome插件，收集考勤系统的用户名密码，从而获取你所有能够报销的数据，并自动填写到报销系统中，从而让报销变得轻松愉快。</p>
+<h3>如何使用？</h3>
+<blockquote>
+<p>首先你需要一个Chrome浏览器，如果你没有甚至你不知道什么是chrome，你的朋友会耻笑你，你的家人会嫌弃你。。。  </p>
+</blockquote>
+<ol>
+<li>下载邮件附件<code>cc-helper.crx</code>，如果弹出警告请忽略</li>
+<li>打开Chrome浏览器，地址栏输入<code>chrome://extensions/</code>,然后回车</li>
+<li>在你的硬盘中找到刚才下载的附件，拖动到当前窗口，根据提示安装</li>
+</ol>
+<p>恭喜你，到此为止你已经安装完毕。<br />
+模仿视频中的操作试试吧，任何问题欢迎邮件/RTX交流。</p>
+<h2>第二次邮件</h2>
+<p>多谢大家的支持，早上来收到很多使用反馈，当然也有一些bug和改进意见。现更新一版：</p>
+<ul>
+<li>添加编码方式，解决部分机器乱码问题，如果还出现乱码请设置浏览器编码方式为UTF-8</li>
+<li>解决最后一行统计没有结果的bug</li>
+<li>添加贪婪模式，解决部分没有打卡记录但是仍然需要报销的情况</li>
+</ul>
+<p>希望大家持续反馈，让这个小工具更好用</p>
+<h2>第三次邮件</h2>
+<p>上周末写出了这个插件的第一版，虽然之后优化了很多地方，但是插件存在一个致命BUG，无法提交和保存。周内因为抽不出来时间，所以一直拖到这周末，望谅解。</p>
+<p>下面给出该插件完整功能介绍。<br />
+1. 在报销详情页面打开该插件（后附有如何安装此插件），填写考勤系统的用户名，密码，以及需要报销的时间段，默认餐补和加班原因<br />
+2. 贪婪模式是考虑到部分打卡故障，勾选此项之后将统计所有可能存在加班的情况（上下班如不全按正常上下班记），此类数据需要之后手工微调<br />
+3. 如果依然出现不能保存的情况，请刷新页面，清除缓存再次尝试<br />
+4. 增加配置服务器（主要用来获取考勤记录）地址页面，默认已经添加，如果后续更改将会通过邮件告知</p>
+<p>感谢之前很多热心同事帮忙测试，谢谢，希望这个小插件能够节省大家的时间</p>
+<h2>后记</h2>
+<p>非常喜欢这种感觉，运用技术解决生活中的难题，非常有成就感。另外得到那么多人的赞赏也是很开心的嘛</p>
+<p>技术其实不必很厉害，很多东西都是现学的，比方说 Chrome 插件，看着教程然后一步一步实现自己的想法</p>
+<p>当初选择技术这条路线也是同样的想法，勿忘初衷</p></div>
+</div>
+<div class="ui hidden divider"></div>
+
+
+
+<h4 class="ui horizontal divider header">
+    <i class="comment icon"></i>
+    留下你的评论
+</h4>
+
+<!-- google plus comment -->
+<div class="ui centered grid" >
+    <div id="comments" class="column"></div>
+    <script src="https://apis.google.com/js/plusone.js"></script>
+    <script>
+gapi.comments.render('comments', {
+    href: window.location,
+    width: '624',
+    first_party_property: 'BLOGGER',
+    view_type: 'FILTERED_POSTMOD'
+});
+    </script>
+
+    <!--
+        <div id="commentscounter"></div>
+        <script>
+gapi.commentcount.render('commentscounter', {
+    href: window.location
+});
+        </script>
+        -->
+</div>
+
+  <div class="ui hidden divider"></div>
+
+  <div class="ui inverted vertical footer segment">
+    <div class="ui container">
+      <div class="ui stackable inverted divided equal height stackable grid">
+        <div class="three wide column">
+          <h4 class="ui inverted header">Blogroll</h4>
+          <div class="ui inverted link list">
+              <a href="http://zonca.github.io/" class="item">&nbsp;Zonca</a>
+              <a href="http://moparx.com/" class="item">&nbsp;Moparx</a>
+              <a href="http://blog.friparia.com/" class="item">&nbsp;Friparia</a>
+          </div>
+        </div>
+        <div class="three wide column">
+          <h4 class="ui inverted header">Social</h4>
+          <div class="ui inverted link list">
+              <a href="https://github.com/nullne" class="item">&nbsp;Github</a>
+              <a href="https://www.linkedin.com/pub/le-yu/89/980/1a5" class="item">&nbsp;LinkedIn</a>
+              <a href="http://www.douban.com/people/nullnes/" class="item">&nbsp;豆瓣</a>
+              <a href="http://weibo.com/nullne" class="item">&nbsp;微博</a>
+          </div>
+        </div>
+        <div class="seven wide column">
+          <h4 class="ui inverted header">从前慢</h4>
+          <p>
+          从前的日色变得慢<br>
+          车，马，邮件都慢<br>
+          一生只够爱一个人</p>
+
+          <p>从前的锁也好看<br>
+          钥匙精美有样子<br>
+          你锁了 人家就懂了</p>
+        </div>
+      </div>
+    </div>
+      <div class="ui inverted section divider"></div>
+      <div class="ui centered align grid">
+          <p class="copyleft">&copy; nullne 2013-2016</p>
+      </div>
+  </div>
+</div>
+
+</body>
+
+</html>

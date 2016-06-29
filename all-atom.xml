@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>NULLNE</title><link href="/" rel="alternate"></link><link href="/all-atom.xml" rel="self"></link><id>/</id><updated>2015-12-27T11:11:00+08:00</updated><entry><title>报销助手--Chrome插件</title><link href="/ji-zhu-gai-bian-sheng-huo/2015/chrome-extension-reimbursement-assistant.html" rel="alternate"></link><updated>2015-12-27T11:11:00+08:00</updated><author><name>nullne</name></author><id>tag:,2015-12-27:ji-zhu-gai-bian-sheng-huo/2015/chrome-extension-reimbursement-assistant.html</id><summary type="html">&lt;h2&gt;楔子&lt;/h2&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>NULLNE</title><link href="/" rel="alternate"></link><link href="/all-atom.xml" rel="self"></link><id>/</id><updated>2016-06-29T16:09:46+08:00</updated><entry><title>厦门八周</title><link href="/suo-sui/2016/eight-weeks-in-Amoy.html" rel="alternate"></link><updated>2016-06-29T16:09:46+08:00</updated><author><name>nullne</name></author><id>tag:,2016-06-29:suo-sui/2016/eight-weeks-in-Amoy.html</id><summary type="html">&lt;p&gt;先随便写一点吧，占坑&lt;/p&gt;</summary><category term="旅游"></category></entry><entry><title>Golang 实现ssh批量运行</title><link href="/hand-of-midas/2016/golang-muls.html" rel="alternate"></link><updated>2016-06-29T16:09:46+08:00</updated><author><name>nullne</name></author><id>tag:,2016-06-29:hand-of-midas/2016/golang-muls.html</id><summary type="html">&lt;h2&gt;Golang 实现ssh批量运行&lt;/h2&gt;</summary><category term="SSH"></category><category term="Golang"></category></entry><entry><title>报销助手--Chrome插件</title><link href="/hand-of-midas/2015/chrome-extension-reimbursement-assistant.html" rel="alternate"></link><updated>2015-12-27T11:11:00+08:00</updated><author><name>nullne</name></author><id>tag:,2015-12-27:hand-of-midas/2015/chrome-extension-reimbursement-assistant.html</id><summary type="html">&lt;h2&gt;楔子&lt;/h2&gt;
 &lt;p&gt;其实现在已经是很久以后了，太懒了&lt;/p&gt;
 &lt;p&gt;某个周末闲的发慌，突然想到公司的报销流程还是非常繁琐的，需要从一个报销系统去查自己的考勤情况，根据加班情况可以申请饭补，然后填写到报销系统里面。一来报销系统设计的巨复杂，每添加一项得点点点填填填，其次整个过程非常枯燥，机械的重复。我是一个非常怕麻烦的人，但是我还是去报销了，因为我算了一下，即便是我花了一个小时申请完报销，那么时薪就有五六百了，已经远远超过我目前的薪水了。&lt;/p&gt;
 &lt;p&gt;但是这个过程应该可以优化吧&lt;/p&gt;
@@ -73,25 +73,25 @@
 &lt;h2&gt;后记&lt;/h2&gt;
 &lt;p&gt;非常喜欢这种感觉，运用技术解决生活中的难题，非常有成就感。另外得到那么多人的赞赏也是很开心的嘛&lt;/p&gt;
 &lt;p&gt;技术其实不必很厉害，很多东西都是现学的，比方说 Chrome 插件，看着教程然后一步一步实现自己的想法&lt;/p&gt;
-&lt;p&gt;当初选择技术这条路线也是同样的想法，勿忘初衷&lt;/p&gt;</summary><category term="Chrome-Extension"></category><category term="js"></category></entry><entry><title>Golang 实现ssh批量运行</title><link href="/ji-zhu-gai-bian-sheng-huo/2015/golang-muls.html" rel="alternate"></link><updated>2015-11-17T21:14:00+08:00</updated><author><name>nullne</name></author><id>tag:,2015-11-17:ji-zhu-gai-bian-sheng-huo/2015/golang-muls.html</id><summary type="html">&lt;h2&gt;Golang 实现ssh批量运行&lt;/h2&gt;</summary><category term="SSH"></category><category term="Golang"></category></entry><entry><title>SSH学习笔记</title><link href="/ji-zhu-gai-bian-sheng-huo/2015/learning-ssh.html" rel="alternate"></link><updated>2015-08-28T10:20:00+08:00</updated><author><name>nullne</name></author><id>tag:,2015-08-28:ji-zhu-gai-bian-sheng-huo/2015/learning-ssh.html</id><summary type="html">&lt;h4&gt;SSH 学习笔记&lt;/h4&gt;
+&lt;p&gt;当初选择技术这条路线也是同样的想法，勿忘初衷&lt;/p&gt;</summary><category term="Chrome-Extension"></category><category term="js"></category></entry><entry><title>SSH学习笔记</title><link href="/hand-of-midas/2015/learning-ssh.html" rel="alternate"></link><updated>2015-08-28T10:20:00+08:00</updated><author><name>nullne</name></author><id>tag:,2015-08-28:hand-of-midas/2015/learning-ssh.html</id><summary type="html">&lt;h4&gt;SSH 学习笔记&lt;/h4&gt;
 &lt;p&gt;因为工作的原因最近两个礼拜都在看一些跟SSH有关的东西，查阅了大量的资料，其中包括各种博客。最直观的感受就是看博客可能会获得一些小技巧，解决眼下的问题。等到下一次出问题的时候又得大量查阅各种资料（其实主要就是google一下看是否相同的或者类似的需求已经被实现了）。所以当你需要彻底了解一个事情的时候，RFC才是最终的地方。你去看他的标准，从最根本的地方了解他，这样才能彻底的驾驭。  &lt;/p&gt;
 &lt;p&gt;下面是整理的一些笔记，为方便起见分为几个模块，本文为所有的目录索引。文中直接引用的地方已经标注，部分内容为自己翻译。&lt;/p&gt;
-&lt;h5&gt;&lt;a href="/ji-zhu-gai-bian-sheng-huo/2015/ssh-RFC.html"&gt;SSH RFC&lt;/a&gt;&lt;/h5&gt;
+&lt;h5&gt;&lt;a href="/hand-of-midas/2015/ssh-RFC.html"&gt;SSH RFC&lt;/a&gt;&lt;/h5&gt;
 &lt;p&gt;认识一个事情最根本也是最彻底的方式就是从他的定义开始，所以如果你不只是用用SSH，而需要更为深入的理解其原理，私人定制部分功能，那么去读一下RFC吧。&lt;br /&gt;
 &lt;a href="nice"&gt;这儿&lt;/a&gt;简单的把SSH几个部分罗列了一下，更为全面的解释参照&lt;a href="http://www.rfc-base.org/txt/rfc-4251.txt"&gt;RFC官方文档&lt;/a&gt;。  &lt;/p&gt;
-&lt;h5&gt;&lt;a href="/ji-zhu-gai-bian-sheng-huo/2015/ssh-auth.html"&gt;SSH认证&lt;/a&gt;&lt;sup id="fnref:1"&gt;&lt;a class="footnote-ref" href="#fn:1" rel="footnote"&gt;1&lt;/a&gt;&lt;/sup&gt;&lt;/h5&gt;
+&lt;h5&gt;&lt;a href="/hand-of-midas/2015/ssh-auth.html"&gt;SSH认证&lt;/a&gt;&lt;sup id="fnref:1"&gt;&lt;a class="footnote-ref" href="#fn:1" rel="footnote"&gt;1&lt;/a&gt;&lt;/sup&gt;&lt;/h5&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;密码认证&lt;/strong&gt;  &lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;公钥认证&lt;/strong&gt;  &lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;使用ssh-agent的公钥认证&lt;/strong&gt;  &lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;使用ssh-agent forwarding的公钥认证&lt;sup id="fnref:2"&gt;&lt;a class="footnote-ref" href="#fn:2" rel="footnote"&gt;2&lt;/a&gt;&lt;/sup&gt;&lt;/strong&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h5&gt;&lt;a href="/ji-zhu-gai-bian-sheng-huo/2015/ssh-tunnel.html"&gt;SSH隧道（SSH tunnel)&lt;/a&gt;&lt;sup id="fnref:3"&gt;&lt;a class="footnote-ref" href="#fn:3" rel="footnote"&gt;3&lt;/a&gt;&lt;/sup&gt;&lt;/h5&gt;
+&lt;h5&gt;&lt;a href="/hand-of-midas/2015/ssh-tunnel.html"&gt;SSH隧道（SSH tunnel)&lt;/a&gt;&lt;sup id="fnref:3"&gt;&lt;a class="footnote-ref" href="#fn:3" rel="footnote"&gt;3&lt;/a&gt;&lt;/sup&gt;&lt;/h5&gt;
 &lt;ul&gt;
 &lt;li&gt;Local Port Forwarding&lt;/li&gt;
 &lt;li&gt;Remote Port Forwarding&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h5&gt;&lt;a href="/ji-zhu-gai-bian-sheng-huo/2015/ssh-config-tips.html"&gt;SSH配置技巧&lt;/a&gt;&lt;/h5&gt;
+&lt;h5&gt;&lt;a href="/hand-of-midas/2015/ssh-config-tips.html"&gt;SSH配置技巧&lt;/a&gt;&lt;/h5&gt;
 &lt;ul&gt;
 &lt;li&gt;配置主机别名, 省略用户名&lt;/li&gt;
 &lt;li&gt;配置密钥登录&lt;/li&gt;
@@ -99,7 +99,7 @@
 &lt;li&gt;配置Agent Forwarding&lt;/li&gt;
 &lt;li&gt;建立长连接&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h4&gt;&lt;a href="/ji-zhu-gai-bian-sheng-huo/2015/ssh-tips.html"&gt;SSH使用技巧&lt;/a&gt;&lt;sup id="fnref:4"&gt;&lt;a class="footnote-ref" href="#fn:4" rel="footnote"&gt;4&lt;/a&gt;&lt;/sup&gt;&lt;/h4&gt;
+&lt;h4&gt;&lt;a href="/hand-of-midas/2015/ssh-tips.html"&gt;SSH使用技巧&lt;/a&gt;&lt;sup id="fnref:4"&gt;&lt;a class="footnote-ref" href="#fn:4" rel="footnote"&gt;4&lt;/a&gt;&lt;/sup&gt;&lt;/h4&gt;
 &lt;ul&gt;
 &lt;li&gt;通过SSH执行命令&lt;/li&gt;
 &lt;li&gt;Agent Forwarding&lt;/li&gt;
@@ -116,14 +116,14 @@
 &lt;h5&gt;其他&lt;/h5&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;加密&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;&lt;a href="/ji-zhu-gai-bian-sheng-huo/2015/ssh-agent.html"&gt;SSH Agent&lt;/a&gt;&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;&lt;a href="/ji-zhu-gai-bian-sheng-huo/2015/how-does-key-challenges-work.html"&gt;key challenge如何工作&lt;/a&gt;&lt;/strong&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="/hand-of-midas/2015/ssh-agent.html"&gt;SSH Agent&lt;/a&gt;&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="/hand-of-midas/2015/how-does-key-challenges-work.html"&gt;key challenge如何工作&lt;/a&gt;&lt;/strong&gt;  &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;&lt;strong&gt;公钥和私钥&lt;sup id="fnref:5"&gt;&lt;a class="footnote-ref" href="#fn:5" rel="footnote"&gt;5&lt;/a&gt;&lt;/sup&gt;&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;公钥，顾名思义，公开的密钥，即可以通过公开的途径或者仓库让其他人获得。相反，私钥必须只能由持有者获得。因为公钥和私钥在数学上的相关性，凡是被公钥加密的信息都可以由相应地私钥解密，反之亦然。  &lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;&lt;strong&gt;&lt;a href="/ji-zhu-gai-bian-sheng-huo/2015/ssh-agent-hijacking.html"&gt;Agent Hijacking&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;a href="/hand-of-midas/2015/ssh-agent-hijacking.html"&gt;Agent Hijacking&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;h5&gt;&lt;em&gt;参考&lt;/em&gt;&lt;/h5&gt;
@@ -150,7 +150,7 @@
 &lt;p&gt;&lt;a href="https://www.comodo.com/resources/small-business/digital-certificates2.php"&gt;Public Key and Private Keys&lt;/a&gt;&amp;#160;&lt;a class="footnote-backref" href="#fnref:5" rev="footnote" title="Jump back to footnote 5 in the text"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;/div&gt;</summary><category term="SSH"></category></entry><entry><title>SSH学习笔记之--Key Challenge 如何工作</title><link href="/ji-zhu-gai-bian-sheng-huo/2015/how-does-key-challenges-work.html" rel="alternate"></link><updated>2015-08-27T10:20:00+08:00</updated><author><name>nullne</name></author><id>tag:,2015-08-27:ji-zhu-gai-bian-sheng-huo/2015/how-does-key-challenges-work.html</id><summary type="html">&lt;h4&gt;Key Challenge 如何工作&lt;/h4&gt;
+&lt;/div&gt;</summary><category term="SSH"></category></entry><entry><title>SSH学习笔记之--Key Challenge 如何工作</title><link href="/hand-of-midas/2015/how-does-key-challenges-work.html" rel="alternate"></link><updated>2015-08-27T10:20:00+08:00</updated><author><name>nullne</name></author><id>tag:,2015-08-27:hand-of-midas/2015/how-does-key-challenges-work.html</id><summary type="html">&lt;h4&gt;Key Challenge 如何工作&lt;/h4&gt;
 &lt;p&gt;agent非常聪明的一点就是他可以不用将private key暴露给任何人就可以确认一个人的身份（确切的说是拥有私钥的人）。  &lt;/p&gt;
 &lt;p&gt;当用户ssh登陆一台远端服务器的时候，发送包含username和key的请求，其中的username帮助服务器确定其公钥的位置--一般在&lt;code&gt;$HOME/.ssh/authorized_keys&lt;/code&gt;  &lt;/p&gt;
 &lt;p&gt;服务器端生成一个challenge，其唯一可以被拥有私钥的设备答复。服务器产生并保存一个大的随机数，然后以用户的公钥进行加密，将生成的二进制数据发送给请求的用户。对于没有私钥的用户这些数据没有任何意义。  &lt;/p&gt;
@@ -158,7 +158,7 @@
 &lt;p&gt;服务器计算相同的md5（根据随机数和SSH session ID），与返回的key response进行对比，如果匹配则认证成功。如果不对的话，agent里面的下一个私钥将被用来进行相同的尝试，直到成功或者因为所有的私钥尝试完而失败。  &lt;/p&gt;
 &lt;p&gt;很明显，原始的随机数在client/agent交互的时候并不会被暴露，这也是基于安全性考虑以防止在client/server信息交互的过程中随机数被获取。&lt;/p&gt;
 &lt;p&gt;&lt;img alt="alt" src="http://www.unixwiz.net/images/ssh-key-challenge.gif" title="Title" /&gt;
-&lt;img alt="alt" src="http://www.unixwiz.net/images/ssh-key-response.gif" /&gt;&lt;/p&gt;</summary><category term="SSH"></category><category term="Key Challenge"></category></entry><entry><title>SSH学习笔记之--SSH RFC</title><link href="/ji-zhu-gai-bian-sheng-huo/2015/ssh-RFC.html" rel="alternate"></link><updated>2015-08-27T10:20:00+08:00</updated><author><name>nullne</name></author><id>tag:,2015-08-27:ji-zhu-gai-bian-sheng-huo/2015/ssh-RFC.html</id><summary type="html">&lt;h3&gt;SSH RFC&lt;/h3&gt;
+&lt;img alt="alt" src="http://www.unixwiz.net/images/ssh-key-response.gif" /&gt;&lt;/p&gt;</summary><category term="SSH"></category><category term="Key Challenge"></category></entry><entry><title>SSH学习笔记之--SSH RFC</title><link href="/hand-of-midas/2015/ssh-RFC.html" rel="alternate"></link><updated>2015-08-27T10:20:00+08:00</updated><author><name>nullne</name></author><id>tag:,2015-08-27:hand-of-midas/2015/ssh-RFC.html</id><summary type="html">&lt;h3&gt;SSH RFC&lt;/h3&gt;
 &lt;h4&gt;&lt;a href="http://www.rfc-base.org/txt/rfc-4251.txt"&gt;The Secure Shell (SSH) Protocol Architecture&lt;/a&gt;&lt;/h4&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Secure Shell (SSH) is a protocol for secure remote login and other secure network services over an insecure network.  It consists of three major components:&lt;/p&gt;
@@ -212,7 +212,7 @@
 &lt;p&gt;A session is a remote execution of a program.  The program may be a
    shell, an application, a system command, or some built-in subsystem.
    It may or may not have a tty, and may or may not involve X11
-   forwarding.  Multiple sessions can be active simultaneously.&lt;/p&gt;</summary><category term="SSH"></category><category term="RFC"></category></entry><entry><title>SSH学习笔记之--SSH-Agent</title><link href="/ji-zhu-gai-bian-sheng-huo/2015/ssh-agent.html" rel="alternate"></link><updated>2015-08-27T10:20:00+08:00</updated><author><name>nullne</name></author><id>tag:,2015-08-27:ji-zhu-gai-bian-sheng-huo/2015/ssh-agent.html</id><summary type="html">&lt;h3&gt;SSH Agent&lt;/h3&gt;
+   forwarding.  Multiple sessions can be active simultaneously.&lt;/p&gt;</summary><category term="SSH"></category><category term="RFC"></category></entry><entry><title>SSH学习笔记之--SSH-Agent</title><link href="/hand-of-midas/2015/ssh-agent.html" rel="alternate"></link><updated>2015-08-27T10:20:00+08:00</updated><author><name>nullne</name></author><id>tag:,2015-08-27:hand-of-midas/2015/ssh-agent.html</id><summary type="html">&lt;h3&gt;SSH Agent&lt;/h3&gt;
 &lt;h4&gt;SSH Agent简介&lt;/h4&gt;
 &lt;p&gt;ssh-agent是专为既令人愉快又安全的处理RSA和DSA密钥而设计的特殊程序，它包括在OpenSSH分发内。不同于ssh，ssh-agent是个长时间持续运行的守护进程（daemon），设计它的唯一目的就是对解密的专用密钥进行高速缓存。&lt;/p&gt;
 &lt;p&gt;ssh包含的内建支持允许它同ssh-agent通信，允许ssh不必每次新连接时都提示您要密码才能获取解密的专用密钥。对于ssh-agent，您只要使用ssh-add把专用密钥添加到ssh-agent的高速缓存中。这是个一次性过程；用过ssh-add之后，ssh将从ssh-agent获取您的专用密钥，而不会提示要密码短语来烦您了。&lt;/p&gt;
@@ -260,7 +260,7 @@ ssh-add
 &lt;h4&gt;安全问题&lt;/h4&gt;
 &lt;p&gt;ssh-agent本身不会导致安全性问题，但是因为其将私钥存放在内存中，如果目标机器的admin用户不可信赖，很有可能导致用户密钥信息泄露。&lt;/p&gt;
 &lt;h4&gt;其他&lt;/h4&gt;
-&lt;p&gt;更多用法参见ssh-agent man pages&lt;/p&gt;</summary><category term="SSH"></category><category term="Agent"></category></entry><entry><title>SSH学习笔记之--Agent Hijacking</title><link href="/ji-zhu-gai-bian-sheng-huo/2015/ssh-agent-hijacking.html" rel="alternate"></link><updated>2015-08-27T10:20:00+08:00</updated><author><name>nullne</name></author><id>tag:,2015-08-27:ji-zhu-gai-bian-sheng-huo/2015/ssh-agent-hijacking.html</id><summary type="html">&lt;h4&gt;Agent Hijacking&lt;/h4&gt;
+&lt;p&gt;更多用法参见ssh-agent man pages&lt;/p&gt;</summary><category term="SSH"></category><category term="Agent"></category></entry><entry><title>SSH学习笔记之--Agent Hijacking</title><link href="/hand-of-midas/2015/ssh-agent-hijacking.html" rel="alternate"></link><updated>2015-08-27T10:20:00+08:00</updated><author><name>nullne</name></author><id>tag:,2015-08-27:hand-of-midas/2015/ssh-agent-hijacking.html</id><summary type="html">&lt;h4&gt;Agent Hijacking&lt;/h4&gt;
 &lt;p&gt;agent forwarding在安全方面有一个好处就是用户的私钥永远不会出现在远端服务器或者传输过程中。但却会面临另外一个安全隐患：agent hijacking&lt;/p&gt;
 &lt;p&gt;ssh实现的每一个方式都会提供一种让client向agent请求服务的机制，在UNIX/Linux上是用/tmp/文件夹下面的UNIX domain socket实现的。  &lt;/p&gt;
 &lt;p&gt;这个文件是被系统重度保护的，只有当前进程的用户才能访问，并且被保护在相应地子文件夹下面。但是任何措施都不能防止root用户访问任何一个文件。  &lt;/p&gt;
@@ -289,7 +289,7 @@ otheruser@server$
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;目前没有任何技术手段防止root用户劫持SSH agent socket，所以鉴于安全方面的考虑，慎用ssh angent forwarding.&lt;/p&gt;</summary><category term="SSH"></category><category term="anget hijacking"></category></entry><entry><title>SSH学习笔记之--SSH 认证</title><link href="/ji-zhu-gai-bian-sheng-huo/2015/ssh-auth.html" rel="alternate"></link><updated>2015-08-27T10:20:00+08:00</updated><author><name>nullne</name></author><id>tag:,2015-08-27:ji-zhu-gai-bian-sheng-huo/2015/ssh-auth.html</id><summary type="html">&lt;h3&gt;SSH认证过程&lt;/h3&gt;
+&lt;p&gt;目前没有任何技术手段防止root用户劫持SSH agent socket，所以鉴于安全方面的考虑，慎用ssh angent forwarding.&lt;/p&gt;</summary><category term="SSH"></category><category term="anget hijacking"></category></entry><entry><title>SSH学习笔记之--SSH 认证</title><link href="/hand-of-midas/2015/ssh-auth.html" rel="alternate"></link><updated>2015-08-27T10:20:00+08:00</updated><author><name>nullne</name></author><id>tag:,2015-08-27:hand-of-midas/2015/ssh-auth.html</id><summary type="html">&lt;h3&gt;SSH认证过程&lt;/h3&gt;
 &lt;p&gt;首先感谢Steve Friedlde 的文章&lt;a href="http://www.unixwiz.net/techtips/ssh-agent-forwarding.html"&gt;An Illustrated Guide to SSH Agent Forwarding&lt;/a&gt;，感谢&lt;a href="http://blog.csdn.net/sdcxyz/article/details/41487897"&gt;SSH Agent Forwarding原理&lt;/a&gt;(注：该文也为转载，但是原博链接已经失效)。本文主要内容参考引用自这两篇文章，并做了部分错误勘正。&lt;/p&gt;
 &lt;h4&gt;密码认证&lt;/h4&gt;
 &lt;p&gt;密码认证最简单，下面是认证步骤:  &lt;/p&gt;
@@ -352,7 +352,7 @@ otheruser@server$
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;这下明白为什么叫agent forwarding(转发)了吧，就是所有中间节点的sshd和ssh都充当了数据转发的角色，一直将私钥操作的request转发到了本机的agent，然后再将agent的response原路返回。  &lt;/p&gt;</summary><category term="SSH"></category><category term="Auth"></category></entry><entry><title>SSH学习笔记之--SSH 配置技巧</title><link href="/ji-zhu-gai-bian-sheng-huo/2015/ssh-config-tips.html" rel="alternate"></link><updated>2015-08-27T10:20:00+08:00</updated><author><name>nullne</name></author><id>tag:,2015-08-27:ji-zhu-gai-bian-sheng-huo/2015/ssh-config-tips.html</id><summary type="html">&lt;h3&gt;SSH配置技巧&lt;/h3&gt;
+&lt;p&gt;这下明白为什么叫agent forwarding(转发)了吧，就是所有中间节点的sshd和ssh都充当了数据转发的角色，一直将私钥操作的request转发到了本机的agent，然后再将agent的response原路返回。  &lt;/p&gt;</summary><category term="SSH"></category><category term="Auth"></category></entry><entry><title>SSH学习笔记之--SSH 配置技巧</title><link href="/hand-of-midas/2015/ssh-config-tips.html" rel="alternate"></link><updated>2015-08-27T10:20:00+08:00</updated><author><name>nullne</name></author><id>tag:,2015-08-27:hand-of-midas/2015/ssh-config-tips.html</id><summary type="html">&lt;h3&gt;SSH配置技巧&lt;/h3&gt;
 &lt;h5&gt;配置主机别名, 省略用户名&lt;/h5&gt;
 &lt;p&gt;修改（创建如果不存在）~/.ssh/config,  增加下面条目(可添加多个)&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Host cc
@@ -441,7 +441,7 @@ ssh-add -D|-d                   #删除（全部）密钥
 &lt;h4&gt;建立长连接&lt;/h4&gt;
 &lt;p&gt;可以在你的ssh配置中改变下面条目，通常在/etc/ssh_config.4h 代表连接保持4小时:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;ControlPersist 4h
-&lt;/pre&gt;&lt;/div&gt;</summary><category term="SSH"></category><category term="config"></category></entry><entry><title>SSH学习笔记之--SSH 使用技巧</title><link href="/ji-zhu-gai-bian-sheng-huo/2015/ssh-tips.html" rel="alternate"></link><updated>2015-08-27T10:20:00+08:00</updated><author><name>nullne</name></author><id>tag:,2015-08-27:ji-zhu-gai-bian-sheng-huo/2015/ssh-tips.html</id><summary type="html">&lt;h3&gt;SSH使用技巧&lt;/h3&gt;
+&lt;/pre&gt;&lt;/div&gt;</summary><category term="SSH"></category><category term="config"></category></entry><entry><title>SSH学习笔记之--SSH 使用技巧</title><link href="/hand-of-midas/2015/ssh-tips.html" rel="alternate"></link><updated>2015-08-27T10:20:00+08:00</updated><author><name>nullne</name></author><id>tag:,2015-08-27:hand-of-midas/2015/ssh-tips.html</id><summary type="html">&lt;h3&gt;SSH使用技巧&lt;/h3&gt;
 &lt;h4&gt;通过SSH执行命令&lt;/h4&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;ssh [user@]machine &amp;quot;cmd&amp;quot;                                  # 执行单条命令
 ssh [user@]machine &amp;quot;bash -s&amp;quot; &amp;lt; shell_script.sh            # 执行脚本
@@ -506,7 +506,7 @@ ssh hostname &amp;quot;sudo whoami&amp;quot;
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;/blockquote&gt;</summary><category term="SSH"></category><category term="tips"></category></entry><entry><title>SSH学习笔记之--SSH Tunnel</title><link href="/ji-zhu-gai-bian-sheng-huo/2015/ssh-tunnel.html" rel="alternate"></link><updated>2015-08-27T10:20:00+08:00</updated><author><name>nullne</name></author><id>tag:,2015-08-27:ji-zhu-gai-bian-sheng-huo/2015/ssh-tunnel.html</id><summary type="html">&lt;h3&gt;SSH隧道&lt;/h3&gt;
+&lt;/blockquote&gt;</summary><category term="SSH"></category><category term="tips"></category></entry><entry><title>SSH学习笔记之--SSH Tunnel</title><link href="/hand-of-midas/2015/ssh-tunnel.html" rel="alternate"></link><updated>2015-08-27T10:20:00+08:00</updated><author><name>nullne</name></author><id>tag:,2015-08-27:hand-of-midas/2015/ssh-tunnel.html</id><summary type="html">&lt;h3&gt;SSH隧道&lt;/h3&gt;
 &lt;p&gt;本文前半部分摘录自 &lt;a href="http://blog.trackets.com/2014/05/17/ssh-tunnel-local-and-remote-port-forwarding-explained-with-examples.html"&gt;SSH Tunnel - Local and Remote Port Forwarding Explained With Examples&lt;/a&gt;, 后面是自己在亲自实践的过程中遇到的问题。  &lt;/p&gt;
 &lt;p&gt;There are two ways to create an SSH tunnel, local and remote port forwarding (there’s also dynamic forwarding, but we won’t cover that here). The best way to understand these is by an example, let’s start with local port forwarding.  &lt;/p&gt;
 &lt;h4&gt;Local port forwarding&lt;/h4&gt;
@@ -581,7 +581,7 @@ ssh hostname &amp;quot;sudo whoami&amp;quot;
 &lt;p&gt;You just happened to choose a website that doesn't like weird headers (i.e. localhost instead of imgur.com). Imgur's cdn doesn't like that. Your command will work with google.com and other websites.
 A couple solutions are here, with the easiest one being editing /etc/hosts.
 You can also use an ssh socks proxy, which requires just a bit more configuration in your browser, but makes all the websites just work.&lt;/p&gt;
-&lt;/blockquote&gt;</summary><category term="SSH"></category><category term="tunnel"></category></entry><entry><title>Golang 初学</title><link href="/ji-zhu-gai-bian-sheng-huo/2015/first-glance-at-go.html" rel="alternate"></link><updated>2015-07-31T20:00:00+08:00</updated><author><name>nullne</name></author><id>tag:,2015-07-31:ji-zhu-gai-bian-sheng-huo/2015/first-glance-at-go.html</id><summary type="html">&lt;h2&gt;Go&lt;/h2&gt;
+&lt;/blockquote&gt;</summary><category term="SSH"></category><category term="tunnel"></category></entry><entry><title>Golang 初学</title><link href="/hand-of-midas/2015/first-glance-at-go.html" rel="alternate"></link><updated>2015-07-31T20:00:00+08:00</updated><author><name>nullne</name></author><id>tag:,2015-07-31:hand-of-midas/2015/first-glance-at-go.html</id><summary type="html">&lt;h2&gt;Go&lt;/h2&gt;
 &lt;h3&gt;语法差异&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;
@@ -954,7 +954,7 @@ Closing channel means there is no more values to be sent , it is possible to clo
 &lt;li&gt;&lt;a href="http://www.oschina.net/p/go-fundamental-programming"&gt;go 编程基础（视频）&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://github.com/nullne/book/blob/master/Go%20%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%20%E7%AC%AC%E5%9B%9B%E7%89%88.pdf"&gt;Go学习笔记 -- 雨痕&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="http://io-meter.com/2014/07/30/go's-package-management/"&gt;Go 语言的包依赖管理&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</summary><category term="Programming"></category><category term="Tutorial"></category></entry><entry><title>你到底想要一个什么的工作</title><link href="/dear-diary/2015/What-do-you-really-want.html" rel="alternate"></link><updated>2015-03-25T17:20:00+08:00</updated><author><name>nullne</name></author><id>tag:,2015-03-25:dear-diary/2015/What-do-you-really-want.html</id><summary type="html">&lt;div id="pec-encrypted-content" style="display:none"&gt;qOFDYHM/wyBHoEYl0e/9UQ==;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;^&lt;/div&gt;
+&lt;/ul&gt;</summary><category term="Programming"></category><category term="Tutorial"></category></entry><entry><title>你到底想要一个什么的工作</title><link href="/dear-diary/2015/What-do-you-really-want.html" rel="alternate"></link><updated>2015-03-25T17:20:00+08:00</updated><author><name>nullne</name></author><id>tag:,2015-03-25:dear-diary/2015/What-do-you-really-want.html</id><summary type="html">&lt;div id="pec-encrypted-content" style="display:none"&gt;DPUs3Z96lvKjI+tUnfgKwQ==;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;^&lt;/div&gt;
 &lt;div id="pec-decrypted-content"&gt;
 &lt;div class="ui large brown message"&gt;
     &lt;i class="lock icon"&gt;&lt;/i&gt;
@@ -1070,7 +1070,7 @@ $(document).ready(function(){
 
         document.addEventListener('DOMContentLoaded', init_decryptor);
     })();
-&lt;/script&gt;</summary><category term="work"></category></entry><entry><title>WIFI 热点欺骗</title><link href="/ji-zhu-gai-bian-sheng-huo/2014/real-attack-show-wifi-vulnerability.html" rel="alternate"></link><updated>2014-11-23T15:21:00+08:00</updated><author><name>nullne</name></author><id>tag:,2014-11-23:ji-zhu-gai-bian-sheng-huo/2014/real-attack-show-wifi-vulnerability.html</id><summary type="html">&lt;p&gt;&lt;em&gt;很久以前看过一篇关于WIFI脆弱性的&lt;a href="http://fex.baidu.com/blog/2014/04/traffic-hijack/"&gt;介绍&lt;/a&gt;(找了好久终于被我找到了)，其中有一部分讲的是由于本身协议的弱点，相同 ssid 的热点会被合并为同一个，至于用户最终连接哪个热点取决于他所能接收到的信号强度。不知道此刻各位看官脑洞有没有大开？&lt;/em&gt;&lt;/p&gt;
+&lt;/script&gt;</summary><category term="work"></category></entry><entry><title>WIFI 热点欺骗</title><link href="/hand-of-midas/2014/real-attack-show-wifi-vulnerability.html" rel="alternate"></link><updated>2014-11-23T15:21:00+08:00</updated><author><name>nullne</name></author><id>tag:,2014-11-23:hand-of-midas/2014/real-attack-show-wifi-vulnerability.html</id><summary type="html">&lt;p&gt;&lt;em&gt;很久以前看过一篇关于WIFI脆弱性的&lt;a href="http://fex.baidu.com/blog/2014/04/traffic-hijack/"&gt;介绍&lt;/a&gt;(找了好久终于被我找到了)，其中有一部分讲的是由于本身协议的弱点，相同 ssid 的热点会被合并为同一个，至于用户最终连接哪个热点取决于他所能接收到的信号强度。不知道此刻各位看官脑洞有没有大开？&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;俗话说杀生不如宰熟，所以直接就向学校 ap 下手了。提前声明几个全局变量：&lt;/em&gt;&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;ssid&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;NICESHOT&lt;/span&gt;
 &lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="err"&gt;：&lt;/span&gt; &lt;span class="n"&gt;ubuntu&lt;/span&gt;
@@ -1218,7 +1218,7 @@ $ git push
 &lt;p&gt;。。。。。。&lt;/p&gt;
 &lt;p&gt;算了先就不无病呻吟了，刚才接到&lt;strong&gt;知道创宇&lt;/strong&gt;HR的电话，在这么一个特殊的节日去面试。&lt;/p&gt;
 &lt;p&gt;最后附图纪念 &lt;strong&gt;&lt;em&gt;1111&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img alt="Alt text" src="https://lh5.googleusercontent.com/-foXL3QCuRco/VGDh3Wvvy8I/AAAAAAAAADg/iwtexzazuGg/s481/yule.jpg" /&gt;&lt;/p&gt;</summary><category term="找工作"></category><category term="blog"></category></entry><entry><title>ARP protocol analysis</title><link href="/ji-zhu-gai-bian-sheng-huo/2011/ARP-protocol.html" rel="alternate"></link><updated>2011-12-05T19:30:00+08:00</updated><author><name>nullne</name></author><id>tag:,2011-11-03:ji-zhu-gai-bian-sheng-huo/2011/ARP-protocol.html</id><summary type="html">&lt;p&gt;&lt;img alt="Alt Text" src="{filename}./images/nan.jpg" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Alt text" src="https://lh5.googleusercontent.com/-foXL3QCuRco/VGDh3Wvvy8I/AAAAAAAAADg/iwtexzazuGg/s481/yule.jpg" /&gt;&lt;/p&gt;</summary><category term="找工作"></category><category term="blog"></category></entry><entry><title>ARP protocol analysis</title><link href="/hand-of-midas/2011/ARP-protocol.html" rel="alternate"></link><updated>2011-12-05T19:30:00+08:00</updated><author><name>nullne</name></author><id>tag:,2011-11-03:hand-of-midas/2011/ARP-protocol.html</id><summary type="html">&lt;p&gt;&lt;img alt="Alt Text" src="{filename}./images/nan.jpg" /&gt;&lt;/p&gt;
 &lt;h1&gt;ARP 协议分析&lt;/h1&gt;
 &lt;p&gt;@[arp|wireshark]&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;地址解析协议&lt;/strong&gt;，即&lt;strong&gt;ARP&lt;/strong&gt;（Address Resolution Protocol） 是根据IP地址获取物理地址的一个TCP/IP协议。&lt;/p&gt;
