@@ -43,6 +43,12 @@ $(document)
   <script>
   $(document)
     .ready(function() {
+        // change copyleft
+        var now = new Date();
+        var copyleft = $('.copyleft').html().replace(/2013.*/, "2013 - " + now.getFullYear());
+        $('.copyleft').html(copyleft)
+
+
         $('div.search').keypress(function(e) {
             if(e.which == 13) {
                 var q = $(this).find('input').val()
@@ -168,7 +174,7 @@ $(document)
           </div>
       </div>
   </div>
-  <div class="ui text container"><div id="pec-encrypted-content" style="display:none">XSoRKWoYuAT2tTpnP1+plw==;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;^</div>
+  <div class="ui text container"><div id="pec-encrypted-content" style="display:none">pCXcGFUDFelQO4ahExzlWg==;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;^</div>
 <div id="pec-decrypted-content">
 <div class="ui large brown message">
     <i class="lock icon"></i>
@@ -313,26 +319,17 @@ $(document).ready(function(){
 </h4>
 
 <!-- google plus comment -->
-<div class="ui centered grid" >
-    <div id="comments" class="column"></div>
-    <script src="https://apis.google.com/js/plusone.js"></script>
-    <script>
-gapi.comments.render('comments', {
-    href: window.location,
-    width: '624',
-    first_party_property: 'BLOGGER',
-    view_type: 'FILTERED_POSTMOD'
-});
-    </script>
-
-    <!--
-        <div id="commentscounter"></div>
-        <script>
-gapi.commentcount.render('commentscounter', {
-    href: window.location
-});
-        </script>
-        -->
+<div class="ui two column centered grid" id="google-comment">
+    <div id="comments" class="column">
+        <div class="ui brown icon  message" style="display: none;" id="gfw">
+            <i class="notched circle loading icon"></i>
+            <ul class="list">
+                <li>这儿本来是Google Comments</li>
+                <li>EMBARRASSED about Great Fire Wall...</li>
+                <li>但是不会翻墙就是你的不对了</li>
+            </ul>
+        </div>
+    </div>
 </div>
 
   <div class="ui hidden divider"></div>
@@ -372,7 +369,7 @@ gapi.commentcount.render('commentscounter', {
     </div>
       <div class="ui inverted section divider"></div>
       <div class="ui centered align grid">
-          <p class="copyleft">&copy; nullne 2013-2016</p>
+          <p class="copyleft">&copy; nullne 2013-</p>
       </div>
   </div>
 </div>
@@ -397,6 +394,40 @@ $('.gallery').magnificPopup({
             return item.el.attr('title') + '<small>' + item.el.attr('exif') + '</small>';
         } }
 });
+</script>
+
+<script>
+var timeout = 30;
+poll = function () {
+  setTimeout(function () {
+    timeout--;
+    if (typeof gapi !== 'undefined') {
+      // External file loaded
+        $('#gfw').remove()
+    }
+    else if (timeout > 0) {
+      poll();
+    }
+    else {
+      // External library failed to load
+        $('#gfw').show()
+    }
+  }, 100);
+};
+
+poll();
+</script>
+<script src="https://apis.google.com/js/plusone.js"></script>
+<script>
+gapi.comments.render('comments', {
+    href: window.location,
+    width: 624,
+    height: 250,
+    first_party_property: 'BLOGGER',
+    view_type: 'FILTERED_POSTMOD'
+});
+$('#gfw').remove()
+
 </script>
 </body>
 

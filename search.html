@@ -40,6 +40,12 @@ $(document).ready(function() {
   <script>
   $(document)
     .ready(function() {
+        // change copyleft
+        var now = new Date();
+        var copyleft = $('.copyleft').html().replace(/2013.*/, "2013 - " + now.getFullYear());
+        $('.copyleft').html(copyleft)
+
+
         $('div.search').keypress(function(e) {
             if(e.which == 13) {
                 var q = $(this).find('input').val()
@@ -182,10 +188,11 @@ $(document).ready(function() {
     </div>
       <div class="ui inverted section divider"></div>
       <div class="ui centered align grid">
-          <p class="copyleft">&copy; nullne 2013-2016</p>
+          <p class="copyleft">&copy; nullne 2013-</p>
       </div>
   </div>
 </div>
+
 
 </body>
 
