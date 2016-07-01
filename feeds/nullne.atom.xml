@@ -1,5 +1,121 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>NULLNE</title><link href="/" rel="alternate"></link><link href="/feeds/nullne.atom.xml" rel="self"></link><id>/</id><updated>2016-06-29T16:09:46+08:00</updated><entry><title>厦门八周</title><link href="/suo-sui/2016/eight-weeks-in-Amoy.html" rel="alternate"></link><updated>2016-06-29T16:09:46+08:00</updated><author><name>nullne</name></author><id>tag:,2016-06-29:suo-sui/2016/eight-weeks-in-Amoy.html</id><summary type="html">&lt;p&gt;先随便写一点吧，占坑&lt;/p&gt;</summary><category term="旅游"></category></entry><entry><title>Golang 实现ssh批量运行</title><link href="/hand-of-midas/2016/golang-muls.html" rel="alternate"></link><updated>2016-06-29T16:09:46+08:00</updated><author><name>nullne</name></author><id>tag:,2016-06-29:hand-of-midas/2016/golang-muls.html</id><summary type="html">&lt;h2&gt;Golang 实现ssh批量运行&lt;/h2&gt;</summary><category term="SSH"></category><category term="Golang"></category></entry><entry><title>报销助手--Chrome插件</title><link href="/hand-of-midas/2015/chrome-extension-reimbursement-assistant.html" rel="alternate"></link><updated>2015-12-27T11:11:00+08:00</updated><author><name>nullne</name></author><id>tag:,2015-12-27:hand-of-midas/2015/chrome-extension-reimbursement-assistant.html</id><summary type="html">&lt;h2&gt;楔子&lt;/h2&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>NULLNE</title><link href="/" rel="alternate"></link><link href="/feeds/nullne.atom.xml" rel="self"></link><id>/</id><updated>2016-07-01T03:36:06+08:00</updated><entry><title>厦门八周</title><link href="/dear-diary/2016/eight-weeks-in-Amoy.html" rel="alternate"></link><updated>2016-07-01T03:36:06+08:00</updated><author><name>nullne</name></author><id>tag:,2016-07-01:dear-diary/2016/eight-weeks-in-Amoy.html</id><summary type="html">&lt;div id="pec-encrypted-content" style="display:none"&gt;XSoRKWoYuAT2tTpnP1+plw==;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;^&lt;/div&gt;
+&lt;div id="pec-decrypted-content"&gt;
+&lt;div class="ui large brown message"&gt;
+    &lt;i class="lock icon"&gt;&lt;/i&gt;
+    This content is encrypted.
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="ui page dimmer" id="lock-lock"&gt;
+    &lt;div class=" content"&gt;
+        &lt;form id="pec-decrypt-form" class="ui form" onsubmit="javascript:$('#pec-decrypt-content').click();return false;"&gt;
+            &lt;div class="inline field"&gt;
+                &lt;input id="pec-content-password" type="password"  placeholder="Password"&gt;
+                &lt;button class="ui button" id="pec-decrypt-content" type="button"&gt;&lt;i class="unlock icon"&gt;&lt;/i&gt;Unlock&lt;/button&gt;
+            &lt;/div&gt;
+        &lt;/form&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;script type="text/javascript"&gt;
+$(document).ready(function(){
+    $('#lock-lock').dimmer({
+        opacity: 0.8,
+        closable: false,
+    });
+    $('#lock-lock').dimmer('show');
+});
+&lt;/script&gt;
+
+
+    &lt;script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/components/core.js"&gt;&lt;/script&gt;
+
+    &lt;script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/components/enc-base64.js"&gt;&lt;/script&gt;
+
+    &lt;script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/components/cipher-core.js"&gt;&lt;/script&gt;
+
+    &lt;script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/components/pad-nopadding.js"&gt;&lt;/script&gt;
+
+    &lt;script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/components/md5.js"&gt;&lt;/script&gt;
+
+    &lt;script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/components/aes.js"&gt;&lt;/script&gt;
+
+
+&lt;script type="text/javascript"&gt;
+    (function () {
+        var strip_padding = function (padded_content, padding_char) {
+            /*
+             * Strips the padding character from decrypted content.
+             */
+            for (var i = padded_content.length; i &gt; 0; i--) {
+                if (padded_content[i-1] !== padding_char) {
+                    return padded_content.slice(0, i);
+                }
+            }
+        };
+
+        var decrypt_content = function (password, iv_b64, ciphertext_b64, padding_char) {
+            /*
+             * Decrypts the content from the ciphertext bundle.
+             */
+            var key = CryptoJS.MD5(password),
+                iv = CryptoJS.enc.Base64.parse(iv_b64),
+                ciphertext = CryptoJS.enc.Base64.parse(ciphertext_b64),
+                bundle = {
+                    key: key,
+                    iv: iv,
+                    ciphertext: ciphertext
+                };
+
+            var plaintext = CryptoJS.AES.decrypt(bundle, key, {iv: iv, padding: CryptoJS.pad.NoPadding});
+
+            try {
+                return strip_padding(plaintext.toString(CryptoJS.enc.Utf8), padding_char);
+            }
+            catch (err) {
+                // encoding failed; wrong password
+                return false;
+            }
+        };
+
+        var init_decryptor = function() {
+            var decrypt_btn = document.getElementById('pec-decrypt-content'),
+                password_input = document.getElementById('pec-content-password'),
+                encrypted_content = document.getElementById('pec-encrypted-content'),
+                decrypted_content = document.getElementById('pec-decrypted-content'),
+                decrypt_form = document.getElementById('pec-decrypt-form');
+
+            decrypt_btn.addEventListener('click', function () {
+                // grab the ciphertext bundle
+                var parts = encrypted_content.innerHTML.split(';');
+
+                // decrypt it
+                var content = decrypt_content(
+                    password_input.value,
+                    parts[0],
+                    parts[1],
+                    parts[2]
+                );
+
+                if (content) {
+                    // success; display the decrypted content
+                    decrypted_content.innerHTML = content;
+                    decrypt_form.parentNode.removeChild(decrypt_form);
+                    encrypted_content.parentNode.removeChild(encrypted_content);
+                    $('#lock-lock').dimmer('hide');
+
+                    // any post processing on the decrypted content should be done here
+                }
+                else {
+                    // ¯\_(ツ)_/¯
+                    password_input.value = '';
+                }
+            });
+        };
+
+        document.addEventListener('DOMContentLoaded', init_decryptor);
+    })();
+&lt;/script&gt;</summary><category term="旅游"></category></entry><entry><title>Golang 实现ssh批量运行</title><link href="/hand-of-midas/2016/golang-muls.html" rel="alternate"></link><updated>2016-07-01T03:36:06+08:00</updated><author><name>nullne</name></author><id>tag:,2016-07-01:hand-of-midas/2016/golang-muls.html</id><summary type="html">&lt;h2&gt;Golang 实现ssh批量运行&lt;/h2&gt;</summary><category term="SSH"></category><category term="Golang"></category></entry><entry><title>报销助手--Chrome插件</title><link href="/hand-of-midas/2015/chrome-extension-reimbursement-assistant.html" rel="alternate"></link><updated>2015-12-27T11:11:00+08:00</updated><author><name>nullne</name></author><id>tag:,2015-12-27:hand-of-midas/2015/chrome-extension-reimbursement-assistant.html</id><summary type="html">&lt;h2&gt;楔子&lt;/h2&gt;
 &lt;p&gt;其实现在已经是很久以后了，太懒了&lt;/p&gt;
 &lt;p&gt;某个周末闲的发慌，突然想到公司的报销流程还是非常繁琐的，需要从一个报销系统去查自己的考勤情况，根据加班情况可以申请饭补，然后填写到报销系统里面。一来报销系统设计的巨复杂，每添加一项得点点点填填填，其次整个过程非常枯燥，机械的重复。我是一个非常怕麻烦的人，但是我还是去报销了，因为我算了一下，即便是我花了一个小时申请完报销，那么时薪就有五六百了，已经远远超过我目前的薪水了。&lt;/p&gt;
 &lt;p&gt;但是这个过程应该可以优化吧&lt;/p&gt;
@@ -954,7 +1070,7 @@ Closing channel means there is no more values to be sent , it is possible to clo
 &lt;li&gt;&lt;a href="http://www.oschina.net/p/go-fundamental-programming"&gt;go 编程基础（视频）&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://github.com/nullne/book/blob/master/Go%20%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%20%E7%AC%AC%E5%9B%9B%E7%89%88.pdf"&gt;Go学习笔记 -- 雨痕&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="http://io-meter.com/2014/07/30/go's-package-management/"&gt;Go 语言的包依赖管理&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</summary><category term="Programming"></category><category term="Tutorial"></category></entry><entry><title>你到底想要一个什么的工作</title><link href="/dear-diary/2015/What-do-you-really-want.html" rel="alternate"></link><updated>2015-03-25T17:20:00+08:00</updated><author><name>nullne</name></author><id>tag:,2015-03-25:dear-diary/2015/What-do-you-really-want.html</id><summary type="html">&lt;div id="pec-encrypted-content" style="display:none"&gt;DPUs3Z96lvKjI+tUnfgKwQ==;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;^&lt;/div&gt;
+&lt;/ul&gt;</summary><category term="Programming"></category><category term="Tutorial"></category></entry><entry><title>你到底想要一个什么的工作</title><link href="/dear-diary/2015/What-do-you-really-want.html" rel="alternate"></link><updated>2015-03-25T17:20:00+08:00</updated><author><name>nullne</name></author><id>tag:,2015-03-25:dear-diary/2015/What-do-you-really-want.html</id><summary type="html">&lt;div id="pec-encrypted-content" style="display:none"&gt;8s0M4GFPS+ajPFqqq63XIA==;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;^&lt;/div&gt;
 &lt;div id="pec-decrypted-content"&gt;
 &lt;div class="ui large brown message"&gt;
     &lt;i class="lock icon"&gt;&lt;/i&gt;
