@@ -12,12 +12,11 @@
   <link rel="icon" href="/theme/img/favicon.png">
   <link rel="stylesheet" type="text/css" href="/theme/semantic.min.css">
   <link rel="stylesheet" type="text/css" href="/theme/main.css">
-  <link rel="stylesheet" href="/theme/magnific-popup.css">
 <link rel="stylesheet" type="text/css" href="/theme/pygment.css">
 
 <style type="text/css">
 .masthead.segment.bg:after {
-    background-image: url('/photos/demo/nana.jpg');
+    background-image: url('/photos/hand of midas/arpa.jpg');
 }
 </style>
 
@@ -175,8 +174,7 @@ $(document)
           </div>
       </div>
   </div>
-  <div class="ui text container"><p><img alt="Alt Text" src="{filename}./images/nan.jpg" /></p>
-<h1>ARP 协议分析</h1>
+  <div class="ui text container"><h1>ARP 协议分析</h1>
 <p>@[arp|wireshark]</p>
 <p><strong>地址解析协议</strong>，即<strong>ARP</strong>（Address Resolution Protocol） 是根据IP地址获取物理地址的一个TCP/IP协议。</p>
 <ul>
@@ -218,19 +216,6 @@ $(document)
 <div class="ui hidden divider"></div>
 
 
-    <div class="ui basic segment">
-        <h4 class="ui horizontal divider header">
-            <i class="photo icon"></i>
-            Gallery
-        </h4>
-    </div>
-    <div class="ui images centered gallery">
-        <a class="ui image" href="/photos/demo/abstract-digital-art-artwork-girl-face-900x1440.jpg" title="Abstract-Digital-Art-Artwork-Girl-Face-900x1440.jpg" exif="" caption=""><img src="/photos/demo/abstract-digital-art-artwork-girl-face-900x1440t.jpg"></a>
-        <a class="ui image" href="/photos/demo/img_1938.jpg" title="IMG_1938.JPG" exif="" caption=""><img src="/photos/demo/img_1938t.jpg"></a>
-        <a class="ui image" href="/photos/demo/img_1941.jpg" title="IMG_1941.JPG" exif="" caption=""><img src="/photos/demo/img_1941t.jpg"></a>
-        <a class="ui image" href="/photos/demo/digital-haunte-1920×1080-hd-picture.jpg" title="digital-haunte-1920×1080-hd-picture.jpg" exif="" caption=""><img src="/photos/demo/digital-haunte-1920×1080-hd-picturet.jpg"></a>
-        <a class="ui image" href="/photos/demo/nan.jpg" title="nan.jpg" exif="" caption=""><img src="/photos/demo/nant.jpg"></a>
-    </div>
 
 <h4 class="ui horizontal divider header">
     <i class="comment icon"></i>
@@ -293,27 +278,6 @@ $(document)
   </div>
 </div>
 
-<!-- Magnific Popup core JS file -->
-<script src="/theme/jquery.magnific-popup.min.js"></script>
-<script>
-$('.gallery').magnificPopup({
-    delegate: 'a',
-    type: 'image',
-    gallery: {
-        enabled: true,
-        navigateByImgClick: true,
-        preload: [1,2]
-    },
-    image: {
-        titleSrc: function(item) {
-            if (item.el.attr('caption') && item.el.attr('exif')) {
-                return (item.el.attr('caption').replace(/\\n/g, '<br />') +
-                        '<small>' + item.el.attr('title') + ' - ' + item.el.attr('exif') + '</small>');
-            }
-            return item.el.attr('title') + '<small>' + item.el.attr('exif') + '</small>';
-        } }
-});
-</script>
 
 <script>
 var timeout = 30;

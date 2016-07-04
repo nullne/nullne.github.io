@@ -12,7 +12,6 @@
   <link rel="icon" href="/theme/img/favicon.png">
   <link rel="stylesheet" type="text/css" href="/theme/semantic.min.css">
   <link rel="stylesheet" type="text/css" href="/theme/main.css">
-  <link rel="stylesheet" href="/theme/magnific-popup.css">
 
 <style type="text/css">
 .masthead.segment.bg:after {
@@ -134,7 +133,7 @@
   <div class="ui relaxed divided items">
     <div class="item">
       <div class="ui small image">
-          <img src="/photos/demo/nant.jpg">
+          <img src="/photos/hand of midas/arpt.jpg">
       </div>
       <div class="content">
         <a class="header" href="/hand-of-midas/2011/ARP-protocol.html">ARP protocol analysis</a>
@@ -198,27 +197,6 @@
   </div>
 </div>
 
-<!-- Magnific Popup core JS file -->
-<script src="/theme/jquery.magnific-popup.min.js"></script>
-<script>
-$('.gallery').magnificPopup({
-    delegate: 'a',
-    type: 'image',
-    gallery: {
-        enabled: true,
-        navigateByImgClick: true,
-        preload: [1,2]
-    },
-    image: {
-        titleSrc: function(item) {
-            if (item.el.attr('caption') && item.el.attr('exif')) {
-                return (item.el.attr('caption').replace(/\\n/g, '<br />') +
-                        '<small>' + item.el.attr('title') + ' - ' + item.el.attr('exif') + '</small>');
-            }
-            return item.el.attr('title') + '<small>' + item.el.attr('exif') + '</small>';
-        } }
-});
-</script>
 
 </body>
 
