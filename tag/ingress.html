@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>NULLNE <small>旅游</small></title>
+  <title>NULLNE <small>Ingress</small></title>
   <!-- Standard Meta -->
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
@@ -12,11 +12,10 @@
   <link rel="icon" href="/theme/img/favicon.png">
   <link rel="stylesheet" type="text/css" href="/theme/semantic.min.css">
   <link rel="stylesheet" type="text/css" href="/theme/main.css">
-  <link rel="stylesheet" href="/theme/magnific-popup.css">
 
 <style type="text/css">
 .masthead.segment.bg:after {
-    background-image: url('/background/旅游.jpg');
+    background-image: url('/background/Ingress.jpg');
 }
 </style>
 
@@ -121,7 +120,7 @@
 
     <div class="ui text container">
 <h1 class="ui inverted header">
-    旅游
+    Ingress
 </h1>
     </div>
 
@@ -132,25 +131,6 @@
 
 <div class="ui container">
   <div class="ui relaxed divided items">
-    <div class="item">
-      <div class="ui small image">
-          <img src="/photos/amoy/night-in-amoyt.jpg">
-      </div>
-      <div class="content">
-        <a class="header" href="/dear-diary/2016/eight-weeks-in-Amoy.html"><i class="lock icon"></i> 厦门八周</a>
-        <div class="meta">
-          Jul 26, 2016
-          <a href="/category/dear-diary.html">Dear Diary</a>
-        </div>
-        <div class="description">
-            This content is encrypted.
-        </div>
-        <div class="extra">
-          <img src="/theme/img/avatar.jpg" class="ui circular avatar image"> 
-          <a href="/about.html">nullne</a>
-        </div>
-      </div>
-    </div>
     <div class="item">
       <div class="ui small image">
           <img src="/photos/ingress/logot.jpg">
@@ -228,27 +208,6 @@
   </div>
 </div>
 
-<!-- Magnific Popup core JS file -->
-<script src="/theme/jquery.magnific-popup.min.js"></script>
-<script>
-$('.gallery').magnificPopup({
-    delegate: 'a',
-    type: 'image',
-    gallery: {
-        enabled: true,
-        navigateByImgClick: true,
-        preload: [1,2]
-    },
-    image: {
-        titleSrc: function(item) {
-            if (item.el.attr('caption') && item.el.attr('exif')) {
-                return (item.el.attr('caption').replace(/\\n/g, '<br />') +
-                        '<small>' + item.el.attr('title') + ' - ' + item.el.attr('exif') + '</small>');
-            }
-            return item.el.attr('title') + '<small>' + item.el.attr('exif') + '</small>';
-        } }
-});
-</script>
 
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
