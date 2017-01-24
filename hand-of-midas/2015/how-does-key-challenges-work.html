@@ -23,22 +23,6 @@
 
   <script src="/theme/jquery-2.1.4.min.js"></script>
   <script src="/theme/semantic.min.js"></script>
-<script>
-$(document)
-    .ready(function() {
-        $('.card .dimmer')
-            .dimmer({
-                on: 'hover'
-            })
-        ;
-        $('.ui.sticky')
-            .sticky({
-                context: '#allude',
-                offset: 63,
-            })
-        ;
-    });
-</script>
   <script>
   $(document)
     .ready(function() {
@@ -91,7 +75,9 @@ $(document)
       <a class="item  active" href="/category/hand-of-midas.html">Hand of Midas</a>
       <a class="item " href="/category/dear-diary.html">Dear Diary</a>
 
-      <a class="item" href="/about.html">About</a>
+
+      <a class="item" href="">About</a>
+
     <div class="right item">
         <div class="ui small search">
             <div class="ui icon input">
@@ -123,7 +109,9 @@ $(document)
         <a class="item  active" href="/category/hand-of-midas.html">Hand of Midas</a>
         <a class="item " href="/category/dear-diary.html">Dear Diary</a>
 
-        <a class="item" href="/about.html">About</a>
+
+        <a class="item" href="">About</a>
+
         <div class="right item">
             <div class="ui small search">
                 <div class="ui icon input">
@@ -146,35 +134,7 @@ $(document)
   <div class="ui hidden divider"></div>
 
 <div class="ui basic segment" id="allude" style="">
-  <div class="right ui rail" style="">
-      <div class="ui sticky" style="">
-          <div class="ui card">
-              <div class="ui slide right reveal image">
-                  <div class="visible content">
-                      <img class="ui fluid image" src="/theme/img/big-avatar.jpg">
-                  </div>
-                  <div class="hidden content">
-                      <img class="ui fluid image" src="/theme/img/alipay.png">
-                  </div>
-              </div>
-
-              <div class="content">
-                  <a href="/about.html" class="header">nullne</a>
-                  <div class="meta">
-                      <span class="date">Aug 27, 2015</span>
-                  </div>
-              </div>
-              <div class="extra content">
- 
-                  Tags:&nbsp;
-                  <a href="/tag/ssh.html" class="">SSH</a>,&nbsp;
-                  <a href="/tag/key-challenge.html" class="">Key Challenge</a>,&nbsp;
- 
-              </div>
-          </div>
-      </div>
-  </div>
-  <div class="ui text container"><h4>Key Challenge 如何工作</h4>
+  <div class="ui container"><h4>Key Challenge 如何工作</h4>
 <p>agent非常聪明的一点就是他可以不用将private key暴露给任何人就可以确认一个人的身份（确切的说是拥有私钥的人）。  </p>
 <p>当用户ssh登陆一台远端服务器的时候，发送包含username和key的请求，其中的username帮助服务器确定其公钥的位置--一般在<code>$HOME/.ssh/authorized_keys</code>  </p>
 <p>服务器端生成一个challenge，其唯一可以被拥有私钥的设备答复。服务器产生并保存一个大的随机数，然后以用户的公钥进行加密，将生成的二进制数据发送给请求的用户。对于没有私钥的用户这些数据没有任何意义。  </p>

@@ -23,22 +23,6 @@
 
   <script src="/theme/jquery-2.1.4.min.js"></script>
   <script src="/theme/semantic.min.js"></script>
-<script>
-$(document)
-    .ready(function() {
-        $('.card .dimmer')
-            .dimmer({
-                on: 'hover'
-            })
-        ;
-        $('.ui.sticky')
-            .sticky({
-                context: '#allude',
-                offset: 63,
-            })
-        ;
-    });
-</script>
   <script>
   $(document)
     .ready(function() {
@@ -91,7 +75,9 @@ $(document)
       <a class="item  active" href="/category/hand-of-midas.html">Hand of Midas</a>
       <a class="item " href="/category/dear-diary.html">Dear Diary</a>
 
-      <a class="item" href="/about.html">About</a>
+
+      <a class="item" href="">About</a>
+
     <div class="right item">
         <div class="ui small search">
             <div class="ui icon input">
@@ -123,7 +109,9 @@ $(document)
         <a class="item  active" href="/category/hand-of-midas.html">Hand of Midas</a>
         <a class="item " href="/category/dear-diary.html">Dear Diary</a>
 
-        <a class="item" href="/about.html">About</a>
+
+        <a class="item" href="">About</a>
+
         <div class="right item">
             <div class="ui small search">
                 <div class="ui icon input">
@@ -146,35 +134,7 @@ $(document)
   <div class="ui hidden divider"></div>
 
 <div class="ui basic segment" id="allude" style="">
-  <div class="right ui rail" style="">
-      <div class="ui sticky" style="">
-          <div class="ui card">
-              <div class="ui slide right reveal image">
-                  <div class="visible content">
-                      <img class="ui fluid image" src="/theme/img/big-avatar.jpg">
-                  </div>
-                  <div class="hidden content">
-                      <img class="ui fluid image" src="/theme/img/alipay.png">
-                  </div>
-              </div>
-
-              <div class="content">
-                  <a href="/about.html" class="header">nullne</a>
-                  <div class="meta">
-                      <span class="date">Aug 27, 2015</span>
-                  </div>
-              </div>
-              <div class="extra content">
- 
-                  Tags:&nbsp;
-                  <a href="/tag/ssh.html" class="">SSH</a>,&nbsp;
-                  <a href="/tag/config.html" class="">config</a>,&nbsp;
- 
-              </div>
-          </div>
-      </div>
-  </div>
-  <div class="ui text container"><h3>SSH配置技巧</h3>
+  <div class="ui container"><h3>SSH配置技巧</h3>
 <h5>配置主机别名, 省略用户名</h5>
 <p>修改（创建如果不存在）~/.ssh/config,  增加下面条目(可添加多个)</p>
 <div class="highlight"><pre><span></span>Host cc

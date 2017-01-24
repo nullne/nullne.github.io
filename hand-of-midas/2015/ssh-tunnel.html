@@ -23,22 +23,6 @@
 
   <script src="/theme/jquery-2.1.4.min.js"></script>
   <script src="/theme/semantic.min.js"></script>
-<script>
-$(document)
-    .ready(function() {
-        $('.card .dimmer')
-            .dimmer({
-                on: 'hover'
-            })
-        ;
-        $('.ui.sticky')
-            .sticky({
-                context: '#allude',
-                offset: 63,
-            })
-        ;
-    });
-</script>
   <script>
   $(document)
     .ready(function() {
@@ -91,7 +75,9 @@ $(document)
       <a class="item  active" href="/category/hand-of-midas.html">Hand of Midas</a>
       <a class="item " href="/category/dear-diary.html">Dear Diary</a>
 
-      <a class="item" href="/about.html">About</a>
+
+      <a class="item" href="">About</a>
+
     <div class="right item">
         <div class="ui small search">
             <div class="ui icon input">
@@ -123,7 +109,9 @@ $(document)
         <a class="item  active" href="/category/hand-of-midas.html">Hand of Midas</a>
         <a class="item " href="/category/dear-diary.html">Dear Diary</a>
 
-        <a class="item" href="/about.html">About</a>
+
+        <a class="item" href="">About</a>
+
         <div class="right item">
             <div class="ui small search">
                 <div class="ui icon input">
@@ -146,35 +134,7 @@ $(document)
   <div class="ui hidden divider"></div>
 
 <div class="ui basic segment" id="allude" style="">
-  <div class="right ui rail" style="">
-      <div class="ui sticky" style="">
-          <div class="ui card">
-              <div class="ui slide right reveal image">
-                  <div class="visible content">
-                      <img class="ui fluid image" src="/theme/img/big-avatar.jpg">
-                  </div>
-                  <div class="hidden content">
-                      <img class="ui fluid image" src="/theme/img/alipay.png">
-                  </div>
-              </div>
-
-              <div class="content">
-                  <a href="/about.html" class="header">nullne</a>
-                  <div class="meta">
-                      <span class="date">Aug 27, 2015</span>
-                  </div>
-              </div>
-              <div class="extra content">
- 
-                  Tags:&nbsp;
-                  <a href="/tag/ssh.html" class="">SSH</a>,&nbsp;
-                  <a href="/tag/tunnel.html" class="">tunnel</a>,&nbsp;
- 
-              </div>
-          </div>
-      </div>
-  </div>
-  <div class="ui text container"><h3>SSH隧道</h3>
+  <div class="ui container"><h3>SSH隧道</h3>
 <p>本文前半部分摘录自 <a href="http://blog.trackets.com/2014/05/17/ssh-tunnel-local-and-remote-port-forwarding-explained-with-examples.html">SSH Tunnel - Local and Remote Port Forwarding Explained With Examples</a>, 后面是自己在亲自实践的过程中遇到的问题。  </p>
 <p>There are two ways to create an SSH tunnel, local and remote port forwarding (there’s also dynamic forwarding, but we won’t cover that here). The best way to understand these is by an example, let’s start with local port forwarding.  </p>
 <h4>Local port forwarding</h4>

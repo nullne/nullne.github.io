@@ -23,22 +23,6 @@
 
   <script src="/theme/jquery-2.1.4.min.js"></script>
   <script src="/theme/semantic.min.js"></script>
-<script>
-$(document)
-    .ready(function() {
-        $('.card .dimmer')
-            .dimmer({
-                on: 'hover'
-            })
-        ;
-        $('.ui.sticky')
-            .sticky({
-                context: '#allude',
-                offset: 63,
-            })
-        ;
-    });
-</script>
   <script>
   $(document)
     .ready(function() {
@@ -91,7 +75,9 @@ $(document)
       <a class="item  active" href="/category/hand-of-midas.html">Hand of Midas</a>
       <a class="item " href="/category/dear-diary.html">Dear Diary</a>
 
-      <a class="item" href="/about.html">About</a>
+
+      <a class="item" href="">About</a>
+
     <div class="right item">
         <div class="ui small search">
             <div class="ui icon input">
@@ -123,7 +109,9 @@ $(document)
         <a class="item  active" href="/category/hand-of-midas.html">Hand of Midas</a>
         <a class="item " href="/category/dear-diary.html">Dear Diary</a>
 
-        <a class="item" href="/about.html">About</a>
+
+        <a class="item" href="">About</a>
+
         <div class="right item">
             <div class="ui small search">
                 <div class="ui icon input">
@@ -146,35 +134,7 @@ $(document)
   <div class="ui hidden divider"></div>
 
 <div class="ui basic segment" id="allude" style="">
-  <div class="right ui rail" style="">
-      <div class="ui sticky" style="">
-          <div class="ui card">
-              <div class="ui slide right reveal image">
-                  <div class="visible content">
-                      <img class="ui fluid image" src="/theme/img/big-avatar.jpg">
-                  </div>
-                  <div class="hidden content">
-                      <img class="ui fluid image" src="/theme/img/alipay.png">
-                  </div>
-              </div>
-
-              <div class="content">
-                  <a href="/about.html" class="header">nullne</a>
-                  <div class="meta">
-                      <span class="date">Aug 27, 2015</span>
-                  </div>
-              </div>
-              <div class="extra content">
- 
-                  Tags:&nbsp;
-                  <a href="/tag/ssh.html" class="">SSH</a>,&nbsp;
-                  <a href="/tag/agent.html" class="">Agent</a>,&nbsp;
- 
-              </div>
-          </div>
-      </div>
-  </div>
-  <div class="ui text container"><h3>SSH Agent</h3>
+  <div class="ui container"><h3>SSH Agent</h3>
 <h4>SSH Agent简介</h4>
 <p>ssh-agent是专为既令人愉快又安全的处理RSA和DSA密钥而设计的特殊程序，它包括在OpenSSH分发内。不同于ssh，ssh-agent是个长时间持续运行的守护进程（daemon），设计它的唯一目的就是对解密的专用密钥进行高速缓存。</p>
 <p>ssh包含的内建支持允许它同ssh-agent通信，允许ssh不必每次新连接时都提示您要密码才能获取解密的专用密钥。对于ssh-agent，您只要使用ssh-add把专用密钥添加到ssh-agent的高速缓存中。这是个一次性过程；用过ssh-add之后，ssh将从ssh-agent获取您的专用密钥，而不会提示要密码短语来烦您了。</p>
