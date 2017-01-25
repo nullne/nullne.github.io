@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>NULLNE</title>
+  <!-- Standard Meta -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="author" content="nullne">
+
+  <!-- Site Properties -->
+  <link rel="icon" href="/theme/img/favicon.png">
+  <link rel="stylesheet" type="text/css" href="/theme/semantic.min.css">
+  <link rel="stylesheet" type="text/css" href="/theme/main.css">
+<link rel="stylesheet" type="text/css" href="/theme/pygment.css">
+
+<style type="text/css">
+.masthead.segment.bg:after {
+    background-image: url('/background/Dear Diary.jpg');
+}
+</style>
+
+
+  <script src="/theme/jquery-2.1.4.min.js"></script>
+  <script src="/theme/semantic.min.js"></script>
+  <script>
+  $(document)
+    .ready(function() {
+        // change copyleft
+        var now = new Date();
+        var copyleft = $('.copyleft').html().replace(/2013.*/, "2013 - " + now.getFullYear());
+        $('.copyleft').html(copyleft)
+
+
+        $('div.search').keypress(function(e) {
+            if(e.which == 13) {
+                var q = $(this).find('input').val()
+                if (q.length !== 0) {
+                    window.location.href = "/search.html?q=" + q;
+                }
+            }
+        });
+        // fix menu when passed
+        $('.masthead')
+            .visibility({
+                once: false,
+                onBottomPassed: function() {
+                    $('.fixed.menu').transition('fade in');
+                },
+                onBottomPassedReverse: function() {
+                    $('.fixed.menu').transition('fade out');
+                }
+            })
+        ;
+    })
+  ;
+  </script>
+  <!-- Feeds -->
+  <link href="/all-atom.xml" type="application/atom+xml" rel="alternate" title="NULLNE Atom Feed" />
+
+
+
+</head>
+<body>
+
+<!-- Following Menu -->
+<div class="ui top fixed hidden menu">
+  <div class="ui container">
+      <a href="/" class="header item">
+          Home
+      </a>
+
+      <!-- pages -->
+      <a class="item " href="/category/suo-sui.html">琐碎</a>
+      <a class="item " href="/category/hand-of-midas.html">Hand of Midas</a>
+      <a class="item  active" href="/category/dear-diary.html">Dear Diary</a>
+
+
+      <a class="item" href="">About</a>
+
+    <div class="right item">
+        <div class="ui small search">
+            <div class="ui icon input">
+                <input class="prompt" type="text" placeholder="Find something...">
+                <i class="search icon"></i>
+            </div>
+        </div>
+    </div>
+  </div>
+</div>
+
+<!-- Page Contents -->
+<div class="pusher">
+  <div class="ui inverted vertical masthead center aligned segment bg" id="bg">
+
+    <div class="ui container">
+      <div class="ui large secondary inverted menu">
+          <!-- 
+         <a class="toc item">
+           <i class="sidebar icon"></i>
+         </a>
+         -->
+         <a href="/" class="item">
+             Home
+         </a>
+
+        <!-- pages -->
+        <a class="item " href="/category/suo-sui.html">琐碎</a>
+        <a class="item " href="/category/hand-of-midas.html">Hand of Midas</a>
+        <a class="item  active" href="/category/dear-diary.html">Dear Diary</a>
+
+
+        <a class="item" href="">About</a>
+
+        <div class="right item">
+            <div class="ui small search">
+                <div class="ui icon input">
+                    <input class="prompt" type="text" placeholder="Find something...">
+                    <i class="search icon"></i>
+                </div>
+            </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ui text container">
+<h1 class="ui inverted header">
+    <i class="lock icon"></i> 从北京逃离和灰溜溜的回来
+</h1>
+    </div>
+
+  </div>
+
+  <div class="ui hidden divider"></div>
+
+<div class="ui basic segment" id="allude" style="">
+  <div class="ui container"><div id="pec-encrypted-content" style="display:none">PMD54IAZNLOQOANIoluGAA==;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;^</div>
+<div id="pec-decrypted-content">
+<div class="ui large brown message">
+    <i class="lock icon"></i>
+    This content is encrypted.
+</div>
+</div>
+
+<div class="ui page dimmer" id="lock-lock">
+    <i class="big inverted remove link icon" style="position:fixed"></i>
+    <div class=" content">
+        <form id="pec-decrypt-form" class="ui form" onsubmit="javascript:$('#pec-decrypt-content').click();return false;">
+            <div class="inline field">
+                <input id="pec-content-password" type="password"  placeholder="Password">
+                <button class="ui button" id="pec-decrypt-content" type="button"><i class="unlock icon"></i>Unlock</button>
+            </div>
+        </form>
+    </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){
+    $('#lock-lock').dimmer({
+        opacity: 0.8,
+        closable: false,
+    });
+    $('#lock-lock').dimmer('show');
+    $('.remove.link.icon').click(function(){
+        $('#lock-lock').dimmer('hide');
+    })
+});
+</script>
+
+
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/components/core.js"></script>
+
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/components/enc-base64.js"></script>
+
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/components/cipher-core.js"></script>
+
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/components/pad-nopadding.js"></script>
+
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/components/md5.js"></script>
+
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/components/aes.js"></script>
+
+
+<script type="text/javascript">
+    (function () {
+        var strip_padding = function (padded_content, padding_char) {
+            /*
+             * Strips the padding character from decrypted content.
+             */
+            for (var i = padded_content.length; i > 0; i--) {
+                if (padded_content[i-1] !== padding_char) {
+                    return padded_content.slice(0, i);
+                }
+            }
+        };
+
+        var decrypt_content = function (password, iv_b64, ciphertext_b64, padding_char) {
+            /*
+             * Decrypts the content from the ciphertext bundle.
+             */
+            var key = CryptoJS.MD5(password),
+                iv = CryptoJS.enc.Base64.parse(iv_b64),
+                ciphertext = CryptoJS.enc.Base64.parse(ciphertext_b64),
+                bundle = {
+                    key: key,
+                    iv: iv,
+                    ciphertext: ciphertext
+                };
+
+            var plaintext = CryptoJS.AES.decrypt(bundle, key, {iv: iv, padding: CryptoJS.pad.NoPadding});
+
+            try {
+                return strip_padding(plaintext.toString(CryptoJS.enc.Utf8), padding_char);
+            }
+            catch (err) {
+                // encoding failed; wrong password
+                return false;
+            }
+        };
+
+        var init_decryptor = function() {
+            var decrypt_btn = document.getElementById('pec-decrypt-content'),
+                password_input = document.getElementById('pec-content-password'),
+                encrypted_content = document.getElementById('pec-encrypted-content'),
+                decrypted_content = document.getElementById('pec-decrypted-content'),
+                decrypt_form = document.getElementById('pec-decrypt-form');
+
+            decrypt_btn.addEventListener('click', function () {
+                // grab the ciphertext bundle
+                var parts = encrypted_content.innerHTML.split(';');
+
+                // decrypt it
+                var content = decrypt_content(
+                    password_input.value,
+                    parts[0],
+                    parts[1],
+                    parts[2]
+                );
+
+                if (content) {
+                    // success; display the decrypted content
+                    decrypted_content.innerHTML = content;
+                    decrypt_form.parentNode.removeChild(decrypt_form);
+                    encrypted_content.parentNode.removeChild(encrypted_content);
+                    $('#lock-lock').dimmer('hide');
+
+                    // any post processing on the decrypted content should be done here
+                }
+                else {
+                    // ¯\_(ツ)_/¯
+                    password_input.value = '';
+                }
+            });
+        };
+
+        document.addEventListener('DOMContentLoaded', init_decryptor);
+    })();
+</script></div>
+</div>
+<div class="ui hidden divider"></div>
+
+
+
+<h4 class="ui horizontal divider header">
+    <i class="comment icon"></i>
+    留下你的评论
+</h4>
+
+<!-- google plus comment -->
+<div class="ui two column centered grid" id="google-comment">
+    <div id="comments" class="column">
+        <div class="ui brown icon  message" style="display: none;" id="gfw">
+            <i class="notched circle loading icon"></i>
+            <ul class="list">
+                <li>这儿本来是Google Comments</li>
+                <li>EMBARRASSED about the Great Fire Wall...</li>
+                <li>但是不会翻墙就是你的不对了</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+  <div class="ui hidden divider"></div>
+
+  <div class="ui inverted vertical footer segment">
+    <div class="ui container">
+      <div class="ui stackable inverted divided equal height stackable grid">
+        <div class="three wide column">
+          <h4 class="ui inverted header">Blogroll</h4>
+          <div class="ui inverted link list">
+              <a href="http://zonca.github.io/" class="item">&nbsp;Zonca</a>
+              <a href="http://moparx.com/" class="item">&nbsp;Moparx</a>
+              <a href="http://blog.friparia.com/" class="item">&nbsp;Friparia</a>
+          </div>
+        </div>
+        <div class="three wide column">
+          <h4 class="ui inverted header">Social</h4>
+          <div class="ui inverted link list">
+              <a href="https://github.com/nullne" class="item"><i class="icon" style="content:url('/theme/img/icons/GitHub.png')"></i>GitHub</a>
+              <a href="https://www.linkedin.com/pub/le-yu/89/980/1a5" class="item"><i class="icon" style="content:url('/theme/img/icons/LinkedIn.png')"></i>LinkedIn</a>
+              <a href="http://www.douban.com/people/nullnes/" class="item"><i class="icon" style="content:url('/theme/img/icons/豆瓣.png')"></i>豆瓣</a>
+              <a href="http://weibo.com/nullne" class="item"><i class="icon" style="content:url('/theme/img/icons/微博.png')"></i>微博</a>
+          </div>
+        </div>
+        <div class="seven wide column" id="poem">
+                <div class="poem head">从前慢</div>
+                <div class="poem"><br>木心</div>
+            　　<div class="poem">&nbsp;</div>
+                <div class="poem">记得早先少年时</div>
+            　　<div class="poem">&nbsp;</div>
+                <div class="poem">大家诚诚恳恳</div>
+            　　<div class="poem">说一句 是一句</div>
+            　　<div class="poem">&nbsp;</div>
+            　　<div class="poem">清早上火车站</div>
+            　　<div class="poem">长街黑暗无行人</div>
+            　　<div class="poem">卖豆浆的小店冒着热气</div>
+            　　<div class="poem">&nbsp;</div>
+            　　<div class="poem">从前的日色变得慢</div>
+            　　<div class="poem">车<br>，马<br>，邮件都慢</div>
+            　　<div class="poem">一生只够爱一个人</div>
+            　　<div class="poem">&nbsp;</div>
+            　　<div class="poem">从前的锁也好看</div>
+            　　<div class="poem">钥匙精美有样子 </div>
+            　　<div class="poem">你锁了 人家就懂</div>
+                <div class="clear"></div>
+        </div>
+      </div>
+    </div>
+      <div class="ui inverted section divider"></div>
+      <div class="ui centered align grid">
+          <p class="copyleft">&copy; nullne 2013-</p>
+      </div>
+  </div>
+</div>
+
+
+<script>
+var timeout = 30;
+poll = function () {
+  setTimeout(function () {
+    timeout--;
+    if (typeof gapi !== 'undefined') {
+      // External file loaded
+        $('#gfw').remove()
+    }
+    else if (timeout > 0) {
+      poll();
+    }
+    else {
+      // External library failed to load
+        $('#gfw').show()
+    }
+  }, 100);
+};
+
+poll();
+</script>
+<script src="https://apis.google.com/js/plusone.js"></script>
+<script>
+gapi.comments.render('comments', {
+    href: window.location,
+    width: 624,
+    height: '250px',
+    first_party_property: 'BLOGGER',
+    view_type: 'FILTERED_POSTMOD'
+});
+$('#gfw').remove()
+
+</script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-51420901-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+</body>
+
+</html>

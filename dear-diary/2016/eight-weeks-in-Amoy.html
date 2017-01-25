@@ -24,22 +24,6 @@
 
   <script src="/theme/jquery-2.1.4.min.js"></script>
   <script src="/theme/semantic.min.js"></script>
-<script>
-$(document)
-    .ready(function() {
-        $('.card .dimmer')
-            .dimmer({
-                on: 'hover'
-            })
-        ;
-        $('.ui.sticky')
-            .sticky({
-                context: '#allude',
-                offset: 63,
-            })
-        ;
-    });
-</script>
   <script>
   $(document)
     .ready(function() {
@@ -92,7 +76,9 @@ $(document)
       <a class="item " href="/category/hand-of-midas.html">Hand of Midas</a>
       <a class="item  active" href="/category/dear-diary.html">Dear Diary</a>
 
-      <a class="item" href="/about.html">About</a>
+
+      <a class="item" href="">About</a>
+
     <div class="right item">
         <div class="ui small search">
             <div class="ui icon input">
@@ -124,7 +110,9 @@ $(document)
         <a class="item " href="/category/hand-of-midas.html">Hand of Midas</a>
         <a class="item  active" href="/category/dear-diary.html">Dear Diary</a>
 
-        <a class="item" href="/about.html">About</a>
+
+        <a class="item" href="">About</a>
+
         <div class="right item">
             <div class="ui small search">
                 <div class="ui icon input">
@@ -147,34 +135,7 @@ $(document)
   <div class="ui hidden divider"></div>
 
 <div class="ui basic segment" id="allude" style="">
-  <div class="right ui rail" style="">
-      <div class="ui sticky" style="">
-          <div class="ui card">
-              <div class="ui slide right reveal image">
-                  <div class="visible content">
-                      <img class="ui fluid image" src="/theme/img/big-avatar.jpg">
-                  </div>
-                  <div class="hidden content">
-                      <img class="ui fluid image" src="/theme/img/alipay.png">
-                  </div>
-              </div>
-
-              <div class="content">
-                  <a href="/about.html" class="header">nullne</a>
-                  <div class="meta">
-                      <span class="date">Nov 21, 2016</span>
-                  </div>
-              </div>
-              <div class="extra content">
- 
-                  Tags:&nbsp;
-                  <a href="/tag/lu-you.html" class="">旅游</a>,&nbsp;
- 
-              </div>
-          </div>
-      </div>
-  </div>
-  <div class="ui text container"><div id="pec-encrypted-content" style="display:none">qfsb55qw29oxX8KuBYWPLw==;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;^</div>
+  <div class="ui container"><div id="pec-encrypted-content" style="display:none">jkIYasXP4bhhb5CqiV9AOw==;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;^</div>
 <div id="pec-decrypted-content">
 <div class="ui large brown message">
     <i class="lock icon"></i>
@@ -299,25 +260,25 @@ $(document).ready(function(){
 <div class="ui hidden divider"></div>
 
 
-    <div class="ui basic segment">
-        <h4 class="ui horizontal divider header">
-            <i class="photo icon"></i>
-            Gallery
-        </h4>
-    </div>
-    <div class="ui images centered gallery">
-        <a class="ui image" href="/photos/amoy/airport-plaza.jpg" title="airport-plaza.jpg" exif="" caption=""><img src="/photos/amoy/airport-plazat.jpg"></a>
-        <a class="ui image" href="/photos/amoy/morning-amoy.jpg" title="morning-amoy.jpg" exif="" caption=""><img src="/photos/amoy/morning-amoyt.jpg"></a>
-        <a class="ui image" href="/photos/amoy/night-in-amoy.jpg" title="night-in-Amoy.jpg" exif="Iphone6" caption="五缘湾大桥，跑步"><img src="/photos/amoy/night-in-amoyt.jpg"></a>
-        <a class="ui image" href="/photos/amoy/phoenix-flower.jpg" title="phoenix-flower.jpg" exif="" caption=""><img src="/photos/amoy/phoenix-flowert.jpg"></a>
-        <a class="ui image" href="/photos/amoy/plane-a.jpg" title="plane-a.jpg" exif="" caption=""><img src="/photos/amoy/plane-at.jpg"></a>
-        <a class="ui image" href="/photos/amoy/plane-b.jpg" title="plane-b.jpg" exif="" caption=""><img src="/photos/amoy/plane-bt.jpg"></a>
-        <a class="ui image" href="/photos/amoy/playing.jpg" title="playing.jpg" exif="" caption=""><img src="/photos/amoy/playingt.jpg"></a>
-        <a class="ui image" href="/photos/amoy/rabbit.jpg" title="rabbit.jpg" exif="" caption=""><img src="/photos/amoy/rabbitt.jpg"></a>
-        <a class="ui image" href="/photos/amoy/wu-yuan-wan.jpg" title="wu-yuan-wan.jpg" exif="" caption=""><img src="/photos/amoy/wu-yuan-want.jpg"></a>
-        <a class="ui image" href="/photos/amoy/xia-da-hu.jpg" title="xia-da-hu.jpg" exif="" caption=""><img src="/photos/amoy/xia-da-hut.jpg"></a>
-        <a class="ui image" href="/photos/amoy/xia-da-tian-qiao.jpg" title="xia-da-tian-qiao.jpg" exif="" caption=""><img src="/photos/amoy/xia-da-tian-qiaot.jpg"></a>
-    </div>
+<div class="ui basic segment">
+    <h4 class="ui horizontal divider header">
+        <i class="photo icon"></i>
+        Gallery
+    </h4>
+</div>
+<div class="ui images centered gallery">
+    <a class="ui image" href="/photos/amoy/airport-plaza.jpg" title="airport-plaza.jpg" exif="" caption=""><img src="/photos/amoy/airport-plazat.jpg"></a>
+    <a class="ui image" href="/photos/amoy/morning-amoy.jpg" title="morning-amoy.jpg" exif="" caption=""><img src="/photos/amoy/morning-amoyt.jpg"></a>
+    <a class="ui image" href="/photos/amoy/night-in-amoy.jpg" title="night-in-Amoy.jpg" exif="Iphone6" caption="五缘湾大桥，跑步"><img src="/photos/amoy/night-in-amoyt.jpg"></a>
+    <a class="ui image" href="/photos/amoy/phoenix-flower.jpg" title="phoenix-flower.jpg" exif="" caption=""><img src="/photos/amoy/phoenix-flowert.jpg"></a>
+    <a class="ui image" href="/photos/amoy/plane-a.jpg" title="plane-a.jpg" exif="" caption=""><img src="/photos/amoy/plane-at.jpg"></a>
+    <a class="ui image" href="/photos/amoy/plane-b.jpg" title="plane-b.jpg" exif="" caption=""><img src="/photos/amoy/plane-bt.jpg"></a>
+    <a class="ui image" href="/photos/amoy/playing.jpg" title="playing.jpg" exif="" caption=""><img src="/photos/amoy/playingt.jpg"></a>
+    <a class="ui image" href="/photos/amoy/rabbit.jpg" title="rabbit.jpg" exif="" caption=""><img src="/photos/amoy/rabbitt.jpg"></a>
+    <a class="ui image" href="/photos/amoy/wu-yuan-wan.jpg" title="wu-yuan-wan.jpg" exif="" caption=""><img src="/photos/amoy/wu-yuan-want.jpg"></a>
+    <a class="ui image" href="/photos/amoy/xia-da-hu.jpg" title="xia-da-hu.jpg" exif="" caption=""><img src="/photos/amoy/xia-da-hut.jpg"></a>
+    <a class="ui image" href="/photos/amoy/xia-da-tian-qiao.jpg" title="xia-da-tian-qiao.jpg" exif="" caption=""><img src="/photos/amoy/xia-da-tian-qiaot.jpg"></a>
+</div>
 
 <h4 class="ui horizontal divider header">
     <i class="comment icon"></i>
